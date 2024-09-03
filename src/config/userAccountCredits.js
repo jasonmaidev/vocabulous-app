@@ -1,0 +1,9 @@
+export const dailyGuestAllowedResets = 10
+export const dailyGuestAllowedUploads = 0
+export const dailyGuestAllowedSaves = 10
+export const dailyGuestAllowedEdits = 10
+export const dailyGuestAllowedDeletes = 10
+export const dailyFriendAllowedUploads = 20
+export const dailyFriendAllowedSaves = 100
+export const dailyFriendAllowedEdits = 100
+export const dailyFriendAllowedDeletes = 20
