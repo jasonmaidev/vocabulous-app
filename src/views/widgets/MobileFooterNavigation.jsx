@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { IoLanguage, IoSearchSharp } from "react-icons/io5"
-import { BottomNavigation, BottomNavigationAction, Paper, Box, } from "@mui/material"
+import { BottomNavigation, BottomNavigationAction, Stack, Paper, Box, } from "@mui/material"
 import { setOpenLabelsDrawer } from "state"
 import AddVocabDialog from "components/AddVocabDialog"
 
@@ -23,22 +23,24 @@ const MobileFooterNavigation = ({ isHome, isRoadmap }) => {
 
   return (
     <Box sx={{ pb: 7 }} >
-      <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0, ml: 4 }} elevation={3}>
-        <BottomNavigation showLabels>
+      <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }} elevation={3}>
+        <BottomNavigation>
+          <Stack direction={"row"} width={"100%"}>
 
-          <AddVocabDialog />
+            <AddVocabDialog />
 
-          <BottomNavigationAction
-            icon={<IoSearchSharp size="2rem" />}
-            onClick={goToSearch}
-          />
+            <BottomNavigationAction
+              icon={<IoSearchSharp size="2rem" />}
+              onClick={goToSearch}
+            />
 
-          <BottomNavigationAction
-            label="Labels"
-            value="labels"
-            icon={<IoLanguage size="1.5rem" />}
-            onClick={toggleLabelsDrawer}
-          />
+            <BottomNavigationAction
+              label="Labels"
+              value="labels"
+              icon={<IoLanguage size="1.5rem" />}
+              onClick={toggleLabelsDrawer}
+            />
+          </Stack>
 
         </BottomNavigation>
       </Paper>
