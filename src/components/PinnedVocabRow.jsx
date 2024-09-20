@@ -103,116 +103,122 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
   return (
     <>
       {isLandscape ? (
-        <RowBox
-          display="flex"
-          flexDirection="row"
-          gap={1}
-          sx={{
-            cursor: "pointer",
-            borderRadius: "0.5rem",
-            padding: "0.125rem 1rem",
-            backgroundImage: highlightRow ? `linear-gradient(
-              to right, 
-              rgba(3, 241, 232, 0.075), 
-              rgba(18, 77, 115, 0.05)
-            )` : "none",
-            "&:hover": {
-              backgroundImage: `linear-gradient(
-                to right, 
-                rgba(3, 241, 232, 0.075), 
-                rgba(18, 77, 115, 0.05)
-              )`,
-            }
-          }}
-        >
-          <Stack direction="column" spacing={0} pt={0.5} pb={0.5} onClick={handleViewOpen}>
-            <Stack direction="row" alignItems={"flex-end"} spacing={1}>
-              <Typography
-                color={(difficulty === "1" && mode === "light") ? "#00c4b7" :
-                  (difficulty === "2" && mode === "light") ? "#d97706" :
-                    difficulty === "1" ? "#03f1c7" :
-                      difficulty === "2" ? "#fbbf24" :
-                        "#ff589e"}
-                fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}
-                lineHeight={1.1}
-              >
-                {text}
-              </Typography>
-              <Typography
-                fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem"}
-                color={theme.palette.neutral.medium}
-                fontStyle={"italic"} lineHeight={1.1}
-              >
-                {pinyin}
-              </Typography>
-            </Stack>
-            <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem"}>
-              {definition}
-            </Typography>
-          </Stack>
-
-          <Tooltip title="Quick Edit" placement="right">
-            <IconButton zindex={10} onClick={handleMenuClick} sx={{ opacity: 0.3 }}>
-              <IoMdMore size={24} />
-            </IconButton>
-          </Tooltip>
-        </RowBox>
-      ) :
-        /* Mobile */
-        (
+        <Stack direction={"row"}>
           <RowBox
             display="flex"
             flexDirection="row"
+            onClick={handleViewOpen}
             gap={1}
             sx={{
               cursor: "pointer",
               borderRadius: "0.5rem",
-              padding: "0.25rem",
+              padding: "0.125rem 1rem",
               backgroundImage: highlightRow ? `linear-gradient(
+              to right, 
+              rgba(3, 241, 232, 0.075), 
+              rgba(18, 77, 115, 0.05)
+            )` : "none",
+              "&:hover": {
+                backgroundImage: `linear-gradient(
                 to right, 
                 rgba(3, 241, 232, 0.075), 
                 rgba(18, 77, 115, 0.05)
-              )` : "none",
-              "&:hover": {
-                backgroundImage: `linear-gradient(
-                  to right, 
-                  rgba(3, 241, 232, 0.075), 
-                  rgba(18, 77, 115, 0.05)
-                )`,
+              )`,
               }
             }}
           >
-            <Stack direction="column" spacing={0}>
-              <Stack direction="row" alignItems={"flex-end"} spacing={0.5}>
+            <Stack direction="column" spacing={0} pt={0.5} pb={0.5} onClick={handleViewOpen}>
+              <Stack direction="row" alignItems={"flex-end"} spacing={1}>
                 <Typography
-                  onClick={handleViewOpen}
-                  sx={{ lineHeight: 1.1 }}
-                  fontSize="1.3rem"
                   color={(difficulty === "1" && mode === "light") ? "#00c4b7" :
                     (difficulty === "2" && mode === "light") ? "#d97706" :
                       difficulty === "1" ? "#03f1c7" :
                         difficulty === "2" ? "#fbbf24" :
                           "#ff589e"}
+                  fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}
+                  lineHeight={1.1}
                 >
                   {text}
                 </Typography>
                 <Typography
-                  onClick={handleViewOpen}
-                  sx={{ lineHeight: 1.1, fontSize: "0.8rem", fontStyle: "italic" }}
-                  color={theme.palette.neutral.medium}>
+                  fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem"}
+                  color={theme.palette.neutral.medium}
+                  fontStyle={"italic"} lineHeight={1.1}
+                >
                   {pinyin}
                 </Typography>
               </Stack>
-
-              <Typography onClick={handleViewOpen} sx={{ lineHeight: 1.1 }} fontSize="1rem">
+              <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem"}>
                 {definition}
               </Typography>
             </Stack>
 
+          </RowBox>
+          <Tooltip title="Quick Edit" placement="right">
+            <IconButton zindex={10} onClick={handleMenuClick} sx={{ opacity: 0.3 }}>
+              <IoMdMore size={24} style={{ margin: "0 1.25rem" }} />
+            </IconButton>
+          </Tooltip>
+        </Stack>
+      ) :
+        /* Mobile */
+        (
+          <Stack direction={"row"}>
+            <RowBox
+              onClick={handleViewOpen}
+              display="flex"
+              flexDirection="row"
+              gap={1}
+              sx={{
+                cursor: "pointer",
+                borderRadius: "0.5rem",
+                padding: "0.25rem",
+                backgroundImage: highlightRow ? `linear-gradient(
+                to right, 
+                rgba(3, 241, 232, 0.075), 
+                rgba(18, 77, 115, 0.05)
+              )` : "none",
+                "&:hover": {
+                  backgroundImage: `linear-gradient(
+                  to right, 
+                  rgba(3, 241, 232, 0.075), 
+                  rgba(18, 77, 115, 0.05)
+                )`,
+                }
+              }}
+            >
+              <Stack direction="column" spacing={0}>
+                <Stack direction="row" alignItems={"flex-end"} spacing={0.5}>
+                  <Typography
+                    onClick={handleViewOpen}
+                    sx={{ lineHeight: 1.1 }}
+                    fontSize="1.3rem"
+                    color={(difficulty === "1" && mode === "light") ? "#00c4b7" :
+                      (difficulty === "2" && mode === "light") ? "#d97706" :
+                        difficulty === "1" ? "#03f1c7" :
+                          difficulty === "2" ? "#fbbf24" :
+                            "#ff589e"}
+                  >
+                    {text}
+                  </Typography>
+                  <Typography
+                    onClick={handleViewOpen}
+                    sx={{ lineHeight: 1.1, fontSize: "0.8rem", fontStyle: "italic" }}
+                    color={theme.palette.neutral.medium}>
+                    {pinyin}
+                  </Typography>
+                </Stack>
+
+                <Typography onClick={handleViewOpen} sx={{ lineHeight: 1.1 }} fontSize="1rem">
+                  {definition}
+                </Typography>
+              </Stack>
+
+            </RowBox>
             <IconButton zindex={10} onClick={handleMenuClick} sx={{ opacity: 0.3 }}>
               <IoMdMore />
             </IconButton>
-          </RowBox>
+          </Stack>
         )}
 
       {/* ----- Popup View Vocab Dialog ----- */}

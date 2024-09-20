@@ -6,6 +6,7 @@ import { IoClose } from "react-icons/io5"
 import { FaCircle, FaRegCircle } from "react-icons/fa";
 import { IoMdAdd, IoMdClose } from "react-icons/io";
 import { IoLanguageSharp } from "react-icons/io5";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
 import {
   Box,
@@ -80,6 +81,7 @@ export default function AddVocabDialog({ text }) {
 
   /* Labels Input States */
   const [checkedLabels, setCheckedLabels] = useState([]);
+  const [showLabels, setShowLabels] = useState(false)
 
   // Handle check/uncheck actions
   const handleCheckboxChange = (text) => {
@@ -253,7 +255,6 @@ export default function AddVocabDialog({ text }) {
                 fontWeight: 700,
                 textTransform: "none",
                 border: `1px solid ${theme.palette.neutral.light}`,
-                // boxShadow: "12px 16px 38px rgba(0,0,0, 0.15),-12px -12px 30px #ffffff",
                 ":hover": {
                   backgroundColor: theme.palette.background.alt
                 }
@@ -268,7 +269,6 @@ export default function AddVocabDialog({ text }) {
                 fontWeight: 700,
                 textTransform: "none",
                 border: `1px solid ${theme.palette.neutral.light}`,
-                // boxShadow: "15px 15px 40px rgba(0,0,0, 0.35), -12px -12px 40px #212125",
                 ":hover": {
                   backgroundColor: theme.palette.background.alt
                 }
@@ -415,175 +415,218 @@ export default function AddVocabDialog({ text }) {
               />
             </Stack>
 
+
             {/* ----- Difficulty Field ----- */}
-            <Stack direction={"row"} alignItems={"center"}>
+            <Stack direction={"row"} alignItems={"center"} spacing={2}>
               <Typography>Difficulty</Typography>
-              <IconButton
-                onMouseOver={() => setVocabLevelHover("1")}
-                onMouseLeave={() => setVocabLevelHover("1")}
-                onClick={() => setVocabLevel("1")}
-              >
-                {(vocabLevelHover === "1" ||
-                  vocabLevel === "1" ||
-                  vocabLevel === "2" ||
-                  vocabLevel === "3") ?
-                  <FaCircle
-                    size={24}
-                    style={mode === "dark" ? {
-                      color: vocabLevel === "1" ?
-                        theme.palette.neutral.darker :
-                        vocabLevel === "2" ?
-                          theme.palette.tertiary.main :
-                          theme.palette.secondary.main
-                    } :
-                      {
+              <Stack direction={"row"}>
+                <IconButton
+                  onMouseOver={() => setVocabLevelHover("1")}
+                  onMouseLeave={() => setVocabLevelHover("1")}
+                  onClick={() => setVocabLevel("1")}
+                >
+                  {(vocabLevelHover === "1" ||
+                    vocabLevel === "1" ||
+                    vocabLevel === "2" ||
+                    vocabLevel === "3") ?
+                    <FaCircle
+                      size={24}
+                      style={mode === "dark" ? {
                         color: vocabLevel === "1" ?
-                          theme.palette.neutral.main :
+                          theme.palette.neutral.darker :
                           vocabLevel === "2" ?
                             theme.palette.tertiary.main :
                             theme.palette.secondary.main
+                      } :
+                        {
+                          color: vocabLevel === "1" ?
+                            theme.palette.neutral.main :
+                            vocabLevel === "2" ?
+                              theme.palette.tertiary.main :
+                              theme.palette.secondary.main
+                        }
                       }
-                    }
-                  /> :
-                  <FaRegCircle
-                    size={24}
-                    style={mode === "dark" ? {
-                      color: vocabLevel === "1" ?
-                        theme.palette.neutral.darker :
-                        vocabLevel === "2" ?
-                          theme.palette.tertiary.main :
-                          theme.palette.secondary.main
-                    } :
-                      {
+                    /> :
+                    <FaRegCircle
+                      size={24}
+                      style={mode === "dark" ? {
                         color: vocabLevel === "1" ?
-                          theme.palette.neutral.main :
+                          theme.palette.neutral.darker :
                           vocabLevel === "2" ?
                             theme.palette.tertiary.main :
                             theme.palette.secondary.main
+                      } :
+                        {
+                          color: vocabLevel === "1" ?
+                            theme.palette.neutral.main :
+                            vocabLevel === "2" ?
+                              theme.palette.tertiary.main :
+                              theme.palette.secondary.main
+                        }
                       }
-                    }
-                  />
-                }
-              </IconButton>
-              <IconButton
-                onMouseOver={() => setVocabLevelHover("2")}
-                onMouseLeave={() => setVocabLevelHover("1")}
-                onClick={() => setVocabLevel("2")}
-              >
-                {(vocabLevelHover === "2" ||
-                  vocabLevel === "2" ||
-                  vocabLevel === "3" ||
-                  vocabLevelHover === "3") ?
-                  <FaCircle
-                    size={24}
-                    style={mode === "dark" ? {
-                      color: vocabLevel === "1" ?
-                        theme.palette.neutral.darker :
-                        vocabLevel === "2" ?
-                          theme.palette.tertiary.main :
-                          theme.palette.secondary.main
-                    } :
-                      {
+                    />
+                  }
+                </IconButton>
+                <IconButton
+                  onMouseOver={() => setVocabLevelHover("2")}
+                  onMouseLeave={() => setVocabLevelHover("1")}
+                  onClick={() => setVocabLevel("2")}
+                >
+                  {(vocabLevelHover === "2" ||
+                    vocabLevel === "2" ||
+                    vocabLevel === "3" ||
+                    vocabLevelHover === "3") ?
+                    <FaCircle
+                      size={24}
+                      style={mode === "dark" ? {
                         color: vocabLevel === "1" ?
-                          theme.palette.neutral.main :
+                          theme.palette.neutral.darker :
                           vocabLevel === "2" ?
                             theme.palette.tertiary.main :
                             theme.palette.secondary.main
+                      } :
+                        {
+                          color: vocabLevel === "1" ?
+                            theme.palette.neutral.main :
+                            vocabLevel === "2" ?
+                              theme.palette.tertiary.main :
+                              theme.palette.secondary.main
+                        }
                       }
-                    }
-                  /> :
-                  <FaRegCircle
-                    size={24}
-                    style={mode === "dark" ? {
-                      color: vocabLevel === "1" ?
-                        theme.palette.neutral.darker :
-                        vocabLevel === "2" ?
-                          theme.palette.tertiary.main :
-                          theme.palette.secondary.main
-                    } :
-                      {
+                    /> :
+                    <FaRegCircle
+                      size={24}
+                      style={mode === "dark" ? {
                         color: vocabLevel === "1" ?
-                          theme.palette.neutral.main :
+                          theme.palette.neutral.darker :
                           vocabLevel === "2" ?
                             theme.palette.tertiary.main :
                             theme.palette.secondary.main
+                      } :
+                        {
+                          color: vocabLevel === "1" ?
+                            theme.palette.neutral.main :
+                            vocabLevel === "2" ?
+                              theme.palette.tertiary.main :
+                              theme.palette.secondary.main
+                        }
                       }
-                    }
-                  />
-                }
-              </IconButton>
-              <IconButton
-                onMouseOver={() => setVocabLevelHover("3")}
-                onMouseLeave={() => setVocabLevelHover("1")}
-                onClick={() => setVocabLevel("3")}
-              >
-                {(vocabLevelHover === "3" || vocabLevel === "3") ?
-                  <FaCircle
-                    size={24}
-                    style={mode === "dark" ? {
-                      color: vocabLevel === "1" ?
-                        theme.palette.neutral.darker :
-                        vocabLevel === "2" ?
-                          theme.palette.tertiary.main :
-                          theme.palette.secondary.main
-                    } :
-                      {
+                    />
+                  }
+                </IconButton>
+                <IconButton
+                  onMouseOver={() => setVocabLevelHover("3")}
+                  onMouseLeave={() => setVocabLevelHover("1")}
+                  onClick={() => setVocabLevel("3")}
+                >
+                  {(vocabLevelHover === "3" || vocabLevel === "3") ?
+                    <FaCircle
+                      size={24}
+                      style={mode === "dark" ? {
                         color: vocabLevel === "1" ?
-                          theme.palette.neutral.main :
+                          theme.palette.neutral.darker :
                           vocabLevel === "2" ?
                             theme.palette.tertiary.main :
                             theme.palette.secondary.main
-                      }}
-                  /> :
-                  <FaRegCircle
-                    size={24}
-                    style={mode === "dark" ? {
-                      color: vocabLevel === "1" ?
-                        theme.palette.neutral.darker :
-                        vocabLevel === "2" ?
-                          theme.palette.tertiary.main :
-                          theme.palette.secondary.light
-                    } :
-                      {
+                      } :
+                        {
+                          color: vocabLevel === "1" ?
+                            theme.palette.neutral.main :
+                            vocabLevel === "2" ?
+                              theme.palette.tertiary.main :
+                              theme.palette.secondary.main
+                        }}
+                    /> :
+                    <FaRegCircle
+                      size={24}
+                      style={mode === "dark" ? {
                         color: vocabLevel === "1" ?
-                          theme.palette.neutral.main :
+                          theme.palette.neutral.darker :
                           vocabLevel === "2" ?
                             theme.palette.tertiary.main :
                             theme.palette.secondary.light
+                      } :
+                        {
+                          color: vocabLevel === "1" ?
+                            theme.palette.neutral.main :
+                            vocabLevel === "2" ?
+                              theme.palette.tertiary.main :
+                              theme.palette.secondary.light
+                        }
                       }
-                    }
-                  />
-                }
-              </IconButton>
+                    />
+                  }
+                </IconButton>
+              </Stack>
             </Stack>
 
-
-
             {/* ----- Label Field ----- */}
-            <Stack direction={"row"} alignItems={"center"} spacing={1}>
+            <Stack direction={"row"} alignItems={"center"} spacing={2}>
               <Typography>Label</Typography>
-              <Stack direction={"row"} flexWrap={"wrap"} sx={{ p: 0.25 }}>
-                {labelsData?.[0].label.map((text, index) => (
-                  <Stack key={index} direction="row" spacing={0} p={"0.125rem 0.5rem"} alignItems={"center"} sx={{ cursor: "pointer" }}>
-                    <Checkbox
-                      color="primary"
-                      value={text}
-                      checked={checkedLabels?.includes(text)} // Control the checked state
-                      onChange={() => handleCheckboxChange(text)} // Handle checkbox change
-                      sx={{
-                        p: 0.5,
-                      }}
-                    />
-                    <Typography
-                      onClick={() => handleCheckboxChange(text)}
-                      color={checkedLabels?.includes(text) ? theme.palette.primary.main : theme.palette.neutral.darker}
-                      fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"}
-                    >
-                      {text}
-                    </Typography>
-                  </Stack>
-                ))}
-              </Stack>
+              {showLabels ?
+                <Stack direction={"row"} flexWrap={"wrap"} sx={{ p: 0.25 }}>
+                  {labelsData?.[0].label.map((text, index) => (
+                    <Stack key={index} direction="row" spacing={0} p={"0.125rem 0.5rem"} alignItems={"center"} sx={{ cursor: "pointer" }}>
+                      <Checkbox
+                        color="primary"
+                        value={text}
+                        checked={checkedLabels?.includes(text)} // Control the checked state
+                        onChange={() => handleCheckboxChange(text)} // Handle checkbox change
+                        sx={{
+                          p: 0.5,
+                        }}
+                      />
+                      <Typography
+                        onClick={() => handleCheckboxChange(text)}
+                        color={checkedLabels?.includes(text) ? theme.palette.primary.main : theme.palette.neutral.darker}
+                        fontSize={isWideScreens ? "1.25rem" : isQHDScreens ? "1rem" : "0.8rem"}
+                      >
+                        {text}
+                      </Typography>
+                    </Stack>
+                  ))}
+                </Stack>
+                :
+                <Button
+                  startIcon={<MdOutlineRemoveRedEye size={16} color={theme.palette.neutral.darker} />}
+                  onClick={() => setShowLabels(true)}
+                  className={(mode === "light") ? "gradient-button" : "gradient-button-dark"}
+                  size="medium"
+                  sx={
+                    (mode === "light") ?
+                      {
+                        color: theme.palette.neutral.dark,
+                        margin: "0.5rem 1rem",
+                        padding: "0.5rem 1rem",
+                        borderRadius: "6rem",
+                        fontSize: "0.75rem",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        border: `1px solid ${theme.palette.neutral.light}`,
+                        ":hover": {
+                          backgroundColor: theme.palette.background.alt
+                        }
+                      }
+                      :
+                      {
+                        color: theme.palette.primary.main,
+                        margin: "0.5rem 1rem",
+                        padding: "0.5rem 1rem",
+                        borderRadius: "6rem",
+                        fontSize: "0.75rem",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        border: `1px solid ${theme.palette.neutral.light}`,
+                        ":hover": {
+                          backgroundColor: theme.palette.background.alt
+                        }
+                      }
+                  }
+                >
+                  Show
+                </Button>
+              }
+
             </Stack>
 
             {/* ----- Definition Field ----- */}

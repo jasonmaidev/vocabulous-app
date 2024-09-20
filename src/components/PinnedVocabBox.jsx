@@ -15,7 +15,6 @@ const PinnedVocabBox = styled(Box)({
   padding: isLandscape ? "0.5rem 1rem" : "0.5rem 0.5rem",
   marginTop: isPortrait ? "-4rem" : "0",
   width: isLandscape ? "64%" : "100%",
-  // gap: 0
 })
 
 export default PinnedVocabBox
