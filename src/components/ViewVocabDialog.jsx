@@ -205,6 +205,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
     }
@@ -225,7 +226,8 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
       console.log("Error fetching:" + context.id + error)
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["allVocabsDataVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
       handleViewClose()
@@ -1190,11 +1192,18 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
             {/* ----- Labels ----- */}
             <Stack>
               {editingLabels &&
-                <Typography
-                  sx={{ fontSize: isWideScreens ? "1.25rem" : isQHDScreens ? "1rem" : "0.8rem", textAlign: "flex-start", color: theme.palette.neutral.mid }}
-                >
-                  Select New Labels
-                </Typography>
+                <Stack direction="row" alignItems={"center"} justifyContent={"space-between"}>
+                  <Typography
+                    sx={{ fontSize: isWideScreens ? "1.25rem" : isQHDScreens ? "1rem" : "0.8rem", textAlign: "flex-start", color: theme.palette.neutral.mid }}
+                  >
+                    Select New Labels
+                  </Typography>
+                  <Button onClick={handleUpdateLabels}
+                    sx={{ fontSize: isWideScreens ? "1.25rem" : isQHDScreens ? "1rem" : "0.8rem" }}
+                  >
+                    Done
+                  </Button>
+                </Stack>
               }
               {editingLabels &&
                 <Stack direction="row" flexWrap={"wrap"} alignItems={"center"} justifyContent={"flex-start"} spacing={0} pr={0.5}
@@ -1204,7 +1213,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     padding: "0.5rem",
                   }}
                 >
-                  {labelsData?.[0].label?.map((text, index) => (
+                  {labelsData?.[0].label.map((text, index) => (
                     <Stack key={index} direction="row" spacing={0} p={0.5} alignItems={"center"} sx={{ cursor: "pointer" }}>
                       <Checkbox
                         color="primary"
@@ -1229,18 +1238,11 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
 
               {label?.length > 0 ?
                 <Stack direction={"row"} alignItems={"center"}
-                  justifyContent={editingLabels ? "space-between" : "flex-end"}
+                  justifyContent={"flex-end"}
                   pb={isPortrait ? 1 : 0}
                   spacing={1}
                   pt={4}
                 >
-                  {editingLabels &&
-                    <Button onClick={handleUpdateLabels}
-                      sx={{ fontSize: isWideScreens ? "1.25rem" : isQHDScreens ? "1rem" : "0.8rem" }}
-                    >
-                      Done
-                    </Button>
-                  }
                   <Stack onClick={() => setEditingLabels(true)}
                     direction={"row"}
                     flexWrap={"wrap"}
@@ -1370,7 +1372,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     Usage
                   </Button>
                 </Stack>
-                {pinned === false ?
+                {pinned ?
                   <Tooltip title="Unpin" placement="top">
                     <Stack>
                       <TbPinFilled size={24} style={{ cursor: "pointer", color: theme.palette.primary.main }} onClick={handleUpdatePinned} />
@@ -1378,9 +1380,9 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                   </Tooltip>
                   :
                   <Tooltip title="Pin" placement="top">
-                    <IconButton onClick={handleUpdatePinned}>
-                      <TbPin size={24} style={{ cursor: "pointer", color: theme.palette.primary.main }} />
-                    </IconButton>
+                    <Stack>
+                      <TbPin size={24} style={{ cursor: "pointer", color: theme.palette.neutral.main }} onClick={handleUpdatePinned} />
+                    </Stack>
                   </Tooltip>
                 }
               </Stack>

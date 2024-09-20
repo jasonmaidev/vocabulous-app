@@ -138,12 +138,6 @@ export default function LabelsDrawer() {
         </List>
       </Box>
       <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : 250 }} role="presentation" onClick={showAllVocabs}>
-        {isPortrait && (
-          <IconButton onClick={toggleLabelsDrawer} sx={{ position: "relative", top: 5, left: "98%", p: 0 }}>
-            <MdClose size={24} color={theme.palette.primary.main}
-            />
-          </IconButton>
-        )}
         <List sx={{ margin: 0, padding: 0 }}>
           <ListItem disablePadding sx={{ margin: 0, padding: 0 }}>
             <ListItemButton
