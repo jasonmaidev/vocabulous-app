@@ -354,8 +354,8 @@ export default function AddVocabDialog({ text }) {
         }}
       >
         <Box
-          margin={!isNonMobileScreens ? "0.5rem 0.5rem 1.5rem 0.5rem" : "1.5rem 1.5rem 2rem 1.5rem"}
-          padding={isPortrait ? 2 : "0 0.5rem"}
+          margin={!isNonMobileScreens ? "0.25rem 0.25rem 1.5rem 0.25rem" : "1.5rem 1.5rem 2rem 1.5rem"}
+          padding={isPortrait ? 1 : "0 0.5rem"}
         >
           <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} pb={2}>
             <Typography
@@ -560,10 +560,10 @@ export default function AddVocabDialog({ text }) {
 
 
             {/* ----- Label Field ----- */}
-            <Stack direction={"row"} alignItems={"center"} spacing={2}>
+            <Stack direction={"row"} alignItems={"center"} spacing={1}>
               <Typography>Label</Typography>
               <Stack direction={"row"} flexWrap={"wrap"} sx={{ p: 0.25 }}>
-                {labelsData?.[0].label?.map((text, index) => (
+                {labelsData?.[0].label.map((text, index) => (
                   <Stack key={index} direction="row" spacing={0} p={"0.125rem 0.5rem"} alignItems={"center"} sx={{ cursor: "pointer" }}>
                     <Checkbox
                       color="primary"
@@ -577,7 +577,7 @@ export default function AddVocabDialog({ text }) {
                     <Typography
                       onClick={() => handleCheckboxChange(text)}
                       color={checkedLabels?.includes(text) ? theme.palette.primary.main : theme.palette.neutral.darker}
-                      fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.9rem"}
+                      fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"}
                     >
                       {text}
                     </Typography>
