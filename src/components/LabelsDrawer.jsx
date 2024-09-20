@@ -105,10 +105,116 @@ export default function LabelsDrawer() {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
-
   const DrawerList = (
     <PerfectScrollbar component="div">
-      <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : 250, pt: isLandscape ? 10 : 6 }} role="presentation" onClick={navigateHome}>
+      <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : isPortrait ? 200 : 250, pt: isLandscape ? 10 : 8 }} role="presentation" onClick={navigateHome}>
+        <List sx={{ margin: 0, padding: 0 }}>
+          <ListItem disablePadding sx={{ margin: 0, padding: 0 }}>
+            <ListItemButton
+              sx={{
+                borderTopRightRadius: '6rem',
+                borderBottomRightRadius: '6rem',
+                '&:hover': {
+                  backgroundColor: theme.palette.primary.light,
+                },
+              }}
+            >
+              <ListItemIcon>
+                <BiHomeAlt2 size={24} />
+              </ListItemIcon>
+              <ListItemText
+                primary={"Home"}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+              />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
+      <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : 250 }} role="presentation" onClick={showAllVocabs}>
+        <List sx={{ margin: 0, padding: 0 }}>
+          <ListItem disablePadding sx={{ margin: 0, padding: 0 }}>
+            <ListItemButton
+              sx={{
+                borderTopRightRadius: '6rem',
+                borderBottomRightRadius: '6rem',
+                '&:hover': {
+                  backgroundColor: theme.palette.primary.light,
+                },
+              }}
+            >
+              <ListItemIcon>
+                <IoLanguage size={24} />
+              </ListItemIcon>
+              <ListItemText primary={"All"}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+              />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : 250 }} role="presentation">
+        <List sx={{ margin: 0, padding: 0 }}>
+          {data?.[0].label.sort().map((text, index) => (
+            <ListItem
+              key={text}
+              disablePadding
+              sx={{ margin: 0, padding: 0 }}
+              onClick={() => viewLabledVocabs(text)}
+            >
+              <ListItemButton
+                sx={{
+                  borderTopRightRadius: '6rem',
+                  borderBottomRightRadius: '6rem',
+                  '&:hover': {
+                    backgroundColor: theme.palette.primary.light,
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <MdLabelOutline size={24} />
+                </ListItemIcon>
+                <ListItemText
+                  primary={capFirstLetter(text)}
+                  primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
+      {/* <Divider /> */}
+      <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : 250 }} role="presentation" onClick={() => handleEditLabelsOpen()}>
+        <List sx={{ margin: 0, padding: 0 }}>
+          <ListItem disablePadding sx={{ margin: 0, padding: 0 }}>
+            <ListItemButton
+              sx={{
+                borderTopRightRadius: '6rem',
+                borderBottomRightRadius: '6rem',
+                '&:hover': {
+                  color: mode === "dark" ? theme.palette.neutral.lighter : theme.palette.neutral.darker,
+                  backgroundColor: theme.palette.tertiary.main,
+                },
+              }}
+            >
+              <ListItemIcon>
+                <FiEdit3 size={24} />
+              </ListItemIcon>
+              <ListItemText
+                primary={"Edit Labels"}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+              />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
+
+    </PerfectScrollbar>
+  );
+
+  const MobileDrawerList = (
+    <>
+      <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : isPortrait ? 200 : 250, pt: isLandscape ? 10 : 8 }} role="presentation" onClick={navigateHome}>
         {isPortrait && (
           <IconButton onClick={toggleLabelsDrawer} sx={{ position: "relative", top: 5, left: "98%", p: 0 }}>
             <MdClose size={24} color={theme.palette.primary.main}
@@ -215,8 +321,7 @@ export default function LabelsDrawer() {
           </ListItem>
         </List>
       </Box>
-
-    </PerfectScrollbar>
+    </>
   );
 
   /* Edit Labels Popup Dialog State */
@@ -270,7 +375,7 @@ export default function LabelsDrawer() {
           },
         }}
       >
-        {DrawerList}
+        {isLandscape ? DrawerList : MobileDrawerList}
       </Drawer>
       <EditLabelsDialog
         open={editLabelsOpen}
