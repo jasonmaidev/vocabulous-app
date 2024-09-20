@@ -99,7 +99,7 @@ export default function LabelsDrawer() {
 
   const capFirstLetter = (str) => {
     if (typeof str !== 'string' || str.length === 0) {
-      return str; // Return the original string if it's empty or not a string
+      return str;
     }
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
@@ -363,7 +363,7 @@ export default function LabelsDrawer() {
           width: isWideScreens ? 400 : isQHDScreens ? 320 : isPortrait ? 260 : 280,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            boxShadow: "4px 4px 12px rgba(0,0,0, 0.5),-4px -4px 8px rgba(0,0,0, 0.15)",
+            boxShadow: mode === "dark" ? "4px 4px 12px rgba(0,0,0, 0.5),-4px -4px 8px rgba(0,0,0, 0.15)" : "4px 4px 12px rgba(0,0,0, 0.15),-4px -4px 8px rgba(0,0,0, 0.05)",
             width: isWideScreens ? 400 : isQHDScreens ? 320 : isPortrait ? 260 : 280,
             border: "none",
             pb: 4

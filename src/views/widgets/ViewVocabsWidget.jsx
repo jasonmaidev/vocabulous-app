@@ -137,13 +137,6 @@ const ViewVocabsWidget = () => {
                 pinned={vocab.pinned}
               />
             ))}
-            {(isLandscape && labelData?.length === 0) && (
-              <Stack direction="row" alignItems="center" spacing={2}>
-                <Typography fontSize="1.5rem" >Add Vocabulary</Typography>
-                <CgArrowTopRight size={24} />
-              </Stack>
-            )
-            }
 
             {(isPortrait && labelData?.length === 0) && (
               <Stack p={1}>
