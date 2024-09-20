@@ -240,8 +240,8 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
               rgba(255, 255, 255, 0.15), 
               rgba(255, 255, 255, 0.05)
             )`, // Gradient overlay
-            backdropFilter: "blur(10px)", // Apply the glass effect
-            WebkitBackdropFilter: "blur(10px)", // For Safari support
+            backdropFilter: "blur(6px)", // Apply the glass effect
+            WebkitBackdropFilter: "blur(6px)", // For Safari support
             border: "1px solid rgba(255, 255, 255, 0.2)"
           },
         }}
