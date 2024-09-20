@@ -108,7 +108,7 @@ export default function LabelsDrawer() {
 
   const DrawerList = (
     <PerfectScrollbar component="div">
-      <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : isPortrait ? 200 : 250, pt: isLandscape ? 10 : 8 }} role="presentation" onClick={navigateHome}>
+      <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : 250, pt: isLandscape ? 10 : 6 }} role="presentation" onClick={navigateHome}>
         {isPortrait && (
           <IconButton onClick={toggleLabelsDrawer} sx={{ position: "relative", top: 5, left: "98%", p: 0 }}>
             <MdClose size={24} color={theme.palette.primary.main}
@@ -262,10 +262,10 @@ export default function LabelsDrawer() {
         }}
         hideBackdrop={true}
         sx={{
-          width: isWideScreens ? 400 : isQHDScreens ? 320 : isPortrait ? 250 : 280,
+          width: isWideScreens ? 400 : isQHDScreens ? 320 : 280,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: isWideScreens ? 400 : isQHDScreens ? 320 : isPortrait ? 250 : 280,
+            width: isWideScreens ? 400 : isQHDScreens ? 320 : 280,
             border: "none",
           },
         }}
