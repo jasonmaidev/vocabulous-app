@@ -1204,7 +1204,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     padding: "0.5rem",
                   }}
                 >
-                  {labelsData?.[0].label.map((text, index) => (
+                  {labelsData?.[0].label?.map((text, index) => (
                     <Stack key={index} direction="row" spacing={0} p={0.5} alignItems={"center"} sx={{ cursor: "pointer" }}>
                       <Checkbox
                         color="primary"

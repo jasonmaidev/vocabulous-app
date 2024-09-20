@@ -563,7 +563,7 @@ export default function AddVocabDialog({ text }) {
             <Stack direction={"row"} alignItems={"center"} spacing={2}>
               <Typography>Label</Typography>
               <Stack direction={"row"} flexWrap={"wrap"} sx={{ p: 0.25 }}>
-                {labelsData?.[0].label.map((text, index) => (
+                {labelsData?.[0].label?.map((text, index) => (
                   <Stack key={index} direction="row" spacing={0} p={"0.125rem 0.5rem"} alignItems={"center"} sx={{ cursor: "pointer" }}>
                     <Checkbox
                       color="primary"

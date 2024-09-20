@@ -115,7 +115,7 @@ const SearchPage = () => {
                       border: `solid 1px ${palette.neutral.light}`,
                     }}
                   >
-                    {labelsData?.[0].label.sort().map((text, index) => (
+                    {labelsData?.[0].label?.sort().map((text, index) => (
                       <Box
                         key={text}
                         onClick={() => viewLabledVocabs(text)}
