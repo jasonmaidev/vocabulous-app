@@ -367,10 +367,10 @@ export default function LabelsDrawer() {
         }}
         hideBackdrop={true}
         sx={{
-          width: isWideScreens ? 400 : isQHDScreens ? 320 : 280,
+          width: isWideScreens ? 400 : isQHDScreens ? 320 : isPortrait ? 260 : 280,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: isWideScreens ? 400 : isQHDScreens ? 320 : 280,
+            width: isWideScreens ? 400 : isQHDScreens ? 320 : isPortrait ? 260 : 280,
             border: "none",
           },
         }}
