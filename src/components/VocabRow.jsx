@@ -69,6 +69,7 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
       console.log("Error fetching:" + context.id + error)
     },
     onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })

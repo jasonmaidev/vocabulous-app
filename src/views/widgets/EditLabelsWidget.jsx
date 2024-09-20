@@ -60,8 +60,10 @@ const EditLabelsRow = ({ handleDeleteLabel, id, text, labels }) => {
     },
     onSettled: () => {
       dispatch(setViewByLabel({ viewByLabel: newLabelName }))
-      queryClient.invalidateQueries({ queryKey: ["vocabLabelsData"] })
+      queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
     }
   })
 
