@@ -18,7 +18,7 @@ import {
 import PerfectScrollbar from "react-perfect-scrollbar"
 import Drawer from '@mui/material/Drawer';
 import { BiHomeAlt2 } from "react-icons/bi";
-import { LuShapes } from "react-icons/lu";
+import { RiShapesLine } from "react-icons/ri";
 import { MdLabelOutline } from "react-icons/md";
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import { FiEdit3 } from "react-icons/fi";
@@ -142,7 +142,7 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <LuShapes size={24} color={theme.palette.neutral.medium} />
+                <RiShapesLine size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"All"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
@@ -249,7 +249,7 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <LuShapes size={24} color={theme.palette.neutral.medium} />
+                <RiShapesLine size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"All"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
