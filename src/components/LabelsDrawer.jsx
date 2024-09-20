@@ -215,12 +215,6 @@ export default function LabelsDrawer() {
   const MobileDrawerList = (
     <>
       <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : isPortrait ? 200 : 250, pt: isLandscape ? 10 : 8 }} role="presentation" onClick={navigateHome}>
-        {isPortrait && (
-          <IconButton onClick={toggleLabelsDrawer} sx={{ position: "relative", top: 5, left: "98%", p: 0 }}>
-            <MdClose size={24} color={theme.palette.primary.main}
-            />
-          </IconButton>
-        )}
         <List sx={{ margin: 0, padding: 0 }}>
           <ListItem disablePadding sx={{ margin: 0, padding: 0 }}>
             <ListItemButton
@@ -233,7 +227,7 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <BiHomeAlt2 size={24} />
+                <BiHomeAlt2 size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText
                 primary={"Home"}
@@ -256,7 +250,7 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <IoLanguage size={24} />
+                <IoLanguage size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"All"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
@@ -285,7 +279,7 @@ export default function LabelsDrawer() {
                 }}
               >
                 <ListItemIcon>
-                  <MdLabelOutline size={24} />
+                  <MdLabelOutline size={24} color={theme.palette.neutral.medium} />
                 </ListItemIcon>
                 <ListItemText
                   primary={capFirstLetter(text)}
@@ -311,7 +305,7 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <FiEdit3 size={24} />
+                <FiEdit3 size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText
                 primary={"Edit Labels"}
@@ -370,9 +364,10 @@ export default function LabelsDrawer() {
           width: isWideScreens ? 400 : isQHDScreens ? 320 : isPortrait ? 260 : 280,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
+            boxShadow: "4px 4px 12px rgba(0,0,0, 0.5),-4px -4px 8px rgba(0,0,0, 0.15)",
             width: isWideScreens ? 400 : isQHDScreens ? 320 : isPortrait ? 260 : 280,
             border: "none",
-            pb: 2
+            pb: 4
           },
         }}
       >
