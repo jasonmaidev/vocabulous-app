@@ -843,7 +843,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             {text}
                           </Typography>
                           <IconButton onClick={() => setEditingText(true)}>
-                            <FiEdit2 style={{ color: theme.palette.neutral.light, margin: "0.125rem" }} />
+                            <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)", margin: "0.125rem" }} />
                           </IconButton>
                         </Stack>
                       }
@@ -936,7 +936,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <HighlightCaps text={definition} />
                         </Typography>
                         <IconButton onClick={() => setEditingDef(true)}>
-                          <FiEdit2 style={{ color: theme.palette.neutral.light }} />
+                          <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
                         </IconButton>
                       </Stack>
                     </Stack>
@@ -948,7 +948,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                         Similar
                       </Typography>
                       <IconButton onClick={openEditSimilar}>
-                        <FiEdit2 style={{ color: theme.palette.neutral.light }} />
+                        <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
                       </IconButton>
                     </Stack>
 
