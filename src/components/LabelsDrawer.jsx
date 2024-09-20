@@ -372,6 +372,7 @@ export default function LabelsDrawer() {
           "& .MuiDrawer-paper": {
             width: isWideScreens ? 400 : isQHDScreens ? 320 : isPortrait ? 260 : 280,
             border: "none",
+            pb: 2
           },
         }}
       >
