@@ -23,7 +23,7 @@ const MobileFooterNavigation = ({ isHome, isRoadmap }) => {
 
   return (
     <Box sx={{ pb: 7 }} >
-      <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0, pl: 4 }} elevation={3}>
+      <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0, ml: 4 }} elevation={3}>
         <BottomNavigation showLabels>
 
           <AddVocabDialog />
