@@ -10,7 +10,6 @@ import {
   List,
   ListItem,
   ListItemButton,
-  IconButton,
   useTheme,
   useMediaQuery,
   ListItemIcon,
@@ -19,8 +18,8 @@ import {
 import PerfectScrollbar from "react-perfect-scrollbar"
 import Drawer from '@mui/material/Drawer';
 import { BiHomeAlt2 } from "react-icons/bi";
-import { IoLanguage } from "react-icons/io5";
-import { MdLabelOutline, MdClose } from "react-icons/md";
+import { PiShapesBold } from "react-icons/pi";
+import { MdLabelOutline } from "react-icons/md";
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import { FiEdit3 } from "react-icons/fi";
 import { styled } from "@mui/system";
@@ -120,7 +119,7 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <BiHomeAlt2 size={24} />
+                <BiHomeAlt2 size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText
                 primary={"Home"}
@@ -143,7 +142,7 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <IoLanguage size={24} />
+                <PiShapesBold size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"All"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
@@ -172,7 +171,7 @@ export default function LabelsDrawer() {
                 }}
               >
                 <ListItemIcon>
-                  <MdLabelOutline size={24} />
+                  <MdLabelOutline size={24} color={theme.palette.neutral.medium} />
                 </ListItemIcon>
                 <ListItemText
                   primary={capFirstLetter(text)}
@@ -250,7 +249,7 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <IoLanguage size={24} color={theme.palette.neutral.medium} />
+                <PiShapesBold size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"All"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
