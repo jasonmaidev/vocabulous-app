@@ -4,18 +4,17 @@ import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import PropagateLoader from "react-spinners/PropagateLoader"
-import { Box, Typography, useMediaQuery, Stack, Button, useTheme } from "@mui/material"
+import { Box, Typography, useMediaQuery, Button, useTheme } from "@mui/material"
 import { setViewByLabel, setViewBySearchTerm } from "state"
 import Navbar from "views/navbar"
 import LabelsDrawer from "components/LabelsDrawer"
-import PinnedVocabRow from "components/PinnedVocabRow"
-import PinnedVocabBox from "components/PinnedVocabBox"
-import { TbPinFilled } from "react-icons/tb"
+import VocabRow from "components/VocabRow"
+import VocabBox from "components/VocabBox"
 import apiUrl from "config/api"
 const MobileFooterNavigation = lazy(() => import("../widgets/MobileFooterNavigation"))
 const DesktopFooter = lazy(() => import("../widgets/DesktopFooter"))
 
-const HomePage = () => {
+const AllPage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px) and (max-height:2160px)")
   const isHDScreens = useMediaQuery("(min-width:1280px) and (max-height:900px)")
   const { palette } = useTheme()
@@ -25,17 +24,14 @@ const HomePage = () => {
   const viewByLabel = useSelector((state) => state.viewByLabel)
   const viewBySearchTerm = useSelector((state) => state.viewBySearchTerm)
 
-  const theme = useTheme()
-
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
   const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
   const token = useSelector((state) => state.token)
   const { _id } = useSelector((state) => state.user)
 
-
-  const getPinnedVocabs = () => {
-    return fetch(`${apiUrl}/vocabs/${_id}/pinned`, {
+  const getAllVocabs = () => {
+    return fetch(`${apiUrl}/vocabs/${_id}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -43,12 +39,12 @@ const HomePage = () => {
       .then((data) => {
         return data.sort((a, b) => a.pinyin.localeCompare(b.pinyin));
       });
-  }
+  };
 
-  const { data } = useQuery(["pinnedVocabsData"], getPinnedVocabs, {
+  const { data } = useQuery(["allVocabsData"], getAllVocabs, {
     keepPreviousData: true,
-    staleTime: 500
-  })
+    staleTime: 500,
+  });
 
   const goToSearch = () => {
     navigate(`/search/${_id}`)
@@ -91,17 +87,9 @@ const HomePage = () => {
         >
 
           {(data?.length > 0) ? (
-            <PinnedVocabBox sx={{ border: data?.length < 1 && "none" }}>
-              <Stack direction={"row"} spacing={0.5} justifyContent={"space-between"}>
-                <Typography sx={{ color: theme.palette.neutral.mid }}>
-                  Studying
-                </Typography>
-                <Typography sx={{ color: theme.palette.primary.main }}>
-                  <TbPinFilled size={20} />
-                </Typography>
-              </Stack>
+            <VocabBox sx={{ border: data?.length < 1 && "none" }}>
               {data?.map((vocab) => (
-                <PinnedVocabRow
+                <VocabRow
                   key={vocab._id}
                   id={vocab._id}
                   text={vocab.text}
@@ -115,7 +103,7 @@ const HomePage = () => {
                   pinned={vocab.pinned}
                 />
               ))}
-            </PinnedVocabBox>
+            </VocabBox>
           ) :
             (
               <>
@@ -124,7 +112,7 @@ const HomePage = () => {
                   textAlign={"center"}
                   color={palette.neutral.darker}
                 >
-                  Pin Vocabulary For Studying
+                  Add Vocabulary
                 </Typography>
                 <Button
                   onClick={goToSearch}
@@ -229,4 +217,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default AllPage

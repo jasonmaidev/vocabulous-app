@@ -3,10 +3,9 @@ import { useState, forwardRef, lazy, Suspense, CSSProperties } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import GridLoader from "react-spinners/GridLoader"
 import { styled } from "@mui/system"
-import { Box, Typography, useTheme, useMediaQuery, Button, Dialog, Grow, IconButton } from "@mui/material"
+import { Box, Typography, Stack, useTheme, useMediaQuery, Button, Dialog, Grow, IconButton } from "@mui/material"
 import { DarkMode, LightMode } from "@mui/icons-material"
 import { setMode } from "state"
-import FlexBetweenBox from "components/FlexBetweenBox"
 import DesktopFooter from "views/widgets/DesktopFooter"
 const Form = lazy(() => import("./Form"))
 
@@ -19,6 +18,7 @@ const LoginPage = () => {
   const isSmallMobileScreens = useMediaQuery("(max-width:800px) and (max-height:800px)")
   const isNonMobileScreens = useMediaQuery("(min-width:1000px) and (max-height:2160px)")
   const isHDScreens = useMediaQuery("(min-width:1280px) and (max-height:900px)")
+  const isLandscape = window.matchMedia("(orientation: landscape)").matches;
   const { palette } = useTheme()
   const dispatch = useDispatch()
   const mode = useSelector((state) => state.mode)
@@ -57,19 +57,19 @@ const LoginPage = () => {
         alignItems={"center"}
         sx={{ boxShadow: "6px 6px 12px rgba(0,0,0, 0.05)" }}
       >
-        <FlexBetweenBox gap="1.75rem">
+        <Stack direction={"row"} gap={2} alignItems={"center"}>
           {/* ----- Logo ----- */}
           <img
-            style={{ objectFit: "cover", width: "7rem" }}
+            style={{ objectFit: "cover", width: "8%" }}
             alt="user"
-            src={`https://slay-style-app.s3.us-west-1.amazonaws.com/slay-logo-${mode}.png`}
+            src={`https://res.cloudinary.com/dngvjrd0n/image/upload/v1725936257/portfolio/voca-logo-${mode}.png`}
           />
 
           {/* ----- App Slogan ----- */}
-          <Typography fontSize={"0.75rem"} fontWeight={700} color={theme.palette.neutral.dark}>
-            How-to-Dress Becomes One Less Stress
+          <Typography fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
+            金字卡
           </Typography>
-        </FlexBetweenBox>
+        </Stack>
         {isNonMobileScreens && (
           <Box display={"flex"} flexDirection={"row"} gap={4}>
             <IconButton onClick={() => dispatch(setMode())}>
@@ -159,14 +159,14 @@ const LoginPage = () => {
             variant={isSmallMobileScreens ? "h3" : isHDScreens ? "h2" : isNonMobileScreens ? "h1" : "h3"}
             textAlign={"center"}
           >
-            You don't know how GOOD you look...
+            Simple, powerful vocabulary retention
           </Typography>
           <Typography
             variant={isSmallMobileScreens ? "h3" : isHDScreens ? "h2" : isNonMobileScreens ? "h1" : "h2"}
             fontWeight={800}
             textAlign={"center"}
           >
-            until you Slay with Style.
+            for Mandarin learners.
           </Typography>
           <Button
             onClick={handleFormOpen}
@@ -239,7 +239,6 @@ const LoginPage = () => {
       </Box>
 
       {/* ----- Desktop Footer ----- */}
-      {/* {isNonMobileScreens && <DesktopFooter />} */}
       <DesktopFooter isLogin />
 
       {/* ----- Popup Apparel Upload Form Dialog ----- */}
@@ -250,6 +249,30 @@ const LoginPage = () => {
         onClose={handleFormClose}
         aria-describedby="alert-dialog-slide-description"
         disableScrollLock
+        sx={{
+          "& .MuiDialog-paper": {
+            width: isLandscape ? "20%" : "100%",
+            borderRadius: "1rem",
+            display: "flex",
+            boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 1)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
+            backgroundImage: `linear-gradient(
+              to top left, 
+              rgba(255, 255, 255, 0.15), 
+              rgba(255, 255, 255, 0.05)
+            )`, // Gradient overlay
+            backdropFilter: "blur(10px)", // Apply the glass effect
+            WebkitBackdropFilter: "blur(10px)", // For Safari support
+            border: "1px solid rgba(255, 255, 255, 0.2)"
+          },
+        }}
+        slotProps={{
+          backdrop: {
+            sx: {
+              backgroundColor: "rgba(0, 11, 13, 0.7)", // Custom backdrop color
+            },
+          },
+        }}
       >
         <Suspense fallback={
           <GridLoader

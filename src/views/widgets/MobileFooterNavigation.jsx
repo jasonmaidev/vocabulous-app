@@ -1,18 +1,17 @@
-import { useState, forwardRef, lazy, Suspense, CSSProperties } from "react"
+import { useState, useRef, useEffect, forwardRef, lazy, Suspense, CSSProperties } from "react"
 import { useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { PiCoatHangerBold } from "react-icons/pi"
 import { GiClothes } from "react-icons/gi"
-import { IoIosHome } from "react-icons/io"
+import { IoIosHome, IoMdAdd } from "react-icons/io"
 import { TfiMapAlt } from "react-icons/tfi"
 import { TbArrowBackUp } from "react-icons/tb"
-import { IoAddCircleOutline, IoOptions } from "react-icons/io5"
+import { IoAddCircleOutline, IoOptions, IoLanguage, IoSearchSharp, IoMenu } from "react-icons/io5"
 import GridLoader from "react-spinners/GridLoader"
 import { makeStyles } from "@mui/styles"
 import { styled, BottomNavigation, BottomNavigationAction, Paper, Box, Slide, Dialog, useTheme } from "@mui/material"
-const MobileActionsDialog = lazy(() => import("../../components/MobileActionsDialog"))
-const MobileSectionDialog = lazy(() => import("../../components/MobileSectionDialog"))
-const MobileOccasionDialog = lazy(() => import("../../components/MobileOccasionDialog"))
+import { setMode, setLogout, setViewBySearchTerm, setOpenLabelsDrawer } from "state"
+import AddVocabDialog from "components/AddVocabDialog"
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
@@ -20,31 +19,30 @@ const Transition = forwardRef(function Transition(props, ref) {
 
 const FilterDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialog-paper": {
-    borderRadius: "2rem"
+    borderRadius: "1.5rem"
   },
 }))
 
-const ActionsDialog = styled(Dialog)(({ theme }) => ({
-  "& .MuiDialog-paper": {
-    borderRadius: "2rem"
-  },
-}))
 
 const MobileFooterNavigation = ({ isHome, isWardrobe, isStyles, isRoadmap }) => {
   const { _id } = useSelector((state) => state.user)
   const navigate = useNavigate()
   const { palette } = useTheme()
+  const dispatch = useDispatch()
+  const searchRef = useRef(null)
 
-  const getWardrobe = () => {
-    navigate(`/wardrobe/${_id}`)
+
+  const viewByLabel = useSelector((state) => state.viewByLabel)
+  const openLabelsDrawer = useSelector((state) => state.openLabelsDrawer)
+
+
+  const toggleLabelsDrawer = () => {
+    dispatch(setOpenLabelsDrawer({ openLabelsDrawer: !openLabelsDrawer }))
   }
 
-  const getStyles = () => {
-    navigate(`/styles/${_id}`)
-  }
 
-  const getRoadmap = () => {
-    navigate(`/roadmap`)
+  const goToSearch = () => {
+    navigate(`/search/${_id}`)
   }
 
   // Override default Dialog styles
@@ -84,56 +82,27 @@ const MobileFooterNavigation = ({ isHome, isWardrobe, isStyles, isRoadmap }) => 
     <Box sx={{ pb: 7 }} >
       <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }} elevation={3}>
         <BottomNavigation showLabels>
-          <BottomNavigationAction
-            label="Home"
-            value="home"
-            icon={<IoIosHome size="1.5rem" />}
-            onClick={() => navigate("/")}
-          />
 
-          <BottomNavigationAction
-            label="Wardrobe"
-            value="wardrobe"
-            icon={<GiClothes size="1.5rem" />}
-            onClick={getWardrobe}
-          />
-
-          <BottomNavigationAction
+          {/* <BottomNavigationAction
             icon={<IoAddCircleOutline size="2rem" />}
             onClick={handleActionsDialogOpen}
+          /> */}
+
+          <AddVocabDialog />
+
+          <BottomNavigationAction
+            // label="Home"
+            // value="home"
+            icon={<IoSearchSharp size="2rem" />}
+            onClick={goToSearch}
           />
 
           <BottomNavigationAction
-            label="Styles"
-            value="styles"
-            icon={<PiCoatHangerBold size="1.5rem" />}
-            onClick={getStyles}
+            label="Labels"
+            value="labels"
+            icon={<IoLanguage size="1.5rem" />}
+            onClick={toggleLabelsDrawer}
           />
-
-          {isHome ? (
-            <BottomNavigationAction
-              label="V1"
-              value="roadmap"
-              icon={<TfiMapAlt size="1.5rem" />}
-              onClick={getRoadmap}
-            />
-          ) : isRoadmap ? (
-            <BottomNavigationAction
-              label="Back"
-              value="back"
-              icon={<TbArrowBackUp size="1.5rem" />}
-              onClick={() => navigate('/')}
-            />
-          ) : (
-            <BottomNavigationAction
-              label="Filter"
-              icon={<IoOptions size="1.5rem" />}
-              disabled={isHome}
-              sx={isHome ? { opacity: 0.3 } : { opacity: 1 }}
-              onClick={handleFilterDialogOpen} // Opens Section Sort or Occasion Sort Dialog
-            />
-          )}
-
 
         </BottomNavigation>
       </Paper>
@@ -147,63 +116,7 @@ const MobileFooterNavigation = ({ isHome, isWardrobe, isStyles, isRoadmap }) => 
         disableScrollLock
         classes={{ paper: classes.dialog }}
       >
-        {isWardrobe ?
-          <Suspense fallback={
-            <GridLoader
-              color={palette.neutral.light}
-              loading={true}
-              cssOverride={dialogoverride}
-              size={50}
-              margin={20}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
-          }>
-            <MobileSectionDialog handleFilterDialogClose={handleFilterDialogClose} />
-          </Suspense>
-          :
-          isStyles ?
-            <Suspense fallback={
-              <GridLoader
-                color={palette.neutral.light}
-                loading={true}
-                cssOverride={dialogoverride}
-                size={200}
-                margin={20}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-              />
-            }>
-              <MobileOccasionDialog handleFilterDialogClose={handleFilterDialogClose} />
-            </Suspense>
-            :
-            null
-        }
       </FilterDialog>
-
-      <ActionsDialog
-        open={actionsDialogOpen}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleActionsDialogClose}
-        aria-describedby="alert-dialog-slide-description"
-        disableScrollLock
-        classes={{ paper: classes.dialog }}
-      >
-        <Suspense fallback={
-          <GridLoader
-            color={palette.neutral.light}
-            loading={true}
-            cssOverride={dialogoverride}
-            size={50}
-            margin={20}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        }>
-          <MobileActionsDialog handleActionsDialogClose={handleActionsDialogClose} />
-        </Suspense>
-      </ActionsDialog>
 
     </Box>
   )

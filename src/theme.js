@@ -4,9 +4,9 @@ export const colorTokens = {
     0: "#FFFFFF",
     10: "#F6F6F6",
     50: "#e6e6f2",
-    100: "#e4e4ed",
+    100: "#d7d7ed",
     200: "#d5d5e3",
-    300: "#b4b4c2",
+    300: "#aaaac1",
     400: "#9696a8",
     500: "#7a7a86",
     600: "#5e5e67",
@@ -39,6 +39,18 @@ export const colorTokens = {
     800: "#3f001b",
     900: "#270011",
   },
+  tertiary: {
+    50: "#fffbeb",
+    100: "#fef3c7",
+    200: "#fde68a",
+    300: "#fcd34d",
+    400: "#fbbf24",
+    500: "#f59e0b",
+    600: "#d97706",
+    700: "#b45309",
+    800: "#78350f",
+    900: "#431407",
+  },
 };
 
 // mui theme settings
@@ -53,11 +65,19 @@ export const themeSettings = (mode) => {
             dark: colorTokens.primary[200],
             main: colorTokens.primary[400],
             light: colorTokens.primary[800],
+            max: colorTokens.primary[900],
           },
           secondary: {
-            dark: colorTokens.secondary[200],
+            darker: colorTokens.secondary[200],
+            dark: colorTokens.secondary[300],
             main: colorTokens.secondary[400],
-            light: colorTokens.secondary[800],
+            light: colorTokens.secondary[500],
+            lighter: colorTokens.secondary[800],
+          },
+          tertiary: {
+            dark: colorTokens.tertiary[300],
+            main: colorTokens.tertiary[500],
+            light: colorTokens.tertiary[700],
           },
           neutral: {
             darker: colorTokens.grey[50],
@@ -84,6 +104,11 @@ export const themeSettings = (mode) => {
             dark: colorTokens.secondary[700],
             main: colorTokens.secondary[400],
             light: colorTokens.secondary[100],
+          },
+          tertiary: {
+            dark: colorTokens.tertiary[700],
+            main: colorTokens.tertiary[400],
+            light: colorTokens.tertiary[100],
           },
           neutral: {
             darker: colorTokens.grey[800],

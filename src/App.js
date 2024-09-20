@@ -9,9 +9,10 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import GridLoader from "react-spinners/GridLoader"
 import HomePage from "views/homePage";
 const LoginPage = lazy(() => import("views/loginPage"))
-const WardrobePage = lazy(() => import("views/wardrobePage"))
-const StylesPage = lazy(() => import("views/stylesPage"))
 const RoadmapPage = lazy(() => import("views/roadmapPage"))
+const AllPage = lazy(() => import("views/allPage"))
+const VocabsPage = lazy(() => import("views/vocabsPage"))
+const SearchPage = lazy(() => import("views/searchPage"))
 
 function App() {
   const mode = useSelector((state) => state.mode)
@@ -44,8 +45,9 @@ function App() {
               <Routes>
                 <Route path="/login" element={isAuth ? <Navigate to="/" /> : <LoginPage />} />
                 <Route path="/" element={isAuth ? <HomePage /> : <LoginPage />} />
-                <Route path="/wardrobe/:userId" element={isAuth ? <WardrobePage /> : <LoginPage />} />
-                <Route path="/styles/:userId" element={isAuth ? <StylesPage /> : <LoginPage />} />
+                <Route path="/all/:userId" element={isAuth ? <AllPage /> : <LoginPage />} />
+                <Route path="/label/:userId" element={isAuth ? <VocabsPage /> : <LoginPage />} />
+                <Route path="/search/:userId" element={isAuth ? <SearchPage /> : <LoginPage />} />
                 <Route path="/roadmap" element={isAuth ? <RoadmapPage /> : <LoginPage />} />
               </Routes>
             </Suspense>

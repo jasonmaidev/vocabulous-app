@@ -1,0 +1,311 @@
+import { useSelector, useDispatch } from "react-redux"
+import { useState, forwardRef, Suspense } from "react"
+import { Menu, MenuItem, Tooltip, ListItemIcon, ListItemText, Stack, Dialog, Grow, IconButton, Typography, useTheme, useMediaQuery } from "@mui/material"
+import { IoMdMore } from "react-icons/io";
+import { TbPin, TbTrashX } from "react-icons/tb";
+import RowBox from "./RowBox";
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import GridLoader from "react-spinners/GridLoader"
+import ViewVocabDialog from "./ViewVocabDialog";
+import { setViewVocab, setViewUsage, } from "state"
+import apiUrl from "config/api"
+
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Grow ref={ref} {...props} />
+})
+
+const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, similar, expression, sentence, pinned }) => {
+  const isQHDScreens = useMediaQuery("(min-width:2500px) and (max-height:1600px)") // 2K Laptops
+  const isWideScreens = useMediaQuery("(min-width:3400px) and (max-height:1500px)") // Wide and Ultrawide Desktops
+  const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+  const mode = useSelector((state) => state.mode)
+  const token = useSelector((state) => state.token)
+
+  const theme = useTheme()
+  const dispatch = useDispatch()
+  const queryClient = useQueryClient()
+
+  /* View Vocab Dialog State */
+  const [uploadOpen, setUploadOpen] = useState(false)
+  const handleViewOpen = () => {
+    dispatch(setViewVocab({ viewVocab: true }))
+    dispatch(setViewUsage({ viewUsage: false }))
+    setUploadOpen(true)
+  }
+  const handleViewClose = () => {
+    setUploadOpen(false)
+  }
+
+  /* Options Drowndown Menu */
+  const [highlightRow, setHighlightRow] = useState(false)
+  const [menuAnchor, setMenuAnchor] = useState(null)
+  const openMenu = Boolean(menuAnchor)
+  const handleMenuClick = (event) => {
+    setHighlightRow(true)
+    setMenuAnchor(event.currentTarget)
+  }
+  const handleMenuClose = () => {
+    setHighlightRow(false)
+    setMenuAnchor(null)
+  }
+
+  const handleUpdatePinned = (updatedData) => {
+    updatePinnedMutation.mutate(updatedData)
+  }
+
+  const updatePinnedMutation = useMutation({
+    mutationFn: async () => {
+      const updatedData = {
+        pinned: !pinned
+      }
+      return await fetch(`${apiUrl}/vocabs/${id}/update`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData),
+      })
+    },
+    onError: (error, context) => {
+      console.log("Error fetching:" + context.id + error)
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      setMenuAnchor(null)
+      setHighlightRow(false)
+    }
+  })
+
+  const handleDeleteVocab = (id) => {
+    deleteMutation.mutate(id)
+  }
+
+  const deleteMutation = useMutation({
+    mutationFn: async () => {
+      return await fetch(`${apiUrl}/vocabs/${id}/delete`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      })
+    },
+    onError: (error, context) => {
+      console.log("Error fetching:" + context.id + error)
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+    }
+  })
+
+  return (
+    <>
+      {isLandscape ? (
+        <RowBox
+          display="flex"
+          flexDirection="row"
+          gap={1}
+          sx={{
+            cursor: "pointer",
+            borderRadius: "0.5rem",
+            padding: "0.125rem 1rem",
+            backgroundImage: highlightRow ? `linear-gradient(
+              to right, 
+              rgba(3, 241, 232, 0.075), 
+              rgba(18, 77, 115, 0.05)
+            )` : "none",
+            "&:hover": {
+              backgroundImage: `linear-gradient(
+                to right, 
+                rgba(3, 241, 232, 0.075), 
+                rgba(18, 77, 115, 0.05)
+              )`,
+            }
+          }}
+        >
+          <Stack direction="column" spacing={0} pt={0.5} pb={0.5} onClick={handleViewOpen}>
+            <Stack direction="row" alignItems={"flex-end"} spacing={1}>
+              <Typography
+                color={(difficulty === "1" && mode === "light") ? "#00c4b7" :
+                  (difficulty === "2" && mode === "light") ? "#d97706" :
+                    difficulty === "1" ? "#03f1c7" :
+                      difficulty === "2" ? "#fbbf24" :
+                        "#ff589e"}
+                fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}
+                lineHeight={1.1}
+              >
+                {text}
+              </Typography>
+              <Typography
+                fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem"}
+                color={theme.palette.neutral.medium}
+                fontStyle={"italic"} lineHeight={1.1}
+              >
+                {pinyin}
+              </Typography>
+            </Stack>
+            <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem"}>
+              {definition}
+            </Typography>
+          </Stack>
+
+          <Tooltip title="Quick Edit" placement="right">
+            <IconButton zindex={10} onClick={handleMenuClick} sx={{ opacity: 0.3 }}>
+              <IoMdMore size={24} />
+            </IconButton>
+          </Tooltip>
+        </RowBox>
+      ) :
+        /* Mobile */
+        (
+          <RowBox
+            display="flex"
+            flexDirection="row"
+            gap={1}
+            sx={{
+              cursor: "pointer",
+              borderRadius: "0.5rem",
+              padding: "0.25rem",
+              backgroundImage: highlightRow ? `linear-gradient(
+                to right, 
+                rgba(3, 241, 232, 0.075), 
+                rgba(18, 77, 115, 0.05)
+              )` : "none",
+              "&:hover": {
+                backgroundImage: `linear-gradient(
+                  to right, 
+                  rgba(3, 241, 232, 0.075), 
+                  rgba(18, 77, 115, 0.05)
+                )`,
+              }
+            }}
+          >
+            <Stack direction="column" spacing={0}>
+              <Stack direction="row" alignItems={"flex-end"} spacing={0.5}>
+                <Typography
+                  onClick={handleViewOpen}
+                  sx={{ lineHeight: 1.1 }}
+                  fontSize="1.3rem"
+                  color={(difficulty === "1" && mode === "light") ? "#00c4b7" :
+                    (difficulty === "2" && mode === "light") ? "#d97706" :
+                      difficulty === "1" ? "#03f1c7" :
+                        difficulty === "2" ? "#fbbf24" :
+                          "#ff589e"}
+                >
+                  {text}
+                </Typography>
+                <Typography
+                  onClick={handleViewOpen}
+                  sx={{ lineHeight: 1.1, fontSize: "0.8rem", fontStyle: "italic" }}
+                  color={theme.palette.neutral.medium}>
+                  {pinyin}
+                </Typography>
+              </Stack>
+
+              <Typography onClick={handleViewOpen} sx={{ lineHeight: 1.1 }} fontSize="1rem">
+                {definition}
+              </Typography>
+            </Stack>
+
+            <IconButton zindex={10} onClick={handleMenuClick} sx={{ opacity: 0.3 }}>
+              <IoMdMore />
+            </IconButton>
+          </RowBox>
+        )}
+
+      {/* ----- Popup View Vocab Dialog ----- */}
+      <Dialog
+        open={uploadOpen}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleViewClose}
+        aria-describedby="alert-dialog-grow-description"
+        sx={{
+          "& .MuiDialog-paper": {
+            width: isLandscape ? "20%" : "100%",
+            borderRadius: "1rem",
+            display: "flex",
+            boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 1)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
+            backgroundImage: `linear-gradient(
+              to top left, 
+              rgba(255, 255, 255, 0.15), 
+              rgba(255, 255, 255, 0.05)
+            )`, // Gradient overlay
+            backdropFilter: "blur(10px)", // Apply the glass effect
+            WebkitBackdropFilter: "blur(10px)", // For Safari support
+            border: "1px solid rgba(255, 255, 255, 0.2)"
+          },
+        }}
+        slotProps={{
+          backdrop: {
+            sx: {
+              backgroundColor: "rgba(0, 11, 13, 0.7)", // Custom backdrop color
+            },
+          },
+        }}
+      >
+        <Suspense fallback={
+          <GridLoader
+            color={theme.palette.neutral.light}
+            loading={true}
+            size={50}
+            margin={20}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        }>
+          <ViewVocabDialog
+            handleViewClose={handleViewClose}
+            id={id}
+            text={text}
+            pinyinText={pinyin}
+            label={label}
+            difficulty={difficulty}
+            definition={definition}
+            similar={similar}
+            expression={expression}
+            sentence={sentence}
+            pinned={pinned}
+          />
+        </Suspense>
+      </Dialog>
+      <Menu
+        id="basic-menu"
+        anchorEl={menuAnchor}
+        open={openMenu}
+        onClose={handleMenuClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+        sx={{
+          "& .MuiPaper-root": {
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
+            backgroundImage: `linear-gradient(
+              to bottom right, 
+              rgba(255, 255, 255, 0.15), 
+              rgba(255, 255, 255, 0.05)
+            )`, // Gradient overlay for the glassmorphism effect
+            backdropFilter: "blur(10px)", // Apply the blur effect
+            WebkitBackdropFilter: "blur(10px)", // Safari support for blur effect
+            borderRadius: "1rem",
+            boxShadow: "0px 4px 12px rgba(0, 11, 13, 0.4)", // Shadow for depth
+            border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
+          },
+        }}
+      >
+        <MenuItem onClick={handleUpdatePinned}>
+          <ListItemIcon><TbPin fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
+          <ListItemText sx={{ color: theme.palette.neutral.darker }}>{pinned ? "Unpin" : "Pin"}</ListItemText>
+        </MenuItem>
+        <MenuItem onClick={handleDeleteVocab}>
+          <ListItemIcon><TbTrashX fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
+          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Delete</ListItemText>
+        </MenuItem>
+      </Menu>
+    </>
+  )
+}
+
+export default PinnedVocabRow

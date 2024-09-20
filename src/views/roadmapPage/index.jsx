@@ -1,4 +1,3 @@
-import "../../styles/gradient-button.min.css"
 import { lazy, Suspense, CSSProperties } from "react"
 import { useSelector } from "react-redux"
 import GridLoader from "react-spinners/GridLoader"
@@ -6,6 +5,7 @@ import PropagateLoader from "react-spinners/PropagateLoader"
 import { Box, Button, Stack, useMediaQuery, useTheme, Typography } from "@mui/material"
 import Navbar from "views/navbar"
 import RoadmapWidget from "views/widgets/RoadmapWidget"
+import LabelsDrawer from "components/LabelsDrawer"
 const MobileFooterNavigation = lazy(() => import("../widgets/MobileFooterNavigation"))
 const DesktopFooter = lazy(() => import("../widgets/DesktopFooter"))
 
@@ -26,6 +26,9 @@ const RoadmapPage = () => {
   return (
     <Box className="App">
       <Navbar />
+
+      <LabelsDrawer />
+
       <Box pt={4} display={"flex"} flexDirection={"row"} justifyContent={"center"}>
         <Typography
           variant={isNonMobileScreens ? "h4" : "h5"}

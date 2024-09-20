@@ -1,13 +1,20 @@
-import { useState, lazy, Suspense, CSSProperties } from "react"
+import "../../styles/gradient-button.min.css"
+import { v4 as uuidv4 } from "uuid"
+import _ from 'lodash';
+import { useState, CSSProperties } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { IoClose } from "react-icons/io5"
 import { FaUserAlt } from "react-icons/fa"
 import { TbLogout } from "react-icons/tb"
 import { CgMenuGridO } from "react-icons/cg"
+import { IoSearchSharp, IoMenu } from "react-icons/io5";
 import {
   Box,
+  Stack,
+  InputBase,
   IconButton,
+  InputAdornment,
   Typography,
   MenuItem,
   useTheme,
@@ -17,15 +24,12 @@ import {
   ListItemIcon,
   ListItemText,
   Menu,
-  Divider
 } from "@mui/material"
 import { DarkMode, LightMode } from "@mui/icons-material"
-import { setMode, setLogout } from "state"
+import { setMode, setLogout, setViewBySearchTerm, setOpenLabelsDrawer } from "state"
 import FlexBetweenBox from "components/FlexBetweenBox"
 import UserImage from "components/UserImage"
-import PropagateLoader from "react-spinners/PropagateLoader"
-const StylesSortingButtons = lazy(() => import("components/StylesSortingButtons"))
-const WardrobeSortingButtons = lazy(() => import("components/WardrobeSortingButtons"))
+import AddVocabDialog from "components/AddVocabDialog";
 
 const override: CSSProperties = {
   display: "block",
@@ -33,13 +37,7 @@ const override: CSSProperties = {
 };
 
 const Navbar = ({
-  isWardrobe,
-  isStyles,
-  goToPrevious,
-  goToNext,
-  pageCount,
-  pageNumber,
-  updatePageNumber
+  searchRef
 }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -47,18 +45,25 @@ const Navbar = ({
   const isNonMobileScreens = useMediaQuery("(min-width:1000px) and (max-height:2160px)")
   const theme = useTheme()
   const mode = useSelector((state) => state.mode)
+  const neutralLight = theme.palette.neutral.light
   const dark = theme.palette.neutral.dark
   const background = theme.palette.background.default
   const alt = theme.palette.background.alt
 
+
+  const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+
+  const viewByLabel = useSelector((state) => state.viewByLabel)
+
+  const openLabelsDrawer = useSelector((state) => state.openLabelsDrawer)
+
+  const [searchTerm, setSearchTerm] = useState("")
+
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false)
 
-  const getWardrobe = () => {
-    navigate(`/wardrobe/${_id}`)
-  }
-
-  const getStyles = () => {
-    navigate(`/styles/${_id}`)
+  const goToSearch = () => {
+    navigate(`/search/${_id}`)
   }
 
   const handleLogout = () => {
@@ -66,9 +71,18 @@ const Navbar = ({
     dispatch(setLogout())
   }
 
+  const toggleLabelsDrawer = () => {
+    dispatch(setOpenLabelsDrawer({ openLabelsDrawer: !openLabelsDrawer }))
+  }
+
+  const handleSearch = _.debounce((searchText) => {
+    dispatch(setViewBySearchTerm({ viewBySearchTerm: searchText }))
+    console.log(searchText)
+  }, 300);  // 300ms delay
+
   /* Options Drowndown Menu */
   const [menuAnchor, setMenuAnchor] = useState(null)
-  const open = Boolean(menuAnchor)
+  const openMenu = Boolean(menuAnchor)
   const handleMenuClick = (event) => {
     setMenuAnchor(event.currentTarget)
   }
@@ -78,7 +92,6 @@ const Navbar = ({
 
   return (
     <FlexBetweenBox
-      padding="1rem 6%"
       backgroundColor={alt}
       width="100%"
       position="sticky"
@@ -86,120 +99,92 @@ const Navbar = ({
       zIndex={theme.zIndex.drawer + 1}
       sx={{ boxShadow: "6px 6px 12px rgba(0,0,0, 0.05)" }}
     >
-      <FlexBetweenBox gap="6%">
-
-        {/* ----- Logo ----- */}
-        <Button
-          onClick={() => navigate("/")}
-          padding={0}
-          margin={0}
-          sx={{ padding: 0, margin: 0, ":hover": { backgroundColor: theme.palette.background.alt, opacity: 0.6 } }}
-        >
-          <img
-            style={{ objectFit: "cover", width: "6rem" }}
-            alt="user"
-            src={`https://slay-style-app.s3.us-west-1.amazonaws.com/slay-logo-${mode}.png`}
+      <Stack direction="row" spacing={isLandscape ? 12 : 1}
+        alignItems="center"
+      >
+        {isLandscape ? (
+          <Stack sx={{ cursor: "pointer" }} direction={"row"} spacing={2} alignItems={"center"} pl={1}>
+            <IoMenu
+              onClick={toggleLabelsDrawer}
+              size={24}
+            />
+            {viewByLabel?.length > 0 ?
+              <Typography fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
+                {viewByLabel}
+              </Typography>
+              :
+              (
+                <Stack onClick={() => navigate("/")} alignItems={"center"} direction="row" spacing={1} p={1} >
+                  {/* ----- App Slogan ----- */}
+                  <img
+                    style={{ objectFit: "cover", width: isLandscape ? "2rem" : "20%" }}
+                    alt="user"
+                    src={`https://res.cloudinary.com/dngvjrd0n/image/upload/v1725936257/portfolio/voca-logo-${mode}.png`}
+                  />
+                  <Typography fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
+                    金字卡
+                  </Typography>
+                </Stack>
+              )
+            }
+          </Stack>
+        ) : (
+          <Stack sx={{ cursor: "pointer" }} direction={"row"} spacing={1} alignItems={"center"} pl={1}>
+            <img
+              onClick={toggleLabelsDrawer}
+              style={{ objectFit: "cover", width: "10%" }}
+              alt="user"
+              src={`https://res.cloudinary.com/dngvjrd0n/image/upload/v1725936257/portfolio/voca-logo-${mode}.png`}
+            />
+            {viewByLabel?.length > 0 ?
+              <Typography fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
+                {viewByLabel}
+              </Typography>
+              :
+              (
+                <Typography onClick={() => navigate("/")} fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
+                  金字卡
+                </Typography>
+              )
+            }
+          </Stack>
+        )
+        }
+        <Stack>
+          <InputBase
+            onClick={goToSearch}
+            id={uuidv4()}
+            placeholder="Search"
+            inputRef={searchRef}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyUp={(e) => handleSearch(e.target.value)}
+            startAdornment={
+              <InputAdornment position="start">
+                <IoSearchSharp size={24} />
+              </InputAdornment>
+            }
+            required={true}
+            sx={isNonMobileScreens ? {
+              borderRadius: "1rem",
+              padding: "0.5rem 1rem",
+              border: `1px solid ${neutralLight}`,
+              width: "100%",
+              marginLeft: '1rem',
+            } : {
+              width: "100%",
+              borderRadius: "1rem",
+              margin: "0",
+            }}
           />
-        </Button>
-
-        {/* ----- App Slogan ----- */}
-        <Typography fontSize={"0.75rem"} fontWeight={700} color={theme.palette.neutral.dark}>
-          Simple. Style. Genius
-        </Typography>
-      </FlexBetweenBox>
-
-
-      {/* ----- STYLES PAGE : Desktop Occasion Sorting Buttons ----- */}
-      {(isStyles && isNonMobileScreens) && (
-        <Suspense fallback={
-          <PropagateLoader
-            color={theme.palette.neutral.light}
-            loading={true}
-            cssOverride={override}
-            size={15}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        }>
-          <StylesSortingButtons
-            pageCount={pageCount}
-            pageNumber={pageNumber}
-            goToPrevious={goToPrevious}
-            goToNext={goToNext}
-            updatePageNumber={updatePageNumber}
-          />
-        </Suspense>
-      )}
-
-      {/* ----- WARDROBE PAGE : Desktop Section Sorting Buttons ----- */}
-      {(isWardrobe && isNonMobileScreens) ?
-        <Suspense fallback={
-          <PropagateLoader
-            color={theme.palette.neutral.light}
-            loading={true}
-            cssOverride={override}
-            size={15}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        }>
-          <WardrobeSortingButtons />
-        </Suspense> :
-        null
-      }
+        </Stack>
+      </Stack>
 
       {/* ----- Desktop NavBar Buttons ----- */}
       {isNonMobileScreens ? (
         <FlexBetweenBox gap="2rem">
-          <Button
-            onClick={getWardrobe}
-            sx={isWardrobe ? {
-              color: theme.palette.primary.main,
-              borderRadius: "6rem",
-              textTransform: "none",
-              fontWeight: 700,
-              "&:hover": {
-                color: theme.palette.primary.main,
-                backgroundColor: theme.palette.background.alt,
-              }
-            } : {
-              color: theme.palette.neutral.dark,
-              borderRadius: "6rem",
-              textTransform: "none",
-              fontWeight: 700,
-              "&:hover": {
-                color: theme.palette.primary.main,
-                backgroundColor: theme.palette.background.alt,
-              }
-            }}
-          >
-            Wardrobe
-          </Button>
-          <Button
-            onClick={getStyles}
-            sx={isStyles ? {
-              color: theme.palette.primary.main,
-              borderRadius: "6rem",
-              textTransform: "none",
-              fontWeight: 700,
-              "&:hover": {
-                color: theme.palette.primary.main,
-                backgroundColor: theme.palette.background.alt,
-              }
-            } : {
-              color: theme.palette.neutral.dark,
-              borderRadius: "6rem",
-              textTransform: "none",
-              fontWeight: 700,
-              "&:hover": {
-                color: theme.palette.primary.main,
-                backgroundColor: theme.palette.background.alt,
-              }
-            }
-            }
-          >
-            Styles
-          </Button>
+
+          <AddVocabDialog />
 
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
@@ -247,7 +232,7 @@ const Navbar = ({
       <Menu
         id="basic-menu"
         anchorEl={menuAnchor}
-        open={open}
+        open={openMenu}
         onClose={handleMenuClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
@@ -303,58 +288,6 @@ const Navbar = ({
                 <LightMode sx={{ color: dark, fontSize: "25px" }} />
               )}
             </IconButton>
-
-            <Button
-              onClick={getWardrobe}
-              sx={isWardrobe ? {
-                color: theme.palette.primary.main,
-                borderRadius: "6rem",
-                textTransform: "none",
-                fontWeight: 700,
-                "&:hover": {
-                  color: theme.palette.primary.main,
-                  backgroundColor: theme.palette.background.default,
-                }
-              } : {
-                color: theme.palette.neutral.dark,
-                borderRadius: "6rem",
-                textTransform: "none",
-                fontWeight: 700,
-                "&:hover": {
-                  color: theme.palette.primary.main,
-                  backgroundColor: theme.palette.background.default,
-                }
-              }}
-            >
-              Wardrobe
-            </Button>
-            <Button
-              onClick={getStyles}
-              sx={isStyles ? {
-                color: theme.palette.primary.main,
-                borderRadius: "6rem",
-                textTransform: "none",
-                fontWeight: 700,
-                "&:hover": {
-                  color: theme.palette.primary.main,
-                  backgroundColor: theme.palette.background.default,
-                }
-              } : {
-                color: theme.palette.neutral.dark,
-                borderRadius: "6rem",
-                textTransform: "none",
-                fontWeight: 700,
-                "&:hover": {
-                  color: theme.palette.primary.main,
-                  backgroundColor: theme.palette.background.default,
-                }
-              }
-              }
-            >
-              Styles
-            </Button>
-
-            <Divider />
 
             <Button
               onClick={() => navigate(`/`)}
