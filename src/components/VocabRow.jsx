@@ -156,7 +156,7 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
           </RowBox>
           <Tooltip title="Quick Edit" placement="right">
             <IconButton zindex={10} onClick={handleMenuClick} sx={{ opacity: 0.3 }}>
-              <IoMdMore size={24} style={{ margin: "0 1.25rem" }} />
+              <IoMdMore size={24} style={{ margin: "0 0.75rem" }} />
             </IconButton>
           </Tooltip>
         </Stack>
