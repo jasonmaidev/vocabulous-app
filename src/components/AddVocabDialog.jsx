@@ -222,6 +222,7 @@ export default function AddVocabDialog({ text }) {
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      setShowLabels(false)
     }
   })
 
