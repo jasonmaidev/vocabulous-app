@@ -4,7 +4,7 @@ Simple, powerful vocabulary retention for `Mandarin` learners!
 
 Built for intermediates and advanced learners alike.
 
-Try it out at [https://vocabulous.netlify.app](https://vocabulous.netlify.app).
+Live app at [https://vocabulous.netlify.app](https://vocabulous.netlify.app).
 
 For information on the latest app updates and feature releases, see: [Vocabulous Roadmap](https://vocabulous.netlify.app/roadmap).
 
@@ -12,6 +12,6 @@ For information on the latest app updates and feature releases, see: [Vocabulous
 
 User registration is currently unavailable to the public but the web-app is fully functional and live, accessible via email invitation.
 
-If you've found this repository, it is more than likely you've also received an email invitation with your unique guest user credentials. Please go ahead and login to the application with the provided guest account username + password and try out some of the awesome features that [Vocabulous](https://vocabulous.netlify.app) has to offer!
+This is currently built as a personal tool for learning since I could not find a better solution out there. Full product demo is available upon request.
 
-If you need guest account credentials to try it out, please shoot me an email over at jasonmxdev@gmail.com
+Please shoot me an email over at jasonmxdev@gmail.com with any questions or feedback. Thanks!
