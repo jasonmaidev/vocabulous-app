@@ -301,9 +301,53 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <PiShapes size={24} color={theme.palette.neutral.medium} />
+                <PiCircleBold size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"All"}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+              />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
+      <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : 250 }} role="presentation" onClick={showIntermediateVocabs}>
+        <List sx={{ margin: 0, padding: 0 }}>
+          <ListItem disablePadding sx={{ margin: 0, padding: 0 }}>
+            <ListItemButton
+              sx={{
+                borderTopRightRadius: '6rem',
+                borderBottomRightRadius: '6rem',
+                '&:hover': {
+                  backgroundColor: theme.palette.primary.light,
+                },
+              }}
+            >
+              <ListItemIcon>
+                <PiDiamondBold size={24} color={theme.palette.neutral.medium} />
+              </ListItemIcon>
+              <ListItemText primary={"Intermediate"}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+              />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
+      <Box sx={{ width: isWideScreens ? 400 : isQHDScreens ? 300 : 250 }} role="presentation" onClick={showAdvancedVocabs}>
+        <List sx={{ margin: 0, padding: 0 }}>
+          <ListItem disablePadding sx={{ margin: 0, padding: 0 }}>
+            <ListItemButton
+              sx={{
+                borderTopRightRadius: '6rem',
+                borderBottomRightRadius: '6rem',
+                '&:hover': {
+                  backgroundColor: theme.palette.primary.light,
+                },
+              }}
+            >
+              <ListItemIcon>
+                <PiStarBold size={24} color={theme.palette.neutral.medium} />
+              </ListItemIcon>
+              <ListItemText primary={"Advanced"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
               />
             </ListItemButton>
