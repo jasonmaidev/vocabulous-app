@@ -975,7 +975,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               border: `solid 1px ${theme.palette.neutral.light}`,
                               borderRadius: "0.5rem",
                               padding: "0.25rem 0.5rem",
-                              margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                              // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                             }}
                           />
                           {similar?.length > 0 ? (
@@ -1023,7 +1023,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {similar?.length > 1 ? (
@@ -1067,7 +1067,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {similar?.length > 2 ? (
@@ -1111,7 +1111,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {similar?.length > 3 ? (
@@ -1529,7 +1529,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               border: `solid 1px ${theme.palette.neutral.light}`,
                               borderRadius: "0.5rem",
                               padding: "0.25rem 0.5rem",
-                              margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                              // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                             }}
                           />
                           {expression?.length > 0 ? (
@@ -1577,7 +1577,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {expression?.length > 1 ? (
@@ -1621,7 +1621,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {expression?.length > 2 ? (
@@ -1665,7 +1665,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {expression?.length > 3 ? (
@@ -1763,7 +1763,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               border: `solid 1px ${theme.palette.neutral.light}`,
                               borderRadius: "0.5rem",
                               padding: "0.25rem 0.5rem",
-                              margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                              // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                             }}
                           />
                           {sentence?.length > 0 ? (
@@ -1810,7 +1810,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {sentence?.length > 1 ? (
