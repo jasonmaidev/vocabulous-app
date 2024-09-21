@@ -969,7 +969,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             value={newSimilarEntry < 1 || newSimilarOne?.length > 0 || removeSimilarOne ? newSimilarOne : similar[0]}
                             required={true}
                             sx={{
-                              width: "75%",
+                              width: isLandscape ? "75%" : "70%",
                               fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
                               color: theme.palette.neutral.dark,
                               border: `solid 1px ${theme.palette.neutral.light}`,
@@ -1017,7 +1017,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               value={!removeSimilarTwo ? similar[1] : newSimilarTwo}
                               required={true}
                               sx={{
-                                width: "75%",
+                                width: isLandscape ? "75%" : "70%",
                                 fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
                                 color: theme.palette.neutral.dark,
                                 border: `solid 1px ${theme.palette.neutral.light}`,
@@ -1061,7 +1061,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               value={!removeSimilarThree ? similar[2] : newSimilarThree}
                               required={true}
                               sx={{
-                                width: "75%",
+                                width: isLandscape ? "75%" : "70%",
                                 fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
                                 color: theme.palette.neutral.dark,
                                 border: `solid 1px ${theme.palette.neutral.light}`,
@@ -1105,7 +1105,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               value={!removeSimilarFour ? similar[3] : newSimilarFour}
                               required={true}
                               sx={{
-                                width: "75%",
+                                width: isLandscape ? "75%" : "70%",
                                 fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
                                 color: theme.palette.neutral.dark,
                                 border: `solid 1px ${theme.palette.neutral.light}`,
@@ -1523,7 +1523,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             value={newExpressionsEntry < 1 || newExpressionsOne?.length > 0 || removeExpressionsOne ? newExpressionsOne : expression[0]}
                             required={true}
                             sx={{
-                              width: "75%",
+                              width: isLandscape ? "75%" : "70%",
                               fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
                               color: theme.palette.neutral.dark,
                               border: `solid 1px ${theme.palette.neutral.light}`,
@@ -1571,7 +1571,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               value={!removeExpressionsTwo ? expression[1] : newExpressionsTwo}
                               required={true}
                               sx={{
-                                width: "75%",
+                                width: isLandscape ? "75%" : "70%",
                                 fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
                                 color: theme.palette.neutral.dark,
                                 border: `solid 1px ${theme.palette.neutral.light}`,
@@ -1615,7 +1615,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               value={!removeExpressionsThree ? expression[2] : newExpressionsThree}
                               required={true}
                               sx={{
-                                width: "75%",
+                                width: isLandscape ? "75%" : "70%",
                                 fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
                                 color: theme.palette.neutral.dark,
                                 border: `solid 1px ${theme.palette.neutral.light}`,
@@ -1659,7 +1659,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               value={!removeExpressionsFour ? expression[3] : newExpressionsFour}
                               required={true}
                               sx={{
-                                width: "75%",
+                                width: isLandscape ? "75%" : "70%",
                                 fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
                                 color: theme.palette.neutral.dark,
                                 border: `solid 1px ${theme.palette.neutral.light}`,
@@ -1757,7 +1757,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             value={newSentencesEntry < 1 || newSentencesOne?.length > 0 || removeSentencesOne ? newSentencesOne : sentence[0]}
                             required={true}
                             sx={{
-                              width: "75%",
+                              width: isLandscape ? "75%" : "70%",
                               fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
                               color: theme.palette.neutral.dark,
                               border: `solid 1px ${theme.palette.neutral.light}`,
@@ -1804,7 +1804,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               value={!removeSentencesTwo ? sentence[1] : newSentencesTwo}
                               required={true}
                               sx={{
-                                width: "75%",
+                                width: isLandscape ? "75%" : "70%",
                                 fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
                                 color: theme.palette.neutral.dark,
                                 border: `solid 1px ${theme.palette.neutral.light}`,
