@@ -778,7 +778,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     >
       {viewVocab ? (
         <Stack
-          height={isPortrait ? "64vh" : isWideScreens ? "66vh" : isQHDScreens ? "60vh" : "68vh"}
+          height={isPortrait ? "66vh" : isWideScreens ? "67vh" : isQHDScreens ? "60vh" : "68vh"}
           justifyContent={"space-between"}
         >
           <Stack>
@@ -1478,7 +1478,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
         <>
           {/* Usage Section */}
           <Stack
-            height={isPortrait ? "64vh" : isWideScreens ? "66vh" : isQHDScreens ? "60vh" : "68vh"}
+            height={isPortrait ? "66vh" : isWideScreens ? "67vh" : isQHDScreens ? "60vh" : "68vh"}
             justifyContent={"space-between"}
           >
             <Stack>
@@ -1970,7 +1970,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                     padding: "0.25rem 0.75rem",
                                   }}
                                 >
-                                  <Typography fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.75rem"}>{item}</Typography>
+                                  <Typography lineHeight={1} fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.75rem"}>{item}</Typography>
                                   <Typography
                                     fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
                                     lineHeight={1}
@@ -2119,7 +2119,8 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                     WebkitBackdropFilter: "blur(10px)",
                                   }}
                                 >
-                                  <Typography lineHeight={1.1} fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.75rem"}>
+                                  <Typography lineHeight={1.1}
+                                    fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : isPortrait ? "1.5rem" : "1.75rem"}>
                                     {item}
                                   </Typography>
                                   <Typography
