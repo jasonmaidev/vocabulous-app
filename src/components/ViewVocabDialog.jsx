@@ -178,8 +178,10 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
-      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       setEditingText(false)
       setEditingPinyin(false)
       setEditingDef(false)
@@ -207,8 +209,10 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
-      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
     }
   })
 
@@ -229,8 +233,10 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
-      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       handleViewClose()
     }
   })
@@ -375,8 +381,10 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
-      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       setEditingLabels(false)
     }
   })
@@ -554,8 +562,10 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
-      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       setEditingSimilar(false)
       setNewSimilar([])
       setNewSimilarOne("")
@@ -592,8 +602,10 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
-      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       setEditingExpressions(false)
       setNewExpressions([])
       setNewExpressionsOne("")
@@ -630,8 +642,10 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
-      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       setEditingSentences(false)
       setNewSentences([])
       setNewSentencesOne("")

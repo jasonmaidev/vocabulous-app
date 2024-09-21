@@ -220,6 +220,8 @@ export default function AddVocabDialog({ text }) {
       handleSnackbarOpen()
       queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       setShowLabels(false)

@@ -11,6 +11,8 @@ import HomePage from "views/homePage";
 const LoginPage = lazy(() => import("views/loginPage"))
 const RoadmapPage = lazy(() => import("views/roadmapPage"))
 const AllPage = lazy(() => import("views/allPage"))
+const IntPage = lazy(() => import("views/intPage"))
+const AdvPage = lazy(() => import("views/advPage"))
 const VocabsPage = lazy(() => import("views/vocabsPage"))
 const SearchPage = lazy(() => import("views/searchPage"))
 
@@ -46,6 +48,8 @@ function App() {
                 <Route path="/login" element={isAuth ? <Navigate to="/" /> : <LoginPage />} />
                 <Route path="/" element={isAuth ? <HomePage /> : <LoginPage />} />
                 <Route path="/all/:userId" element={isAuth ? <AllPage /> : <LoginPage />} />
+                <Route path="/int/:userId" element={isAuth ? <IntPage /> : <LoginPage />} />
+                <Route path="/adv/:userId" element={isAuth ? <AdvPage /> : <LoginPage />} />
                 <Route path="/label/:userId" element={isAuth ? <VocabsPage /> : <LoginPage />} />
                 <Route path="/search/:userId" element={isAuth ? <SearchPage /> : <LoginPage />} />
                 <Route path="/roadmap" element={isAuth ? <RoadmapPage /> : <LoginPage />} />

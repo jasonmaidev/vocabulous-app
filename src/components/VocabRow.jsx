@@ -71,8 +71,10 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
-      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       setMenuAnchor(null)
       setHighlightRow(false)
     }
@@ -95,8 +97,10 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
-      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
     }
   })
 
