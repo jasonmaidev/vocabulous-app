@@ -1634,7 +1634,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               <IoMdClose size={16} />
                             </IconButton>
                           }
-                          {(expression?.length < 4 && newExpressionsEntry < 4) &&
+                          {(expression?.length < 8 && newExpressionsEntry < 8) &&
                             <IconButton onClick={addExpressionsEntry}>
                               <IoMdAdd size={16} />
                             </IconButton>
