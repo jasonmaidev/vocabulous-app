@@ -135,7 +135,7 @@ export default function AddVocabDialog({ text }) {
   const [vocabExpression, setVocabExpression] = useState([]) // max 4
   const [vocabExpressionShowCount, setVocabExpressionShowCount] = useState(1)
   const incrementVocabExpressionCount = () => {
-    if (vocabExpressionShowCount >= 4) return
+    if (vocabExpressionShowCount >= 8) return
     setVocabExpressionShowCount(vocabExpressionShowCount + 1)
   }
   const updateVocabExpression = () => {
