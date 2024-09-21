@@ -2004,6 +2004,8 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <InputBase
                             id={uuidv4()}
                             onChange={(e) => setNewSentencesOne(e.target.value)}
+                            multiline
+                            rows={3}
                             value={newSentencesEntry < 1 || newSentencesOne?.length > 0 || removeSentencesOne ? newSentencesOne : sentence[0]}
                             required={true}
                             sx={{
@@ -2051,6 +2053,8 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             <InputBase
                               id={uuidv4()}
                               onChange={(e) => setNewSentencesTwo(e.target.value)}
+                              multiline
+                              rows={3}
                               value={!removeSentencesTwo ? sentence[1] : newSentencesTwo}
                               required={true}
                               sx={{
