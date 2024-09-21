@@ -363,7 +363,7 @@ export default function LabelsDrawer() {
           width: isWideScreens ? 400 : isQHDScreens ? 320 : isPortrait ? 260 : 280,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            boxShadow: mode === "dark" ? "4px 4px 12px rgba(0,0,0, 0.5),-4px -4px 8px rgba(0,0,0, 0.15)" : "4px 4px 12px rgba(0,0,0, 0.15),-4px -4px 8px rgba(0,0,0, 0.05)",
+            boxShadow: isLandscape ? "none" : mode === "dark" ? "4px 4px 12px rgba(0,0,0, 0.5),-4px -4px 8px rgba(0,0,0, 0.15)" : "4px 4px 12px rgba(0,0,0, 0.15),-4px -4px 8px rgba(0,0,0, 0.05)",
             width: isWideScreens ? 400 : isQHDScreens ? 320 : isPortrait ? 260 : 280,
             border: "none",
             pb: 4
