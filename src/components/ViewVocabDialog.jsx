@@ -129,7 +129,6 @@ function HighlightCaps({ text }) {
 
 const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficulty, definition, similar, expression, sentence, pinned }) => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px) and (max-height:2160px)") // All Desktops
-  const isFullHDScreens = useMediaQuery("(min-width:1800px) and (max-height:2160px)") // 1080p Desktops
   const isQHDScreens = useMediaQuery("(min-width:2500px) and (max-height:1600px)") // 2K Laptops
   const isWideScreens = useMediaQuery("(min-width:3400px) and (max-height:1500px)") // Wide and Ultrawide Desktops
   const theme = useTheme()
@@ -396,10 +395,14 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
   const [newExpressionsTwo, setNewExpressionsTwo] = useState("")
   const [newExpressionsThree, setNewExpressionsThree] = useState("")
   const [newExpressionsFour, setNewExpressionsFour] = useState("")
+  const [newExpressionsFive, setNewExpressionsFive] = useState("")
+  const [newExpressionsSix, setNewExpressionsSix] = useState("")
+  const [newExpressionsSeven, setNewExpressionsSeven] = useState("")
+  const [newExpressionsEight, setNewExpressionsEight] = useState("")
   const [newExpressionsEntry, setNewExpressionsEntry] = useState(expression?.length) // Increments a new InputBase onClick for new entry
   const addExpressionsEntry = () => {
     setEditingExpressions(true);
-    if (newExpressionsEntry === 4) {
+    if (newExpressionsEntry === 8) {
       return
     }
     setNewExpressionsEntry(newExpressionsEntry + 1);
@@ -414,6 +417,10 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
   const [removeExpressionsTwo, setRemoveExpressionsTwo] = useState(false)
   const [removeExpressionsThree, setRemoveExpressionsThree] = useState(false)
   const [removeExpressionsFour, setRemoveExpressionsFour] = useState(false)
+  const [removeExpressionsFive, setRemoveExpressionsFive] = useState(false)
+  const [removeExpressionsSix, setRemoveExpressionsSix] = useState(false)
+  const [removeExpressionsSeven, setRemoveExpressionsSeven] = useState(false)
+  const [removeExpressionsEight, setRemoveExpressionsEight] = useState(false)
   const removeExpOne = () => {
     setRemoveExpressionsOne(true);
     subtractExpressionsEntry();
@@ -428,6 +435,22 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
   }
   const removeExpFour = () => {
     setRemoveExpressionsFour(true);
+    subtractExpressionsEntry();
+  }
+  const removeExpFive = () => {
+    setRemoveExpressionsFive(true);
+    subtractExpressionsEntry();
+  }
+  const removeExpSix = () => {
+    setRemoveExpressionsSix(true);
+    subtractExpressionsEntry();
+  }
+  const removeExpSeven = () => {
+    setRemoveExpressionsSeven(true);
+    subtractExpressionsEntry();
+  }
+  const removeExpEight = () => {
+    setRemoveExpressionsEight(true);
     subtractExpressionsEntry();
   }
 
@@ -466,6 +489,42 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
       } else {
         if (expression[3]?.length > 0) {
           newExpressionsArray.push(expression[3])
+        }
+      }
+      if (removeExpressionsFive || newExpressionsFive.length > 0) {
+        if (newExpressionsFive.length > 0) {
+          newExpressionsArray.push(newExpressionsFive);
+        }
+      } else {
+        if (expression[4]?.length > 0) {
+          newExpressionsArray.push(expression[4])
+        }
+      }
+      if (removeExpressionsSix || newExpressionsSix.length > 0) {
+        if (newExpressionsSix.length > 0) {
+          newExpressionsArray.push(newExpressionsSix);
+        }
+      } else {
+        if (expression[5]?.length > 0) {
+          newExpressionsArray.push(expression[5])
+        }
+      }
+      if (removeExpressionsSeven || newExpressionsSeven.length > 0) {
+        if (newExpressionsSeven.length > 0) {
+          newExpressionsArray.push(newExpressionsSeven);
+        }
+      } else {
+        if (expression[6]?.length > 0) {
+          newExpressionsArray.push(expression[6])
+        }
+      }
+      if (removeExpressionsEight || newExpressionsEight.length > 0) {
+        if (newExpressionsEight.length > 0) {
+          newExpressionsArray.push(newExpressionsEight);
+        }
+      } else {
+        if (expression[7]?.length > 0) {
+          newExpressionsArray.push(expression[7])
         }
       }
       return newExpressionsArray;
@@ -612,10 +671,18 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
       setNewExpressionsTwo("")
       setNewExpressionsThree("")
       setNewExpressionsFour("")
+      setNewExpressionsFive("")
+      setNewExpressionsSix("")
+      setNewExpressionsSeven("")
+      setNewExpressionsEight("")
       setRemoveExpressionsOne(false)
       setRemoveExpressionsTwo(false)
       setRemoveExpressionsThree(false)
       setRemoveExpressionsFour(false)
+      setRemoveExpressionsFive(false)
+      setRemoveExpressionsSix(false)
+      setRemoveExpressionsSeven(false)
+      setRemoveExpressionsEight(false)
     }
   })
 
@@ -1532,7 +1599,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                         <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                           <InputBase
                             id={uuidv4()}
-                            // placeholder={expression[0]}
                             onChange={(e) => setNewExpressionsOne(e.target.value)}
                             value={newExpressionsEntry < 1 || newExpressionsOne?.length > 0 || removeExpressionsOne ? newExpressionsOne : expression[0]}
                             required={true}
@@ -1580,7 +1646,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              // placeholder={expression[1]}
                               onChange={(e) => setNewExpressionsTwo(e.target.value)}
                               value={!removeExpressionsTwo ? expression[1] : newExpressionsTwo}
                               required={true}
@@ -1624,7 +1689,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              // placeholder={expression[2]}
                               onChange={(e) => setNewExpressionsThree(e.target.value)}
                               value={!removeExpressionsThree ? expression[2] : newExpressionsThree}
                               required={true}
@@ -1668,7 +1732,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              // placeholder={expression[3]}
                               onChange={(e) => setNewExpressionsFour(e.target.value)}
                               value={!removeExpressionsFour ? expression[3] : newExpressionsFour}
                               required={true}
@@ -1706,6 +1769,179 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             }
                           </Stack>
                         )}
+
+                        {/* 5th Expression */}
+                        {(expression?.length > 4 || newExpressionsEntry > 4) && (
+                          <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                            <InputBase
+                              id={uuidv4()}
+                              onChange={(e) => setNewExpressionsFive(e.target.value)}
+                              value={!removeExpressionsFive ? expression[4] : newExpressionsFive}
+                              required={true}
+                              sx={{
+                                width: isLandscape ? "75%" : "70%",
+                                fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
+                                color: theme.palette.neutral.dark,
+                                border: `solid 1px ${theme.palette.neutral.light}`,
+                                borderRadius: "0.5rem",
+                                padding: "0.25rem 0.5rem",
+                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                              }}
+                            />
+                            {expression?.length > 4 ? (
+                              <Stack>
+                                {removeExpressionsFive ?
+                                  <Tooltip title="Undo" placement="right">
+                                    <IconButton onClick={() => setRemoveExpressionsFive(false)}>
+                                      <CgUndo color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                  :
+                                  <Tooltip title="Delete" placement="left">
+                                    <IconButton onClick={removeExpFive}>
+                                      <TbTrashX color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                }
+                              </Stack>
+                            )
+                              :
+                              <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsFive.length > 0}>
+                                <IoMdClose size={16} />
+                              </IconButton>
+                            }
+                          </Stack>
+                        )}
+
+                        {/* 6th Expression */}
+                        {(expression?.length > 5 || newExpressionsEntry > 5) && (
+                          <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                            <InputBase
+                              id={uuidv4()}
+                              onChange={(e) => setNewExpressionsSix(e.target.value)}
+                              value={!removeExpressionsSix ? expression[5] : newExpressionsSix}
+                              required={true}
+                              sx={{
+                                width: isLandscape ? "75%" : "70%",
+                                fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
+                                color: theme.palette.neutral.dark,
+                                border: `solid 1px ${theme.palette.neutral.light}`,
+                                borderRadius: "0.5rem",
+                                padding: "0.25rem 0.5rem",
+                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                              }}
+                            />
+                            {expression?.length > 5 ? (
+                              <Stack>
+                                {removeExpressionsSix ?
+                                  <Tooltip title="Undo" placement="right">
+                                    <IconButton onClick={() => setRemoveExpressionsSix(false)}>
+                                      <CgUndo color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                  :
+                                  <Tooltip title="Delete" placement="left">
+                                    <IconButton onClick={removeExpSix}>
+                                      <TbTrashX color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                }
+                              </Stack>
+                            )
+                              :
+                              <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsSix.length > 0}>
+                                <IoMdClose size={16} />
+                              </IconButton>
+                            }
+                          </Stack>
+                        )}
+
+                        {/* 7th Expression */}
+                        {(expression?.length > 6 || newExpressionsEntry > 6) && (
+                          <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                            <InputBase
+                              id={uuidv4()}
+                              onChange={(e) => setNewExpressionsSeven(e.target.value)}
+                              value={!removeExpressionsSeven ? expression[6] : newExpressionsSeven}
+                              required={true}
+                              sx={{
+                                width: isLandscape ? "75%" : "70%",
+                                fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
+                                color: theme.palette.neutral.dark,
+                                border: `solid 1px ${theme.palette.neutral.light}`,
+                                borderRadius: "0.5rem",
+                                padding: "0.25rem 0.5rem",
+                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                              }}
+                            />
+                            {expression?.length > 6 ? (
+                              <Stack>
+                                {removeExpressionsSeven ?
+                                  <Tooltip title="Undo" placement="right">
+                                    <IconButton onClick={() => setRemoveExpressionsSeven(false)}>
+                                      <CgUndo color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                  :
+                                  <Tooltip title="Delete" placement="left">
+                                    <IconButton onClick={removeExpSeven}>
+                                      <TbTrashX color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                }
+                              </Stack>
+                            )
+                              :
+                              <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsSeven.length > 0}>
+                                <IoMdClose size={16} />
+                              </IconButton>
+                            }
+                          </Stack>
+                        )}
+
+                        {/* 8th Expression */}
+                        {(expression?.length > 7 || newExpressionsEntry > 7) && (
+                          <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                            <InputBase
+                              id={uuidv4()}
+                              onChange={(e) => setNewExpressionsEight(e.target.value)}
+                              value={!removeExpressionsEight ? expression[7] : newExpressionsEight}
+                              required={true}
+                              sx={{
+                                width: isLandscape ? "75%" : "70%",
+                                fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
+                                color: theme.palette.neutral.dark,
+                                border: `solid 1px ${theme.palette.neutral.light}`,
+                                borderRadius: "0.5rem",
+                                padding: "0.25rem 0.5rem",
+                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                              }}
+                            />
+                            {expression?.length > 7 ? (
+                              <Stack>
+                                {removeExpressionsEight ?
+                                  <Tooltip title="Undo" placement="right">
+                                    <IconButton onClick={() => setRemoveExpressionsEight(false)}>
+                                      <CgUndo color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                  :
+                                  <Tooltip title="Delete" placement="left">
+                                    <IconButton onClick={removeExpEight}>
+                                      <TbTrashX color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                }
+                              </Stack>
+                            )
+                              :
+                              <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsEight.length > 0}>
+                                <IoMdClose size={16} />
+                              </IconButton>
+                            }
+                          </Stack>
+                        )}
+
                         <Button
                           onClick={handleUpdateExpressions}
                           sx={{ fontSize: isWideScreens ? "1.25rem" : isQHDScreens ? "1rem" : "0.8rem" }}

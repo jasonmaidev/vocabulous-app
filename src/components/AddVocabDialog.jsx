@@ -128,6 +128,10 @@ export default function AddVocabDialog({ text }) {
   const [vocabExpressionTwo, setVocabExpressionTwo] = useState("")
   const [vocabExpressionThree, setVocabExpressionThree] = useState("")
   const [vocabExpressionFour, setVocabExpressionFour] = useState("")
+  const [vocabExpressionFive, setVocabExpressionFive] = useState("")
+  const [vocabExpressionSix, setVocabExpressionSix] = useState("")
+  const [vocabExpressionSeven, setVocabExpressionSeven] = useState("")
+  const [vocabExpressionEight, setVocabExpressionEight] = useState("")
   const [vocabExpression, setVocabExpression] = useState([]) // max 4
   const [vocabExpressionShowCount, setVocabExpressionShowCount] = useState(1)
   const incrementVocabExpressionCount = () => {
@@ -149,6 +153,18 @@ export default function AddVocabDialog({ text }) {
     }
     if (vocabExpressionFour.length > 0) {
       newVocabExpression.push(vocabExpressionFour);
+    }
+    if (vocabExpressionFive.length > 0) {
+      newVocabExpression.push(vocabExpressionFive);
+    }
+    if (vocabExpressionSix.length > 0) {
+      newVocabExpression.push(vocabExpressionSix);
+    }
+    if (vocabExpressionSeven.length > 0) {
+      newVocabExpression.push(vocabExpressionSeven);
+    }
+    if (vocabExpressionEight.length > 0) {
+      newVocabExpression.push(vocabExpressionEight);
     }
 
     // Update the vocabExpression state
@@ -764,7 +780,7 @@ export default function AddVocabDialog({ text }) {
             <Stack direction={"row"} alignItems={"center"} spacing={2}>
               <Stack>
                 <Typography>Expression</Typography>
-                <Typography fontSize={"0.5rem"} color={theme.palette.neutral.mid}>Max 4</Typography>
+                <Typography fontSize={"0.5rem"} color={theme.palette.neutral.mid}>Max 8</Typography>
               </Stack>
               <InputBase
                 id={uuidv4()}
@@ -865,6 +881,111 @@ export default function AddVocabDialog({ text }) {
                 </IconButton>
               </Stack>
             )}
+
+            {/* ----- 5th Expression Text Input Field ----- */}
+            {vocabExpressionShowCount > 4 && (
+              <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                <Typography sx={{ opacity: 0 }}>Expression</Typography>
+                <InputBase
+                  id={uuidv4()}
+                  placeholder="中文字"
+                  onChange={(e) => setVocabExpressionFive(e.target.value)}
+                  value={vocabExpressionFive}
+                  required={true}
+                  sx={{
+                    fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
+                    width: "80%",
+                    color: theme.palette.neutral.dark,
+                    border: `solid 1px ${theme.palette.neutral.light}`,
+                    borderRadius: "0.5rem",
+                    padding: "0.25rem 0.5rem",
+                    margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                  }}
+                />
+                <IconButton onClick={() => setVocabExpressionShowCount(vocabExpressionShowCount - 1)}>
+                  <IoMdClose size={16} />
+                </IconButton>
+              </Stack>
+            )}
+
+            {/* ----- 6th Expression Text Input Field ----- */}
+            {vocabExpressionShowCount > 5 && (
+              <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                <Typography sx={{ opacity: 0 }}>Expression</Typography>
+                <InputBase
+                  id={uuidv4()}
+                  placeholder="中文字"
+                  onChange={(e) => setVocabExpressionSix(e.target.value)}
+                  value={vocabExpressionSix}
+                  required={true}
+                  sx={{
+                    fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
+                    width: "80%",
+                    color: theme.palette.neutral.dark,
+                    border: `solid 1px ${theme.palette.neutral.light}`,
+                    borderRadius: "0.5rem",
+                    padding: "0.25rem 0.5rem",
+                    margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                  }}
+                />
+                <IconButton onClick={() => setVocabExpressionShowCount(vocabExpressionShowCount - 1)}>
+                  <IoMdClose size={16} />
+                </IconButton>
+              </Stack>
+            )}
+
+            {/* ----- 7th Expression Text Input Field ----- */}
+            {vocabExpressionShowCount > 6 && (
+              <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                <Typography sx={{ opacity: 0 }}>Expression</Typography>
+                <InputBase
+                  id={uuidv4()}
+                  placeholder="中文字"
+                  onChange={(e) => setVocabExpressionSeven(e.target.value)}
+                  value={vocabExpressionSeven}
+                  required={true}
+                  sx={{
+                    fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
+                    width: "80%",
+                    color: theme.palette.neutral.dark,
+                    border: `solid 1px ${theme.palette.neutral.light}`,
+                    borderRadius: "0.5rem",
+                    padding: "0.25rem 0.5rem",
+                    margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                  }}
+                />
+                <IconButton onClick={() => setVocabExpressionShowCount(vocabExpressionShowCount - 1)}>
+                  <IoMdClose size={16} />
+                </IconButton>
+              </Stack>
+            )}
+
+            {/* ----- 8th Expression Text Input Field ----- */}
+            {vocabExpressionShowCount > 7 && (
+              <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                <Typography sx={{ opacity: 0 }}>Expression</Typography>
+                <InputBase
+                  id={uuidv4()}
+                  placeholder="中文字"
+                  onChange={(e) => setVocabExpressionEight(e.target.value)}
+                  value={vocabExpressionEight}
+                  required={true}
+                  sx={{
+                    fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
+                    width: "80%",
+                    color: theme.palette.neutral.dark,
+                    border: `solid 1px ${theme.palette.neutral.light}`,
+                    borderRadius: "0.5rem",
+                    padding: "0.25rem 0.5rem",
+                    margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                  }}
+                />
+                <IconButton onClick={() => setVocabExpressionShowCount(vocabExpressionShowCount - 1)}>
+                  <IoMdClose size={16} />
+                </IconButton>
+              </Stack>
+            )}
+
 
             {/* ----- Sentence Text Input Field ----- */}
             <Stack direction={"row"} alignItems={"center"} spacing={2}>
