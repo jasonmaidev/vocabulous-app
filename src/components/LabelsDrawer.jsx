@@ -416,7 +416,7 @@ export default function LabelsDrawer() {
                 }}
               >
                 <ListItemIcon>
-                  <MdLabelOutline size={24} color={theme.palette.neutral.medium} />
+                  {renderIcon(text)}
                 </ListItemIcon>
                 <ListItemText
                   primary={capFirstLetter(text)}
