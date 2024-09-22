@@ -2242,7 +2242,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   </Typography>
                                   <Typography
                                     fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
-                                    lineHeight={0.8}
+                                    lineHeight={1}
                                     fontStyle={"italic"}
                                     color={theme.palette.primary.dark}
                                   >
@@ -2263,7 +2263,9 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
             </Stack>
 
             {isPortrait && (
-              <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} mt={1} pt={1} pb={2} borderTop={`solid 1px rgba(255,255,255, 0.15)`}>
+              <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} mt={1} pt={1}
+                pb={(expression.length > 4 && sentence.length > 1) || (expression.length > 2 && sentence.length > 3) ? 2 : 0}
+                borderTop={`solid 1px rgba(255,255,255, 0.15)`}>
                 <Stack direction={"row"} alignItems={"center"} spacing={1}>
                   <Button
                     onClick={handleViewVocab}
