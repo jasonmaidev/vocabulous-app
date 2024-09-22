@@ -1003,11 +1003,11 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     </Tooltip>
                   </Stack>
 
-                  <Stack direction={"row"} spacing={2}>
+                  <Stack direction={"row"} spacing={1}>
                     <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
                       Definition
                     </Typography>
-                    <FiBookOpen size={24} style={{ color: theme.palette.neutral.mid }} />
+                    <FiBookOpen size={16} style={{ color: theme.palette.neutral.mid }} />
                   </Stack>
                   {/* ----- Definition ----- */}
                   {editingDef ?
