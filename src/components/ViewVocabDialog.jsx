@@ -1115,20 +1115,18 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             borderBottom: `1px solid ${theme.palette.neutral.light}`,
                           }}
                         />
-                        <IconButton
-                          onClick={handleUpdateVocab}
-                        >
+                        <IconButton onClick={handleUpdateVocab}>
                           <IoMdCheckmark color={theme.palette.neutral.dark} />
                         </IconButton>
                       </Stack>
                     </>
                     :
                     <Stack direction={"column"} spacing={0.5}>
-                      <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"} spacing={2}
+                      <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"} spacing={0.5}
                         sx={{
                           border: "none",
                           borderRadius: "0.5rem",
-                          padding: "0.5rem 1rem",
+                          padding: "0.5rem",
                           backgroundColor: mode === "light" ? "rgba(180, 180, 180, 0.2)" : "rgba(0, 11, 13, 0.45)", // Semi-transparent background
                           backdropFilter: "blur(10px)", // Apply the glass effect
                           WebkitBackdropFilter: "blur(10px)",
@@ -1141,7 +1139,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <HighlightCaps text={definition} />
                         </Typography>
                         <IconButton onClick={() => setEditingDef(true)}>
-                          <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
+                          <FiEdit2 size={16} style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
                         </IconButton>
                       </Stack>
                     </Stack>
