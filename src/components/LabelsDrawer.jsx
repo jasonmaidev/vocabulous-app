@@ -22,9 +22,9 @@ import { PiCircleBold, PiDiamondBold, PiStarBold, PiRuler } from "react-icons/pi
 import { MdLabelOutline, MdAccessTime } from "react-icons/md";
 import { TbTemperature } from "react-icons/tb";
 import { IoLanguage } from "react-icons/io5";
-import { LiaLaughSquint } from "react-icons/lia";
+import { LiaLaughSquint, LiaFeatherAltSolid } from "react-icons/lia";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
-import { BsArrowRightSquareFill, BsFeather } from "react-icons/bs";
+import { BsArrowRightSquareFill } from "react-icons/bs";
 import { FiEdit3, FiThumbsUp, FiThumbsDown, FiMapPin, FiBriefcase } from "react-icons/fi";
 import { RiHeartsLine, RiBeerLine } from "react-icons/ri";
 import { styled } from "@mui/system";
@@ -130,7 +130,7 @@ export default function LabelsDrawer() {
       case 'humor':
         return <LiaLaughSquint size={24} color={theme.palette.neutral.medium} />;
       case 'idiom':
-        return <BsFeather size={24} color={theme.palette.neutral.medium} />;
+        return <LiaFeatherAltSolid size={24} color={theme.palette.neutral.medium} />;
       case 'measure':
         return <PiRuler size={24} color={theme.palette.neutral.medium} />;
       case 'mood':
