@@ -152,7 +152,7 @@ export default function LabelsDrawer() {
               <ListItemIcon>
                 <PiCircleBold size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
-              <ListItemText primary={"All"}
+              <ListItemText primary={"All Lv.1 - Lv.3"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
               />
             </ListItemButton>
@@ -174,7 +174,7 @@ export default function LabelsDrawer() {
               <ListItemIcon>
                 <PiDiamondBold size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
-              <ListItemText primary={"Intermediate"}
+              <ListItemText primary={"Intermediate Lv.2"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
               />
             </ListItemButton>
@@ -196,7 +196,7 @@ export default function LabelsDrawer() {
               <ListItemIcon>
                 <PiStarBold size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
-              <ListItemText primary={"Advanced"}
+              <ListItemText primary={"Advanced Lv.3"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
               />
             </ListItemButton>

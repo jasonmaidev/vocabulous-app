@@ -3,6 +3,7 @@ import { useState, forwardRef, Suspense } from "react"
 import { Menu, MenuItem, Tooltip, ListItemIcon, ListItemText, Stack, Dialog, Grow, IconButton, Typography, useTheme, useMediaQuery } from "@mui/material"
 import { IoMdMore } from "react-icons/io";
 import { TbPin, TbTrashX } from "react-icons/tb";
+import { PiCircleBold, PiDiamondBold, PiStarBold } from "react-icons/pi";
 import RowBox from "./RowBox";
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import GridLoader from "react-spinners/GridLoader"
@@ -114,6 +115,90 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
       queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
       setMenuAnchor(null)
       setHighlightRow(false)
+    }
+  })
+
+  const handleSetBeg = (updatedData) => {
+    setBegMutation.mutate(updatedData)
+  }
+
+  const setBegMutation = useMutation({
+    mutationFn: async () => {
+      const updatedData = {
+        difficulty: "2"
+      }
+      return await fetch(`${apiUrl}/vocabs/${id}/update`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData),
+      })
+    },
+    onError: (error, context) => {
+      console.log("Error fetching:" + context.id + error)
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+    }
+  })
+
+  const handleSetInt = (updatedData) => {
+    setIntMutation.mutate(updatedData)
+  }
+
+  const setIntMutation = useMutation({
+    mutationFn: async () => {
+      const updatedData = {
+        difficulty: "2"
+      }
+      return await fetch(`${apiUrl}/vocabs/${id}/update`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData),
+      })
+    },
+    onError: (error, context) => {
+      console.log("Error fetching:" + context.id + error)
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
+    }
+  })
+
+  const handleSetAdv = (updatedData) => {
+    setAdvMutation.mutate(updatedData)
+  }
+
+  const setAdvMutation = useMutation({
+    mutationFn: async () => {
+      const updatedData = {
+        difficulty: "3"
+      }
+      return await fetch(`${apiUrl}/vocabs/${id}/update`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData),
+      })
+    },
+    onError: (error, context) => {
+      console.log("Error fetching:" + context.id + error)
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["allVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["pinnedVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["intVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
+      queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
     }
   })
 
@@ -346,6 +431,18 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
         <MenuItem onClick={handleUpdatePinned}>
           <ListItemIcon><TbPin fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
           <ListItemText sx={{ color: theme.palette.neutral.darker }}>{pinned ? "Unpin" : "Pin"}</ListItemText>
+        </MenuItem>
+        <MenuItem onClick={handleSetBeg}>
+          <ListItemIcon><PiCircleBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
+          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Level 1</ListItemText>
+        </MenuItem>
+        <MenuItem onClick={handleSetInt}>
+          <ListItemIcon><PiDiamondBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
+          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Level 2</ListItemText>
+        </MenuItem>
+        <MenuItem onClick={handleSetAdv}>
+          <ListItemIcon><PiStarBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
+          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Level 3</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleDeleteVocab}>
           <ListItemIcon><TbTrashX fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
