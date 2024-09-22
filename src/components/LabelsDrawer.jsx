@@ -20,12 +20,12 @@ import Drawer from '@mui/material/Drawer';
 import { BiHomeAlt2, BiPulse } from "react-icons/bi";
 import { PiCircleBold, PiDiamondBold, PiStarBold, PiRuler } from "react-icons/pi";
 import { MdLabelOutline, MdAccessTime } from "react-icons/md";
-import { TbBriefcase2, TbTemperature } from "react-icons/tb";
+import { TbTemperature } from "react-icons/tb";
 import { IoLanguage } from "react-icons/io5";
 import { LiaLaughSquint } from "react-icons/lia";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { BsArrowRightSquareFill, BsFeather } from "react-icons/bs";
-import { FiEdit3, FiThumbsUp, FiThumbsDown, FiMapPin } from "react-icons/fi";
+import { FiEdit3, FiThumbsUp, FiThumbsDown, FiMapPin, FiBriefcase } from "react-icons/fi";
 import { RiHeartsLine, RiBeerLine } from "react-icons/ri";
 import { styled } from "@mui/system";
 import EditLabelsWidget from 'views/widgets/EditLabelsWidget';
@@ -120,7 +120,7 @@ export default function LabelsDrawer() {
   const renderIcon = (text) => {
     switch (text) {
       case 'business':
-        return <TbBriefcase2 size={24} color={theme.palette.neutral.medium} />;
+        return <FiBriefcase size={24} color={theme.palette.neutral.medium} />;
       case 'degree':
         return <TbTemperature size={24} color={theme.palette.neutral.medium} />;
       case 'frequency':
