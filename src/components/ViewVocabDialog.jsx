@@ -2475,15 +2475,15 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
         </MenuItem>
         <MenuItem onClick={handleSetBeg}>
           <ListItemIcon><PiCircleBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Level 1</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Lv. 1</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleSetInt}>
           <ListItemIcon><PiDiamondBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Level 2</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Lv. 2</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleSetAdv}>
           <ListItemIcon><PiStarBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Level 3</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Lv. 3</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleDeleteVocab}>
           <ListItemIcon><TbTrashX fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
