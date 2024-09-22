@@ -1417,7 +1417,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
             </Stack>
 
             {isPortrait && (
-              <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} pt={1} borderTop={`solid 1px rgba(255,255,255, 0.15)`}>
+              <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} mt={1} pt={1} pb={2} borderTop={`solid 1px rgba(255,255,255, 0.15)`}>
                 <Stack direction={"row"} alignItems={"center"} spacing={1}>
                   <Button
                     onClick={handleViewVocab}
@@ -2263,7 +2263,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
             </Stack>
 
             {isPortrait && (
-              <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} pt={1} borderTop={`solid 1px rgba(255,255,255, 0.15)`}>
+              <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} mt={1} pt={1} pb={2} borderTop={`solid 1px rgba(255,255,255, 0.15)`}>
                 <Stack direction={"row"} alignItems={"center"} spacing={1}>
                   <Button
                     onClick={handleViewVocab}
