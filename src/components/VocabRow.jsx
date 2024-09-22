@@ -37,6 +37,43 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
     setUploadOpen(false)
   }
 
+  function HighlightCaps({ text }) {
+    const theme = useTheme();
+    const mode = useSelector((state) => state.mode);
+
+    // Function to process the string
+    const processText = (text) => {
+      // Regular expression to match consecutive 2 or more uppercase letters or characters inside parentheses (including the parentheses)
+      const regex = /[A-Z]{2,}|\(.*?\)/g;
+
+      // Split the text based on the match
+      const parts = text.split(regex);
+
+      // Find the matches (consecutive capital letters and text inside parentheses)
+      const matches = text.match(regex);
+
+      // If no matches found, return the original text
+      if (!matches) {
+        return text;
+      }
+
+      return parts.reduce((acc, part, index) => {
+        acc.push(<span key={`part-${index}`}>{part}</span>); // Add normal text
+        if (matches[index]) {
+          // If there's a match at this index, add it with the highlighted color
+          acc.push(
+            <span key={`match-${index}`} style={{ color: mode === "light" ? theme.palette.tertiary.dark : theme.palette.primary.dark }}>
+              {matches[index]}
+            </span>
+          );
+        }
+        return acc;
+      }, []);
+    };
+
+    return <div>{processText(text)}</div>;
+  }
+
   /* Options Drowndown Menu */
   const [highlightRow, setHighlightRow] = useState(false)
   const [menuAnchor, setMenuAnchor] = useState(null)
@@ -153,7 +190,7 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
                 </Typography>
               </Stack>
               <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem"}>
-                {definition}
+                <HighlightCaps text={definition} />
               </Typography>
             </Stack>
 
@@ -214,7 +251,7 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
                 </Stack>
 
                 <Typography onClick={handleViewOpen} sx={{ lineHeight: 1.1 }} fontSize="1rem">
-                  {definition}
+                  <HighlightCaps text={definition} />
                 </Typography>
               </Stack>
 
