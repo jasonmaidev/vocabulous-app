@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { TbPin, TbPinFilled, TbTrashX } from "react-icons/tb";
 import { CgUndo } from "react-icons/cg";
-import { FiEdit2 } from "react-icons/fi";
+import { FiEdit2, FiBookOpen } from "react-icons/fi";
 import { IoSearch, IoAddCircleOutline } from "react-icons/io5";
 import { IoMdAdd, IoMdClose, IoMdMore, IoMdCheckmark } from "react-icons/io";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
@@ -1003,9 +1003,12 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     </Tooltip>
                   </Stack>
 
-                  <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
-                    Definition
-                  </Typography>
+                  <Stack direction={"row"} spacing={2}>
+                    <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
+                      Definition
+                    </Typography>
+                    <FiBookOpen size={24} style={{ color: theme.palette.neutral.mid }} />
+                  </Stack>
                   {/* ----- Definition ----- */}
                   {editingDef ?
                     <>
@@ -1040,7 +1043,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                         sx={{
                           border: "none",
                           borderRadius: "0.5rem",
-                          padding: "0.75rem 1.5rem",
+                          padding: "0.5rem 1rem",
                           backgroundColor: mode === "light" ? "rgba(180, 180, 180, 0.2)" : "rgba(0, 11, 13, 0.45)", // Semi-transparent background
                           backdropFilter: "blur(10px)", // Apply the glass effect
                           WebkitBackdropFilter: "blur(10px)",
@@ -1070,7 +1073,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     </Stack>
 
                     {(!editingSimilar && similar?.length === 0) && (
-                      <Button sx={{ border: `solid 1px ${theme.palette.neutral.light}`, borderRadius: "0.5rem" }} onClick={openEditSimilar}>
+                      <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditSimilar}>
                         <Typography fontSize={"1.5rem"}>+</Typography>
                       </Button>
                     )}
@@ -1620,7 +1623,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     </Typography>
 
                     {(!editingExpressions && expression?.length === 0) && (
-                      <Button sx={{ border: `solid 1px ${theme.palette.neutral.light}`, borderRadius: "0.5rem" }} onClick={openEditExpressions}>
+                      <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditExpressions}>
                         <Typography fontSize={"1.5rem"}>+</Typography>
                       </Button>
                     )}
@@ -2016,7 +2019,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     </Typography>
 
                     {(!editingSentences && sentence?.length === 0) && (
-                      <Button sx={{ border: `solid 1px ${theme.palette.neutral.light}`, borderRadius: "0.5rem" }} onClick={openEditSentences}>
+                      <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditSentences}>
                         <Typography fontSize={"1.5rem"}>+</Typography>
                       </Button>
                     )}
