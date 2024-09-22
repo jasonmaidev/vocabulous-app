@@ -1994,8 +1994,8 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 >
                                   <Typography lineHeight={1.1} fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}>{item}</Typography>
                                   <Typography
-                                    fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
-                                    lineHeight={1}
+                                    fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.7rem"}
+                                    lineHeight={0.8}
                                     fontStyle={"italic"}
                                     color={theme.palette.primary.dark}
                                   >
@@ -2215,7 +2215,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             <Stack
                               direction={"column"}
                               alignItems={"flex-start"}
-                              spacing={1}
+                              spacing={0.5}
                               flexWrap={"wrap"}
                             >
                               {sentence?.map((item, index) => (
@@ -2232,12 +2232,12 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   }}
                                 >
                                   <Typography lineHeight={1.1}
-                                    fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : isPortrait ? "1.5rem" : "1.75rem"}>
+                                    fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : isPortrait ? "1.5rem" : "1.5rem"}>
                                     {item}
                                   </Typography>
                                   <Typography
-                                    fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
-                                    lineHeight={1}
+                                    fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.7rem"}
+                                    lineHeight={0.8}
                                     fontStyle={"italic"}
                                     color={theme.palette.primary.dark}
                                   >
