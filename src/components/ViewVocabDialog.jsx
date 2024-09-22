@@ -1957,7 +1957,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             <Stack
                               direction={"row"}
                               alignItems={"center"}
-                              spacing={1}
+                              spacing={0}
                               flexWrap={"wrap"}
                             >
                               {expression?.map((item, index) => (
@@ -1967,10 +1967,10 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   sx={{
                                     cursor: "pointer",
                                     borderRadius: "0.75rem",
-                                    padding: "0.25rem 0.75rem",
+                                    padding: "0.25rem 0.5rem",
                                   }}
                                 >
-                                  <Typography lineHeight={1.1} fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.75rem"}>{item}</Typography>
+                                  <Typography lineHeight={1.1} fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}>{item}</Typography>
                                   <Typography
                                     fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
                                     lineHeight={1}

@@ -97,7 +97,7 @@ export default function AddVocabDialog({ text }) {
   const [vocabSimilarTwo, setVocabSimilarTwo] = useState("")
   const [vocabSimilarThree, setVocabSimilarThree] = useState("")
   const [vocabSimilarFour, setVocabSimilarFour] = useState("")
-  const [vocabSimilar, setVocabSimilar] = useState([]) //max 2
+  const [vocabSimilar, setVocabSimilar] = useState([]) //max 4
   const [vocabSimilarShowCount, setVocabSimilarShowCount] = useState(1)
   const incrementVocabSimilarCount = () => {
     if (vocabSimilarShowCount >= 4) return
@@ -132,7 +132,7 @@ export default function AddVocabDialog({ text }) {
   const [vocabExpressionSix, setVocabExpressionSix] = useState("")
   const [vocabExpressionSeven, setVocabExpressionSeven] = useState("")
   const [vocabExpressionEight, setVocabExpressionEight] = useState("")
-  const [vocabExpression, setVocabExpression] = useState([]) // max 4
+  const [vocabExpression, setVocabExpression] = useState([]) // max 8
   const [vocabExpressionShowCount, setVocabExpressionShowCount] = useState(1)
   const incrementVocabExpressionCount = () => {
     if (vocabExpressionShowCount >= 8) return
@@ -173,8 +173,14 @@ export default function AddVocabDialog({ text }) {
 
   const [vocabSentenceOne, setVocabSentenceOne] = useState("")
   const [vocabSentenceTwo, setVocabSentenceTwo] = useState("")
-  const [vocabSentence, setVocabSentence] = useState([]) // max 2
-  const [vocabSentenceShowTwo, setVocabSentenceShowTwo] = useState(false)
+  const [vocabSentenceThree, setVocabSentenceThree] = useState("")
+  const [vocabSentenceFour, setVocabSentenceFour] = useState("")
+  const [vocabSentence, setVocabSentence] = useState([]) // max 4
+  const [vocabSentenceShowCount, setVocabSentenceShowCount] = useState(1)
+  const incrementVocabSentenceCount = () => {
+    if (vocabSentenceShowCount >= 4) return
+    setVocabSentenceShowCount(vocabSentenceShowCount + 1)
+  }
   const updateVocabSentence = () => {
     let newVocabSentence = [];
 
@@ -184,6 +190,12 @@ export default function AddVocabDialog({ text }) {
     }
     if (vocabSentenceTwo.length > 0) {
       newVocabSentence.push(vocabSentenceTwo);
+    }
+    if (vocabSentenceThree.length > 0) {
+      newVocabSentence.push(vocabSentenceThree);
+    }
+    if (vocabSentenceFour.length > 0) {
+      newVocabSentence.push(vocabSentenceFour);
     }
 
     // Update the vocabSentence state
@@ -1008,15 +1020,15 @@ export default function AddVocabDialog({ text }) {
             <Stack direction={"row"} alignItems={"center"} spacing={2}>
               <Stack>
                 <Typography>Sentence</Typography>
-                <Typography fontSize={"0.5rem"} color={theme.palette.neutral.mid} >Max 2</Typography>
+                <Typography fontSize={"0.5rem"} color={theme.palette.neutral.mid}>Max 4</Typography>
               </Stack>
               <InputBase
                 id={uuidv4()}
-                placeholder="中文句子"
+                placeholder=""
+                multiline
+                rows={2}
                 onChange={(e) => setVocabSentenceOne(e.target.value)}
                 value={vocabSentenceOne}
-                multiline={true}
-                minRows={2}
                 required={true}
                 sx={{
                   fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
@@ -1028,22 +1040,23 @@ export default function AddVocabDialog({ text }) {
                   margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                 }}
               />
-              <IconButton onClick={() => setVocabSentenceShowTwo(true)}>
+              <IconButton onClick={incrementVocabSentenceCount}>
                 <IoMdAdd size={16} />
               </IconButton>
             </Stack>
 
+
             {/* ----- 2nd Sentence Text Input Field ----- */}
-            {vocabSentenceShowTwo && (
+            {vocabSentenceShowCount > 1 && (
               <Stack direction={"row"} alignItems={"center"} spacing={2}>
                 <Typography sx={{ opacity: 0 }}>Sentence</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="中文句子"
+                  placeholder=""
+                  multiline
+                  rows={2}
                   onChange={(e) => setVocabSentenceTwo(e.target.value)}
                   value={vocabSentenceTwo}
-                  multiline={true}
-                  minRows={2}
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
@@ -1055,7 +1068,63 @@ export default function AddVocabDialog({ text }) {
                     margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                   }}
                 />
-                <IconButton onClick={() => setVocabSentenceShowTwo(false)}>
+                <IconButton onClick={() => setVocabSentenceShowCount(vocabSentenceShowCount - 1)}>
+                  <IoMdClose size={16} />
+                </IconButton>
+              </Stack>
+            )}
+
+            {/* ----- 3rd Sentence Text Input Field ----- */}
+            {vocabSentenceShowCount > 2 && (
+              <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                <Typography sx={{ opacity: 0 }}>Sentence</Typography>
+                <InputBase
+                  id={uuidv4()}
+                  placeholder=""
+                  multiline
+                  rows={2}
+                  onChange={(e) => setVocabSentenceThree(e.target.value)}
+                  value={vocabSentenceThree}
+                  required={true}
+                  sx={{
+                    fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
+                    width: "80%",
+                    color: theme.palette.neutral.dark,
+                    border: `solid 1px ${theme.palette.neutral.light}`,
+                    borderRadius: "0.5rem",
+                    padding: "0.25rem 0.5rem",
+                    margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                  }}
+                />
+                <IconButton onClick={() => setVocabSentenceShowCount(vocabSentenceShowCount - 1)}>
+                  <IoMdClose size={16} />
+                </IconButton>
+              </Stack>
+            )}
+
+            {/* ----- 4th Sentence Text Input Field ----- */}
+            {vocabSentenceShowCount > 3 && (
+              <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                <Typography sx={{ opacity: 0 }}>Sentence</Typography>
+                <InputBase
+                  id={uuidv4()}
+                  placeholder=""
+                  multiline
+                  rows={2}
+                  onChange={(e) => setVocabSentenceFour(e.target.value)}
+                  value={vocabSentenceFour}
+                  required={true}
+                  sx={{
+                    fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
+                    width: "80%",
+                    color: theme.palette.neutral.dark,
+                    border: `solid 1px ${theme.palette.neutral.light}`,
+                    borderRadius: "0.5rem",
+                    padding: "0.25rem 0.5rem",
+                    margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                  }}
+                />
+                <IconButton onClick={() => setVocabSentenceShowCount(vocabSentenceShowCount - 1)}>
                   <IoMdClose size={16} />
                 </IconButton>
               </Stack>
