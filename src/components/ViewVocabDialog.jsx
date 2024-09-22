@@ -543,6 +543,8 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
   const [newSentences, setNewSentences] = useState([])
   const [newSentencesOne, setNewSentencesOne] = useState("")
   const [newSentencesTwo, setNewSentencesTwo] = useState("")
+  const [newSentencesThree, setNewSentencesThree] = useState("")
+  const [newSentencesFour, setNewSentencesFour] = useState("")
   const [newSentencesEntry, setNewSentencesEntry] = useState(sentence?.length) // Increments a new InputBase onClick for new entry
   const addSentencesEntry = () => {
     setEditingSentences(true);
@@ -559,12 +561,22 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
   }
   const [removeSentencesOne, setRemoveSentencesOne] = useState(false)
   const [removeSentencesTwo, setRemoveSentencesTwo] = useState(false)
+  const [removeSentencesThree, setRemoveSentencesThree] = useState(false)
+  const [removeSentencesFour, setRemoveSentencesFour] = useState(false)
   const removeSenOne = () => {
     setRemoveSentencesOne(true);
     subtractSentencesEntry();
   }
   const removeSenTwo = () => {
     setRemoveSentencesTwo(true);
+    subtractSentencesEntry();
+  }
+  const removeSenThree = () => {
+    setRemoveSentencesThree(true);
+    subtractSentencesEntry();
+  }
+  const removeSenFour = () => {
+    setRemoveSentencesFour(true);
     subtractSentencesEntry();
   }
 
@@ -585,6 +597,24 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
       } else {
         if (sentence[1]?.length > 0) {
           newSentencesArray.push(sentence[1])
+        }
+      }
+      if (removeSentencesThree || newSentencesThree.length > 0) {
+        if (newSentencesThree.length > 0) {
+          newSentencesArray.push(newSentencesThree);
+        }
+      } else {
+        if (sentence[2]?.length > 0) {
+          newSentencesArray.push(sentence[2])
+        }
+      }
+      if (removeSentencesFour || newSentencesFour.length > 0) {
+        if (newSentencesFour.length > 0) {
+          newSentencesArray.push(newSentencesFour);
+        }
+      } else {
+        if (sentence[3]?.length > 0) {
+          newSentencesArray.push(sentence[3])
         }
       }
       return newSentencesArray;
@@ -717,8 +747,12 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
       setNewSentences([])
       setNewSentencesOne("")
       setNewSentencesTwo("")
+      setNewSentencesThree("")
+      setNewSentencesFour("")
       setRemoveSentencesOne(false)
       setRemoveSentencesTwo(false)
+      setRemoveSentencesThree(false)
+      setRemoveSentencesFour(false)
     }
   })
 
@@ -1056,7 +1090,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               border: `solid 1px ${theme.palette.neutral.light}`,
                               borderRadius: "0.5rem",
                               padding: "0.25rem 0.5rem",
-                              // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                             }}
                           />
                           {similar?.length > 0 ? (
@@ -1104,7 +1137,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {similar?.length > 1 ? (
@@ -1148,7 +1180,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {similar?.length > 2 ? (
@@ -1192,7 +1223,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {similar?.length > 3 ? (
@@ -1609,7 +1639,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               border: `solid 1px ${theme.palette.neutral.light}`,
                               borderRadius: "0.5rem",
                               padding: "0.25rem 0.5rem",
-                              // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                             }}
                           />
                           {expression?.length > 0 ? (
@@ -1656,7 +1685,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {expression?.length > 1 ? (
@@ -1699,7 +1727,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {expression?.length > 2 ? (
@@ -1742,7 +1769,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {expression?.length > 3 ? (
@@ -1785,7 +1811,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {expression?.length > 4 ? (
@@ -1828,7 +1853,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {expression?.length > 5 ? (
@@ -1871,7 +1895,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {expression?.length > 6 ? (
@@ -1914,7 +1937,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {expression?.length > 7 ? (
@@ -2004,9 +2026,9 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <InputBase
                             id={uuidv4()}
                             onChange={(e) => setNewSentencesOne(e.target.value)}
+                            value={newSentencesEntry < 1 || newSentencesOne?.length > 0 || removeSentencesOne ? newSentencesOne : sentence[0]}
                             multiline
                             rows={3}
-                            value={newSentencesEntry < 1 || newSentencesOne?.length > 0 || removeSentencesOne ? newSentencesOne : sentence[0]}
                             required={true}
                             sx={{
                               width: isLandscape ? "75%" : "70%",
@@ -2015,7 +2037,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               border: `solid 1px ${theme.palette.neutral.light}`,
                               borderRadius: "0.5rem",
                               padding: "0.25rem 0.5rem",
-                              // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                             }}
                           />
                           {sentence?.length > 0 ? (
@@ -2040,7 +2061,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               <IoMdClose size={16} />
                             </IconButton>
                           }
-                          {(sentence?.length < 2 && newSentencesEntry < 2) &&
+                          {(sentence?.length < 8 && newSentencesEntry < 8) &&
                             <IconButton onClick={addSentencesEntry}>
                               <IoMdAdd size={16} />
                             </IconButton>
@@ -2053,9 +2074,9 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             <InputBase
                               id={uuidv4()}
                               onChange={(e) => setNewSentencesTwo(e.target.value)}
+                              value={!removeSentencesTwo ? sentence[1] : newSentencesTwo}
                               multiline
                               rows={3}
-                              value={!removeSentencesTwo ? sentence[1] : newSentencesTwo}
                               required={true}
                               sx={{
                                 width: isLandscape ? "75%" : "70%",
@@ -2064,7 +2085,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 border: `solid 1px ${theme.palette.neutral.light}`,
                                 borderRadius: "0.5rem",
                                 padding: "0.25rem 0.5rem",
-                                // margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                               }}
                             />
                             {sentence?.length > 1 ? (
@@ -2086,6 +2106,94 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             )
                               :
                               <IconButton onClick={subtractSentencesEntry} disabled={newSentencesTwo.length > 0}>
+                                <IoMdClose size={16} />
+                              </IconButton>
+                            }
+                          </Stack>
+                        )}
+
+                        {/* 3rd Sentence */}
+                        {(sentence?.length > 2 || newSentencesEntry > 2) && (
+                          <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                            <InputBase
+                              id={uuidv4()}
+                              onChange={(e) => setNewSentencesThree(e.target.value)}
+                              value={!removeSentencesThree ? sentence[2] : newSentencesThree}
+                              multiline
+                              rows={3}
+                              required={true}
+                              sx={{
+                                width: isLandscape ? "75%" : "70%",
+                                fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
+                                color: theme.palette.neutral.dark,
+                                border: `solid 1px ${theme.palette.neutral.light}`,
+                                borderRadius: "0.5rem",
+                                padding: "0.25rem 0.5rem",
+                              }}
+                            />
+                            {sentence?.length > 2 ? (
+                              <Stack>
+                                {removeSentencesThree ?
+                                  <Tooltip title="Undo" placement="right">
+                                    <IconButton onClick={() => setRemoveSentencesThree(false)}>
+                                      <CgUndo color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                  :
+                                  <Tooltip title="Delete" placement="left">
+                                    <IconButton onClick={removeSenThree}>
+                                      <TbTrashX color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                }
+                              </Stack>
+                            )
+                              :
+                              <IconButton onClick={subtractSentencesEntry} disabled={newSentencesThree.length > 0}>
+                                <IoMdClose size={16} />
+                              </IconButton>
+                            }
+                          </Stack>
+                        )}
+
+                        {/* 4th Sentence */}
+                        {(sentence?.length > 3 || newSentencesEntry > 3) && (
+                          <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                            <InputBase
+                              id={uuidv4()}
+                              onChange={(e) => setNewSentencesFour(e.target.value)}
+                              value={!removeSentencesFour ? sentence[3] : newSentencesFour}
+                              multiline
+                              rows={3}
+                              required={true}
+                              sx={{
+                                width: isLandscape ? "75%" : "70%",
+                                fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
+                                color: theme.palette.neutral.dark,
+                                border: `solid 1px ${theme.palette.neutral.light}`,
+                                borderRadius: "0.5rem",
+                                padding: "0.25rem 0.5rem",
+                              }}
+                            />
+                            {sentence?.length > 3 ? (
+                              <Stack>
+                                {removeSentencesFour ?
+                                  <Tooltip title="Undo" placement="right">
+                                    <IconButton onClick={() => setRemoveSentencesFour(false)}>
+                                      <CgUndo color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                  :
+                                  <Tooltip title="Delete" placement="left">
+                                    <IconButton onClick={removeSenFour}>
+                                      <TbTrashX color={theme.palette.neutral.dark} />
+                                    </IconButton>
+                                  </Tooltip>
+                                }
+                              </Stack>
+                            )
+                              :
+                              <IconButton onClick={subtractSentencesEntry} disabled={newSentencesFour.length > 0}>
                                 <IoMdClose size={16} />
                               </IconButton>
                             }

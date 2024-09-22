@@ -708,13 +708,13 @@ export default function AddVocabDialog({ text }) {
               </Stack>
               <InputBase
                 id={uuidv4()}
-                placeholder="中文字"
+                placeholder=""
                 onChange={(e) => setVocabSimilarOne(e.target.value)}
                 value={vocabSimilarOne}
                 required={true}
                 sx={{
                   fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                  width: "80%",
+                  width: isLandscape ? "75%" : "70%",
                   color: theme.palette.neutral.dark,
                   border: `solid 1px ${theme.palette.neutral.light}`,
                   borderRadius: "0.5rem",
@@ -733,13 +733,13 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="中文字"
+                  placeholder=""
                   onChange={(e) => setVocabSimilarTwo(e.target.value)}
                   value={vocabSimilarTwo}
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -759,13 +759,13 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="中文字"
+                  placeholder=""
                   onChange={(e) => setVocabSimilarThree(e.target.value)}
                   value={vocabSimilarThree}
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -785,13 +785,13 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="中文字"
+                  placeholder=""
                   onChange={(e) => setVocabSimilarFour(e.target.value)}
                   value={vocabSimilarFour}
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -813,13 +813,13 @@ export default function AddVocabDialog({ text }) {
               </Stack>
               <InputBase
                 id={uuidv4()}
-                placeholder="中文字"
+                placeholder=""
                 onChange={(e) => setVocabExpressionOne(e.target.value)}
                 value={vocabExpressionOne}
                 required={true}
                 sx={{
                   fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                  width: "80%",
+                  width: isLandscape ? "75%" : "70%",
                   color: theme.palette.neutral.dark,
                   border: `solid 1px ${theme.palette.neutral.light}`,
                   borderRadius: "0.5rem",
@@ -839,13 +839,13 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="中文字"
+                  placeholder=""
                   onChange={(e) => setVocabExpressionTwo(e.target.value)}
                   value={vocabExpressionTwo}
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -865,13 +865,13 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="中文字"
+                  placeholder=""
                   onChange={(e) => setVocabExpressionThree(e.target.value)}
                   value={vocabExpressionThree}
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -891,13 +891,13 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="中文字"
+                  placeholder=""
                   onChange={(e) => setVocabExpressionFour(e.target.value)}
                   value={vocabExpressionFour}
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -917,13 +917,13 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="中文字"
+                  placeholder=""
                   onChange={(e) => setVocabExpressionFive(e.target.value)}
                   value={vocabExpressionFive}
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -943,13 +943,13 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="中文字"
+                  placeholder=""
                   onChange={(e) => setVocabExpressionSix(e.target.value)}
                   value={vocabExpressionSix}
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -969,13 +969,13 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="中文字"
+                  placeholder=""
                   onChange={(e) => setVocabExpressionSeven(e.target.value)}
                   value={vocabExpressionSeven}
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -995,13 +995,13 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="中文字"
+                  placeholder=""
                   onChange={(e) => setVocabExpressionEight(e.target.value)}
                   value={vocabExpressionEight}
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -1032,7 +1032,7 @@ export default function AddVocabDialog({ text }) {
                 required={true}
                 sx={{
                   fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                  width: "80%",
+                  width: isLandscape ? "75%" : "70%",
                   color: theme.palette.neutral.dark,
                   border: `solid 1px ${theme.palette.neutral.light}`,
                   borderRadius: "0.5rem",
@@ -1060,7 +1060,7 @@ export default function AddVocabDialog({ text }) {
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -1088,7 +1088,7 @@ export default function AddVocabDialog({ text }) {
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
@@ -1116,7 +1116,7 @@ export default function AddVocabDialog({ text }) {
                   required={true}
                   sx={{
                     fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                    width: "80%",
+                    width: isLandscape ? "75%" : "70%",
                     color: theme.palette.neutral.dark,
                     border: `solid 1px ${theme.palette.neutral.light}`,
                     borderRadius: "0.5rem",
