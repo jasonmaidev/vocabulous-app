@@ -1271,7 +1271,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             <Stack
                               direction={"row"}
                               alignItems={"center"}
-                              spacing={1}
+                              spacing={0}
                               flexWrap={"wrap"}
                             >
                               {similar?.map((item, index) => (
@@ -1280,7 +1280,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   spacing={0}
                                   sx={{
                                     borderRadius: "0.75rem",
-                                    padding: "0.25rem 0.5rem",
+                                    padding: "0.25rem 0.75rem",
                                   }}
                                 >
                                   <SimilarText item={item} searchSimilar={searchSimilar} />
@@ -2000,7 +2000,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   <Typography lineHeight={1.1} fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}>{item}</Typography>
                                   <Typography
                                     fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
-                                    lineHeight={0.8}
+                                    lineHeight={1}
                                     fontStyle={"italic"}
                                     color={theme.palette.primary.dark}
                                   >
