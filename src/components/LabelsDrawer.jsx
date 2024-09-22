@@ -17,11 +17,16 @@ import {
 } from "@mui/material"
 import PerfectScrollbar from "react-perfect-scrollbar"
 import Drawer from '@mui/material/Drawer';
-import { BiHomeAlt2 } from "react-icons/bi";
-import { PiCircleBold, PiDiamondBold, PiStarBold } from "react-icons/pi";
-import { MdLabelOutline } from "react-icons/md";
-import { BsArrowRightSquareFill } from "react-icons/bs";
-import { FiEdit3 } from "react-icons/fi";
+import { BiHomeAlt2, BiPulse } from "react-icons/bi";
+import { PiCircleBold, PiDiamondBold, PiStarBold, PiRuler } from "react-icons/pi";
+import { MdLabelOutline, MdAccessTime } from "react-icons/md";
+import { TbBriefcase2, TbTemperature } from "react-icons/tb";
+import { IoLanguage } from "react-icons/io5";
+import { LiaLaughSquint } from "react-icons/lia";
+import { FaRegHeart, FaRegUser } from "react-icons/fa";
+import { BsArrowRightSquareFill, BsFeather } from "react-icons/bs";
+import { FiEdit3, FiThumbsUp, FiThumbsDown, FiMapPin } from "react-icons/fi";
+import { RiHeartsLine, RiBeerLine } from "react-icons/ri";
 import { styled } from "@mui/system";
 import EditLabelsWidget from 'views/widgets/EditLabelsWidget';
 import apiUrl from "config/api"
@@ -111,6 +116,43 @@ export default function LabelsDrawer() {
     }
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
+
+  const renderIcon = (text) => {
+    switch (text) {
+      case 'business':
+        return <TbBriefcase2 size={24} color={theme.palette.neutral.medium} />;
+      case 'degree':
+        return <TbTemperature size={24} color={theme.palette.neutral.medium} />;
+      case 'frequency':
+        return <MdAccessTime size={24} color={theme.palette.neutral.medium} />;
+      case 'grammar':
+        return <IoLanguage size={24} color={theme.palette.neutral.medium} />;
+      case 'humor':
+        return <LiaLaughSquint size={24} color={theme.palette.neutral.medium} />;
+      case 'idiom':
+        return <BsFeather size={24} color={theme.palette.neutral.medium} />;
+      case 'measure':
+        return <PiRuler size={24} color={theme.palette.neutral.medium} />;
+      case 'mood':
+        return <FaRegHeart size={24} color={theme.palette.neutral.medium} />;
+      case 'negative':
+        return <FiThumbsDown size={24} color={theme.palette.neutral.medium} />;
+      case 'personality':
+        return <FaRegUser size={24} color={theme.palette.neutral.medium} />;
+      case 'places':
+        return <FiMapPin size={24} color={theme.palette.neutral.medium} />;
+      case 'positive':
+        return <FiThumbsUp size={24} color={theme.palette.neutral.medium} />;
+      case 'romance':
+        return <RiHeartsLine size={24} color={theme.palette.neutral.medium} />;
+      case 'social':
+        return <RiBeerLine size={24} color={theme.palette.neutral.medium} />;
+      case 'status':
+        return <BiPulse size={24} color={theme.palette.neutral.medium} />;
+      default:
+        return <MdLabelOutline size={24} color={theme.palette.neutral.medium} />;
+    }
+  };
 
   const DrawerList = (
     <PerfectScrollbar component="div">
@@ -223,7 +265,7 @@ export default function LabelsDrawer() {
                 }}
               >
                 <ListItemIcon>
-                  <MdLabelOutline size={24} color={theme.palette.neutral.medium} />
+                  {renderIcon(text)}
                 </ListItemIcon>
                 <ListItemText
                   primary={capFirstLetter(text)}
