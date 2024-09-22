@@ -92,17 +92,18 @@ const SimilarText = ({ item, searchSimilar }) => {
 }
 
 function HighlightCaps({ text }) {
-  const theme = useTheme()
-  const mode = useSelector((state) => state.mode)
+  const theme = useTheme();
+  const mode = useSelector((state) => state.mode);
+
   // Function to process the string
   const processText = (text) => {
-    // Regular expression to match consecutive 2 or more uppercase letters
-    const regex = /[A-Z]{2,}/g;
+    // Regular expression to match consecutive 2 or more uppercase letters or characters inside parentheses (including the parentheses)
+    const regex = /[A-Z]{2,}|\(.*?\)/g;
 
     // Split the text based on the match
     const parts = text.split(regex);
 
-    // Find the matches (consecutive capital letters)
+    // Find the matches (consecutive capital letters and text inside parentheses)
     const matches = text.match(regex);
 
     // If no matches found, return the original text
@@ -113,7 +114,7 @@ function HighlightCaps({ text }) {
     return parts.reduce((acc, part, index) => {
       acc.push(<span key={`part-${index}`}>{part}</span>); // Add normal text
       if (matches[index]) {
-        // If there's a match at this index, add it with the blue color
+        // If there's a match at this index, add it with the highlighted color
         acc.push(
           <span key={`match-${index}`} style={{ color: mode === "light" ? theme.palette.tertiary.dark : theme.palette.primary.main }}>
             {matches[index]}
@@ -126,6 +127,7 @@ function HighlightCaps({ text }) {
 
   return <div>{processText(text)}</div>;
 }
+
 
 const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficulty, definition, similar, expression, sentence, pinned }) => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px) and (max-height:2160px)") // All Desktops
