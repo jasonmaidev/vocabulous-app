@@ -609,7 +609,7 @@ export default function AddVocabDialog({ text }) {
             </Stack>
 
             {/* ----- Label Field ----- */}
-            <Stack direction={"row"} alignItems={"center"} spacing={1}>
+            <Stack direction={"row"} alignItems={"center"} spacing={showLabels ? 1 : 2}>
               <Typography>Label</Typography>
               {showLabels ?
                 <Stack direction={"row"} flexWrap={"wrap"} sx={{ p: 0.25 }}>
