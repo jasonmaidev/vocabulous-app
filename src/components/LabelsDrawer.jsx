@@ -27,6 +27,7 @@ import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import { FiEdit3, FiThumbsUp, FiThumbsDown, FiMapPin, FiBriefcase } from "react-icons/fi";
 import { RiHeartsLine } from "react-icons/ri";
+import { HiOutlineBookOpen } from "react-icons/hi2";
 import { styled } from "@mui/system";
 import EditLabelsWidget from 'views/widgets/EditLabelsWidget';
 import apiUrl from "config/api"
@@ -149,6 +150,8 @@ export default function LabelsDrawer() {
         return <IoBeerOutline size={24} color={theme.palette.neutral.medium} />;
       case 'status':
         return <BiPulse size={24} color={theme.palette.neutral.medium} />;
+      case 'wisdom':
+        return <HiOutlineBookOpen size={24} color={theme.palette.neutral.medium} />;
       default:
         return <MdLabelOutline size={24} color={theme.palette.neutral.medium} />;
     }
