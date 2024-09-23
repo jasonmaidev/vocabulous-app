@@ -1032,7 +1032,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           </IconButton>
                         </Stack>
                         :
-                        <Stack direction={"row"}>
+                        <Stack direction={"row"} alignItems={"flex-start"}>
                           <Typography
                             fontSize={isWideScreens ? "3.5rem" : isQHDScreens ? "3rem" : "2.25rem"}
                             lineHeight={1.1}
@@ -1146,242 +1146,246 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                   }
 
                   <Stack spacing={1}>
-                    <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
-                      <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
-                        Similar
-                      </Typography>
-                      <IconButton onClick={openEditSimilar}>
-                        <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
-                      </IconButton>
-                    </Stack>
-
-                    {(!editingSimilar && similar?.length === 0) && (
-                      <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditSimilar}>
-                        <Typography fontSize={"1.5rem"}>+</Typography>
-                      </Button>
-                    )}
-
-                    {/* 1st Similar */}
-                    {editingSimilar ?
+                    {text.length < 9 && (
                       <>
                         <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
-                          <InputBase
-                            id={uuidv4()}
-                            // placeholder={similar[0]}
-                            onChange={(e) => setNewSimilarOne(e.target.value)}
-                            value={newSimilarEntry < 1 || newSimilarOne?.length > 0 || removeSimilarOne ? newSimilarOne : similar[0]}
-                            required={true}
-                            sx={{
-                              width: isLandscape ? "75%" : "70%",
-                              fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
-                              color: theme.palette.neutral.dark,
-                              border: `solid 1px ${theme.palette.neutral.light}`,
-                              borderRadius: "0.5rem",
-                              padding: "0.25rem 0.5rem",
-                            }}
-                          />
-                          {similar?.length > 0 ? (
-                            <Stack>
-                              {removeSimilarOne ?
-                                <Tooltip title="Undo" placement="right">
-                                  <IconButton onClick={() => setRemoveSimilarOne(false)}>
-                                    <CgUndo color={theme.palette.neutral.dark} />
-                                  </IconButton>
-                                </Tooltip>
+                          <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
+                            Similar
+                          </Typography>
+                          <IconButton onClick={openEditSimilar}>
+                            <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
+                          </IconButton>
+                        </Stack>
+
+                        {(!editingSimilar && similar?.length === 0) && (
+                          <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditSimilar}>
+                            <Typography fontSize={"1.5rem"}>+</Typography>
+                          </Button>
+                        )}
+
+                        {/* 1st Similar */}
+                        {editingSimilar ?
+                          <>
+                            <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                              <InputBase
+                                id={uuidv4()}
+                                // placeholder={similar[0]}
+                                onChange={(e) => setNewSimilarOne(e.target.value)}
+                                value={newSimilarEntry < 1 || newSimilarOne?.length > 0 || removeSimilarOne ? newSimilarOne : similar[0]}
+                                required={true}
+                                sx={{
+                                  width: isLandscape ? "75%" : "70%",
+                                  fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
+                                  color: theme.palette.neutral.dark,
+                                  border: `solid 1px ${theme.palette.neutral.light}`,
+                                  borderRadius: "0.5rem",
+                                  padding: "0.25rem 0.5rem",
+                                }}
+                              />
+                              {similar?.length > 0 ? (
+                                <Stack>
+                                  {removeSimilarOne ?
+                                    <Tooltip title="Undo" placement="right">
+                                      <IconButton onClick={() => setRemoveSimilarOne(false)}>
+                                        <CgUndo color={theme.palette.neutral.dark} />
+                                      </IconButton>
+                                    </Tooltip>
+                                    :
+                                    <Tooltip title="Delete" placement="left">
+                                      <IconButton onClick={removeSimOne}>
+                                        <TbTrashX color={theme.palette.neutral.dark} />
+                                      </IconButton>
+                                    </Tooltip>
+                                  }
+                                </Stack>
+                              )
                                 :
-                                <Tooltip title="Delete" placement="left">
-                                  <IconButton onClick={removeSimOne}>
-                                    <TbTrashX color={theme.palette.neutral.dark} />
-                                  </IconButton>
-                                </Tooltip>
+                                <IconButton onClick={subtractSimilarEntry} disabled={newSimilarOne.length > 0}>
+                                  <IoMdClose size={16} />
+                                </IconButton>
+                              }
+                              {(similar?.length < 4 && newSimilarEntry < 4) &&
+                                <IconButton onClick={addSimilarEntry}>
+                                  <IoMdAdd size={16} />
+                                </IconButton>
                               }
                             </Stack>
-                          )
-                            :
-                            <IconButton onClick={subtractSimilarEntry} disabled={newSimilarOne.length > 0}>
-                              <IoMdClose size={16} />
-                            </IconButton>
-                          }
-                          {(similar?.length < 4 && newSimilarEntry < 4) &&
-                            <IconButton onClick={addSimilarEntry}>
-                              <IoMdAdd size={16} />
-                            </IconButton>
-                          }
-                        </Stack>
 
-                        {/* 2nd Similar */}
-                        {(similar?.length > 1 || newSimilarEntry > 1) && (
-                          <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
-                            <InputBase
-                              id={uuidv4()}
-                              // placeholder={similar[1]}
-                              onChange={(e) => setNewSimilarTwo(e.target.value)}
-                              value={!removeSimilarTwo ? similar[1] : newSimilarTwo}
-                              required={true}
-                              sx={{
-                                width: isLandscape ? "75%" : "70%",
-                                fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
-                                color: theme.palette.neutral.dark,
-                                border: `solid 1px ${theme.palette.neutral.light}`,
-                                borderRadius: "0.5rem",
-                                padding: "0.25rem 0.5rem",
-                              }}
-                            />
-                            {similar?.length > 1 ? (
-                              <Stack>
-                                {removeSimilarTwo ?
-                                  <Tooltip title="Undo" placement="right">
-                                    <IconButton onClick={() => setRemoveSimilarTwo(false)}>
-                                      <CgUndo color={theme.palette.neutral.dark} />
-                                    </IconButton>
-                                  </Tooltip>
-                                  :
-                                  <Tooltip title="Delete" placement="left">
-                                    <IconButton onClick={removeSimTwo}>
-                                      <TbTrashX color={theme.palette.neutral.dark} />
-                                    </IconButton>
-                                  </Tooltip>
-                                }
-                              </Stack>
-                            )
-                              :
-                              <IconButton onClick={subtractSimilarEntry} disabled={newSimilarTwo.length > 0}>
-                                <IoMdClose size={16} />
-                              </IconButton>
-                            }
-                          </Stack>
-                        )}
-
-                        {/* 3rd Similar */}
-                        {(similar?.length > 2 || newSimilarEntry > 2) && (
-                          <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
-                            <InputBase
-                              id={uuidv4()}
-                              // placeholder={similar[2]}
-                              onChange={(e) => setNewSimilarThree(e.target.value)}
-                              value={!removeSimilarThree ? similar[2] : newSimilarThree}
-                              required={true}
-                              sx={{
-                                width: isLandscape ? "75%" : "70%",
-                                fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
-                                color: theme.palette.neutral.dark,
-                                border: `solid 1px ${theme.palette.neutral.light}`,
-                                borderRadius: "0.5rem",
-                                padding: "0.25rem 0.5rem",
-                              }}
-                            />
-                            {similar?.length > 2 ? (
-                              <Stack>
-                                {removeSimilarThree ?
-                                  <Tooltip title="Undo" placement="right">
-                                    <IconButton onClick={() => setRemoveSimilarThree(false)}>
-                                      <CgUndo color={theme.palette.neutral.dark} />
-                                    </IconButton>
-                                  </Tooltip>
-                                  :
-                                  <Tooltip title="Delete" placement="left">
-                                    <IconButton onClick={removeSimThree}>
-                                      <TbTrashX color={theme.palette.neutral.dark} />
-                                    </IconButton>
-                                  </Tooltip>
-                                }
-                              </Stack>
-                            )
-                              :
-                              <IconButton onClick={subtractSimilarEntry} disabled={newSimilarThree.length > 0}>
-                                <IoMdClose size={16} />
-                              </IconButton>
-                            }
-                          </Stack>
-                        )}
-
-                        {/* 4th Similar */}
-                        {(similar?.length > 3 || newSimilarEntry > 3) && (
-                          <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
-                            <InputBase
-                              id={uuidv4()}
-                              // placeholder={similar[3]}
-                              onChange={(e) => setNewSimilarFour(e.target.value)}
-                              value={!removeSimilarFour ? similar[3] : newSimilarFour}
-                              required={true}
-                              sx={{
-                                width: isLandscape ? "75%" : "70%",
-                                fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
-                                color: theme.palette.neutral.dark,
-                                border: `solid 1px ${theme.palette.neutral.light}`,
-                                borderRadius: "0.5rem",
-                                padding: "0.25rem 0.5rem",
-                              }}
-                            />
-                            {similar?.length > 3 ? (
-                              <Stack>
-                                {removeSimilarFour ?
-                                  <Tooltip title="Undo" placement="right">
-                                    <IconButton onClick={() => setRemoveSimilarFour(false)}>
-                                      <CgUndo color={theme.palette.neutral.dark} />
-                                    </IconButton>
-                                  </Tooltip>
-                                  :
-                                  <Tooltip title="Delete" placement="left">
-                                    <IconButton onClick={removeSimFour}>
-                                      <TbTrashX color={theme.palette.neutral.dark} />
-                                    </IconButton>
-                                  </Tooltip>
-                                }
-                              </Stack>
-                            )
-                              :
-                              <IconButton onClick={subtractSimilarEntry} disabled={newSimilarFour.length > 0}>
-                                <IoMdClose size={16} />
-                              </IconButton>
-                            }
-                          </Stack>
-                        )}
-                        <Button
-                          onClick={handleUpdateSimilar}
-                          sx={{ fontSize: isWideScreens ? "1.25rem" : isQHDScreens ? "1rem" : "0.8rem" }}
-                        >
-                          Done
-                        </Button>
-                      </>
-                      :
-                      <>
-                        {/* ----- Similar ----- */}
-                        <Stack
-                          // onClick={openEditSimilar} 
-                          direction={"row"} alignItems={"center"} spacing={2}>
-                          <Stack>
-                            <Stack
-                              direction={"row"}
-                              alignItems={"center"}
-                              spacing={0}
-                              flexWrap={"wrap"}
-                            >
-                              {similar?.map((item, index) => (
-                                <Stack
-                                  key={`${item}-${index}`}
-                                  spacing={0}
+                            {/* 2nd Similar */}
+                            {(similar?.length > 1 || newSimilarEntry > 1) && (
+                              <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                                <InputBase
+                                  id={uuidv4()}
+                                  // placeholder={similar[1]}
+                                  onChange={(e) => setNewSimilarTwo(e.target.value)}
+                                  value={!removeSimilarTwo ? similar[1] : newSimilarTwo}
+                                  required={true}
                                   sx={{
-                                    borderRadius: "0.75rem",
-                                    padding: "0.25rem 0.75rem",
+                                    width: isLandscape ? "75%" : "70%",
+                                    fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
+                                    color: theme.palette.neutral.dark,
+                                    border: `solid 1px ${theme.palette.neutral.light}`,
+                                    borderRadius: "0.5rem",
+                                    padding: "0.25rem 0.5rem",
                                   }}
+                                />
+                                {similar?.length > 1 ? (
+                                  <Stack>
+                                    {removeSimilarTwo ?
+                                      <Tooltip title="Undo" placement="right">
+                                        <IconButton onClick={() => setRemoveSimilarTwo(false)}>
+                                          <CgUndo color={theme.palette.neutral.dark} />
+                                        </IconButton>
+                                      </Tooltip>
+                                      :
+                                      <Tooltip title="Delete" placement="left">
+                                        <IconButton onClick={removeSimTwo}>
+                                          <TbTrashX color={theme.palette.neutral.dark} />
+                                        </IconButton>
+                                      </Tooltip>
+                                    }
+                                  </Stack>
+                                )
+                                  :
+                                  <IconButton onClick={subtractSimilarEntry} disabled={newSimilarTwo.length > 0}>
+                                    <IoMdClose size={16} />
+                                  </IconButton>
+                                }
+                              </Stack>
+                            )}
+
+                            {/* 3rd Similar */}
+                            {(similar?.length > 2 || newSimilarEntry > 2) && (
+                              <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                                <InputBase
+                                  id={uuidv4()}
+                                  // placeholder={similar[2]}
+                                  onChange={(e) => setNewSimilarThree(e.target.value)}
+                                  value={!removeSimilarThree ? similar[2] : newSimilarThree}
+                                  required={true}
+                                  sx={{
+                                    width: isLandscape ? "75%" : "70%",
+                                    fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
+                                    color: theme.palette.neutral.dark,
+                                    border: `solid 1px ${theme.palette.neutral.light}`,
+                                    borderRadius: "0.5rem",
+                                    padding: "0.25rem 0.5rem",
+                                  }}
+                                />
+                                {similar?.length > 2 ? (
+                                  <Stack>
+                                    {removeSimilarThree ?
+                                      <Tooltip title="Undo" placement="right">
+                                        <IconButton onClick={() => setRemoveSimilarThree(false)}>
+                                          <CgUndo color={theme.palette.neutral.dark} />
+                                        </IconButton>
+                                      </Tooltip>
+                                      :
+                                      <Tooltip title="Delete" placement="left">
+                                        <IconButton onClick={removeSimThree}>
+                                          <TbTrashX color={theme.palette.neutral.dark} />
+                                        </IconButton>
+                                      </Tooltip>
+                                    }
+                                  </Stack>
+                                )
+                                  :
+                                  <IconButton onClick={subtractSimilarEntry} disabled={newSimilarThree.length > 0}>
+                                    <IoMdClose size={16} />
+                                  </IconButton>
+                                }
+                              </Stack>
+                            )}
+
+                            {/* 4th Similar */}
+                            {(similar?.length > 3 || newSimilarEntry > 3) && (
+                              <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                                <InputBase
+                                  id={uuidv4()}
+                                  // placeholder={similar[3]}
+                                  onChange={(e) => setNewSimilarFour(e.target.value)}
+                                  value={!removeSimilarFour ? similar[3] : newSimilarFour}
+                                  required={true}
+                                  sx={{
+                                    width: isLandscape ? "75%" : "70%",
+                                    fontSize: isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem",
+                                    color: theme.palette.neutral.dark,
+                                    border: `solid 1px ${theme.palette.neutral.light}`,
+                                    borderRadius: "0.5rem",
+                                    padding: "0.25rem 0.5rem",
+                                  }}
+                                />
+                                {similar?.length > 3 ? (
+                                  <Stack>
+                                    {removeSimilarFour ?
+                                      <Tooltip title="Undo" placement="right">
+                                        <IconButton onClick={() => setRemoveSimilarFour(false)}>
+                                          <CgUndo color={theme.palette.neutral.dark} />
+                                        </IconButton>
+                                      </Tooltip>
+                                      :
+                                      <Tooltip title="Delete" placement="left">
+                                        <IconButton onClick={removeSimFour}>
+                                          <TbTrashX color={theme.palette.neutral.dark} />
+                                        </IconButton>
+                                      </Tooltip>
+                                    }
+                                  </Stack>
+                                )
+                                  :
+                                  <IconButton onClick={subtractSimilarEntry} disabled={newSimilarFour.length > 0}>
+                                    <IoMdClose size={16} />
+                                  </IconButton>
+                                }
+                              </Stack>
+                            )}
+                            <Button
+                              onClick={handleUpdateSimilar}
+                              sx={{ fontSize: isWideScreens ? "1.25rem" : isQHDScreens ? "1rem" : "0.8rem" }}
+                            >
+                              Done
+                            </Button>
+                          </>
+                          :
+                          <>
+                            {/* ----- Similar ----- */}
+                            <Stack
+                              // onClick={openEditSimilar} 
+                              direction={"row"} alignItems={"center"} spacing={2}>
+                              <Stack>
+                                <Stack
+                                  direction={"row"}
+                                  alignItems={"center"}
+                                  spacing={0}
+                                  flexWrap={"wrap"}
                                 >
-                                  <SimilarText item={item} searchSimilar={searchSimilar} />
-                                  <Typography
-                                    fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
-                                    lineHeight={1}
-                                    fontStyle={"italic"}
-                                    color={theme.palette.primary.dark}
-                                  >
-                                    {item ? pinyin(item) : ""}
-                                  </Typography>
+                                  {similar?.map((item, index) => (
+                                    <Stack
+                                      key={`${item}-${index}`}
+                                      spacing={0}
+                                      sx={{
+                                        borderRadius: "0.75rem",
+                                        padding: "0.25rem 0.75rem",
+                                      }}
+                                    >
+                                      <SimilarText item={item} searchSimilar={searchSimilar} />
+                                      <Typography
+                                        fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
+                                        lineHeight={1}
+                                        fontStyle={"italic"}
+                                        color={theme.palette.primary.dark}
+                                      >
+                                        {item ? pinyin(item) : ""}
+                                      </Typography>
+                                    </Stack>
+                                  ))}
                                 </Stack>
-                              ))}
+                              </Stack>
                             </Stack>
-                          </Stack>
-                        </Stack>
+                          </>
+                        }
                       </>
-                    }
+                    )}
                   </Stack>
 
                 </Stack>
