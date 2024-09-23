@@ -1121,12 +1121,12 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                       </Stack>
                     </>
                     :
-                    <Stack direction={"column"} spacing={0.5}>
-                      <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"} spacing={0.5}
+                    <Stack direction={"column"} spacing={0.25}>
+                      <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"} spacing={0.25}
                         sx={{
                           border: "none",
                           borderRadius: "0.5rem",
-                          padding: "0.5rem",
+                          padding: "0.5rem 0.75rem",
                           backgroundColor: mode === "light" ? "rgba(180, 180, 180, 0.2)" : "rgba(0, 11, 13, 0.45)", // Semi-transparent background
                           backdropFilter: "blur(10px)", // Apply the glass effect
                           WebkitBackdropFilter: "blur(10px)",
