@@ -6,7 +6,7 @@ import { IoClose } from "react-icons/io5"
 import { FaCircle, FaRegCircle } from "react-icons/fa";
 import { IoMdAdd, IoMdClose } from "react-icons/io";
 import { IoLanguageSharp } from "react-icons/io5";
-import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
 import {
   Box,
@@ -252,9 +252,7 @@ export default function AddVocabDialog({ text }) {
       queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
-      setShowLabels(false)
       setVocabPinyin("")
-      setCheckedLabels([])
       setVocabDefinition("")
       setVocabSimilarOne("")
       setVocabSimilarTwo("")
@@ -610,6 +608,48 @@ export default function AddVocabDialog({ text }) {
 
             {/* ----- Label Field ----- */}
             <Stack direction={"row"} alignItems={"center"} spacing={showLabels ? 1 : 2}>
+              {showLabels ?
+                <Button
+                  startIcon={<AiOutlineEyeInvisible size={16} color={theme.palette.neutral.darker} />}
+                  onClick={() => setShowLabels(false)}
+                  className={(mode === "light") ? "gradient-button" : "gradient-button-dark"}
+                  size="medium"
+                  sx={
+                    (mode === "light") ?
+                      {
+                        color: theme.palette.neutral.dark,
+                        margin: "0.5rem 1rem",
+                        padding: "0.5rem 1rem",
+                        borderRadius: "6rem",
+                        fontSize: "0.75rem",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        border: `1px solid ${theme.palette.neutral.light}`,
+                        ":hover": {
+                          backgroundColor: theme.palette.background.alt
+                        }
+                      }
+                      :
+                      {
+                        color: theme.palette.primary.main,
+                        margin: "0.5rem 1rem",
+                        padding: "0.5rem 1rem",
+                        borderRadius: "6rem",
+                        fontSize: "0.75rem",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        border: `1px solid ${theme.palette.neutral.light}`,
+                        ":hover": {
+                          backgroundColor: theme.palette.background.alt
+                        }
+                      }
+                  }
+                >
+                  Hide
+                </Button>
+                :
+                <Typography>Label</Typography>
+              }
               <Typography>Label</Typography>
               {showLabels ?
                 <Stack direction={"row"} flexWrap={"wrap"} sx={{ p: 0.25 }}>
@@ -636,7 +676,7 @@ export default function AddVocabDialog({ text }) {
                 </Stack>
                 :
                 <Button
-                  startIcon={<MdOutlineRemoveRedEye size={16} color={theme.palette.neutral.darker} />}
+                  startIcon={<AiOutlineEye size={16} color={theme.palette.neutral.darker} />}
                   onClick={() => setShowLabels(true)}
                   className={(mode === "light") ? "gradient-button" : "gradient-button-dark"}
                   size="medium"
