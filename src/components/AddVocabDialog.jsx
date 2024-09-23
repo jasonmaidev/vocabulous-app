@@ -618,7 +618,7 @@ export default function AddVocabDialog({ text }) {
                     (mode === "light") ?
                       {
                         color: theme.palette.neutral.dark,
-                        margin: "0.5rem 1rem",
+                        // margin: "0.5rem 1rem",
                         padding: "0.5rem 1rem",
                         borderRadius: "6rem",
                         fontSize: "0.75rem",
@@ -632,7 +632,7 @@ export default function AddVocabDialog({ text }) {
                       :
                       {
                         color: theme.palette.primary.main,
-                        margin: "0.5rem 1rem",
+                        // margin: "0.5rem 1rem",
                         padding: "0.5rem 1rem",
                         borderRadius: "6rem",
                         fontSize: "0.75rem",
@@ -650,7 +650,6 @@ export default function AddVocabDialog({ text }) {
                 :
                 <Typography>Label</Typography>
               }
-              <Typography>Label</Typography>
               {showLabels ?
                 <Stack direction={"row"} flexWrap={"wrap"} sx={{ p: 0.25 }}>
                   {labelsData?.[0].label.map((text, index) => (
