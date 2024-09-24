@@ -2381,7 +2381,15 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     && expression[5]?.length > 4
                     && sentence[0]?.length > 9
                   ) ||
-                  (sentence.length > 3 && sentence[0]?.length > 9 && sentence[1]?.length > 9 && sentence[2]?.length > 9) ? 2 : 0}
+                  (sentence.length > 2
+                    && expression[0]?.length > 4
+                    && expression[1]?.length > 4
+                    && expression[2]?.length > 4
+                    && expression[3]?.length > 4
+                    && sentence[0]?.length > 9
+                    && sentence[1]?.length > 9
+                    && sentence[2]?.length > 9
+                  ) ? 2 : 0}
                 borderTop={`solid 1px rgba(255,255,255, 0.15)`}>
                 <Stack direction={"row"} alignItems={"center"} spacing={1}>
                   <Button
