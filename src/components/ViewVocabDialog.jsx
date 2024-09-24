@@ -2352,7 +2352,16 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
 
             {isPortrait && (
               <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} mt={1} pt={1}
-                pb={(expression.length > 6 && sentence.length > 1) || (sentence.length > 3) ? 2 : 0}
+                pb={(expression.length > 6 && sentence.length > 1) ||
+                  (expression[0]?.length > 4
+                    && expression[1]?.length > 4
+                    && expression[2]?.length > 4
+                    && expression[3]?.length > 4
+                    && expression[4]?.length > 4
+                    && expression[5]?.length > 4
+                    && expression[6]?.length > 4
+                  ) ||
+                  (sentence.length > 3) ? 2 : 0}
                 borderTop={`solid 1px rgba(255,255,255, 0.15)`}>
                 <Stack direction={"row"} alignItems={"center"} spacing={1}>
                   <Button
