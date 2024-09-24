@@ -2382,10 +2382,10 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     && sentence[0]?.length > 9
                   ) ||
                   (sentence.length > 2
-                    && expression[0]?.length > 4
-                    && expression[1]?.length > 4
-                    && expression[2]?.length > 4
-                    && expression[3]?.length > 4
+                    && expression[0]?.length > 3
+                    && expression[1]?.length > 3
+                    && expression[2]?.length > 3
+                    && expression[3]?.length > 3
                     && sentence[0]?.length > 9
                     && sentence[1]?.length > 9
                     && sentence[2]?.length > 9
@@ -2394,7 +2394,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                 <Stack direction={"row"} alignItems={"center"} spacing={1}>
                   <Button
                     onClick={handleViewVocab}
-                    // className={mode === "dark" ? "gradient-button-dark" : "gradient-button"}
                     sx={
                       viewVocab ?
                         {
@@ -2430,7 +2429,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     Vocab
                   </Button>
                   <Button
-                    // className={mode === "dark" ? "gradient-button-dark" : "gradient-button"}
                     onClick={handleViewUsage}
                     sx={
                       viewUsage ?
