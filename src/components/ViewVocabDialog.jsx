@@ -1169,7 +1169,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                               <InputBase
                                 id={uuidv4()}
-                                placeholder={"相似意思"}
+                                placeholder={""}
                                 onChange={(e) => setNewSimilarOne(e.target.value)}
                                 value={newSimilarEntry < 1 || newSimilarOne?.length > 0 || removeSimilarOne ? newSimilarOne : similar[0]}
                                 required={true}
@@ -1216,7 +1216,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                                 <InputBase
                                   id={uuidv4()}
-                                  placeholder={"相似意思"}
+                                  placeholder={""}
                                   onChange={(e) => setNewSimilarTwo(e.target.value)}
                                   value={!removeSimilarTwo ? similar[1] : newSimilarTwo}
                                   required={true}
@@ -1259,7 +1259,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                                 <InputBase
                                   id={uuidv4()}
-                                  placeholder={"相似意思"}
+                                  placeholder={""}
                                   onChange={(e) => setNewSimilarThree(e.target.value)}
                                   value={!removeSimilarThree ? similar[2] : newSimilarThree}
                                   required={true}
@@ -1302,7 +1302,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                                 <InputBase
                                   id={uuidv4()}
-                                  placeholder={"相似意思"}
+                                  placeholder={""}
                                   onChange={(e) => setNewSimilarFour(e.target.value)}
                                   value={!removeSimilarFour ? similar[3] : newSimilarFour}
                                   required={true}
@@ -1721,7 +1721,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                         <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                           <InputBase
                             id={uuidv4()}
-                            placeholder={"用法"}
+                            placeholder={""}
                             onChange={(e) => setNewExpressionsOne(e.target.value)}
                             value={newExpressionsEntry < 1 || newExpressionsOne?.length > 0 || removeExpressionsOne ? newExpressionsOne : expression[0]}
                             required={true}
@@ -1768,7 +1768,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              placeholder={"用法"}
+                              placeholder={""}
                               onChange={(e) => setNewExpressionsTwo(e.target.value)}
                               value={!removeExpressionsTwo ? expression[1] : newExpressionsTwo}
                               required={true}
@@ -1811,7 +1811,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              placeholder={"用法"}
+                              placeholder={""}
                               onChange={(e) => setNewExpressionsThree(e.target.value)}
                               value={!removeExpressionsThree ? expression[2] : newExpressionsThree}
                               required={true}
@@ -1854,7 +1854,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              placeholder={"用法"}
+                              placeholder={""}
                               onChange={(e) => setNewExpressionsFour(e.target.value)}
                               value={!removeExpressionsFour ? expression[3] : newExpressionsFour}
                               required={true}
@@ -1897,7 +1897,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              placeholder={"用法"}
+                              placeholder={""}
                               onChange={(e) => setNewExpressionsFive(e.target.value)}
                               value={!removeExpressionsFive ? expression[4] : newExpressionsFive}
                               required={true}
@@ -1940,7 +1940,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              placeholder={"用法"}
+                              placeholder={""}
                               onChange={(e) => setNewExpressionsSix(e.target.value)}
                               value={!removeExpressionsSix ? expression[5] : newExpressionsSix}
                               required={true}
@@ -1983,7 +1983,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              placeholder={"用法"}
+                              placeholder={""}
                               onChange={(e) => setNewExpressionsSeven(e.target.value)}
                               value={!removeExpressionsSeven ? expression[6] : newExpressionsSeven}
                               required={true}
@@ -2026,7 +2026,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              placeholder={"用法"}
+                              placeholder={""}
                               onChange={(e) => setNewExpressionsEight(e.target.value)}
                               value={!removeExpressionsEight ? expression[7] : newExpressionsEight}
                               required={true}
@@ -2125,7 +2125,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                         <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                           <InputBase
                             id={uuidv4()}
-                            placeholder={"句子"}
+                            placeholder={""}
                             onChange={(e) => setNewSentencesOne(e.target.value)}
                             value={newSentencesEntry < 1 || newSentencesOne?.length > 0 || removeSentencesOne ? newSentencesOne : sentence[0]}
                             multiline
@@ -2174,7 +2174,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              placeholder={"句子"}
+                              placeholder={""}
                               onChange={(e) => setNewSentencesTwo(e.target.value)}
                               value={!removeSentencesTwo ? sentence[1] : newSentencesTwo}
                               multiline
@@ -2219,7 +2219,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              placeholder={"句子"}
+                              placeholder={""}
                               onChange={(e) => setNewSentencesThree(e.target.value)}
                               value={!removeSentencesThree ? sentence[2] : newSentencesThree}
                               multiline
@@ -2264,7 +2264,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
-                              placeholder={"句子"}
+                              placeholder={""}
                               onChange={(e) => setNewSentencesFour(e.target.value)}
                               value={!removeSentencesFour ? sentence[3] : newSentencesFour}
                               multiline
