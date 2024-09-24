@@ -747,7 +747,7 @@ export default function AddVocabDialog({ text }) {
               </Stack>
               <InputBase
                 id={uuidv4()}
-                placeholder=""
+                placeholder="相似意思"
                 onChange={(e) => setVocabSimilarOne(e.target.value)}
                 value={vocabSimilarOne}
                 required={true}
@@ -772,7 +772,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="相似意思"
                   onChange={(e) => setVocabSimilarTwo(e.target.value)}
                   value={vocabSimilarTwo}
                   required={true}
@@ -798,7 +798,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="相似意思"
                   onChange={(e) => setVocabSimilarThree(e.target.value)}
                   value={vocabSimilarThree}
                   required={true}
@@ -824,7 +824,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="相似意思"
                   onChange={(e) => setVocabSimilarFour(e.target.value)}
                   value={vocabSimilarFour}
                   required={true}
@@ -852,7 +852,7 @@ export default function AddVocabDialog({ text }) {
               </Stack>
               <InputBase
                 id={uuidv4()}
-                placeholder=""
+                placeholder="用法"
                 onChange={(e) => setVocabExpressionOne(e.target.value)}
                 value={vocabExpressionOne}
                 required={true}
@@ -878,7 +878,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="用法"
                   onChange={(e) => setVocabExpressionTwo(e.target.value)}
                   value={vocabExpressionTwo}
                   required={true}
@@ -904,7 +904,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="用法"
                   onChange={(e) => setVocabExpressionThree(e.target.value)}
                   value={vocabExpressionThree}
                   required={true}
@@ -930,7 +930,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="用法"
                   onChange={(e) => setVocabExpressionFour(e.target.value)}
                   value={vocabExpressionFour}
                   required={true}
@@ -956,7 +956,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="用法"
                   onChange={(e) => setVocabExpressionFive(e.target.value)}
                   value={vocabExpressionFive}
                   required={true}
@@ -982,7 +982,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="用法"
                   onChange={(e) => setVocabExpressionSix(e.target.value)}
                   value={vocabExpressionSix}
                   required={true}
@@ -1008,7 +1008,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="用法"
                   onChange={(e) => setVocabExpressionSeven(e.target.value)}
                   value={vocabExpressionSeven}
                   required={true}
@@ -1034,7 +1034,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Expression</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="用法"
                   onChange={(e) => setVocabExpressionEight(e.target.value)}
                   value={vocabExpressionEight}
                   required={true}
@@ -1063,7 +1063,7 @@ export default function AddVocabDialog({ text }) {
               </Stack>
               <InputBase
                 id={uuidv4()}
-                placeholder=""
+                placeholder="句子"
                 multiline
                 rows={2}
                 onChange={(e) => setVocabSentenceOne(e.target.value)}
@@ -1091,7 +1091,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Sentence</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="句子"
                   multiline
                   rows={2}
                   onChange={(e) => setVocabSentenceTwo(e.target.value)}
@@ -1119,7 +1119,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Sentence</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="句子"
                   multiline
                   rows={2}
                   onChange={(e) => setVocabSentenceThree(e.target.value)}
@@ -1147,7 +1147,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Sentence</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder=""
+                  placeholder="句子"
                   multiline
                   rows={2}
                   onChange={(e) => setVocabSentenceFour(e.target.value)}

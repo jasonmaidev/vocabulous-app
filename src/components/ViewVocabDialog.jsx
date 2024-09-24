@@ -1169,7 +1169,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                             <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                               <InputBase
                                 id={uuidv4()}
-                                placeholder={"同样意思"}
+                                placeholder={"相似意思"}
                                 onChange={(e) => setNewSimilarOne(e.target.value)}
                                 value={newSimilarEntry < 1 || newSimilarOne?.length > 0 || removeSimilarOne ? newSimilarOne : similar[0]}
                                 required={true}
@@ -1216,7 +1216,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                                 <InputBase
                                   id={uuidv4()}
-                                  placeholder={"同样意思"}
+                                  placeholder={"相似意思"}
                                   onChange={(e) => setNewSimilarTwo(e.target.value)}
                                   value={!removeSimilarTwo ? similar[1] : newSimilarTwo}
                                   required={true}
@@ -1259,7 +1259,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                                 <InputBase
                                   id={uuidv4()}
-                                  placeholder={"同样意思"}
+                                  placeholder={"相似意思"}
                                   onChange={(e) => setNewSimilarThree(e.target.value)}
                                   value={!removeSimilarThree ? similar[2] : newSimilarThree}
                                   required={true}
@@ -1302,7 +1302,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                               <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                                 <InputBase
                                   id={uuidv4()}
-                                  placeholder={"同样意思"}
+                                  placeholder={"相似意思"}
                                   onChange={(e) => setNewSimilarFour(e.target.value)}
                                   value={!removeSimilarFour ? similar[3] : newSimilarFour}
                                   required={true}
