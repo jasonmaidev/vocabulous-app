@@ -20,14 +20,14 @@ import Drawer from '@mui/material/Drawer';
 import { BiHomeAlt2, BiPulse } from "react-icons/bi";
 import { PiCircleBold, PiDiamondBold, PiStarBold, PiRuler } from "react-icons/pi";
 import { MdLabelOutline, MdAccessTime } from "react-icons/md";
-import { TbTemperature } from "react-icons/tb";
-import { IoLanguage, IoBeerOutline } from "react-icons/io5";
+import { TbTemperature, TbPin } from "react-icons/tb";
+import { IoLanguage, IoBeerOutline, IoBodyOutline } from "react-icons/io5";
 import { LiaLaughSquint, LiaFeatherAltSolid } from "react-icons/lia";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { BsArrowRightSquareFill } from "react-icons/bs";
-import { FiEdit3, FiThumbsUp, FiThumbsDown, FiMapPin, FiBriefcase } from "react-icons/fi";
+import { FiEdit3, FiThumbsUp, FiThumbsDown, FiMapPin, FiBriefcase, FiHash } from "react-icons/fi";
 import { RiHeartsLine } from "react-icons/ri";
-import { HiOutlineBookOpen } from "react-icons/hi2";
+import { HiOutlineBookOpen, HiOutlineChatBubbleLeft } from "react-icons/hi2";
 import { styled } from "@mui/system";
 import EditLabelsWidget from 'views/widgets/EditLabelsWidget';
 import apiUrl from "config/api"
@@ -120,14 +120,20 @@ export default function LabelsDrawer() {
 
   const renderIcon = (text) => {
     switch (text) {
+      case 'body':
+        return <IoBodyOutline size={24} color={theme.palette.neutral.medium} />;
       case 'business':
         return <FiBriefcase size={24} color={theme.palette.neutral.medium} />;
+      case 'colloquial':
+        return <HiOutlineChatBubbleLeft size={24} color={theme.palette.neutral.medium} />;
       case 'degree':
         return <TbTemperature size={24} color={theme.palette.neutral.medium} />;
       case 'frequency':
         return <MdAccessTime size={24} color={theme.palette.neutral.medium} />;
       case 'grammar':
         return <IoLanguage size={24} color={theme.palette.neutral.medium} />;
+      case 'house':
+        return <BiHomeAlt2 size={24} color={theme.palette.neutral.medium} />;
       case 'humor':
         return <LiaLaughSquint size={24} color={theme.palette.neutral.medium} />;
       case 'idiom':
@@ -146,6 +152,8 @@ export default function LabelsDrawer() {
         return <FiThumbsUp size={24} color={theme.palette.neutral.medium} />;
       case 'romance':
         return <RiHeartsLine size={24} color={theme.palette.neutral.medium} />;
+      case 'slang':
+        return <FiHash size={24} color={theme.palette.neutral.medium} />;
       case 'social':
         return <IoBeerOutline size={24} color={theme.palette.neutral.medium} />;
       case 'status':
@@ -172,10 +180,10 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <BiHomeAlt2 size={24} color={theme.palette.neutral.medium} />
+                <TbPin size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText
-                primary={"Home"}
+                primary={"Pinned"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
               />
             </ListItemButton>
@@ -323,10 +331,10 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <BiHomeAlt2 size={24} color={theme.palette.neutral.medium} />
+                <TbPin size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText
-                primary={"Home"}
+                primary={"Pinned"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
               />
             </ListItemButton>
