@@ -26,8 +26,8 @@ import { LiaLaughSquint, LiaFeatherAltSolid } from "react-icons/lia";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import { FiEdit3, FiThumbsUp, FiThumbsDown, FiMapPin, FiBriefcase, FiHash } from "react-icons/fi";
-import { RiHeartsLine } from "react-icons/ri";
-import { HiOutlineBookOpen, HiOutlineChatBubbleLeft } from "react-icons/hi2";
+import { RiHeartsLine, RiChat3Line } from "react-icons/ri";
+import { HiOutlineBookOpen } from "react-icons/hi2";
 import { styled } from "@mui/system";
 import EditLabelsWidget from 'views/widgets/EditLabelsWidget';
 import apiUrl from "config/api"
@@ -125,7 +125,7 @@ export default function LabelsDrawer() {
       case 'business':
         return <FiBriefcase size={24} color={theme.palette.neutral.medium} />;
       case 'colloquial':
-        return <HiOutlineChatBubbleLeft size={24} color={theme.palette.neutral.medium} />;
+        return <RiChat3Line size={24} color={theme.palette.neutral.medium} />;
       case 'degree':
         return <TbTemperature size={24} color={theme.palette.neutral.medium} />;
       case 'frequency':
