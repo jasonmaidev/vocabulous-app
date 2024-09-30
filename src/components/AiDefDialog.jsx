@@ -3,6 +3,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { PiSparkleFill } from "react-icons/pi";
 import { useQuery } from "@tanstack/react-query"
 import { Typography, Stack, useTheme, IconButton, useMediaQuery } from "@mui/material"
+import { pinyin } from "pinyin-pro"
 import BarLoader from "react-spinners/BarLoader"
 import apiUrl from "config/api"
 
@@ -48,6 +49,14 @@ const AiDefDialog = ({ item, handleDefClose, defOpen }) => {
           <IoCloseSharp size={24} color={theme.palette.neutral.darker} />
         </IconButton>
       </Stack>
+      <Typography
+        fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
+        lineHeight={1}
+        fontStyle={"italic"}
+        color={theme.palette.neutral.mid}
+      >
+        {pinyin(item)}
+      </Typography>
       <Stack direction={"row"} alignItems={"center"} justifyContent={"flex-start"} spacing={1}
         sx={{
           border: "none",
