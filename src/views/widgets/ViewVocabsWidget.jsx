@@ -2,7 +2,6 @@ import { TbPinFilled } from "react-icons/tb"
 import { useMediaQuery, Stack, useTheme, Typography } from "@mui/material"
 import { useSelector } from "react-redux"
 import { useQuery } from "@tanstack/react-query"
-import { CgArrowTopRight } from "react-icons/cg";
 import PinnedVocabBox from "components/PinnedVocabBox"
 import VocabBox from "components/VocabBox"
 import PinnedVocabRow from "components/PinnedVocabRow"

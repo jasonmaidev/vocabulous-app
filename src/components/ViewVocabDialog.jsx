@@ -10,7 +10,7 @@ import { IoSearch, IoAddCircleOutline } from "react-icons/io5";
 import { IoMdAdd, IoMdClose, IoMdMore, IoMdCheckmark } from "react-icons/io";
 import { PiCircleBold, PiDiamondBold, PiStarBold } from "react-icons/pi";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
-import { Box, Popover, Grow, Stack, Dialog, Typography, Checkbox, InputBase, Menu, MenuItem, ListItemIcon, ListItemText, useTheme, Button, IconButton, useMediaQuery, Tooltip, } from "@mui/material"
+import { Box, Grow, Stack, Dialog, Typography, Checkbox, InputBase, Menu, MenuItem, ListItemIcon, ListItemText, useTheme, Button, IconButton, useMediaQuery, Tooltip, } from "@mui/material"
 import { pinyin } from "pinyin-pro"
 import { setViewVocab, setViewUsage, setViewBySearchTerm } from "state"
 import PropagateLoader from "react-spinners/PropagateLoader"
@@ -34,6 +34,7 @@ const fetchSimilarVocab = async (similarSearchText, _id, token) => {
 const SimilarText = ({ item, searchSimilar }) => {
   const isQHDScreens = useMediaQuery("(min-width:2500px) and (max-height:1600px)") // 2K Laptops
   const isWideScreens = useMediaQuery("(min-width:3400px) and (max-height:1500px)") // Wide and Ultrawide Desktops
+  const isLandscape = window.matchMedia("(orientation: landscape)").matches;
   const theme = useTheme()
   const mode = useSelector((state) => state.mode)
 
@@ -83,7 +84,7 @@ const SimilarText = ({ item, searchSimilar }) => {
             backdropFilter: "blur(4px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(4px)", // Safari support for blur effect
             borderRadius: "6rem",
-            padding: "0.5rem 0",
+            padding: isLandscape ? "0.5rem 1rem" : "0.125rem 0",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
@@ -175,7 +176,7 @@ const ExpressionText = ({ item }) => {
             backdropFilter: "blur(4px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(4px)", // Safari support for blur effect
             borderRadius: "6rem",
-            padding: "0.5rem 0",
+            padding: isLandscape ? "0.5rem 1rem" : "0.125rem 0",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}

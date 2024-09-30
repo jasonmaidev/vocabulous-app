@@ -1,4 +1,4 @@
-import { useState, forwardRef, Suspense } from "react";
+import { useState, forwardRef, lazy, Suspense } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { Grow, Menu, MenuItem, ListItemIcon, ListItemText, Dialog, Stack, IconButton, Typography, useTheme, useMediaQuery, Tooltip } from "@mui/material"
 import { IoMdMore } from "react-icons/io";
@@ -7,9 +7,9 @@ import { PiCircleBold, PiDiamondBold, PiStarBold } from "react-icons/pi";
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import RowBox from "./RowBox";
 import GridLoader from "react-spinners/GridLoader"
-import ViewVocabDialog from "./ViewVocabDialog";
 import { setViewVocab, setViewUsage } from "state"
 import apiUrl from "config/api"
+const ViewVocabDialog = lazy(() => import("./ViewVocabDialog"))
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Grow ref={ref} {...props} />
@@ -19,7 +19,6 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
   const isQHDScreens = useMediaQuery("(min-width:2500px) and (max-height:1600px)") // 2K Laptops
   const isWideScreens = useMediaQuery("(min-width:3400px) and (max-height:1500px)") // Wide and Ultrawide Desktops
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
   const mode = useSelector((state) => state.mode)
   const token = useSelector((state) => state.token)
 
