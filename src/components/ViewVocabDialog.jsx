@@ -10,7 +10,7 @@ import { IoSearch, IoAddCircleOutline } from "react-icons/io5";
 import { IoMdAdd, IoMdClose, IoMdMore, IoMdCheckmark } from "react-icons/io";
 import { PiCircleBold, PiDiamondBold, PiStarBold } from "react-icons/pi";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
-import { Box, Popover, Grow, Stack, Typography, Checkbox, InputBase, Menu, MenuItem, ListItemIcon, ListItemText, useTheme, Button, IconButton, useMediaQuery, Tooltip, } from "@mui/material"
+import { Box, Popover, Grow, Stack, Dialog, Typography, Checkbox, InputBase, Menu, MenuItem, ListItemIcon, ListItemText, useTheme, Button, IconButton, useMediaQuery, Tooltip, } from "@mui/material"
 import { pinyin } from "pinyin-pro"
 import { setViewVocab, setViewUsage, setViewBySearchTerm } from "state"
 import apiUrl from "config/api"
@@ -120,9 +120,6 @@ const ExpressionText = ({ item }) => {
 
   /* View Vocab Dialog State */
   const [defOpen, setDefOpen] = useState(false)
-  const handleViewOpen = () => {
-    setDefOpen(true)
-  }
   const handleDefClose = () => {
     setDefOpen(false)
   }
@@ -2238,9 +2235,14 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                       </>
                     }
 
-                    <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
-                      Sentences
-                    </Typography>
+                    <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                      <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
+                        Sentences
+                      </Typography>
+                      <IconButton onClick={openEditSentences}>
+                        <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
+                      </IconButton>
+                    </Stack>
 
                     {(!editingSentences && sentence?.length === 0) && (
                       <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditSentences}>
@@ -2443,7 +2445,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                       :
                       <>
                         {/* ----- Sentence ----- */}
-                        <Stack onClick={openEditSentences} direction={"row"} alignItems={"center"} spacing={2}>
+                        <Stack direction={"row"} alignItems={"center"} spacing={2}>
                           <Stack>
                             <Stack
                               direction={"column"}
