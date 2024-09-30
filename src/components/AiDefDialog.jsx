@@ -63,7 +63,7 @@ const AiDefDialog = ({ item, handleDefClose, defOpen }) => {
           fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.9rem"}
           lineHeight={1.2}
           color={theme.palette.primary.dark}>
-          {definitionData?.isLoading ?
+          {isLoading ?
             <BarLoader
               color={theme.palette.primary.main}
               loading={true}
