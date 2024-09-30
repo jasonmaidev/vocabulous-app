@@ -67,7 +67,7 @@ const LoginPage = () => {
 
           {/* ----- App Slogan ----- */}
           <Typography fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
-            金字卡
+            金字卡 Ai
           </Typography>
         </Stack>
         {isNonMobileScreens && (

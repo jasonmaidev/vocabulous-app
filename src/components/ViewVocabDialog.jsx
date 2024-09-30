@@ -37,64 +37,78 @@ const SimilarText = ({ item, searchSimilar }) => {
   const theme = useTheme()
   const mode = useSelector((state) => state.mode)
 
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    searchSimilar(item)
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  /* Options Drowndown Menu */
+  const [simMenuAnchor, setSimMenuAnchor] = useState(null)
+  const openMenu = Boolean(simMenuAnchor)
+  const handleSimMenuClick = (event) => {
+    setSimMenuAnchor(event.currentTarget)
+    // searchSimilar(item)
+  }
+  const handleMenuClose = () => {
+    setSimMenuAnchor(null)
+  }
 
   return (
     <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
       <Typography fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.75rem"}
-        onClick={handleClick}
+        onClick={handleSimMenuClick}
         sx={{ cursor: "pointer" }}
       >
         {item}
       </Typography>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
+      <Menu
+        id="basic-menu"
+        anchorEl={simMenuAnchor}
+        open={openMenu}
+        onClose={handleMenuClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
         anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'right',
+          vertical: 'bottom',
+          horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: 'center',
-          horizontal: 'left',
+          vertical: 'bottom',
+          horizontal: 'center',
         }}
-        slotProps={{
-          paper: {
-            sx: {
-              margin: "0.25rem 0.25rem 1rem 0.25rem",
-              borderRadius: "6rem",
-              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
-              backgroundColor: mode === "light" ? "rgba(255, 255, 255, 1)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
-              backgroundImage: `linear-gradient(
-                to top left, 
-                rgba(255, 255, 255, 0.15), 
-                rgba(255, 255, 255, 0.05)
-              )`, // Gradient overlay
-              backdropFilter: "blur(5px)", // Apply the glass effect
-              WebkitBackdropFilter: "blur(5px)", // For Safari support
-              border: "1px solid rgba(255, 255, 255, 0.2)"
-            },
+        sx={{
+          "& .MuiPaper-root": {
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 11, 13, 0.2)", // Semi-transparent background
+            backgroundImage: `linear-gradient(
+              to bottom right, 
+              rgba(255, 255, 255, 0.15), 
+              rgba(255, 255, 255, 0.05)
+            )`, // Gradient overlay for the glassmorphism effect
+            backdropFilter: "blur(4px)", // Apply the blur effect
+            WebkitBackdropFilter: "blur(4px)", // Safari support for blur effect
+            borderRadius: "6rem",
+            padding: "0.5rem 0",
+            border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
       >
-        <IconButton onMouseDown={() => searchSimilar(item)} onClick={() => searchSimilar(item)}>
-          <IoSearch size={24} color={theme.palette.neutral.darker} />
-        </IconButton>
-      </Popover>
+        <MenuItem
+          onMouseDown={() => searchSimilar(item)}
+          onClick={() => searchSimilar(item)}
+          sx={{
+            "&:hover": {
+              backgroundColor: "transparent",
+            },
+          }}
+        >
+          <ListItemIcon
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',  // Centers the icon horizontally
+              minWidth: 'unset',  // Removes the default minWidth from ListItemIcon
+              width: '100%',
+            }}
+          >
+            <IoSearch size={24} color={theme.palette.neutral.darker} />
+          </ListItemIcon>
+        </MenuItem>
+      </Menu>
     </Stack>
   )
 }
@@ -106,77 +120,86 @@ const ExpressionText = ({ item }) => {
   const theme = useTheme()
   const mode = useSelector((state) => state.mode)
 
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    // searchSimilar(item)
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
-
   /* View Vocab Dialog State */
   const [defOpen, setDefOpen] = useState(false)
   const handleDefClose = () => {
     setDefOpen(false)
   }
-
   const openDef = () => {
-    handleClose()
+    handleMenuClose()
     setDefOpen(true)
+  }
+
+  /* Options Drowndown Menu */
+  const [expMenuAnchor, setExpMenuAnchor] = useState(null)
+  const openMenu = Boolean(expMenuAnchor)
+  const handleExpMenuClick = (event) => {
+    setExpMenuAnchor(event.currentTarget)
+  }
+  const handleMenuClose = () => {
+    setExpMenuAnchor(null)
   }
 
   return (
     <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
       <Typography fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}
-        onClick={handleClick}
+        onClick={handleExpMenuClick}
         sx={{ cursor: "pointer" }}
       >
         {item}
       </Typography>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
+      <Menu
+        id="basic-menu"
+        anchorEl={expMenuAnchor}
+        open={openMenu}
+        onClose={handleMenuClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
         anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'right',
+          vertical: 'bottom',
+          horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: 'center',
-          horizontal: 'left',
+          vertical: 'bottom',
+          horizontal: 'center',
         }}
-        slotProps={{
-          paper: {
-            sx: {
-              margin: "0.25rem 0.25rem 1rem 0.25rem",
-              borderRadius: "6rem",
-              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
-              backgroundColor: mode === "light" ? "rgba(255, 255, 255, 1)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
-              backgroundImage: `linear-gradient(
-                to top left, 
-                rgba(255, 255, 255, 0.15), 
-                rgba(255, 255, 255, 0.05)
-              )`, // Gradient overlay
-              backdropFilter: "blur(5px)", // Apply the glass effect
-              WebkitBackdropFilter: "blur(5px)", // For Safari support
-              border: "1px solid rgba(255, 255, 255, 0.2)"
-            },
+        sx={{
+          "& .MuiPaper-root": {
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 11, 13, 0.2)", // Semi-transparent background
+            backgroundImage: `linear-gradient(
+              to bottom right, 
+              rgba(255, 255, 255, 0.15), 
+              rgba(255, 255, 255, 0.05)
+            )`, // Gradient overlay for the glassmorphism effect
+            backdropFilter: "blur(4px)", // Apply the blur effect
+            WebkitBackdropFilter: "blur(4px)", // Safari support for blur effect
+            borderRadius: "6rem",
+            padding: "0.5rem 0",
+            border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
       >
-        <IconButton
+        <MenuItem
           onClick={openDef}
+          sx={{
+            "&:hover": {
+              backgroundColor: "transparent",
+            },
+          }}
         >
-          <FiBookOpen size={24} color={theme.palette.neutral.darker} />
-        </IconButton>
-      </Popover>
+          <ListItemIcon
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',  // Centers the icon horizontally
+              minWidth: 'unset',  // Removes the default minWidth from ListItemIcon
+              width: '100%',
+            }}
+          >
+            <FiBookOpen size={24} color={theme.palette.neutral.darker} />
+          </ListItemIcon>
+        </MenuItem>
+      </Menu>
       <Dialog
         open={defOpen}
         TransitionComponent={Transition}
@@ -996,7 +1019,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
   }, [similarSearchText, refetch]);
 
   const searchSimilar = (item) => {
-    // handleSimilarMenuClick()
     setSimilarSearchText(item);
 
     if (similarSearchData?.length > 0) {

@@ -932,8 +932,7 @@ export default function AddVocabDialog({ text }) {
                     (mode === "light") ?
                       {
                         color: theme.palette.neutral.dark,
-                        // margin: "0.5rem 1rem",
-                        padding: "0.5rem 0.5rem 0.5rem 1rem",
+                        padding: "0.5rem 0.25rem 0.5rem 0.75rem",
                         borderRadius: "6rem",
                         fontSize: "0.75rem",
                         fontWeight: 700,
@@ -946,8 +945,7 @@ export default function AddVocabDialog({ text }) {
                       :
                       {
                         color: theme.palette.primary.main,
-                        // margin: "0.5rem 1rem",
-                        padding: "0.5rem 0.5rem 0.5rem 1rem",
+                        padding: "0.5rem 0.25rem 0.5rem 0.75rem",
                         borderRadius: "6rem",
                         fontSize: "0.75rem",
                         fontWeight: 700,

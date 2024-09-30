@@ -122,7 +122,7 @@ const Navbar = ({
                     src={`https://res.cloudinary.com/dngvjrd0n/image/upload/v1725936257/portfolio/voca-logo-${mode}.png`}
                   />
                   <Typography fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
-                    金字卡
+                    金字卡 Ai
                   </Typography>
                 </Stack>
               )
@@ -143,7 +143,7 @@ const Navbar = ({
               :
               (
                 <Typography onClick={() => navigate("/")} fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
-                  金字卡
+                  金字卡 Ai
                 </Typography>
               )
             }
