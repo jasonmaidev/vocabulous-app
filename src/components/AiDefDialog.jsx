@@ -34,7 +34,7 @@ const AiDefDialog = ({ item, handleDefClose, defOpen }) => {
     {
       enabled: !!item && defOpen,
       keepPreviousData: true,
-      staleTime: 5000
+      staleTime: 1000
     }
   );
 
