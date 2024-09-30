@@ -30,8 +30,8 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
   /* View Vocab Dialog State */
   const [uploadOpen, setUploadOpen] = useState(false)
   const handleViewOpen = () => {
-    dispatch(setViewVocab({ viewVocab: true }))
-    dispatch(setViewUsage({ viewUsage: false }))
+    // dispatch(setViewVocab({ viewVocab: true }))
+    // dispatch(setViewUsage({ viewUsage: false }))
     setUploadOpen(true)
   }
   const handleViewClose = () => {

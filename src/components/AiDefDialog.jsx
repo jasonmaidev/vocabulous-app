@@ -10,6 +10,7 @@ import apiUrl from "config/api"
 const AiDefDialog = ({ item, handleDefClose, defOpen }) => {
   const isQHDScreens = useMediaQuery("(min-width:2500px) and (max-height:1600px)") // 2K Laptops
   const isWideScreens = useMediaQuery("(min-width:3400px) and (max-height:1500px)") // Wide and Ultrawide Desktops
+  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
   const token = useSelector((state) => state.token)
   const mode = useSelector((state) => state.mode)
   const theme = useTheme()
@@ -42,7 +43,7 @@ const AiDefDialog = ({ item, handleDefClose, defOpen }) => {
   return (
     <Stack spacing={1}>
       <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"} spacing={0.5}>
-        <Typography fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}>
+        <Typography fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : (isPortrait && item.length > 9) ? "1.35rem" : "1.5rem"}>
           {item}
         </Typography>
         <IconButton onClick={handleDefClose}>

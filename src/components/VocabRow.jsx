@@ -29,8 +29,8 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
   /* View Vocab Dialog State */
   const [uploadOpen, setUploadOpen] = useState(false)
   const handleViewOpen = () => {
-    dispatch(setViewVocab({ viewVocab: true }))
-    dispatch(setViewUsage({ viewUsage: false }))
+    // dispatch(setViewVocab({ viewVocab: true }))
+    // dispatch(setViewUsage({ viewUsage: false }))
     setUploadOpen(true)
   }
   const handleViewClose = () => {

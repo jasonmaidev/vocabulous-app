@@ -297,8 +297,8 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
   const dispatch = useDispatch()
   const { _id } = useSelector((state) => state.user)
   const token = useSelector((state) => state.token)
-  const viewVocab = useSelector((state) => state.viewVocab)
-  const viewUsage = useSelector((state) => state.viewUsage)
+  // const viewVocab = useSelector((state) => state.viewVocab)
+  // const viewUsage = useSelector((state) => state.viewUsage)
   const queryClient = useQueryClient()
   const mode = useSelector((state) => state.mode)
 
@@ -1028,14 +1028,27 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     }
   };
 
+  const [viewVocab, setViewVocab] = useState(true)
+  const [viewUsage, setViewUsage] = useState(false)
+
   const handleViewVocab = () => {
-    dispatch(setViewVocab({ viewVocab: true }))
-    dispatch(setViewUsage({ viewUsage: false }))
+    if (viewUsage === true) {
+      setViewUsage(false)
+    } else if (viewVocab === false) {
+      setViewVocab(true)
+    }
+    // dispatch(setViewUsage({ viewUsage: false }))
+    // dispatch(setViewVocab({ viewVocab: true }))
   }
 
   const handleViewUsage = () => {
-    dispatch(setViewUsage({ viewUsage: true }))
-    dispatch(setViewVocab({ viewVocab: false }))
+    if (viewVocab === true) {
+      setViewVocab(false)
+    } else if (viewUsage === false) {
+      setViewUsage(true)
+    }
+    // dispatch(setViewVocab({ viewVocab: false }))
+    // dispatch(setViewUsage({ viewUsage: true }))
   }
 
   /* Options Drowndown Menu */
@@ -2550,7 +2563,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                     && expression[0]?.length > 3
                     && expression[1]?.length > 3
                     && expression[2]?.length > 3
-                    && expression[3]?.length > 3
                     && sentence[0]?.length > 9
                     && sentence[1]?.length > 9
                     && sentence[2]?.length > 9
