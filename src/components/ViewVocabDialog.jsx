@@ -15,8 +15,7 @@ import { pinyin } from "pinyin-pro"
 import { setViewVocab, setViewUsage, setViewBySearchTerm } from "state"
 import PropagateLoader from "react-spinners/PropagateLoader"
 import apiUrl from "config/api"
-const AiDefDialog = lazy(() => import("./AiDefDialog"))
-
+import AiDefDialog from "./AiDefDialog"
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Grow ref={ref} {...props} />
@@ -209,17 +208,7 @@ const ExpressionText = ({ item }) => {
           },
         }}
       >
-        <Suspense fallback={
-          <PropagateLoader
-            color={theme.palette.neutral.light}
-            loading={true}
-            size={20}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        }>
-          <AiDefDialog item={item} handleDefClose={handleDefClose} defOpen={defOpen} />
-        </Suspense>
+        <AiDefDialog item={item} handleDefClose={handleDefClose} defOpen={defOpen} />
       </Dialog>
     </Stack>
   )
