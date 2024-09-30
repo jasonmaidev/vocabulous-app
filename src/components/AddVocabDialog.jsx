@@ -174,6 +174,17 @@ export default function AddVocabDialog({ text }) {
     setVocabExpression(newVocabExpression);
   };
 
+  const [generatingExp, setGeneratingExp] = useState(false)
+  const [showRegenExpOne, setShowRegenExpOne] = useState(false)
+  const [showRegenExpTwo, setShowRegenExpTwo] = useState(false)
+  const [showRegenExpThree, setShowRegenExpThree] = useState(false)
+  const [showRegenExpFour, setShowRegenExpFour] = useState(false)
+  const [showRegenExpFive, setShowRegenExpFive] = useState(false)
+  const [showRegenExpSix, setShowRegenExpSix] = useState(false)
+  const [showRegenExpSeven, setShowRegenExpSeven] = useState(false)
+  const [showRegenExpEight, setShowRegenExpEight] = useState(false)
+  const [aiExpData, setAiExpData] = useState([])
+
   const genExpTwo = () => {
     if (genExpData) {
       const randomIndex = Math.floor(Math.random() * genExpData.expressions.length);
@@ -245,16 +256,6 @@ export default function AddVocabDialog({ text }) {
     setVocabExpressionShowCount(vocabExpressionShowCount - 1)
   }
 
-  const [generatingExp, setGeneratingExp] = useState(false)
-  const [showRegenExpOne, setShowRegenExpOne] = useState(false)
-  const [showRegenExpTwo, setShowRegenExpTwo] = useState(false)
-  const [showRegenExpThree, setShowRegenExpThree] = useState(false)
-  const [showRegenExpFour, setShowRegenExpFour] = useState(false)
-  const [showRegenExpFive, setShowRegenExpFive] = useState(false)
-  const [showRegenExpSix, setShowRegenExpSix] = useState(false)
-  const [showRegenExpSeven, setShowRegenExpSeven] = useState(false)
-  const [showRegenExpEight, setShowRegenExpEight] = useState(false)
-
   /* Generate Ai Expressions Data */
   const getGenExp = () => {
     return fetch(`${apiUrl}/openai/expressions`, {
@@ -298,6 +299,8 @@ export default function AddVocabDialog({ text }) {
     },
     onSettled: (data) => {
       queryClient.invalidateQueries({ queryKey: ["aiExpData"] });
+
+      setAiExpData(data);
 
       if (data?.expressions) {
         setVocabExpressionOne(data.expressions[0]);
@@ -839,7 +842,7 @@ export default function AddVocabDialog({ text }) {
                       }
                   }
                 >
-                  Hide
+
                 </Button>
                 :
                 <Typography>Label</Typography>
@@ -1125,42 +1128,46 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionTwo}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {(vocabExpressionTwo?.length < 1 && generatingExp) ?
-                  (
-                    <HashLoader
-                      color={theme.palette.primary.main}
-                      loading={true}
-                      size={16}
-                      aria-label="Loading Spinner"
-                      data-testid="loader"
-                    />
-                  )
-                  :
-                  (
-                    <Stack
-                      onMouseOver={() => setShowRegenExpTwo(true)}
-                      onMouseLeave={() => setShowRegenExpTwo(false)}
-                    >
-                      {(showRegenExpTwo && vocabExpressionTwo?.length > 1) ?
-                        <Tooltip title="Regenerate" placement="right">
-                          <IconButton onClick={genExpTwo}>
-                            <IoRefresh size={16} />
-                          </IconButton>
-                        </Tooltip>
-                        :
-                        <Tooltip title="Generate" placement="right">
-                          <IconButton onClick={genExpTwo}>
-                            {vocabExpressionTwo?.length < 1 ?
-                              <PiSparkle size={16} />
-                              :
-                              <PiSparkleFill size={16} />
-                            }
-                          </IconButton>
-                        </Tooltip>
-                      }
-                    </Stack>
-                  )
-                }
+                {aiExpData.length > 0 && (
+                  <>
+                    {(vocabExpressionTwo?.length < 1 && generatingExp) ?
+                      (
+                        <HashLoader
+                          color={theme.palette.primary.main}
+                          loading={true}
+                          size={16}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                        />
+                      )
+                      :
+                      (
+                        <Stack
+                          onMouseOver={() => setShowRegenExpTwo(true)}
+                          onMouseLeave={() => setShowRegenExpTwo(false)}
+                        >
+                          {(showRegenExpTwo && vocabExpressionTwo?.length > 1) ?
+                            <Tooltip title="Regenerate" placement="right">
+                              <IconButton onClick={genExpTwo}>
+                                <IoRefresh size={16} />
+                              </IconButton>
+                            </Tooltip>
+                            :
+                            <Tooltip title="Generate" placement="right">
+                              <IconButton onClick={genExpTwo}>
+                                {vocabExpressionTwo?.length < 1 ?
+                                  <PiSparkle size={16} />
+                                  :
+                                  <PiSparkleFill size={16} />
+                                }
+                              </IconButton>
+                            </Tooltip>
+                          }
+                        </Stack>
+                      )
+                    }
+                  </>
+                )}
               </Stack>
             )}
 
@@ -1187,42 +1194,46 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionThree}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {(vocabExpressionThree?.length < 1 && generatingExp) ?
-                  (
-                    <HashLoader
-                      color={theme.palette.primary.main}
-                      loading={true}
-                      size={16}
-                      aria-label="Loading Spinner"
-                      data-testid="loader"
-                    />
-                  )
-                  :
-                  (
-                    <Stack
-                      onMouseOver={() => setShowRegenExpThree(true)}
-                      onMouseLeave={() => setShowRegenExpThree(false)}
-                    >
-                      {(showRegenExpThree && vocabExpressionThree?.length > 1) ?
-                        <Tooltip title="Regenerate" placement="right">
-                          <IconButton onClick={genExpThree}>
-                            <IoRefresh size={16} />
-                          </IconButton>
-                        </Tooltip>
-                        :
-                        <Tooltip title="Generate" placement="right">
-                          <IconButton onClick={genExpThree}>
-                            {vocabExpressionThree?.length < 1 ?
-                              <PiSparkle size={16} />
-                              :
-                              <PiSparkleFill size={16} />
-                            }
-                          </IconButton>
-                        </Tooltip>
-                      }
-                    </Stack>
-                  )
-                }
+                {aiExpData.length > 0 && (
+                  <>
+                    {(vocabExpressionThree?.length < 1 && generatingExp) ?
+                      (
+                        <HashLoader
+                          color={theme.palette.primary.main}
+                          loading={true}
+                          size={16}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                        />
+                      )
+                      :
+                      (
+                        <Stack
+                          onMouseOver={() => setShowRegenExpThree(true)}
+                          onMouseLeave={() => setShowRegenExpThree(false)}
+                        >
+                          {(showRegenExpThree && vocabExpressionThree?.length > 1) ?
+                            <Tooltip title="Regenerate" placement="right">
+                              <IconButton onClick={genExpThree}>
+                                <IoRefresh size={16} />
+                              </IconButton>
+                            </Tooltip>
+                            :
+                            <Tooltip title="Generate" placement="right">
+                              <IconButton onClick={genExpThree}>
+                                {vocabExpressionThree?.length < 1 ?
+                                  <PiSparkle size={16} />
+                                  :
+                                  <PiSparkleFill size={16} />
+                                }
+                              </IconButton>
+                            </Tooltip>
+                          }
+                        </Stack>
+                      )
+                    }
+                  </>
+                )}
               </Stack>
             )}
 
@@ -1249,42 +1260,46 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionFour}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {(vocabExpressionFour?.length < 1 && generatingExp) ?
-                  (
-                    <HashLoader
-                      color={theme.palette.primary.main}
-                      loading={true}
-                      size={16}
-                      aria-label="Loading Spinner"
-                      data-testid="loader"
-                    />
-                  )
-                  :
-                  (
-                    <Stack
-                      onMouseOver={() => setShowRegenExpFour(true)}
-                      onMouseLeave={() => setShowRegenExpFour(false)}
-                    >
-                      {(showRegenExpFour && vocabExpressionFour?.length > 1) ?
-                        <Tooltip title="Regenerate" placement="right">
-                          <IconButton onClick={genExpFour}>
-                            <IoRefresh size={16} />
-                          </IconButton>
-                        </Tooltip>
-                        :
-                        <Tooltip title="Generate" placement="right">
-                          <IconButton onClick={genExpFour}>
-                            {vocabExpressionFour?.length < 1 ?
-                              <PiSparkle size={16} />
-                              :
-                              <PiSparkleFill size={16} />
-                            }
-                          </IconButton>
-                        </Tooltip>
-                      }
-                    </Stack>
-                  )
-                }
+                {aiExpData.length > 0 && (
+                  <>
+                    {(vocabExpressionFour?.length < 1 && generatingExp) ?
+                      (
+                        <HashLoader
+                          color={theme.palette.primary.main}
+                          loading={true}
+                          size={16}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                        />
+                      )
+                      :
+                      (
+                        <Stack
+                          onMouseOver={() => setShowRegenExpFour(true)}
+                          onMouseLeave={() => setShowRegenExpFour(false)}
+                        >
+                          {(showRegenExpFour && vocabExpressionFour?.length > 1) ?
+                            <Tooltip title="Regenerate" placement="right">
+                              <IconButton onClick={genExpFour}>
+                                <IoRefresh size={16} />
+                              </IconButton>
+                            </Tooltip>
+                            :
+                            <Tooltip title="Generate" placement="right">
+                              <IconButton onClick={genExpFour}>
+                                {vocabExpressionFour?.length < 1 ?
+                                  <PiSparkle size={16} />
+                                  :
+                                  <PiSparkleFill size={16} />
+                                }
+                              </IconButton>
+                            </Tooltip>
+                          }
+                        </Stack>
+                      )
+                    }
+                  </>
+                )}
               </Stack>
             )}
 
@@ -1311,42 +1326,46 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionFive}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {(vocabExpressionFive?.length < 1 && generatingExp) ?
-                  (
-                    <HashLoader
-                      color={theme.palette.primary.main}
-                      loading={true}
-                      size={16}
-                      aria-label="Loading Spinner"
-                      data-testid="loader"
-                    />
-                  )
-                  :
-                  (
-                    <Stack
-                      onMouseOver={() => setShowRegenExpFive(true)}
-                      onMouseLeave={() => setShowRegenExpFive(false)}
-                    >
-                      {(showRegenExpFive && vocabExpressionFive?.length > 1) ?
-                        <Tooltip title="Regenerate" placement="right">
-                          <IconButton onClick={genExpFive}>
-                            <IoRefresh size={16} />
-                          </IconButton>
-                        </Tooltip>
-                        :
-                        <Tooltip title="Generate" placement="right">
-                          <IconButton onClick={genExpFive}>
-                            {vocabExpressionFive?.length < 1 ?
-                              <PiSparkle size={16} />
-                              :
-                              <PiSparkleFill size={16} />
-                            }
-                          </IconButton>
-                        </Tooltip>
-                      }
-                    </Stack>
-                  )
-                }
+                {aiExpData.length > 0 && (
+                  <>
+                    {(vocabExpressionFive?.length < 1 && generatingExp) ?
+                      (
+                        <HashLoader
+                          color={theme.palette.primary.main}
+                          loading={true}
+                          size={16}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                        />
+                      )
+                      :
+                      (
+                        <Stack
+                          onMouseOver={() => setShowRegenExpFive(true)}
+                          onMouseLeave={() => setShowRegenExpFive(false)}
+                        >
+                          {(showRegenExpFive && vocabExpressionFive?.length > 1) ?
+                            <Tooltip title="Regenerate" placement="right">
+                              <IconButton onClick={genExpFive}>
+                                <IoRefresh size={16} />
+                              </IconButton>
+                            </Tooltip>
+                            :
+                            <Tooltip title="Generate" placement="right">
+                              <IconButton onClick={genExpFive}>
+                                {vocabExpressionFive?.length < 1 ?
+                                  <PiSparkle size={16} />
+                                  :
+                                  <PiSparkleFill size={16} />
+                                }
+                              </IconButton>
+                            </Tooltip>
+                          }
+                        </Stack>
+                      )
+                    }
+                  </>
+                )}
               </Stack>
             )}
 
@@ -1373,42 +1392,46 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionSix}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {(vocabExpressionSix?.length < 1 && generatingExp) ?
-                  (
-                    <HashLoader
-                      color={theme.palette.primary.main}
-                      loading={true}
-                      size={16}
-                      aria-label="Loading Spinner"
-                      data-testid="loader"
-                    />
-                  )
-                  :
-                  (
-                    <Stack
-                      onMouseOver={() => setShowRegenExpSix(true)}
-                      onMouseLeave={() => setShowRegenExpSix(false)}
-                    >
-                      {(showRegenExpSix && vocabExpressionSix?.length > 1) ?
-                        <Tooltip title="Regenerate" placement="right">
-                          <IconButton onClick={genExpSix}>
-                            <IoRefresh size={16} />
-                          </IconButton>
-                        </Tooltip>
-                        :
-                        <Tooltip title="Generate" placement="right">
-                          <IconButton onClick={genExpSix}>
-                            {vocabExpressionSix?.length < 1 ?
-                              <PiSparkle size={16} />
-                              :
-                              <PiSparkleFill size={16} />
-                            }
-                          </IconButton>
-                        </Tooltip>
-                      }
-                    </Stack>
-                  )
-                }
+                {aiExpData.length > 0 && (
+                  <>
+                    {(vocabExpressionSix?.length < 1 && generatingExp) ?
+                      (
+                        <HashLoader
+                          color={theme.palette.primary.main}
+                          loading={true}
+                          size={16}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                        />
+                      )
+                      :
+                      (
+                        <Stack
+                          onMouseOver={() => setShowRegenExpSix(true)}
+                          onMouseLeave={() => setShowRegenExpSix(false)}
+                        >
+                          {(showRegenExpSix && vocabExpressionSix?.length > 1) ?
+                            <Tooltip title="Regenerate" placement="right">
+                              <IconButton onClick={genExpSix}>
+                                <IoRefresh size={16} />
+                              </IconButton>
+                            </Tooltip>
+                            :
+                            <Tooltip title="Generate" placement="right">
+                              <IconButton onClick={genExpSix}>
+                                {vocabExpressionSix?.length < 1 ?
+                                  <PiSparkle size={16} />
+                                  :
+                                  <PiSparkleFill size={16} />
+                                }
+                              </IconButton>
+                            </Tooltip>
+                          }
+                        </Stack>
+                      )
+                    }
+                  </>
+                )}
               </Stack>
             )}
 
@@ -1435,42 +1458,46 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionSeven}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {(vocabExpressionSeven?.length < 1 && generatingExp) ?
-                  (
-                    <HashLoader
-                      color={theme.palette.primary.main}
-                      loading={true}
-                      size={16}
-                      aria-label="Loading Spinner"
-                      data-testid="loader"
-                    />
-                  )
-                  :
-                  (
-                    <Stack
-                      onMouseOver={() => setShowRegenExpSeven(true)}
-                      onMouseLeave={() => setShowRegenExpSeven(false)}
-                    >
-                      {(showRegenExpSeven && vocabExpressionSeven?.length > 1) ?
-                        <Tooltip title="Regenerate" placement="right">
-                          <IconButton onClick={genExpSeven}>
-                            <IoRefresh size={16} />
-                          </IconButton>
-                        </Tooltip>
-                        :
-                        <Tooltip title="Generate" placement="right">
-                          <IconButton onClick={genExpSeven}>
-                            {vocabExpressionSeven?.length < 1 ?
-                              <PiSparkle size={16} />
-                              :
-                              <PiSparkleFill size={16} />
-                            }
-                          </IconButton>
-                        </Tooltip>
-                      }
-                    </Stack>
-                  )
-                }
+                {aiExpData.length > 0 && (
+                  <>
+                    {(vocabExpressionSeven?.length < 1 && generatingExp) ?
+                      (
+                        <HashLoader
+                          color={theme.palette.primary.main}
+                          loading={true}
+                          size={16}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                        />
+                      )
+                      :
+                      (
+                        <Stack
+                          onMouseOver={() => setShowRegenExpSeven(true)}
+                          onMouseLeave={() => setShowRegenExpSeven(false)}
+                        >
+                          {(showRegenExpSeven && vocabExpressionSeven?.length > 1) ?
+                            <Tooltip title="Regenerate" placement="right">
+                              <IconButton onClick={genExpSeven}>
+                                <IoRefresh size={16} />
+                              </IconButton>
+                            </Tooltip>
+                            :
+                            <Tooltip title="Generate" placement="right">
+                              <IconButton onClick={genExpSeven}>
+                                {vocabExpressionSeven?.length < 1 ?
+                                  <PiSparkle size={16} />
+                                  :
+                                  <PiSparkleFill size={16} />
+                                }
+                              </IconButton>
+                            </Tooltip>
+                          }
+                        </Stack>
+                      )
+                    }
+                  </>
+                )}
               </Stack>
             )}
 
@@ -1497,42 +1524,46 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionEight}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {(vocabExpressionEight?.length < 1 && generatingExp) ?
-                  (
-                    <HashLoader
-                      color={theme.palette.primary.main}
-                      loading={true}
-                      size={16}
-                      aria-label="Loading Spinner"
-                      data-testid="loader"
-                    />
-                  )
-                  :
-                  (
-                    <Stack
-                      onMouseOver={() => setShowRegenExpEight(true)}
-                      onMouseLeave={() => setShowRegenExpEight(false)}
-                    >
-                      {(showRegenExpEight && vocabExpressionEight?.length > 1) ?
-                        <Tooltip title="Regenerate" placement="right">
-                          <IconButton onClick={genExpEight}>
-                            <IoRefresh size={16} />
-                          </IconButton>
-                        </Tooltip>
-                        :
-                        <Tooltip title="Generate" placement="right">
-                          <IconButton onClick={genExpEight}>
-                            {vocabExpressionEight?.length < 1 ?
-                              <PiSparkle size={16} />
-                              :
-                              <PiSparkleFill size={16} />
-                            }
-                          </IconButton>
-                        </Tooltip>
-                      }
-                    </Stack>
-                  )
-                }
+                {aiExpData.length > 0 && (
+                  <>
+                    {(vocabExpressionEight?.length < 1 && generatingExp) ?
+                      (
+                        <HashLoader
+                          color={theme.palette.primary.main}
+                          loading={true}
+                          size={16}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                        />
+                      )
+                      :
+                      (
+                        <Stack
+                          onMouseOver={() => setShowRegenExpEight(true)}
+                          onMouseLeave={() => setShowRegenExpEight(false)}
+                        >
+                          {(showRegenExpEight && vocabExpressionEight?.length > 1) ?
+                            <Tooltip title="Regenerate" placement="right">
+                              <IconButton onClick={genExpEight}>
+                                <IoRefresh size={16} />
+                              </IconButton>
+                            </Tooltip>
+                            :
+                            <Tooltip title="Generate" placement="right">
+                              <IconButton onClick={genExpEight}>
+                                {vocabExpressionEight?.length < 1 ?
+                                  <PiSparkle size={16} />
+                                  :
+                                  <PiSparkleFill size={16} />
+                                }
+                              </IconButton>
+                            </Tooltip>
+                          }
+                        </Stack>
+                      )
+                    }
+                  </>
+                )}
               </Stack>
             )}
 
