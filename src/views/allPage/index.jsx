@@ -1,10 +1,9 @@
 import "../../styles/gradient-button.min.css"
 import { useEffect, lazy, Suspense } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import PropagateLoader from "react-spinners/PropagateLoader"
-import { Box, Typography, useMediaQuery, Button, useTheme } from "@mui/material"
+import { Box, useMediaQuery, useTheme } from "@mui/material"
 import { setViewByLabel, setViewBySearchTerm } from "state"
 import Navbar from "views/navbar"
 import LabelsDrawer from "components/LabelsDrawer"
@@ -16,16 +15,12 @@ const DesktopFooter = lazy(() => import("../widgets/DesktopFooter"))
 
 const AllPage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px) and (max-height:2160px)")
-  const isHDScreens = useMediaQuery("(min-width:1280px) and (max-height:900px)")
   const { palette } = useTheme()
-  const navigate = useNavigate()
-  const mode = useSelector((state) => state.mode)
   const dispatch = useDispatch()
   const viewByLabel = useSelector((state) => state.viewByLabel)
   const viewBySearchTerm = useSelector((state) => state.viewBySearchTerm)
 
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
   const token = useSelector((state) => state.token)
   const { _id } = useSelector((state) => state.user)
@@ -43,12 +38,8 @@ const AllPage = () => {
 
   const { data } = useQuery(["allVocabsData"], getAllVocabs, {
     keepPreviousData: true,
-    staleTime: 500,
+    staleTime: 1000,
   });
-
-  const goToSearch = () => {
-    navigate(`/search/${_id}`)
-  }
 
   useEffect(() => {
     if (viewByLabel !== "") {

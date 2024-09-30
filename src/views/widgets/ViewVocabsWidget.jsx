@@ -37,7 +37,7 @@ const ViewVocabsWidget = () => {
   const { data: labelData } = useQuery(["labeledVocabsData", viewByLabel], getLabeledVocabs, {
     enabled: viewByLabel?.length > 0,
     keepPreviousData: true,
-    staleTime: 500,
+    staleTime: 1000,
   });
 
   const getSearchVocabs = () => {
@@ -51,7 +51,7 @@ const ViewVocabsWidget = () => {
   const { data: searchData } = useQuery(["searchVocabsData", viewBySearchTerm], getSearchVocabs, {
     enabled: viewBySearchTerm?.length > 0,
     keepPreviousData: true,
-    staleTime: 500
+    staleTime: 1000
   })
 
   const getPinnedVocabs = (dataArray) => {

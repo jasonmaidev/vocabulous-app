@@ -1,7 +1,6 @@
 import "../../styles/gradient-button.min.css"
 import { useEffect, lazy, Suspense } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import PropagateLoader from "react-spinners/PropagateLoader"
 import { Box, Typography, useMediaQuery, Stack, useTheme } from "@mui/material"
@@ -18,7 +17,6 @@ const DesktopFooter = lazy(() => import("../widgets/DesktopFooter"))
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px) and (max-height:2160px)")
   const { palette } = useTheme()
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const viewByLabel = useSelector((state) => state.viewByLabel)
   const viewBySearchTerm = useSelector((state) => state.viewBySearchTerm)
@@ -44,7 +42,7 @@ const HomePage = () => {
 
   const { data } = useQuery(["pinnedVocabsData"], getPinnedVocabs, {
     keepPreviousData: true,
-    staleTime: 500
+    staleTime: 1000
   })
 
   useEffect(() => {
