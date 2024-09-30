@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query"
 import { Typography, Stack, useTheme, IconButton, useMediaQuery } from "@mui/material"
 import apiUrl from "config/api"
 
-const AiDefDialog = ({ item, handleDefClose }) => {
+const AiDefDialog = ({ item, handleDefClose, defOpen }) => {
   const isQHDScreens = useMediaQuery("(min-width:2500px) and (max-height:1600px)") // 2K Laptops
   const isWideScreens = useMediaQuery("(min-width:3400px) and (max-height:1500px)") // Wide and Ultrawide Desktops
   const token = useSelector((state) => state.token)
@@ -31,8 +31,9 @@ const AiDefDialog = ({ item, handleDefClose }) => {
 
   const { data: definitionData } = useQuery(["aiDefData", item], getAiDef,
     {
-      enabled: !!item,
+      enabled: !!item && defOpen,
       keepPreviousData: true,
+      staleTime: 1000
     }
   );
 

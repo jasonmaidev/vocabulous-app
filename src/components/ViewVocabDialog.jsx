@@ -207,7 +207,7 @@ const ExpressionText = ({ item }) => {
           },
         }}
       >
-        <AiDefDialog item={item} handleDefClose={handleDefClose} />
+        <AiDefDialog item={item} handleDefClose={handleDefClose} defOpen={defOpen} />
       </Dialog>
     </Stack>
   )
