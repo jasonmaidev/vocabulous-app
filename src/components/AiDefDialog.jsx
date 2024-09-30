@@ -3,6 +3,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { PiSparkleFill } from "react-icons/pi";
 import { useQuery } from "@tanstack/react-query"
 import { Typography, Stack, useTheme, IconButton, useMediaQuery } from "@mui/material"
+import BarLoader from "react-spinners/BarLoader"
 import apiUrl from "config/api"
 
 const AiDefDialog = ({ item, handleDefClose, defOpen }) => {
@@ -29,11 +30,11 @@ const AiDefDialog = ({ item, handleDefClose, defOpen }) => {
       });
   };
 
-  const { data: definitionData } = useQuery(["aiDefData", item], getAiDef,
+  const { data: definitionData, isLoading } = useQuery(["aiDefData", item], getAiDef,
     {
       enabled: !!item && defOpen,
       keepPreviousData: true,
-      staleTime: 1000
+      staleTime: 5000
     }
   );
 
@@ -62,7 +63,16 @@ const AiDefDialog = ({ item, handleDefClose, defOpen }) => {
           fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.9rem"}
           lineHeight={1.2}
           color={theme.palette.primary.dark}>
-          {definitionData?.definition}
+          {definitionData?.isLoading ?
+            <BarLoader
+              color={theme.palette.primary.main}
+              loading={true}
+              size={16}
+              aria-label="Loading Spinner"
+              data-testid="loader" />
+            :
+            definitionData?.data
+          }
         </Typography>
       </Stack>
     </Stack>

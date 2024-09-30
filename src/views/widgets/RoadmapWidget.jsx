@@ -107,6 +107,7 @@ const RoadmapWidget = () => {
                 <Box p={"0.5rem 1.5rem 0 1.5rem"}>
                   <Typography pb={1}><FiCheckCircle /> ChatGPT auto similar-example generation.</Typography>
                   <Typography pb={1}><FiCheckCircle /> ChatGPT auto usage-example generation.</Typography>
+                  <Typography pb={1}><FiCheckCircle /> ChatGPT auto definition generation.</Typography>
                   <Typography pb={1}><FiCircle /> Highlighted text to search.</Typography>
                   <Typography pb={1}><FiCircle /> Text to voice.</Typography>
                   <Typography pb={1}><FiCircle /> Daily word set challenge.</Typography>

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import PropagateLoader from "react-spinners/PropagateLoader"
-import { Box, Typography, useMediaQuery, Stack, Button, useTheme } from "@mui/material"
+import { Box, Typography, useMediaQuery, Stack, useTheme } from "@mui/material"
 import { setViewByLabel, setViewBySearchTerm } from "state"
 import Navbar from "views/navbar"
 import LabelsDrawer from "components/LabelsDrawer"
@@ -17,10 +17,8 @@ const DesktopFooter = lazy(() => import("../widgets/DesktopFooter"))
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px) and (max-height:2160px)")
-  const isHDScreens = useMediaQuery("(min-width:1280px) and (max-height:900px)")
   const { palette } = useTheme()
   const navigate = useNavigate()
-  const mode = useSelector((state) => state.mode)
   const dispatch = useDispatch()
   const viewByLabel = useSelector((state) => state.viewByLabel)
   const viewBySearchTerm = useSelector((state) => state.viewBySearchTerm)
@@ -28,7 +26,6 @@ const HomePage = () => {
   const theme = useTheme()
 
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
   const token = useSelector((state) => state.token)
   const { _id } = useSelector((state) => state.user)
@@ -49,10 +46,6 @@ const HomePage = () => {
     keepPreviousData: true,
     staleTime: 500
   })
-
-  const goToSearch = () => {
-    navigate(`/search/${_id}`)
-  }
 
   useEffect(() => {
     if (viewByLabel !== "") {

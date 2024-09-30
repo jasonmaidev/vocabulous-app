@@ -1,6 +1,6 @@
 import "../styles/gradient-button.min.css"
 import { v4 as uuidv4 } from "uuid"
-import { useState, useEffect, forwardRef } from "react"
+import { useState, useEffect, forwardRef, lazy, Suspense } from "react"
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { TbPin, TbPinFilled, TbTrashX } from "react-icons/tb";
@@ -13,8 +13,10 @@ import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
 import { Box, Popover, Grow, Stack, Dialog, Typography, Checkbox, InputBase, Menu, MenuItem, ListItemIcon, ListItemText, useTheme, Button, IconButton, useMediaQuery, Tooltip, } from "@mui/material"
 import { pinyin } from "pinyin-pro"
 import { setViewVocab, setViewUsage, setViewBySearchTerm } from "state"
+import PropagateLoader from "react-spinners/PropagateLoader"
 import apiUrl from "config/api"
-import AiDefDialog from "./AiDefDialog"
+const AiDefDialog = lazy(() => import("./AiDefDialog"))
+
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Grow ref={ref} {...props} />
@@ -207,7 +209,17 @@ const ExpressionText = ({ item }) => {
           },
         }}
       >
-        <AiDefDialog item={item} handleDefClose={handleDefClose} defOpen={defOpen} />
+        <Suspense fallback={
+          <PropagateLoader
+            color={theme.palette.neutral.light}
+            loading={true}
+            size={20}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        }>
+          <AiDefDialog item={item} handleDefClose={handleDefClose} defOpen={defOpen} />
+        </Suspense>
       </Dialog>
     </Stack>
   )
@@ -2459,7 +2471,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   key={`${item}-${index}`}
                                   spacing={0.5}
                                   sx={{
-                                    cursor: "pointer",
                                     borderRadius: "0.5rem",
                                     padding: "0.5rem 0.75rem",
                                     backgroundColor: mode === "light" ? "rgba(180, 180, 180, 0.2)" : "rgba(0, 11, 13, 0.45)", // Semi-transparent background

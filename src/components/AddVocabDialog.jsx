@@ -186,6 +186,7 @@ export default function AddVocabDialog({ text }) {
     {
       enabled: !!vocabText && generatingSim, // Ensure that vocabText is not empty
       keepPreviousData: true,
+      staleTime: 5000,
     }
   );
 
@@ -393,6 +394,7 @@ export default function AddVocabDialog({ text }) {
     {
       enabled: !!vocabText && generatingExp, // Ensure that vocabText is not empty
       keepPreviousData: true,
+      staleTime: 5000,
     }
   );
 
