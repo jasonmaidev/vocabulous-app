@@ -1,6 +1,6 @@
 import "../styles/gradient-button.min.css"
 import { v4 as uuidv4 } from "uuid"
-import { useState, useEffect } from "react"
+import { useState, useEffect, forwardRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { TbPin, TbPinFilled, TbTrashX } from "react-icons/tb";
@@ -10,10 +10,15 @@ import { IoSearch, IoAddCircleOutline } from "react-icons/io5";
 import { IoMdAdd, IoMdClose, IoMdMore, IoMdCheckmark } from "react-icons/io";
 import { PiCircleBold, PiDiamondBold, PiStarBold } from "react-icons/pi";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
-import { Box, Popover, Stack, Typography, Checkbox, InputBase, Menu, MenuItem, ListItemIcon, ListItemText, useTheme, Button, IconButton, useMediaQuery, Tooltip, } from "@mui/material"
+import { Box, Popover, Grow, Stack, Typography, Checkbox, InputBase, Menu, MenuItem, ListItemIcon, ListItemText, useTheme, Button, IconButton, useMediaQuery, Tooltip, } from "@mui/material"
 import { pinyin } from "pinyin-pro"
 import { setViewVocab, setViewUsage, setViewBySearchTerm } from "state"
 import apiUrl from "config/api"
+import AiDefDialog from "./AiDefDialog"
+
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Grow ref={ref} {...props} />
+})
 
 // Fetch function for similar vocab
 const fetchSimilarVocab = async (similarSearchText, _id, token) => {
@@ -88,6 +93,125 @@ const SimilarText = ({ item, searchSimilar }) => {
           <IoSearch size={24} color={theme.palette.neutral.darker} />
         </IconButton>
       </Popover>
+    </Stack>
+  )
+}
+
+const ExpressionText = ({ item }) => {
+  const isQHDScreens = useMediaQuery("(min-width:2500px) and (max-height:1600px)") // 2K Laptops
+  const isWideScreens = useMediaQuery("(min-width:3400px) and (max-height:1500px)") // Wide and Ultrawide Desktops
+  const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+  const theme = useTheme()
+  const mode = useSelector((state) => state.mode)
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    // searchSimilar(item)
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
+  /* View Vocab Dialog State */
+  const [defOpen, setDefOpen] = useState(false)
+  const handleViewOpen = () => {
+    setDefOpen(true)
+  }
+  const handleDefClose = () => {
+    setDefOpen(false)
+  }
+
+  const openDef = () => {
+    handleClose()
+    setDefOpen(true)
+  }
+
+  return (
+    <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+      <Typography fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}
+        onClick={handleClick}
+        sx={{ cursor: "pointer" }}
+      >
+        {item}
+      </Typography>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'center',
+          horizontal: 'left',
+        }}
+        slotProps={{
+          paper: {
+            sx: {
+              margin: "0.25rem 0.25rem 1rem 0.25rem",
+              borderRadius: "6rem",
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+              backgroundColor: mode === "light" ? "rgba(255, 255, 255, 1)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
+              backgroundImage: `linear-gradient(
+                to top left, 
+                rgba(255, 255, 255, 0.15), 
+                rgba(255, 255, 255, 0.05)
+              )`, // Gradient overlay
+              backdropFilter: "blur(5px)", // Apply the glass effect
+              WebkitBackdropFilter: "blur(5px)", // For Safari support
+              border: "1px solid rgba(255, 255, 255, 0.2)"
+            },
+          },
+        }}
+      >
+        <IconButton
+          onClick={openDef}
+        >
+          <FiBookOpen size={24} color={theme.palette.neutral.darker} />
+        </IconButton>
+      </Popover>
+      <Dialog
+        open={defOpen}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleDefClose}
+        aria-describedby="alert-dialog-grow-description"
+        sx={{
+          "& .MuiDialog-paper": {
+            width: isLandscape ? "18%" : "100%",
+            padding: "1rem",
+            borderRadius: "1rem",
+            display: "flex",
+            boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 1)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
+            backgroundImage: `linear-gradient(
+              to top left, 
+              rgba(255, 255, 255, 0.15), 
+              rgba(255, 255, 255, 0.05)
+            )`, // Gradient overlay
+            backdropFilter: "blur(6px)", // Apply the glass effect
+            WebkitBackdropFilter: "blur(6px)", // For Safari support
+            border: "1px solid rgba(255, 255, 255, 0.2)"
+          },
+        }}
+        slotProps={{
+          backdrop: {
+            sx: {
+              backgroundColor: "rgba(0, 11, 13, 0.7)", // Custom backdrop color
+            },
+          },
+        }}
+      >
+        <AiDefDialog item={item} handleDefClose={handleDefClose} />
+      </Dialog>
     </Stack>
   )
 }
@@ -1704,10 +1828,15 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
 
               <Stack pt={isLandscape ? 1 : 0}>
                 <Stack direction={"column"} justifyItems={"space-between"}>
-                  <Stack spacing={1}>
-                    <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
-                      Expressions
-                    </Typography>
+                  <Stack spacing={0.5}>
+                    <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
+                      <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
+                        Expressions
+                      </Typography>
+                      <IconButton onClick={openEditExpressions}>
+                        <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
+                      </IconButton>
+                    </Stack>
 
                     {(!editingExpressions && expression?.length === 0) && (
                       <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditExpressions}>
@@ -2074,7 +2203,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                       :
                       <>
                         {/* ----- Expression ----- */}
-                        <Stack onClick={openEditExpressions} direction={"row"} alignItems={"center"} spacing={2}>
+                        <Stack direction={"row"} alignItems={"center"} spacing={2}>
                           <Stack>
                             <Stack
                               direction={"row"}
@@ -2092,7 +2221,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                     padding: "0.25rem 0.5rem",
                                   }}
                                 >
-                                  <Typography lineHeight={1.1} fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}>{item}</Typography>
+                                  <ExpressionText item={item} />
                                   <Typography
                                     fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
                                     lineHeight={1}

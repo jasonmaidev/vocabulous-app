@@ -1200,7 +1200,7 @@ export default function AddVocabDialog({ text }) {
                     margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                   }}
                 />
-                <IconButton onClick={() => setVocabSimilarShowCount(vocabSimilarShowCount - 1)}>
+                <IconButton onClick={clearSimilarThree}>
                   <IoMdClose size={16} />
                 </IconButton>
                 {generatedAiSim && (
@@ -1266,7 +1266,7 @@ export default function AddVocabDialog({ text }) {
                     margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                   }}
                 />
-                <IconButton onClick={() => setVocabSimilarShowCount(vocabSimilarShowCount - 1)}>
+                <IconButton onClick={clearSimilarFour}>
                   <IoMdClose size={16} />
                 </IconButton>
                 {generatedAiSim && (
