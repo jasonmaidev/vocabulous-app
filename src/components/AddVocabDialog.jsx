@@ -183,7 +183,7 @@ export default function AddVocabDialog({ text }) {
   const [showRegenExpSix, setShowRegenExpSix] = useState(false)
   const [showRegenExpSeven, setShowRegenExpSeven] = useState(false)
   const [showRegenExpEight, setShowRegenExpEight] = useState(false)
-  const [aiExpData, setAiExpData] = useState([])
+  const [generatedAiExp, setGeneratedAiExp] = useState(false)
 
   const genExpTwo = () => {
     if (genExpData) {
@@ -300,7 +300,7 @@ export default function AddVocabDialog({ text }) {
     onSettled: (data) => {
       queryClient.invalidateQueries({ queryKey: ["aiExpData"] });
 
-      setAiExpData(data);
+      setGeneratedAiExp(true);
 
       if (data?.expressions) {
         setVocabExpressionOne(data.expressions[0]);
@@ -1128,7 +1128,7 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionTwo}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {aiExpData.length > 0 && (
+                {generatedAiExp && (
                   <>
                     {(vocabExpressionTwo?.length < 1 && generatingExp) ?
                       (
@@ -1194,7 +1194,7 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionThree}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {aiExpData.length > 0 && (
+                {generatedAiExp && (
                   <>
                     {(vocabExpressionThree?.length < 1 && generatingExp) ?
                       (
@@ -1260,7 +1260,7 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionFour}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {aiExpData.length > 0 && (
+                {generatedAiExp && (
                   <>
                     {(vocabExpressionFour?.length < 1 && generatingExp) ?
                       (
@@ -1326,7 +1326,7 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionFive}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {aiExpData.length > 0 && (
+                {generatedAiExp && (
                   <>
                     {(vocabExpressionFive?.length < 1 && generatingExp) ?
                       (
@@ -1392,7 +1392,7 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionSix}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {aiExpData.length > 0 && (
+                {generatedAiExp && (
                   <>
                     {(vocabExpressionSix?.length < 1 && generatingExp) ?
                       (
@@ -1458,7 +1458,7 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionSeven}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {aiExpData.length > 0 && (
+                {generatedAiExp && (
                   <>
                     {(vocabExpressionSeven?.length < 1 && generatingExp) ?
                       (
@@ -1524,7 +1524,7 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={clearExpressionEight}>
                   <IoMdClose size={16} />
                 </IconButton>
-                {aiExpData.length > 0 && (
+                {generatedAiExp && (
                   <>
                     {(vocabExpressionEight?.length < 1 && generatingExp) ?
                       (
