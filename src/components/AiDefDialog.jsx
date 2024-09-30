@@ -34,7 +34,7 @@ const AiDefDialog = ({ item, handleDefClose, defOpen }) => {
     {
       enabled: !!item && defOpen,
       keepPreviousData: true,
-      staleTime: 1000
+      staleTime: 5000
     }
   );
 
@@ -67,11 +67,11 @@ const AiDefDialog = ({ item, handleDefClose, defOpen }) => {
             <BarLoader
               color={theme.palette.primary.main}
               loading={true}
-              size={16}
+              size={32}
               aria-label="Loading Spinner"
               data-testid="loader" />
             :
-            definitionData?.data
+            definitionData?.definition
           }
         </Typography>
       </Stack>
