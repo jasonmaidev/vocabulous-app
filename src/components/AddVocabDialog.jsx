@@ -127,6 +127,121 @@ export default function AddVocabDialog({ text }) {
     setVocabSimilar(newVocabSimilar);
   };
 
+  const [generatingSim, setGeneratingSim] = useState(false)
+  const [showRegenSimOne, setShowRegenSimOne] = useState(false)
+  const [showRegenSimTwo, setShowRegenSimTwo] = useState(false)
+  const [showRegenSimThree, setShowRegenSimThree] = useState(false)
+  const [showRegenSimFour, setShowRegenSimFour] = useState(false)
+  const [generatedAiSim, setGeneratedAiSim] = useState(false)
+
+  const genSimTwo = () => {
+    if (genSimData) {
+      const randomIndex = Math.floor(Math.random() * genSimData.similar.length);
+      setVocabSimilarTwo(genSimData.similar[randomIndex])
+    }
+  }
+  const clearSimilarTwo = () => {
+    setVocabSimilarTwo("")
+    setVocabSimilarShowCount(vocabSimilarShowCount - 1)
+  }
+  const genSimThree = () => {
+    if (genSimData) {
+      const randomIndex = Math.floor(Math.random() * genSimData.similar.length);
+      setVocabSimilarThree(genSimData.similar[randomIndex])
+    }
+  }
+  const clearSimilarThree = () => {
+    setVocabSimilarThree("")
+    setVocabSimilarShowCount(vocabSimilarShowCount - 1)
+  }
+  const genSimFour = () => {
+    if (genSimData) {
+      const randomIndex = Math.floor(Math.random() * genSimData.similar.length);
+      setVocabSimilarFour(genSimData.similar[randomIndex])
+    }
+  }
+  const clearSimilarFour = () => {
+    setVocabSimilarFour("")
+    setVocabSimilarShowCount(vocabSimilarShowCount - 1)
+  }
+  /* Generate Ai Similars Data */
+  const getGenSim = () => {
+    return fetch(`${apiUrl}/openai/similar`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json", // Ensure Content-Type is set to JSON
+      },
+      body: JSON.stringify({ simVocab: vocabText }), // Send the correct data in the body
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json(); // Parse the response as JSON
+      });
+  };
+
+  const { data: genSimData } = useQuery(["aiSimData", vocabText], getGenSim,
+    {
+      enabled: !!vocabText && generatingSim, // Ensure that vocabText is not empty
+      keepPreviousData: true,
+    }
+  );
+
+  const generateAiSimilars = useMutation({
+    mutationFn: async () => {
+      return await fetch(`${apiUrl}/openai/similar`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          simVocab: vocabText,
+        }),
+      }).then((res) => res.json()); // Ensure the response is parsed as JSON
+    },
+    onError: (error, _styleName, context) => {
+      console.log("Error fetching:" + context?.id + error);
+    },
+    onSettled: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["aiSimData"] });
+
+      setGeneratedAiSim(true);
+
+      if (data?.similar) {
+        setVocabSimilarOne(data.similar[0]);
+        if (vocabSimilarShowCount === 4) {
+          setVocabSimilarFour(data.similar[3]);
+          setVocabSimilarThree(data.similar[2]);
+          setVocabSimilarTwo(data.similar[1]);
+          setVocabSimilarOne(data.similar[0]);
+        }
+        if (vocabSimilarShowCount === 3) {
+          setVocabSimilarThree(data.similar[2]);
+          setVocabSimilarTwo(data.similar[1]);
+          setVocabSimilarOne(data.similar[0]);
+        }
+        if (vocabSimilarShowCount === 2) {
+          setVocabSimilarTwo(data.similar[1]);
+          setVocabSimilarOne(data.similar[0]);
+        }
+      }
+
+      setGeneratingSim(false)
+    },
+  });
+
+  const handleGenAiSim = () => {
+    setGeneratingSim(true)
+    if (vocabText.length < 1) {
+      setRequireVocabText(true)
+      return
+    }
+    generateAiSimilars.mutate()
+  }
+
   const [vocabExpressionOne, setVocabExpressionOne] = useState("")
   const [vocabExpressionTwo, setVocabExpressionTwo] = useState("")
   const [vocabExpressionThree, setVocabExpressionThree] = useState("")
@@ -264,7 +379,7 @@ export default function AddVocabDialog({ text }) {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json", // Ensure Content-Type is set to JSON
       },
-      body: JSON.stringify({ chineseVocab: vocabText }), // Send the correct data in the body
+      body: JSON.stringify({ expVocab: vocabText }), // Send the correct data in the body
     })
       .then((res) => {
         if (!res.ok) {
@@ -290,7 +405,7 @@ export default function AddVocabDialog({ text }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          chineseVocab: vocabText,
+          expVocab: vocabText,
         }),
       }).then((res) => res.json()); // Ensure the response is parsed as JSON
     },
@@ -937,7 +1052,7 @@ export default function AddVocabDialog({ text }) {
             </Stack>
 
             {/* ----- Similar Text Input Field ----- */}
-            <Stack direction={"row"} alignItems={"center"} spacing={2}>
+            <Stack direction={"row"} alignItems={"center"} spacing={1}>
               <Stack>
                 <Typography>Similar</Typography>
                 <Typography fontSize={"0.5rem"} color={theme.palette.neutral.mid}>Max 4</Typography>
@@ -961,11 +1076,47 @@ export default function AddVocabDialog({ text }) {
               <IconButton onClick={incrementVocabSimilarCount}>
                 <IoMdAdd size={16} />
               </IconButton>
+              {(vocabSimilarOne?.length < 1 && generatingSim) ?
+                (
+                  <HashLoader
+                    color={theme.palette.primary.main}
+                    loading={true}
+                    size={16}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                  />
+                )
+                :
+                (
+                  <Stack
+                    onMouseOver={() => setShowRegenSimOne(true)}
+                    onMouseLeave={() => setShowRegenSimOne(false)}
+                  >
+                    {(showRegenSimOne && vocabSimilarOne?.length > 1) ?
+                      <Tooltip title="Regenerate All" placement="right">
+                        <IconButton onClick={handleGenAiSim}>
+                          <IoRefresh size={16} />
+                        </IconButton>
+                      </Tooltip>
+                      :
+                      <Tooltip title="Generate with Ai" placement="right">
+                        <IconButton onClick={handleGenAiSim}>
+                          {vocabSimilarOne?.length < 1 ?
+                            <PiSparkle size={16} />
+                            :
+                            <PiSparkleFill size={16} />
+                          }
+                        </IconButton>
+                      </Tooltip>
+                    }
+                  </Stack>
+                )
+              }
             </Stack>
 
             {/* ----- 2nd Similar Text Input Field ----- */}
             {vocabSimilarShowCount > 1 && (
-              <Stack direction={"row"} alignItems={"center"} spacing={2}>
+              <Stack direction={"row"} alignItems={"center"} spacing={1}>
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
@@ -983,15 +1134,55 @@ export default function AddVocabDialog({ text }) {
                     margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
                   }}
                 />
-                <IconButton onClick={() => setVocabSimilarShowCount(vocabSimilarShowCount - 1)}>
+                <IconButton onClick={clearSimilarTwo}>
                   <IoMdClose size={16} />
                 </IconButton>
+                {generatedAiSim && (
+                  <>
+                    {(vocabSimilarTwo?.length < 1 && generatingSim) ?
+                      (
+                        <HashLoader
+                          color={theme.palette.primary.main}
+                          loading={true}
+                          size={16}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                        />
+                      )
+                      :
+                      (
+                        <Stack
+                          onMouseOver={() => setShowRegenSimTwo(true)}
+                          onMouseLeave={() => setShowRegenSimTwo(false)}
+                        >
+                          {(showRegenSimTwo && vocabSimilarTwo?.length > 1) ?
+                            <Tooltip title="Regenerate" placement="right">
+                              <IconButton onClick={genSimTwo}>
+                                <IoRefresh size={16} />
+                              </IconButton>
+                            </Tooltip>
+                            :
+                            <Tooltip title="Generate" placement="right">
+                              <IconButton onClick={genSimTwo}>
+                                {vocabSimilarTwo?.length < 1 ?
+                                  <PiSparkle size={16} />
+                                  :
+                                  <PiSparkleFill size={16} />
+                                }
+                              </IconButton>
+                            </Tooltip>
+                          }
+                        </Stack>
+                      )
+                    }
+                  </>
+                )}
               </Stack>
             )}
 
             {/* ----- 3rd Similar Text Input Field ----- */}
             {vocabSimilarShowCount > 2 && (
-              <Stack direction={"row"} alignItems={"center"} spacing={2}>
+              <Stack direction={"row"} alignItems={"center"} spacing={1}>
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
@@ -1012,12 +1203,52 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={() => setVocabSimilarShowCount(vocabSimilarShowCount - 1)}>
                   <IoMdClose size={16} />
                 </IconButton>
+                {generatedAiSim && (
+                  <>
+                    {(vocabSimilarThree?.length < 1 && generatingSim) ?
+                      (
+                        <HashLoader
+                          color={theme.palette.primary.main}
+                          loading={true}
+                          size={16}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                        />
+                      )
+                      :
+                      (
+                        <Stack
+                          onMouseOver={() => setShowRegenSimThree(true)}
+                          onMouseLeave={() => setShowRegenSimThree(false)}
+                        >
+                          {(showRegenSimThree && vocabSimilarThree?.length > 1) ?
+                            <Tooltip title="Regenerate" placement="right">
+                              <IconButton onClick={genSimThree}>
+                                <IoRefresh size={16} />
+                              </IconButton>
+                            </Tooltip>
+                            :
+                            <Tooltip title="Generate" placement="right">
+                              <IconButton onClick={genSimThree}>
+                                {vocabSimilarThree?.length < 1 ?
+                                  <PiSparkle size={16} />
+                                  :
+                                  <PiSparkleFill size={16} />
+                                }
+                              </IconButton>
+                            </Tooltip>
+                          }
+                        </Stack>
+                      )
+                    }
+                  </>
+                )}
               </Stack>
             )}
 
             {/* ----- 4th Similar Text Input Field ----- */}
             {vocabSimilarShowCount > 3 && (
-              <Stack direction={"row"} alignItems={"center"} spacing={2}>
+              <Stack direction={"row"} alignItems={"center"} spacing={1}>
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
@@ -1038,13 +1269,53 @@ export default function AddVocabDialog({ text }) {
                 <IconButton onClick={() => setVocabSimilarShowCount(vocabSimilarShowCount - 1)}>
                   <IoMdClose size={16} />
                 </IconButton>
+                {generatedAiSim && (
+                  <>
+                    {(vocabSimilarFour?.length < 1 && generatingSim) ?
+                      (
+                        <HashLoader
+                          color={theme.palette.primary.main}
+                          loading={true}
+                          size={16}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                        />
+                      )
+                      :
+                      (
+                        <Stack
+                          onMouseOver={() => setShowRegenSimFour(true)}
+                          onMouseLeave={() => setShowRegenSimFour(false)}
+                        >
+                          {(showRegenSimFour && vocabSimilarFour?.length > 1) ?
+                            <Tooltip title="Regenerate" placement="right">
+                              <IconButton onClick={genSimFour}>
+                                <IoRefresh size={16} />
+                              </IconButton>
+                            </Tooltip>
+                            :
+                            <Tooltip title="Generate" placement="right">
+                              <IconButton onClick={genSimFour}>
+                                {vocabSimilarFour?.length < 1 ?
+                                  <PiSparkle size={16} />
+                                  :
+                                  <PiSparkleFill size={16} />
+                                }
+                              </IconButton>
+                            </Tooltip>
+                          }
+                        </Stack>
+                      )
+                    }
+                  </>
+                )}
               </Stack>
             )}
 
             {/* ----- Expression Text Input Field ----- */}
-            <Stack direction={"row"} alignItems={"center"} spacing={2}>
+            <Stack direction={"row"} alignItems={"center"} spacing={1}>
               <Stack>
-                <Typography>Expression</Typography>
+                <Typography>Usage</Typography>
                 <Typography fontSize={"0.5rem"} color={theme.palette.neutral.mid}>Max 8</Typography>
               </Stack>
               <InputBase
@@ -1107,8 +1378,8 @@ export default function AddVocabDialog({ text }) {
 
             {/* ----- 2nd Expression Text Input Field ----- */}
             {vocabExpressionShowCount > 1 && (
-              <Stack direction={"row"} alignItems={"center"} spacing={2}>
-                <Typography sx={{ opacity: 0 }}>Expression</Typography>
+              <Stack direction={"row"} alignItems={"center"} spacing={1}>
+                <Typography sx={{ opacity: 0 }}>Usage</Typography>
                 <InputBase
                   id={uuidv4()}
                   placeholder="用法"
@@ -1173,8 +1444,8 @@ export default function AddVocabDialog({ text }) {
 
             {/* ----- 3rd Expression Text Input Field ----- */}
             {vocabExpressionShowCount > 2 && (
-              <Stack direction={"row"} alignItems={"center"} spacing={2}>
-                <Typography sx={{ opacity: 0 }}>Expression</Typography>
+              <Stack direction={"row"} alignItems={"center"} spacing={1}>
+                <Typography sx={{ opacity: 0 }}>Usage</Typography>
                 <InputBase
                   id={uuidv4()}
                   placeholder="用法"
@@ -1239,8 +1510,8 @@ export default function AddVocabDialog({ text }) {
 
             {/* ----- 4th Expression Text Input Field ----- */}
             {vocabExpressionShowCount > 3 && (
-              <Stack direction={"row"} alignItems={"center"} spacing={2}>
-                <Typography sx={{ opacity: 0 }}>Expression</Typography>
+              <Stack direction={"row"} alignItems={"center"} spacing={1}>
+                <Typography sx={{ opacity: 0 }}>Usage</Typography>
                 <InputBase
                   id={uuidv4()}
                   placeholder="用法"
@@ -1305,8 +1576,8 @@ export default function AddVocabDialog({ text }) {
 
             {/* ----- 5th Expression Text Input Field ----- */}
             {vocabExpressionShowCount > 4 && (
-              <Stack direction={"row"} alignItems={"center"} spacing={2}>
-                <Typography sx={{ opacity: 0 }}>Expression</Typography>
+              <Stack direction={"row"} alignItems={"center"} spacing={1}>
+                <Typography sx={{ opacity: 0 }}>Usage</Typography>
                 <InputBase
                   id={uuidv4()}
                   placeholder="用法"
@@ -1371,8 +1642,8 @@ export default function AddVocabDialog({ text }) {
 
             {/* ----- 6th Expression Text Input Field ----- */}
             {vocabExpressionShowCount > 5 && (
-              <Stack direction={"row"} alignItems={"center"} spacing={2}>
-                <Typography sx={{ opacity: 0 }}>Expression</Typography>
+              <Stack direction={"row"} alignItems={"center"} spacing={1}>
+                <Typography sx={{ opacity: 0 }}>Usage</Typography>
                 <InputBase
                   id={uuidv4()}
                   placeholder="用法"
@@ -1437,8 +1708,8 @@ export default function AddVocabDialog({ text }) {
 
             {/* ----- 7th Expression Text Input Field ----- */}
             {vocabExpressionShowCount > 6 && (
-              <Stack direction={"row"} alignItems={"center"} spacing={2}>
-                <Typography sx={{ opacity: 0 }}>Expression</Typography>
+              <Stack direction={"row"} alignItems={"center"} spacing={1}>
+                <Typography sx={{ opacity: 0 }}>Usage</Typography>
                 <InputBase
                   id={uuidv4()}
                   placeholder="用法"
@@ -1503,8 +1774,8 @@ export default function AddVocabDialog({ text }) {
 
             {/* ----- 8th Expression Text Input Field ----- */}
             {vocabExpressionShowCount > 7 && (
-              <Stack direction={"row"} alignItems={"center"} spacing={2}>
-                <Typography sx={{ opacity: 0 }}>Expression</Typography>
+              <Stack direction={"row"} alignItems={"center"} spacing={1}>
+                <Typography sx={{ opacity: 0 }}>Usage</Typography>
                 <InputBase
                   id={uuidv4()}
                   placeholder="用法"
