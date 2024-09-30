@@ -42,7 +42,7 @@ const SimilarText = ({ item, searchSimilar }) => {
   const openMenu = Boolean(simMenuAnchor)
   const handleSimMenuClick = (event) => {
     setSimMenuAnchor(event.currentTarget)
-    // searchSimilar(item)
+    searchSimilar(item)
   }
   const handleMenuClose = () => {
     setSimMenuAnchor(null)
