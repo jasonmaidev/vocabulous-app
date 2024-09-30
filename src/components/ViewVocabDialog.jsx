@@ -84,7 +84,7 @@ const SimilarText = ({ item, searchSimilar }) => {
             backdropFilter: "blur(4px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(4px)", // Safari support for blur effect
             borderRadius: "6rem",
-            padding: isLandscape ? "0.5rem 1rem" : "0.125rem 0",
+            padding: isLandscape ? "0.5rem 0" : "0.125rem 0",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
@@ -176,7 +176,7 @@ const ExpressionText = ({ item }) => {
             backdropFilter: "blur(4px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(4px)", // Safari support for blur effect
             borderRadius: "6rem",
-            padding: isLandscape ? "0.5rem 1rem" : "0.125rem 0",
+            padding: isLandscape ? "0.5rem 0" : "0.125rem 0",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
