@@ -381,7 +381,7 @@ export default function AddVocabDialog({ text }) {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json", // Ensure Content-Type is set to JSON
       },
-      body: JSON.stringify({ expVocab: vocabText }), // Send the correct data in the body
+      body: JSON.stringify({ expVocab: vocabText, expLabel: checkedLabels }), // Send the correct data in the body
     })
       .then((res) => {
         if (!res.ok) {
@@ -409,6 +409,7 @@ export default function AddVocabDialog({ text }) {
         },
         body: JSON.stringify({
           expVocab: vocabText,
+          expLabel: checkedLabels,
         }),
       }).then((res) => res.json()); // Ensure the response is parsed as JSON
     },
