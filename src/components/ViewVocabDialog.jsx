@@ -587,11 +587,19 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
       setNewSimilarOne(genSimData.similar[randomIndex])
     }
   }
+  const clearSimilarOne = () => {
+    setNewSimilarOne("")
+    subtractSimilarEntry();
+  }
   const genSimTwo = () => {
     if (genSimData) {
       const randomIndex = Math.floor(Math.random() * genSimData.similar.length);
       setNewSimilarTwo(genSimData.similar[randomIndex])
     }
+  }
+  const clearSimilarTwo = () => {
+    setNewSimilarTwo("")
+    subtractSimilarEntry();
   }
   const genSimThree = () => {
     if (genSimData) {
@@ -599,11 +607,19 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
       setNewSimilarThree(genSimData.similar[randomIndex])
     }
   }
+  const clearSimilarThree = () => {
+    setNewSimilarThree("")
+    subtractSimilarEntry();
+  }
   const genSimFour = () => {
     if (genSimData) {
       const randomIndex = Math.floor(Math.random() * genSimData.similar.length);
       setNewSimilarFour(genSimData.similar[randomIndex])
     }
+  }
+  const clearSimilarFour = () => {
+    setNewSimilarFour("")
+    subtractSimilarEntry();
   }
   /* Generate Ai Similars Data */
   const getGenSim = () => {
@@ -1542,7 +1558,11 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 </Stack>
                               )
                                 :
-                                <IconButton onClick={subtractSimilarEntry} disabled={newSimilarOne.length > 0}>
+                                <IconButton
+                                  onClick={clearSimilarOne}
+                                // onClick={subtractSimilarEntry} 
+                                // disabled={newSimilarOne.length > 0}
+                                >
                                   <IoMdClose size={16} />
                                 </IconButton>
                               }
@@ -1624,7 +1644,11 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   </Stack>
                                 )
                                   :
-                                  <IconButton onClick={subtractSimilarEntry} disabled={newSimilarTwo.length > 0}>
+                                  <IconButton
+                                    onClick={clearSimilarTwo}
+                                  //  onClick={subtractSimilarEntry}
+                                  //  disabled={newSimilarTwo.length > 0}
+                                  >
                                     <IoMdClose size={16} />
                                   </IconButton>
                                 }
@@ -1707,7 +1731,11 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   </Stack>
                                 )
                                   :
-                                  <IconButton onClick={subtractSimilarEntry} disabled={newSimilarThree.length > 0}>
+                                  <IconButton
+                                    onClick={clearSimilarThree}
+                                  // onClick={subtractSimilarEntry} 
+                                  // disabled={newSimilarThree.length > 0}
+                                  >
                                     <IoMdClose size={16} />
                                   </IconButton>
                                 }
@@ -1790,7 +1818,11 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   </Stack>
                                 )
                                   :
-                                  <IconButton onClick={subtractSimilarEntry} disabled={newSimilarFour.length > 0}>
+                                  <IconButton
+                                    onClick={clearSimilarFour}
+                                  // onClick={subtractSimilarEntry} 
+                                  // disabled={newSimilarFour.length > 0}
+                                  >
                                     <IoMdClose size={16} />
                                   </IconButton>
                                 }
