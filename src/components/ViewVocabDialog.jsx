@@ -1529,7 +1529,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                 id={uuidv4()}
                                 placeholder={""}
                                 onChange={(e) => setNewSimilarOne(e.target.value)}
-                                value={newSimilarEntry < 1 || newSimilarOne?.length > 0 || removeSimilarOne ? newSimilarOne : similar[0]}
+                                value={(generatedAiSim && !similar[0]?.length) ? newSimilarOne : !removeSimilarOne ? similar[0] : newSimilarOne}
                                 required={true}
                                 sx={{
                                   width: isLandscape ? "75%" : "70%",
@@ -1550,7 +1550,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                     </Tooltip>
                                     :
                                     <Tooltip title="Delete" placement="left">
-                                      <IconButton onClick={removeSimOne}>
+                                      <IconButton onClick={!similar[0]?.length ? clearSimilarOne : removeSimOne}>
                                         <TbTrashX color={theme.palette.neutral.dark} />
                                       </IconButton>
                                     </Tooltip>
