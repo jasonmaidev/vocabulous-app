@@ -1928,7 +1928,7 @@ const ViewVocabDialog = (
             {/* ----- Labels ----- */}
             <Stack>
               {editingLabels &&
-                <Stack direction="row" alignItems={"center"} justifyContent={"space-between"}>
+                <Stack direction="row" alignItems={"center"} justifyContent={"space-between"} pt={2}>
                   <Typography
                     sx={{ fontSize: isWideScreens ? "1.25rem" : isQHDScreens ? "1rem" : "0.8rem", textAlign: "flex-start", color: theme.palette.neutral.mid }}
                   >
@@ -1946,7 +1946,7 @@ const ViewVocabDialog = (
                   sx={{
                     border: "none",
                     borderRadius: "0.75rem",
-                    padding: "0.5rem",
+                    padding: "0.25rem",
                     backgroundColor: mode === "light" ? "rgba(180, 180, 180, 0.2)" : "rgba(0, 11, 13, 0.45)", // Semi-transparent background
                     backdropFilter: "blur(10px)", // Apply the glass effect
                     WebkitBackdropFilter: "blur(10px)",
@@ -1966,7 +1966,7 @@ const ViewVocabDialog = (
                       <Typography
                         onClick={() => handleCheckboxChange(text)}
                         color={checkedLabels?.includes(text) ? theme.palette.primary.main : theme.palette.neutral.darker}
-                        fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.9rem"}
+                        fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"}
                       >
                         {text}
                       </Typography>
