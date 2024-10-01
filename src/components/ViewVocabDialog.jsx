@@ -1595,7 +1595,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   id={uuidv4()}
                                   placeholder={""}
                                   onChange={(e) => setNewSimilarTwo(e.target.value)}
-                                  value={!removeSimilarTwo ? similar[1] : newSimilarTwo}
+                                  value={(generatedAiSim && !similar[1]?.length) ? newSimilarTwo : !removeSimilarTwo ? similar[1] : newSimilarTwo}
                                   required={true}
                                   sx={{
                                     width: isLandscape ? "75%" : "70%",
@@ -1678,7 +1678,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   id={uuidv4()}
                                   placeholder={""}
                                   onChange={(e) => setNewSimilarThree(e.target.value)}
-                                  value={!removeSimilarThree ? similar[2] : newSimilarThree}
+                                  value={(generatedAiSim && !similar[2]?.length) ? newSimilarThree : !removeSimilarThree ? similar[2] : newSimilarThree}
                                   required={true}
                                   sx={{
                                     width: isLandscape ? "75%" : "70%",
@@ -1761,7 +1761,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   id={uuidv4()}
                                   placeholder={""}
                                   onChange={(e) => setNewSimilarFour(e.target.value)}
-                                  value={!removeSimilarFour ? similar[3] : newSimilarFour}
+                                  value={(generatedAiSim && !similar[3]?.length) ? newSimilarFour : !removeSimilarFour ? similar[3] : newSimilarFour}
                                   required={true}
                                   sx={{
                                     width: isLandscape ? "75%" : "70%",

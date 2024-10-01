@@ -118,7 +118,7 @@ const Navbar = ({
                   <Typography fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
                     金字卡
                   </Typography>
-                  <Typography fontSize={"1rem"} fontWeight={700} color={theme.palette.primary.main}>
+                  <Typography fontSize={"1.25rem"} fontWeight={700} color={theme.palette.primary.main}>
                     Ai
                   </Typography>
                 </Stack>
@@ -143,7 +143,7 @@ const Navbar = ({
                   <Typography onClick={() => navigate("/")} fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
                     金字卡
                   </Typography>
-                  <Typography fontSize={"1rem"} fontWeight={700} color={theme.palette.primary.main}>
+                  <Typography fontSize={"1.25rem"} fontWeight={700} color={theme.palette.primary.main}>
                     Ai
                   </Typography>
                 </>
@@ -238,6 +238,21 @@ const Navbar = ({
         onClose={handleMenuClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
+        }}
+        sx={{
+          "& .MuiPaper-root": {
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
+            backgroundImage: `linear-gradient(
+              to bottom right, 
+              rgba(255, 255, 255, 0.15), 
+              rgba(255, 255, 255, 0.05)
+            )`, // Gradient overlay for the glassmorphism effect
+            backdropFilter: "blur(6px)", // Apply the blur effect
+            WebkitBackdropFilter: "blur(6px)", // Safari support for blur effect
+            borderRadius: "1rem",
+            boxShadow: "0px 4px 12px rgba(0, 11, 13, 0.4)", // Shadow for depth
+            border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
+          },
         }}
       >
         <MenuItem onClick={() => navigate(`/`)}>

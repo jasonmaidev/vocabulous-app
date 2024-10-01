@@ -923,42 +923,9 @@ export default function AddVocabDialog({ text }) {
             {/* ----- Label Field ----- */}
             <Stack direction={"row"} alignItems={"center"} spacing={showLabels ? 1 : 2}>
               {showLabels ?
-                <Button
-                  startIcon={<AiOutlineEyeInvisible size={16} color={theme.palette.neutral.darker} />}
-                  onClick={() => setShowLabels(false)}
-                  className={(mode === "light") ? "gradient-button" : "gradient-button-dark"}
-                  size="medium"
-                  sx={
-                    (mode === "light") ?
-                      {
-                        color: theme.palette.neutral.dark,
-                        padding: "0.5rem 0.25rem 0.5rem 0.75rem",
-                        borderRadius: "6rem",
-                        fontSize: "0.75rem",
-                        fontWeight: 700,
-                        textTransform: "none",
-                        border: `1px solid ${theme.palette.neutral.light}`,
-                        ":hover": {
-                          backgroundColor: theme.palette.background.alt
-                        }
-                      }
-                      :
-                      {
-                        color: theme.palette.primary.main,
-                        padding: "0.5rem 0.25rem 0.5rem 0.75rem",
-                        borderRadius: "6rem",
-                        fontSize: "0.75rem",
-                        fontWeight: 700,
-                        textTransform: "none",
-                        border: `1px solid ${theme.palette.neutral.light}`,
-                        ":hover": {
-                          backgroundColor: theme.palette.background.alt
-                        }
-                      }
-                  }
-                >
-
-                </Button>
+                <IconButton>
+                  <AiOutlineEyeInvisible size={16} color={theme.palette.neutral.darker} />
+                </IconButton>
                 :
                 <Typography>Label</Typography>
               }

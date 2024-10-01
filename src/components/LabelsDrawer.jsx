@@ -538,8 +538,8 @@ export default function LabelsDrawer() {
                 rgba(255, 255, 255, 0.15), 
                 rgba(255, 255, 255, 0.05)
               )`,
-            backdropFilter: "blur(10px)", // Apply the glass effect
-            WebkitBackdropFilter: "blur(10px)",
+            backdropFilter: "blur(6px)", // Apply the glass effect
+            WebkitBackdropFilter: "blur(6px)",
             border: "1px solid rgba(255, 255, 255, 0.2)"
           },
           "& .MuiDialog-paperElevation24": {
