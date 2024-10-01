@@ -5,8 +5,6 @@ const initialState = {
   user: null,
   token: null,
   openLabelsDrawer: false,
-  viewVocab: false,
-  viewUsage: false,
   viewByLabel: "noun",
   viewBySearchTerm: "",
 }
@@ -29,12 +27,6 @@ export const appSlice = createSlice({
     setOpenLabelsDrawer: (state, action) => {
       state.openLabelsDrawer = action.payload.openLabelsDrawer
     },
-    setViewVocab: (state, action) => {
-      state.viewVocab = action.payload.viewVocab
-    },
-    setViewUsage: (state, action) => {
-      state.viewUsage = action.payload.viewUsage
-    },
     setViewByLabel: (state, action) => {
       state.viewByLabel = action.payload.viewByLabel
     },
@@ -49,8 +41,6 @@ export const {
   setLogin,
   setLogout,
   setOpenLabelsDrawer,
-  setViewVocab,
-  setViewUsage,
   setViewByLabel,
   setViewBySearchTerm,
 } = appSlice.actions

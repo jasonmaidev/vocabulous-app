@@ -12,7 +12,7 @@ import { PiCircleBold, PiDiamondBold, PiStarBold } from "react-icons/pi";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
 import { Box, Grow, Stack, Dialog, Typography, Checkbox, InputBase, Menu, MenuItem, ListItemIcon, ListItemText, useTheme, Button, IconButton, useMediaQuery, Tooltip, } from "@mui/material"
 import { pinyin } from "pinyin-pro"
-import { setViewVocab, setViewUsage, setViewBySearchTerm } from "state"
+import { setViewBySearchTerm } from "state"
 import PropagateLoader from "react-spinners/PropagateLoader"
 import apiUrl from "config/api"
 const AiDefDialog = lazy(() => import("./AiDefDialog"))
@@ -297,8 +297,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
   const dispatch = useDispatch()
   const { _id } = useSelector((state) => state.user)
   const token = useSelector((state) => state.token)
-  // const viewVocab = useSelector((state) => state.viewVocab)
-  // const viewUsage = useSelector((state) => state.viewUsage)
   const queryClient = useQueryClient()
   const mode = useSelector((state) => state.mode)
 

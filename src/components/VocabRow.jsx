@@ -1,5 +1,5 @@
 import { useState, forwardRef, lazy, Suspense } from "react";
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { Grow, Menu, MenuItem, ListItemIcon, ListItemText, Dialog, Stack, IconButton, Typography, useTheme, useMediaQuery, Tooltip } from "@mui/material"
 import { IoMdMore } from "react-icons/io";
 import { TbPin, TbTrashX } from "react-icons/tb";
@@ -7,7 +7,6 @@ import { PiCircleBold, PiDiamondBold, PiStarBold } from "react-icons/pi";
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import RowBox from "./RowBox";
 import GridLoader from "react-spinners/GridLoader"
-import { setViewVocab, setViewUsage } from "state"
 import apiUrl from "config/api"
 const ViewVocabDialog = lazy(() => import("./ViewVocabDialog"))
 
@@ -23,14 +22,11 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
   const token = useSelector((state) => state.token)
 
   const theme = useTheme()
-  const dispatch = useDispatch()
   const queryClient = useQueryClient()
 
   /* View Vocab Dialog State */
   const [uploadOpen, setUploadOpen] = useState(false)
   const handleViewOpen = () => {
-    // dispatch(setViewVocab({ viewVocab: true }))
-    // dispatch(setViewUsage({ viewUsage: false }))
     setUploadOpen(true)
   }
   const handleViewClose = () => {
