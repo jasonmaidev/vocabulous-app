@@ -91,7 +91,7 @@ const RoadmapWidget = () => {
                   variant={"h6"}
                   fontWeight={500}
                   color={palette.neutral.medium}>
-                  TBD
+                  In Progress
                 </Typography>
               </Box>
               <Box>
@@ -105,9 +105,10 @@ const RoadmapWidget = () => {
                   Features
                 </Typography>
                 <Box p={"0.5rem 1.5rem 0 1.5rem"}>
-                  <Typography pb={1}><FiCheckCircle /> ChatGPT auto similar-example generation.</Typography>
-                  <Typography pb={1}><FiCheckCircle /> ChatGPT auto usage-example generation.</Typography>
-                  <Typography pb={1}><FiCheckCircle /> ChatGPT auto definition generation.</Typography>
+                  <Typography pb={1} color={palette.primary.main}><FiCheckCircle /> OpenAi auto similar-example generation.</Typography>
+                  <Typography pb={1} color={palette.primary.main}><FiCheckCircle /> OpenAi auto usage-example generation.</Typography>
+                  <Typography pb={1} color={palette.primary.main}><FiCheckCircle /> OpenAi auto definition generation.</Typography>
+                  <Typography pb={1} color={palette.primary.main}><FiCheckCircle /> Context-aware vocabulary generation.</Typography>
                   <Typography pb={1}><FiCircle /> Highlighted text to search.</Typography>
                   <Typography pb={1}><FiCircle /> Text to voice.</Typography>
                   <Typography pb={1}><FiCircle /> Daily word set challenge.</Typography>
