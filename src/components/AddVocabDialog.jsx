@@ -924,7 +924,7 @@ export default function AddVocabDialog({ text }) {
             {/* ----- Label Field ----- */}
             <Stack direction={"row"} alignItems={"center"} spacing={showLabels ? 1 : 2}>
               {showLabels ?
-                <IconButton onClick={() => setShowLabels(true)}>
+                <IconButton onClick={() => setShowLabels(false)}>
                   <AiOutlineEyeInvisible size={16} color={theme.palette.neutral.darker} />
                 </IconButton>
                 :
