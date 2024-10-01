@@ -288,7 +288,9 @@ function HighlightCaps({ text }) {
 }
 
 
-const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficulty, definition, similar, expression, sentence, pinned }) => {
+const ViewVocabDialog = (
+  { viewVocab, setViewVocab, viewUsage, setViewUsage, handleViewClose, id, text, pinyinText, label, difficulty, definition, similar, expression, sentence, pinned }
+) => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px) and (max-height:2160px)") // All Desktops
   const isQHDScreens = useMediaQuery("(min-width:2500px) and (max-height:1600px)") // 2K Laptops
   const isWideScreens = useMediaQuery("(min-width:3400px) and (max-height:1500px)") // Wide and Ultrawide Desktops
@@ -1173,9 +1175,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     }
   };
 
-  const [viewVocab, setViewVocab] = useState(true)
-  const [viewUsage, setViewUsage] = useState(false)
-
   const handleViewVocab = () => {
     if (viewUsage === true) {
       setViewUsage(false)
@@ -1945,9 +1944,12 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
               {editingLabels &&
                 <Stack direction="row" flexWrap={"wrap"} alignItems={"center"} justifyContent={"flex-start"} spacing={0} pr={0.5}
                   sx={{
-                    border: `solid 1px rgba(255, 255, 255, 0.15)`,
+                    border: "none",
                     borderRadius: "0.75rem",
                     padding: "0.5rem",
+                    backgroundColor: mode === "light" ? "rgba(180, 180, 180, 0.2)" : "rgba(0, 11, 13, 0.45)", // Semi-transparent background
+                    backdropFilter: "blur(10px)", // Apply the glass effect
+                    WebkitBackdropFilter: "blur(10px)",
                   }}
                 >
                   {labelsData?.[0].label.map((text, index) => (
@@ -2034,7 +2036,9 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
             </Stack>
 
             {isPortrait && (
-              <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} pt={1} borderTop={`solid 1px rgba(255,255,255, 0.15)`}>
+              <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} pt={1} pb={editingLabels ? 2 : 0}
+                borderTop={`solid 1px rgba(255,255,255, 0.15)`}
+              >
                 <Stack direction={"row"} alignItems={"center"} spacing={1}>
                   <Button
                     onClick={handleViewVocab}

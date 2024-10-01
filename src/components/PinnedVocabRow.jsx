@@ -25,10 +25,14 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
   const theme = useTheme()
   const queryClient = useQueryClient()
 
+  const [viewVocab, setViewVocab] = useState(false)
+  const [viewUsage, setViewUsage] = useState(false)
+
   /* View Vocab Dialog State */
   const [uploadOpen, setUploadOpen] = useState(false)
   const handleViewOpen = () => {
     setUploadOpen(true)
+    setViewVocab(true)
   }
   const handleViewClose = () => {
     setUploadOpen(false)
@@ -386,6 +390,10 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
           />
         }>
           <ViewVocabDialog
+            viewVocab={viewVocab}
+            viewUsage={viewUsage}
+            setViewVocab={setViewVocab}
+            setViewUsage={setViewUsage}
             handleViewClose={handleViewClose}
             id={id}
             text={text}

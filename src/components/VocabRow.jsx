@@ -24,13 +24,17 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
   const theme = useTheme()
   const queryClient = useQueryClient()
 
+  const [viewVocab, setViewVocab] = useState(false)
+  const [viewUsage, setViewUsage] = useState(false)
+
   /* View Vocab Dialog State */
-  const [uploadOpen, setUploadOpen] = useState(false)
+  const [vocabOpen, setVocabOpen] = useState(false)
   const handleViewOpen = () => {
-    setUploadOpen(true)
+    setVocabOpen(true)
+    setViewVocab(true)
   }
   const handleViewClose = () => {
-    setUploadOpen(false)
+    setVocabOpen(false)
   }
 
   function HighlightCaps({ text }) {
@@ -344,7 +348,7 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
 
       {/* ----- Popup View Vocab Dialog ----- */}
       <Dialog
-        open={uploadOpen}
+        open={vocabOpen}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleViewClose}
@@ -385,6 +389,10 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
           />
         }>
           <ViewVocabDialog
+            viewVocab={viewVocab}
+            viewUsage={viewUsage}
+            setViewVocab={setViewVocab}
+            setViewUsage={setViewUsage}
             handleViewClose={handleViewClose}
             id={id}
             text={text}
