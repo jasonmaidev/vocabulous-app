@@ -40,8 +40,8 @@ const store = configureStore({
 })
 
 /* Call this function to purge redux store */
-const persistor = persistStore(store)
-persistor.purge()
+// const persistor = persistStore(store)
+// persistor.purge()
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
