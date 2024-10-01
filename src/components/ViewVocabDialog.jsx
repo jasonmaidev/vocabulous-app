@@ -6,13 +6,14 @@ import { useSelector, useDispatch } from "react-redux"
 import { TbPin, TbPinFilled, TbTrashX } from "react-icons/tb";
 import { CgUndo } from "react-icons/cg";
 import { FiEdit2, FiBookOpen } from "react-icons/fi";
-import { IoSearch, IoAddCircleOutline } from "react-icons/io5";
+import { IoSearch, IoAddCircleOutline, IoRefresh } from "react-icons/io5";
 import { IoMdAdd, IoMdClose, IoMdMore, IoMdCheckmark } from "react-icons/io";
-import { PiCircleBold, PiDiamondBold, PiStarBold } from "react-icons/pi";
+import { PiCircleBold, PiDiamondBold, PiStarBold, PiSparkle, PiSparkleFill } from "react-icons/pi";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
 import { Box, Grow, Stack, Dialog, Typography, Checkbox, InputBase, Menu, MenuItem, ListItemIcon, ListItemText, useTheme, Button, IconButton, useMediaQuery, Tooltip, } from "@mui/material"
 import { pinyin } from "pinyin-pro"
 import { setViewBySearchTerm } from "state"
+import HashLoader from "react-spinners/HashLoader"
 import PropagateLoader from "react-spinners/PropagateLoader"
 import apiUrl from "config/api"
 const AiDefDialog = lazy(() => import("./AiDefDialog"))
@@ -573,6 +574,134 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     setEditingSimilar(true);
   }
 
+  const [generatingSim, setGeneratingSim] = useState(false)
+  const [showRegenSimOne, setShowRegenSimOne] = useState(false)
+  const [showRegenSimTwo, setShowRegenSimTwo] = useState(false)
+  const [showRegenSimThree, setShowRegenSimThree] = useState(false)
+  const [showRegenSimFour, setShowRegenSimFour] = useState(false)
+  const [generatedAiSim, setGeneratedAiSim] = useState(false)
+
+  const genSimOne = () => {
+    if (genSimData) {
+      const randomIndex = Math.floor(Math.random() * genSimData.similar.length);
+      setNewSimilarOne(genSimData.similar[randomIndex])
+    }
+  }
+  const genSimTwo = () => {
+    if (genSimData) {
+      const randomIndex = Math.floor(Math.random() * genSimData.similar.length);
+      setNewSimilarTwo(genSimData.similar[randomIndex])
+    }
+  }
+  const genSimThree = () => {
+    if (genSimData) {
+      const randomIndex = Math.floor(Math.random() * genSimData.similar.length);
+      setNewSimilarThree(genSimData.similar[randomIndex])
+    }
+  }
+  const genSimFour = () => {
+    if (genSimData) {
+      const randomIndex = Math.floor(Math.random() * genSimData.similar.length);
+      setNewSimilarFour(genSimData.similar[randomIndex])
+    }
+  }
+  /* Generate Ai Similars Data */
+  const getGenSim = () => {
+    return fetch(`${apiUrl}/openai/similar`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json", // Ensure Content-Type is set to JSON
+      },
+      body: JSON.stringify({ simVocab: text }), // Send the correct data in the body
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json(); // Parse the response as JSON
+      });
+  };
+
+  const { data: genSimData } = useQuery(["aiSimData", text], getGenSim,
+    {
+      enabled: generatingSim, // Ensure that vocabText is not empty
+      keepPreviousData: true,
+      staleTime: 5000,
+    }
+  );
+
+  const generateAiSimilars = useMutation({
+    mutationFn: async () => {
+      return await fetch(`${apiUrl}/openai/similar`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          simVocab: text,
+        }),
+      }).then((res) => res.json()); // Ensure the response is parsed as JSON
+    },
+    onError: (error, _styleName, context) => {
+      console.log("Error fetching:" + context?.id + error);
+    },
+    onSettled: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["aiSimData"] });
+
+      setGeneratedAiSim(true);
+
+      if (data?.similar) {
+        if (newSimilarEntry === 4) {
+          if (removeSimilarFour || !similar[3]?.length) {
+            setNewSimilarFour(data.similar[3]);
+          }
+          if (removeSimilarThree || !similar[2]?.length) {
+            setNewSimilarThree(data.similar[2]);
+          }
+          if (removeSimilarTwo || !similar[1]?.length) {
+            setNewSimilarTwo(data.similar[1]);
+          }
+          if (removeSimilarOne || !similar[0]?.length) {
+            setNewSimilarOne(data.similar[0]);
+          }
+        }
+        if (newSimilarEntry === 3) {
+          if (removeSimilarThree || !similar[2]?.length) {
+            setNewSimilarThree(data.similar[2]);
+          }
+          if (removeSimilarTwo || !similar[1]?.length) {
+            setNewSimilarTwo(data.similar[1]);
+          }
+          if (removeSimilarOne || !similar[0]?.length) {
+            setNewSimilarOne(data.similar[0]);
+          }
+        }
+        if (newSimilarEntry === 2) {
+          if (removeSimilarTwo || !similar[1]?.length) {
+            setNewSimilarTwo(data.similar[1]);
+          }
+          if (removeSimilarOne || !similar[0]?.length) {
+            setNewSimilarOne(data.similar[0]);
+          }
+        }
+        if (newSimilarEntry === 1) {
+          if (removeSimilarOne || !similar[0]?.length) {
+            setNewSimilarOne(data.similar[0]);
+          }
+        }
+      }
+
+      setGeneratingSim(false)
+    },
+  });
+
+  const handleGenAiSim = () => {
+    setGeneratingSim(true)
+    generateAiSimilars.mutate()
+  }
+
   /* Get Label Data for Edit */
   const getVocabLabels = () => {
     return fetch(`${apiUrl}/labels/${_id}`, {
@@ -874,6 +1003,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     updateNewSimilar()
     updateSimilarMutation.mutate(updatedData)
     setEditingSimilar(false)
+    setGeneratingSim(false)
   }
 
   const updateSimilarMutation = useMutation({
@@ -1035,8 +1165,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     } else if (viewVocab === false) {
       setViewVocab(true)
     }
-    // dispatch(setViewUsage({ viewUsage: false }))
-    // dispatch(setViewVocab({ viewVocab: true }))
   }
 
   const handleViewUsage = () => {
@@ -1045,8 +1173,6 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
     } else if (viewUsage === false) {
       setViewUsage(true)
     }
-    // dispatch(setViewVocab({ viewVocab: false }))
-    // dispatch(setViewUsage({ viewUsage: true }))
   }
 
   /* Options Drowndown Menu */
@@ -1319,9 +1445,58 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                           <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
                             Similar
                           </Typography>
-                          <IconButton onClick={openEditSimilar}>
-                            <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
-                          </IconButton>
+                          {editingSimilar ?
+                            <Button
+                              startIcon={<PiSparkleFill size={16} color={theme.palette.neutral.darker} />}
+                              onClick={handleGenAiSim}
+                              className={(mode === "light") ? "gradient-button" : "gradient-button-dark"}
+                              size="medium"
+                              sx={
+                                (mode === "light") ?
+                                  {
+                                    color: theme.palette.neutral.dark,
+                                    margin: "0.5rem 1rem",
+                                    padding: "0.5rem 1rem",
+                                    borderRadius: "6rem",
+                                    fontSize: "0.75rem",
+                                    fontWeight: 700,
+                                    textTransform: "none",
+                                    border: `1px solid ${theme.palette.neutral.light}`,
+                                    ":hover": {
+                                      backgroundColor: theme.palette.background.alt
+                                    }
+                                  }
+                                  :
+                                  {
+                                    color: theme.palette.primary.main,
+                                    margin: "0.5rem 1rem",
+                                    padding: "0.5rem 1rem",
+                                    borderRadius: "6rem",
+                                    fontSize: "0.75rem",
+                                    fontWeight: 700,
+                                    textTransform: "none",
+                                    border: `1px solid ${theme.palette.neutral.light}`,
+                                    ":hover": {
+                                      backgroundColor: theme.palette.background.alt
+                                    }
+                                  }
+                              }
+                            >
+                              Ai Gen
+                            </Button>
+                            :
+                            <IconButton onClick={openEditSimilar}>
+                              <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
+                            </IconButton>
+                          }
+
+                          {(similar?.length < 4 && newSimilarEntry < 4 && editingSimilar) &&
+                            <Tooltip title="Add Entry" placement="right">
+                              <IconButton onClick={addSimilarEntry}>
+                                <IoMdAdd size={16} />
+                              </IconButton>
+                            </Tooltip>
+                          }
                         </Stack>
 
                         {(!editingSimilar && similar?.length === 0) && (
@@ -1371,11 +1546,46 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                   <IoMdClose size={16} />
                                 </IconButton>
                               }
-                              {(similar?.length < 4 && newSimilarEntry < 4) &&
-                                <IconButton onClick={addSimilarEntry}>
-                                  <IoMdAdd size={16} />
-                                </IconButton>
-                              }
+                              {generatedAiSim && (
+                                <>
+                                  {(newSimilarOne?.length < 1 && generatingSim) ?
+                                    (
+                                      <HashLoader
+                                        color={theme.palette.primary.main}
+                                        loading={true}
+                                        size={16}
+                                        aria-label="Loading Spinner"
+                                        data-testid="loader"
+                                      />
+                                    )
+                                    :
+                                    (
+                                      <Stack
+                                        onMouseOver={() => setShowRegenSimOne(true)}
+                                        onMouseLeave={() => setShowRegenSimOne(false)}
+                                      >
+                                        {(showRegenSimOne && newSimilarOne?.length > 1) ?
+                                          <Tooltip title="Regenerate" placement="right">
+                                            <IconButton onClick={genSimOne}>
+                                              <IoRefresh size={16} />
+                                            </IconButton>
+                                          </Tooltip>
+                                          :
+                                          <Tooltip title="Generate" placement="right">
+                                            <IconButton onClick={genSimOne}>
+                                              {newSimilarOne?.length < 1 ?
+                                                <PiSparkle size={16} />
+                                                :
+                                                <PiSparkleFill size={16} />
+                                              }
+                                            </IconButton>
+                                          </Tooltip>
+                                        }
+                                      </Stack>
+                                    )
+                                  }
+                                </>
+                              )}
                             </Stack>
 
                             {/* 2nd Similar */}
@@ -1418,6 +1628,46 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                     <IoMdClose size={16} />
                                   </IconButton>
                                 }
+                                {generatedAiSim && (
+                                  <>
+                                    {(newSimilarTwo?.length < 1 && generatingSim) ?
+                                      (
+                                        <HashLoader
+                                          color={theme.palette.primary.main}
+                                          loading={true}
+                                          size={16}
+                                          aria-label="Loading Spinner"
+                                          data-testid="loader"
+                                        />
+                                      )
+                                      :
+                                      (
+                                        <Stack
+                                          onMouseOver={() => setShowRegenSimTwo(true)}
+                                          onMouseLeave={() => setShowRegenSimTwo(false)}
+                                        >
+                                          {(showRegenSimTwo && newSimilarTwo?.length > 1) ?
+                                            <Tooltip title="Regenerate" placement="right">
+                                              <IconButton onClick={genSimTwo}>
+                                                <IoRefresh size={16} />
+                                              </IconButton>
+                                            </Tooltip>
+                                            :
+                                            <Tooltip title="Generate" placement="right">
+                                              <IconButton onClick={genSimTwo}>
+                                                {newSimilarTwo?.length < 1 ?
+                                                  <PiSparkle size={16} />
+                                                  :
+                                                  <PiSparkleFill size={16} />
+                                                }
+                                              </IconButton>
+                                            </Tooltip>
+                                          }
+                                        </Stack>
+                                      )
+                                    }
+                                  </>
+                                )}
                               </Stack>
                             )}
 
@@ -1461,6 +1711,46 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                     <IoMdClose size={16} />
                                   </IconButton>
                                 }
+                                {generatedAiSim && (
+                                  <>
+                                    {(newSimilarThree?.length < 1 && generatingSim) ?
+                                      (
+                                        <HashLoader
+                                          color={theme.palette.primary.main}
+                                          loading={true}
+                                          size={16}
+                                          aria-label="Loading Spinner"
+                                          data-testid="loader"
+                                        />
+                                      )
+                                      :
+                                      (
+                                        <Stack
+                                          onMouseOver={() => setShowRegenSimThree(true)}
+                                          onMouseLeave={() => setShowRegenSimThree(false)}
+                                        >
+                                          {(showRegenSimThree && newSimilarThree?.length > 1) ?
+                                            <Tooltip title="Regenerate" placement="right">
+                                              <IconButton onClick={genSimThree}>
+                                                <IoRefresh size={16} />
+                                              </IconButton>
+                                            </Tooltip>
+                                            :
+                                            <Tooltip title="Generate" placement="right">
+                                              <IconButton onClick={genSimThree}>
+                                                {newSimilarThree?.length < 1 ?
+                                                  <PiSparkle size={16} />
+                                                  :
+                                                  <PiSparkleFill size={16} />
+                                                }
+                                              </IconButton>
+                                            </Tooltip>
+                                          }
+                                        </Stack>
+                                      )
+                                    }
+                                  </>
+                                )}
                               </Stack>
                             )}
 
@@ -1504,6 +1794,46 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
                                     <IoMdClose size={16} />
                                   </IconButton>
                                 }
+                                {generatedAiSim && (
+                                  <>
+                                    {(newSimilarFour?.length < 1 && generatingSim) ?
+                                      (
+                                        <HashLoader
+                                          color={theme.palette.primary.main}
+                                          loading={true}
+                                          size={16}
+                                          aria-label="Loading Spinner"
+                                          data-testid="loader"
+                                        />
+                                      )
+                                      :
+                                      (
+                                        <Stack
+                                          onMouseOver={() => setShowRegenSimFour(true)}
+                                          onMouseLeave={() => setShowRegenSimFour(false)}
+                                        >
+                                          {(showRegenSimFour && newSimilarFour?.length > 1) ?
+                                            <Tooltip title="Regenerate" placement="right">
+                                              <IconButton onClick={genSimFour}>
+                                                <IoRefresh size={16} />
+                                              </IconButton>
+                                            </Tooltip>
+                                            :
+                                            <Tooltip title="Generate" placement="right">
+                                              <IconButton onClick={genSimFour}>
+                                                {newSimilarFour?.length < 1 ?
+                                                  <PiSparkle size={16} />
+                                                  :
+                                                  <PiSparkleFill size={16} />
+                                                }
+                                              </IconButton>
+                                            </Tooltip>
+                                          }
+                                        </Stack>
+                                      )
+                                    }
+                                  </>
+                                )}
                               </Stack>
                             )}
                             <Button

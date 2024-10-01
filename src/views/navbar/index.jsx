@@ -1,7 +1,7 @@
 import "../../styles/gradient-button.min.css"
 import { v4 as uuidv4 } from "uuid"
 import _ from 'lodash';
-import { useState, CSSProperties } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { IoClose } from "react-icons/io5"
@@ -31,11 +31,6 @@ import FlexBetweenBox from "components/FlexBetweenBox"
 import UserImage from "components/UserImage"
 import AddVocabDialog from "components/AddVocabDialog";
 
-const override: CSSProperties = {
-  display: "block",
-  margin: "0 auto",
-};
-
 const Navbar = ({
   searchRef
 }) => {
@@ -52,7 +47,6 @@ const Navbar = ({
 
 
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
   const viewByLabel = useSelector((state) => state.viewByLabel)
 

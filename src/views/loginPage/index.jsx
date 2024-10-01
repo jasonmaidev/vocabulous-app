@@ -162,7 +162,7 @@ const LoginPage = () => {
             variant={isSmallMobileScreens ? "h3" : isHDScreens ? "h2" : isNonMobileScreens ? "h1" : "h3"}
             textAlign={"center"}
           >
-            Simple, powerful vocabulary retention
+            Simple, powerful vocabulary acquisition
           </Typography>
           <Typography
             variant={isSmallMobileScreens ? "h3" : isHDScreens ? "h2" : isNonMobileScreens ? "h1" : "h2"}
