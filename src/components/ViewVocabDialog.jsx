@@ -629,7 +629,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json", // Ensure Content-Type is set to JSON
       },
-      body: JSON.stringify({ simVocab: text }), // Send the correct data in the body
+      body: JSON.stringify({ simVocab: text, simLabel: label }), // Send the correct data in the body
     })
       .then((res) => {
         if (!res.ok) {
@@ -657,6 +657,7 @@ const ViewVocabDialog = ({ handleViewClose, id, text, pinyinText, label, difficu
         },
         body: JSON.stringify({
           simVocab: text,
+          simLabel: label
         }),
       }).then((res) => res.json()); // Ensure the response is parsed as JSON
     },
