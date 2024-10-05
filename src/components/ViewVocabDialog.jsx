@@ -2036,7 +2036,8 @@ const ViewVocabDialog = (
             </Stack>
 
             {isPortrait && (
-              <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} pt={1} pb={editingLabels ? 2 : 0}
+              <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} pt={1}
+                pb={editingLabels || (text?.length > 4 && similar?.length > 2) ? 2 : 0}
                 borderTop={`solid 1px rgba(255,255,255, 0.15)`}
               >
                 <Stack direction={"row"} alignItems={"center"} spacing={1}>
