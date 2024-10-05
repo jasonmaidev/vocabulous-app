@@ -54,7 +54,6 @@ const SimilarText = ({ item, searchSimilar }) => {
   const openMenu = Boolean(simMenuAnchor)
   const handleSimMenuClick = (event) => {
     setSimMenuAnchor(event.currentTarget)
-    searchSimilar(item)
   }
   const handleMenuClose = () => {
     setSimMenuAnchor(null)
@@ -81,7 +80,7 @@ const SimilarText = ({ item, searchSimilar }) => {
           horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: 'bottom',
+          vertical: 'top',
           horizontal: 'center',
         }}
         sx={{
@@ -94,7 +93,7 @@ const SimilarText = ({ item, searchSimilar }) => {
             )`, // Gradient overlay for the glassmorphism effect
             backdropFilter: "blur(4px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(4px)", // Safari support for blur effect
-            borderRadius: "6rem",
+            borderRadius: "1rem",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
