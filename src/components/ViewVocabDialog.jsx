@@ -39,6 +39,16 @@ const SimilarText = ({ item, searchSimilar }) => {
   const theme = useTheme()
   const mode = useSelector((state) => state.mode)
 
+  /* View Vocab Dialog State */
+  const [defOpen, setDefOpen] = useState(false)
+  const handleDefClose = () => {
+    setDefOpen(false)
+  }
+  const openDef = () => {
+    handleMenuClose()
+    setDefOpen(true)
+  }
+
   /* Options Drowndown Menu */
   const [simMenuAnchor, setSimMenuAnchor] = useState(null)
   const openMenu = Boolean(simMenuAnchor)
@@ -85,7 +95,6 @@ const SimilarText = ({ item, searchSimilar }) => {
             backdropFilter: "blur(4px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(4px)", // Safari support for blur effect
             borderRadius: "6rem",
-            padding: isLandscape ? "0.5rem 0" : "0.125rem 0",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
@@ -93,24 +102,57 @@ const SimilarText = ({ item, searchSimilar }) => {
         <MenuItem
           onMouseDown={() => searchSimilar(item)}
           onClick={() => searchSimilar(item)}
-          sx={{
-            "&:hover": {
-              backgroundColor: "transparent",
-            },
-          }}
         >
           <ListItemIcon
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',  // Centers the icon horizontally
-              minWidth: 'unset',  // Removes the default minWidth from ListItemIcon
-              width: '100%',
-            }}
           >
             <IoSearch size={24} color={theme.palette.neutral.darker} />
           </ListItemIcon>
+          <ListItemText sx={{ color: theme.palette.neutral.dark }}>Search</ListItemText>
+        </MenuItem>
+        <MenuItem
+          onClick={openDef}
+        >
+          <ListItemIcon
+          >
+            <FiBookOpen size={24} color={theme.palette.neutral.darker} />
+          </ListItemIcon>
+          <ListItemText sx={{ color: theme.palette.neutral.dark }}>Define</ListItemText>
         </MenuItem>
       </Menu>
+      <Dialog
+        open={defOpen}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleDefClose}
+        aria-describedby="alert-dialog-grow-description"
+        sx={{
+          "& .MuiDialog-paper": {
+            width: isLandscape ? "18%" : "100%",
+            padding: "1rem",
+            borderRadius: "1rem",
+            display: "flex",
+            boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 1)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
+            backgroundImage: `linear-gradient(
+              to top left, 
+              rgba(255, 255, 255, 0.15), 
+              rgba(255, 255, 255, 0.05)
+            )`, // Gradient overlay
+            backdropFilter: "blur(6px)", // Apply the glass effect
+            WebkitBackdropFilter: "blur(6px)", // For Safari support
+            border: "1px solid rgba(255, 255, 255, 0.2)"
+          },
+        }}
+        slotProps={{
+          backdrop: {
+            sx: {
+              backgroundColor: "rgba(0, 11, 13, 0.7)", // Custom backdrop color
+            },
+          },
+        }}
+      >
+        <AiDefDialog item={item} handleDefClose={handleDefClose} />
+      </Dialog>
     </Stack>
   )
 }
