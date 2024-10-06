@@ -238,7 +238,7 @@ const SearchPage = () => {
                         },
                       }}
                     >
-                      <TbPin
+                      <PiCircleBold
                         size={isLandscape ? 48 : 32}
                         style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
                         color={theme.palette.neutral.medium}
@@ -265,13 +265,13 @@ const SearchPage = () => {
                         },
                       }}
                     >
-                      <TbPin
+                      <PiDiamondBold
                         size={isLandscape ? 48 : 32}
                         style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
                         color={theme.palette.neutral.medium}
                       />
                       <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem" }}>
-                        Intermediate Lv. 2
+                        Lv. 2
                       </Typography>
                     </Stack>
                     <Stack
@@ -292,13 +292,13 @@ const SearchPage = () => {
                         },
                       }}
                     >
-                      <TbPin
+                      <PiStarBold
                         size={isLandscape ? 48 : 32}
                         style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
                         color={theme.palette.neutral.medium}
                       />
                       <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem" }}>
-                        Advanced Lv. 3
+                        Lv. 3
                       </Typography>
                     </Stack>
                     {labelsData?.[0].label.sort().map((text, index) => (
