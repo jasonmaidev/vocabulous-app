@@ -1237,6 +1237,7 @@ const ViewVocabDialog = (
       }
 
       setGeneratingExp(false)
+      setUpdatedExpression(false)
     },
   });
 
@@ -1376,10 +1377,13 @@ const ViewVocabDialog = (
     }
   })
 
+  const [updatedExpression, setUpdatedExpression] = useState(false)
+
   const handleUpdateExpression = (updatedData) => {
     updateNewExpression()
     updateExpressionMutation.mutate(updatedData)
     setEditingExpression(false)
+    setUpdatedExpression(true)
   }
 
   const updateExpressionMutation = useMutation({
@@ -2561,7 +2565,7 @@ const ViewVocabDialog = (
                       <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
                         Expression
                       </Typography>
-                      {editingExpression ?
+                      {(editingExpression && newExpressionEntry > expression?.length) ?
                         <Button
                           startIcon={<PiSparkleFill size={16} color={theme.palette.neutral.darker} />}
                           onClick={handleGenAiExp}
@@ -2601,9 +2605,12 @@ const ViewVocabDialog = (
                           Ai Gen
                         </Button>
                         :
-                        <IconButton onClick={openEditExpression}>
-                          <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
-                        </IconButton>
+                        !editingExpression ?
+                          <IconButton onClick={openEditExpression}>
+                            <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
+                          </IconButton>
+                          :
+                          null
                       }
 
                       {(expression?.length < 8 && newExpressionEntry < 8 && editingExpression) &&
@@ -2676,28 +2683,32 @@ const ViewVocabDialog = (
                                 )
                                 :
                                 (
-                                  <Stack
-                                    onMouseOver={() => setShowRegenExpOne(true)}
-                                    onMouseLeave={() => setShowRegenExpOne(false)}
-                                  >
-                                    {(showRegenExpOne && newExpressionOne?.length > 1) ?
-                                      <Tooltip title="Regenerate" placement="right">
-                                        <IconButton onClick={genExpOne}>
-                                          <IoRefresh size={16} />
-                                        </IconButton>
-                                      </Tooltip>
-                                      :
-                                      <Tooltip title="Generate" placement="right">
-                                        <IconButton onClick={genExpOne}>
-                                          {newExpressionOne?.length < 1 ?
-                                            <PiSparkle size={16} />
-                                            :
-                                            <PiSparkleFill size={16} />
-                                          }
-                                        </IconButton>
-                                      </Tooltip>
+                                  <>
+                                    {(!updatedExpression && newExpressionOne?.length < 1) &&
+                                      <Stack
+                                        onMouseOver={() => setShowRegenExpOne(true)}
+                                        onMouseLeave={() => setShowRegenExpOne(false)}
+                                      >
+                                        {(showRegenExpOne && newExpressionOne?.length > 1) ?
+                                          <Tooltip title="Regenerate" placement="right">
+                                            <IconButton onClick={genExpOne}>
+                                              <IoRefresh size={16} />
+                                            </IconButton>
+                                          </Tooltip>
+                                          :
+                                          <Tooltip title="Generate" placement="right">
+                                            <IconButton onClick={genExpOne}>
+                                              {newExpressionOne?.length < 1 ?
+                                                <PiSparkle size={16} />
+                                                :
+                                                <PiSparkleFill size={16} />
+                                              }
+                                            </IconButton>
+                                          </Tooltip>
+                                        }
+                                      </Stack>
                                     }
-                                  </Stack>
+                                  </>
                                 )
                               }
                             </>
@@ -2758,28 +2769,32 @@ const ViewVocabDialog = (
                                   )
                                   :
                                   (
-                                    <Stack
-                                      onMouseOver={() => setShowRegenExpTwo(true)}
-                                      onMouseLeave={() => setShowRegenExpTwo(false)}
-                                    >
-                                      {(showRegenExpTwo && newExpressionTwo?.length > 1) ?
-                                        <Tooltip title="Regenerate" placement="right">
-                                          <IconButton onClick={genExpTwo}>
-                                            <IoRefresh size={16} />
-                                          </IconButton>
-                                        </Tooltip>
-                                        :
-                                        <Tooltip title="Generate" placement="right">
-                                          <IconButton onClick={genExpTwo}>
-                                            {newExpressionTwo?.length < 1 ?
-                                              <PiSparkle size={16} />
-                                              :
-                                              <PiSparkleFill size={16} />
-                                            }
-                                          </IconButton>
-                                        </Tooltip>
+                                    <>
+                                      {(!updatedExpression && newExpressionTwo?.length < 1) &&
+                                        <Stack
+                                          onMouseOver={() => setShowRegenExpTwo(true)}
+                                          onMouseLeave={() => setShowRegenExpTwo(false)}
+                                        >
+                                          {(showRegenExpTwo && newExpressionTwo?.length > 1) ?
+                                            <Tooltip title="Regenerate" placement="right">
+                                              <IconButton onClick={genExpTwo}>
+                                                <IoRefresh size={16} />
+                                              </IconButton>
+                                            </Tooltip>
+                                            :
+                                            <Tooltip title="Generate" placement="right">
+                                              <IconButton onClick={genExpTwo}>
+                                                {newExpressionTwo?.length < 1 ?
+                                                  <PiSparkle size={16} />
+                                                  :
+                                                  <PiSparkleFill size={16} />
+                                                }
+                                              </IconButton>
+                                            </Tooltip>
+                                          }
+                                        </Stack>
                                       }
-                                    </Stack>
+                                    </>
                                   )
                                 }
                               </>
@@ -2841,28 +2856,32 @@ const ViewVocabDialog = (
                                   )
                                   :
                                   (
-                                    <Stack
-                                      onMouseOver={() => setShowRegenExpThree(true)}
-                                      onMouseLeave={() => setShowRegenExpThree(false)}
-                                    >
-                                      {(showRegenExpThree && newExpressionThree?.length > 1) ?
-                                        <Tooltip title="Regenerate" placement="right">
-                                          <IconButton onClick={genExpThree}>
-                                            <IoRefresh size={16} />
-                                          </IconButton>
-                                        </Tooltip>
-                                        :
-                                        <Tooltip title="Generate" placement="right">
-                                          <IconButton onClick={genExpThree}>
-                                            {newExpressionThree?.length < 1 ?
-                                              <PiSparkle size={16} />
-                                              :
-                                              <PiSparkleFill size={16} />
-                                            }
-                                          </IconButton>
-                                        </Tooltip>
+                                    <>
+                                      {(!updatedExpression && newExpressionThree?.length < 1) &&
+                                        <Stack
+                                          onMouseOver={() => setShowRegenExpThree(true)}
+                                          onMouseLeave={() => setShowRegenExpThree(false)}
+                                        >
+                                          {(showRegenExpThree && newExpressionThree?.length > 1) ?
+                                            <Tooltip title="Regenerate" placement="right">
+                                              <IconButton onClick={genExpThree}>
+                                                <IoRefresh size={16} />
+                                              </IconButton>
+                                            </Tooltip>
+                                            :
+                                            <Tooltip title="Generate" placement="right">
+                                              <IconButton onClick={genExpThree}>
+                                                {newExpressionThree?.length < 1 ?
+                                                  <PiSparkle size={16} />
+                                                  :
+                                                  <PiSparkleFill size={16} />
+                                                }
+                                              </IconButton>
+                                            </Tooltip>
+                                          }
+                                        </Stack>
                                       }
-                                    </Stack>
+                                    </>
                                   )
                                 }
                               </>
@@ -2924,28 +2943,32 @@ const ViewVocabDialog = (
                                   )
                                   :
                                   (
-                                    <Stack
-                                      onMouseOver={() => setShowRegenExpFour(true)}
-                                      onMouseLeave={() => setShowRegenExpFour(false)}
-                                    >
-                                      {(showRegenExpFour && newExpressionFour?.length > 1) ?
-                                        <Tooltip title="Regenerate" placement="right">
-                                          <IconButton onClick={genExpFour}>
-                                            <IoRefresh size={16} />
-                                          </IconButton>
-                                        </Tooltip>
-                                        :
-                                        <Tooltip title="Generate" placement="right">
-                                          <IconButton onClick={genExpFour}>
-                                            {newExpressionFour?.length < 1 ?
-                                              <PiSparkle size={16} />
-                                              :
-                                              <PiSparkleFill size={16} />
-                                            }
-                                          </IconButton>
-                                        </Tooltip>
+                                    <>
+                                      {(!updatedExpression && newExpressionFour?.length < 1) &&
+                                        <Stack
+                                          onMouseOver={() => setShowRegenExpFour(true)}
+                                          onMouseLeave={() => setShowRegenExpFour(false)}
+                                        >
+                                          {(showRegenExpFour && newExpressionFour?.length > 1) ?
+                                            <Tooltip title="Regenerate" placement="right">
+                                              <IconButton onClick={genExpFour}>
+                                                <IoRefresh size={16} />
+                                              </IconButton>
+                                            </Tooltip>
+                                            :
+                                            <Tooltip title="Generate" placement="right">
+                                              <IconButton onClick={genExpFour}>
+                                                {newExpressionFour?.length < 1 ?
+                                                  <PiSparkle size={16} />
+                                                  :
+                                                  <PiSparkleFill size={16} />
+                                                }
+                                              </IconButton>
+                                            </Tooltip>
+                                          }
+                                        </Stack>
                                       }
-                                    </Stack>
+                                    </>
                                   )
                                 }
                               </>
@@ -3007,28 +3030,32 @@ const ViewVocabDialog = (
                                   )
                                   :
                                   (
-                                    <Stack
-                                      onMouseOver={() => setShowRegenExpFive(true)}
-                                      onMouseLeave={() => setShowRegenExpFive(false)}
-                                    >
-                                      {(showRegenExpFive && newExpressionFive?.length > 1) ?
-                                        <Tooltip title="Regenerate" placement="right">
-                                          <IconButton onClick={genExpFive}>
-                                            <IoRefresh size={16} />
-                                          </IconButton>
-                                        </Tooltip>
-                                        :
-                                        <Tooltip title="Generate" placement="right">
-                                          <IconButton onClick={genExpFive}>
-                                            {newExpressionFive?.length < 1 ?
-                                              <PiSparkle size={16} />
-                                              :
-                                              <PiSparkleFill size={16} />
-                                            }
-                                          </IconButton>
-                                        </Tooltip>
+                                    <>
+                                      {(!updatedExpression && newExpressionFive?.length < 1) &&
+                                        <Stack
+                                          onMouseOver={() => setShowRegenExpFive(true)}
+                                          onMouseLeave={() => setShowRegenExpFive(false)}
+                                        >
+                                          {(showRegenExpFive && newExpressionFive?.length > 1) ?
+                                            <Tooltip title="Regenerate" placement="right">
+                                              <IconButton onClick={genExpFive}>
+                                                <IoRefresh size={16} />
+                                              </IconButton>
+                                            </Tooltip>
+                                            :
+                                            <Tooltip title="Generate" placement="right">
+                                              <IconButton onClick={genExpFive}>
+                                                {newExpressionFive?.length < 1 ?
+                                                  <PiSparkle size={16} />
+                                                  :
+                                                  <PiSparkleFill size={16} />
+                                                }
+                                              </IconButton>
+                                            </Tooltip>
+                                          }
+                                        </Stack>
                                       }
-                                    </Stack>
+                                    </>
                                   )
                                 }
                               </>
@@ -3090,28 +3117,32 @@ const ViewVocabDialog = (
                                   )
                                   :
                                   (
-                                    <Stack
-                                      onMouseOver={() => setShowRegenExpSix(true)}
-                                      onMouseLeave={() => setShowRegenExpSix(false)}
-                                    >
-                                      {(showRegenExpSix && newExpressionSix?.length > 1) ?
-                                        <Tooltip title="Regenerate" placement="right">
-                                          <IconButton onClick={genExpSix}>
-                                            <IoRefresh size={16} />
-                                          </IconButton>
-                                        </Tooltip>
-                                        :
-                                        <Tooltip title="Generate" placement="right">
-                                          <IconButton onClick={genExpSix}>
-                                            {newExpressionSix?.length < 1 ?
-                                              <PiSparkle size={16} />
-                                              :
-                                              <PiSparkleFill size={16} />
-                                            }
-                                          </IconButton>
-                                        </Tooltip>
+                                    <>
+                                      {(!updatedExpression && newExpressionSix?.length < 1) &&
+                                        <Stack
+                                          onMouseOver={() => setShowRegenExpSix(true)}
+                                          onMouseLeave={() => setShowRegenExpSix(false)}
+                                        >
+                                          {(showRegenExpSix && newExpressionSix?.length > 1) ?
+                                            <Tooltip title="Regenerate" placement="right">
+                                              <IconButton onClick={genExpSix}>
+                                                <IoRefresh size={16} />
+                                              </IconButton>
+                                            </Tooltip>
+                                            :
+                                            <Tooltip title="Generate" placement="right">
+                                              <IconButton onClick={genExpSix}>
+                                                {newExpressionSix?.length < 1 ?
+                                                  <PiSparkle size={16} />
+                                                  :
+                                                  <PiSparkleFill size={16} />
+                                                }
+                                              </IconButton>
+                                            </Tooltip>
+                                          }
+                                        </Stack>
                                       }
-                                    </Stack>
+                                    </>
                                   )
                                 }
                               </>
@@ -3173,28 +3204,32 @@ const ViewVocabDialog = (
                                   )
                                   :
                                   (
-                                    <Stack
-                                      onMouseOver={() => setShowRegenExpSeven(true)}
-                                      onMouseLeave={() => setShowRegenExpSeven(false)}
-                                    >
-                                      {(showRegenExpSeven && newExpressionSeven?.length > 1) ?
-                                        <Tooltip title="Regenerate" placement="right">
-                                          <IconButton onClick={genExpSeven}>
-                                            <IoRefresh size={16} />
-                                          </IconButton>
-                                        </Tooltip>
-                                        :
-                                        <Tooltip title="Generate" placement="right">
-                                          <IconButton onClick={genExpSeven}>
-                                            {newExpressionSeven?.length < 1 ?
-                                              <PiSparkle size={16} />
-                                              :
-                                              <PiSparkleFill size={16} />
-                                            }
-                                          </IconButton>
-                                        </Tooltip>
+                                    <>
+                                      {(!updatedExpression && newExpressionSeven?.length < 1) &&
+                                        <Stack
+                                          onMouseOver={() => setShowRegenExpSeven(true)}
+                                          onMouseLeave={() => setShowRegenExpSeven(false)}
+                                        >
+                                          {(showRegenExpSeven && newExpressionSeven?.length > 1) ?
+                                            <Tooltip title="Regenerate" placement="right">
+                                              <IconButton onClick={genExpSeven}>
+                                                <IoRefresh size={16} />
+                                              </IconButton>
+                                            </Tooltip>
+                                            :
+                                            <Tooltip title="Generate" placement="right">
+                                              <IconButton onClick={genExpSeven}>
+                                                {newExpressionSeven?.length < 1 ?
+                                                  <PiSparkle size={16} />
+                                                  :
+                                                  <PiSparkleFill size={16} />
+                                                }
+                                              </IconButton>
+                                            </Tooltip>
+                                          }
+                                        </Stack>
                                       }
-                                    </Stack>
+                                    </>
                                   )
                                 }
                               </>
@@ -3256,28 +3291,32 @@ const ViewVocabDialog = (
                                   )
                                   :
                                   (
-                                    <Stack
-                                      onMouseOver={() => setShowRegenExpEight(true)}
-                                      onMouseLeave={() => setShowRegenExpEight(false)}
-                                    >
-                                      {(showRegenExpEight && newExpressionEight?.length > 1) ?
-                                        <Tooltip title="Regenerate" placement="right">
-                                          <IconButton onClick={genExpEight}>
-                                            <IoRefresh size={16} />
-                                          </IconButton>
-                                        </Tooltip>
-                                        :
-                                        <Tooltip title="Generate" placement="right">
-                                          <IconButton onClick={genExpEight}>
-                                            {newExpressionEight?.length < 1 ?
-                                              <PiSparkle size={16} />
-                                              :
-                                              <PiSparkleFill size={16} />
-                                            }
-                                          </IconButton>
-                                        </Tooltip>
+                                    <>
+                                      {(!updatedExpression && newExpressionEight?.length < 1) &&
+                                        <Stack
+                                          onMouseOver={() => setShowRegenExpEight(true)}
+                                          onMouseLeave={() => setShowRegenExpEight(false)}
+                                        >
+                                          {(showRegenExpEight && newExpressionEight?.length > 1) ?
+                                            <Tooltip title="Regenerate" placement="right">
+                                              <IconButton onClick={genExpEight}>
+                                                <IoRefresh size={16} />
+                                              </IconButton>
+                                            </Tooltip>
+                                            :
+                                            <Tooltip title="Generate" placement="right">
+                                              <IconButton onClick={genExpEight}>
+                                                {newExpressionEight?.length < 1 ?
+                                                  <PiSparkle size={16} />
+                                                  :
+                                                  <PiSparkleFill size={16} />
+                                                }
+                                              </IconButton>
+                                            </Tooltip>
+                                          }
+                                        </Stack>
                                       }
-                                    </Stack>
+                                    </>
                                   )
                                 }
                               </>
