@@ -1616,13 +1616,15 @@ const ViewVocabDialog = (
                 {pinned ?
                   <Tooltip title="Unpin" placement="top">
                     <Stack>
-                      <TbPinFilled size={24} style={{ cursor: "pointer", color: theme.palette.primary.main }} onClick={handleUpdatePinned} />
+                      <TbPinFilled size={24} style={{ cursor: "pointer", color: mode === "light" ? theme.palette.neutral.dark : theme.palette.primary.main }}
+                        onClick={handleUpdatePinned} />
                     </Stack>
                   </Tooltip>
                   :
                   <Tooltip title="Pin" placement="top">
                     <Stack>
-                      <TbPin size={24} style={{ cursor: "pointer", color: theme.palette.neutral.main }} onClick={handleUpdatePinned} />
+                      <TbPin size={24} style={{ cursor: "pointer", color: mode === "light" ? theme.palette.neutral.dark : theme.palette.primary.main }}
+                        onClick={handleUpdatePinned} />
                     </Stack>
                   </Tooltip>
                 }
@@ -1781,7 +1783,9 @@ const ViewVocabDialog = (
                     {text.length < 9 && (
                       <>
                         <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
-                          <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
+                          <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"}
+                            color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid}
+                            fontWeight={400}>
                             Similar
                           </Typography>
                           {editingSimilar ?
@@ -2445,13 +2449,15 @@ const ViewVocabDialog = (
                 {pinned ?
                   <Tooltip title="Unpin" placement="top">
                     <Stack>
-                      <TbPinFilled size={24} style={{ cursor: "pointer", color: theme.palette.primary.main }} onClick={handleUpdatePinned} />
+                      <TbPinFilled size={24} style={{ cursor: "pointer", color: mode === "light" ? theme.palette.neutral.dark : theme.palette.primary.main }}
+                        onClick={handleUpdatePinned} />
                     </Stack>
                   </Tooltip>
                   :
                   <Tooltip title="Pin" placement="top">
                     <Stack>
-                      <TbPin size={24} style={{ cursor: "pointer", color: theme.palette.neutral.main }} onClick={handleUpdatePinned} />
+                      <TbPin size={24} style={{ cursor: "pointer", color: mode === "light" ? theme.palette.neutral.dark : theme.palette.primary.main }}
+                        onClick={handleUpdatePinned} />
                     </Stack>
                   </Tooltip>
                 }
@@ -2552,13 +2558,15 @@ const ViewVocabDialog = (
                   {pinned ?
                     <Tooltip title="Unpin" placement="top">
                       <Stack>
-                        <TbPinFilled size={24} style={{ cursor: "pointer", color: theme.palette.primary.main }} onClick={handleUpdatePinned} />
+                        <TbPinFilled size={24} style={{ cursor: "pointer", color: mode === "light" ? theme.palette.neutral.dark : theme.palette.primary.main }}
+                          onClick={handleUpdatePinned} />
                       </Stack>
                     </Tooltip>
                     :
                     <Tooltip title="Pin" placement="top">
                       <Stack>
-                        <TbPin size={24} style={{ cursor: "pointer", color: theme.palette.neutral.main }} onClick={handleUpdatePinned} />
+                        <TbPin size={24} style={{ cursor: "pointer", color: mode === "light" ? theme.palette.neutral.dark : theme.palette.primary.main }}
+                          onClick={handleUpdatePinned} />
                       </Stack>
                     </Tooltip>
                   }
@@ -3741,13 +3749,15 @@ const ViewVocabDialog = (
                 {pinned ?
                   <Tooltip title="Unpin" placement="top">
                     <Stack>
-                      <TbPinFilled size={24} style={{ cursor: "pointer", color: theme.palette.primary.main }} onClick={handleUpdatePinned} />
+                      <TbPinFilled size={24} style={{ cursor: "pointer", color: mode === "light" ? theme.palette.neutral.dark : theme.palette.primary.main }}
+                        onClick={handleUpdatePinned} />
                     </Stack>
                   </Tooltip>
                   :
                   <Tooltip title="Pin" placement="top">
                     <Stack>
-                      <TbPin size={24} style={{ cursor: "pointer", color: theme.palette.neutral.main }} onClick={handleUpdatePinned} />
+                      <TbPin size={24} style={{ cursor: "pointer", color: mode === "light" ? theme.palette.neutral.dark : theme.palette.primary.main }}
+                        onClick={handleUpdatePinned} />
                     </Stack>
                   </Tooltip>
                 }
