@@ -32,7 +32,7 @@ const fetchSimilarVocab = async (similarSearchText, _id, token) => {
   return response.json();
 };
 
-const SimilarText = ({ item, searchSimilar }) => {
+const SimilarText = ({ item, setSimilarSearchText, searchSimilar }) => {
   const isQHDScreens = useMediaQuery("(min-width:2500px) and (max-height:1600px)") // 2K Laptops
   const isWideScreens = useMediaQuery("(min-width:3400px) and (max-height:1500px)") // Wide and Ultrawide Desktops
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
@@ -53,6 +53,7 @@ const SimilarText = ({ item, searchSimilar }) => {
   const [simMenuAnchor, setSimMenuAnchor] = useState(null)
   const openMenu = Boolean(simMenuAnchor)
   const handleSimMenuClick = (event) => {
+    setSimilarSearchText(item)
     setSimMenuAnchor(event.currentTarget)
   }
   const handleMenuClose = () => {
@@ -2221,7 +2222,7 @@ const ViewVocabDialog = (
                                         padding: "0.25rem 0.75rem",
                                       }}
                                     >
-                                      <SimilarText item={item} searchSimilar={searchSimilar} />
+                                      <SimilarText item={item} setSimilarSearchText={setSimilarSearchText} searchSimilar={searchSimilar} />
                                       <Typography
                                         fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
                                         lineHeight={1}
