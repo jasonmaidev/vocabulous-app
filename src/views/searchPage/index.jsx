@@ -3,11 +3,20 @@ import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import PropagateLoader from "react-spinners/PropagateLoader"
-import { Box, Typography, useMediaQuery, Button, useTheme } from "@mui/material"
+import { Box, Typography, useMediaQuery, Stack, useTheme } from "@mui/material"
 import { setViewByLabel } from "state"
 import Navbar from "views/navbar"
 import LabelsDrawer from "components/LabelsDrawer"
-import { MdLabelOutline } from "react-icons/md";
+import { BiHomeAlt2, BiPulse } from "react-icons/bi";
+import { PiRuler } from "react-icons/pi";
+import { MdLabelOutline, MdAccessTime } from "react-icons/md";
+import { TbTemperature } from "react-icons/tb";
+import { IoLanguage, IoBeerOutline, IoBodyOutline } from "react-icons/io5";
+import { LiaLaughSquint, LiaFeatherAltSolid } from "react-icons/lia";
+import { FaRegHeart, FaRegUser } from "react-icons/fa";
+import { FiThumbsUp, FiThumbsDown, FiMapPin, FiBriefcase, FiHash } from "react-icons/fi";
+import { RiHeartsLine, RiChat3Line } from "react-icons/ri";
+import { HiOutlineBookOpen } from "react-icons/hi2";
 import ViewVocabsWidget from "views/widgets/ViewVocabsWidget"
 import apiUrl from "config/api"
 const MobileFooterNavigation = lazy(() => import("../widgets/MobileFooterNavigation"))
@@ -66,6 +75,54 @@ const SearchPage = () => {
     }
   }, [searchRef])
 
+
+  const renderIcon = (text) => {
+    switch (text) {
+      case 'body':
+        return <IoBodyOutline size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'business':
+        return <FiBriefcase size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'colloquial':
+        return <RiChat3Line size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'degree':
+        return <TbTemperature size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'frequency':
+        return <MdAccessTime size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'grammar':
+        return <IoLanguage size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'house':
+        return <BiHomeAlt2 size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'humor':
+        return <LiaLaughSquint size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'idiom':
+        return <LiaFeatherAltSolid size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'measure':
+        return <PiRuler size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'mood':
+        return <FaRegHeart size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'negative':
+        return <FiThumbsDown size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'personality':
+        return <FaRegUser size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'places':
+        return <FiMapPin size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'positive':
+        return <FiThumbsUp size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'romance':
+        return <RiHeartsLine size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'slang':
+        return <FiHash size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'social':
+        return <IoBeerOutline size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'status':
+        return <BiPulse size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      case 'wisdom':
+        return <HiOutlineBookOpen size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+      default:
+        return <MdLabelOutline size={isLandscape ? 48 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+    }
+  };
+
   return (
     <Box>
       <Navbar searchRef={searchRef} />
@@ -76,7 +133,7 @@ const SearchPage = () => {
 
       <Box
         width="100%"
-        padding={isLandscape ? "1rem 4%" : "2rem 4%"}
+        padding={isLandscape ? "1rem 4%" : "2rem 1%"}
         display={isNonMobileScreens ? "flex" : "block"}
         gap="0.5rem"
         justifyContent="center"
@@ -105,34 +162,44 @@ const SearchPage = () => {
                   </Typography>
                   <Box
                     display={"flex"}
-                    flexDirection={"column"}
-                    justifyContent={"flex-start"}
-                    alignItems={"flex-start"}
+                    flexDirection={"row"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    flexWrap={"wrap"}
                     sx={{
                       m: 2,
                       p: "1rem",
                       borderRadius: "1rem",
-                      border: `solid 1px ${palette.neutral.light}`,
                     }}
                   >
-                    {labelsData?.[0].label?.sort().map((text, index) => (
-                      <Box
+                    {labelsData?.[0].label.sort().map((text, index) => (
+                      <Stack
                         key={text}
                         onClick={() => viewLabledVocabs(text)}
+                        direction={"column"}
+                        alignItems={"center"}
+                        sx={{
+                          cursor: "pointer",
+                          borderRadius: "2rem",
+                          padding: "1rem",
+                          border: `solid 1px ${palette.neutral.light}`,
+                          m: 1,
+                          '&:hover': {
+                            backgroundColor: theme.palette.primary.light,
+                            border: `solid 1px ${palette.primary.light}`,
+
+                          },
+                        }}
                       >
-                        <Button
-                          startIcon={<MdLabelOutline size={24} />}
+                        {renderIcon(text)}
+                        <Typography
                           sx={{
-                            borderRadius: "6rem",
-                            padding: "1rem 2rem",
-                            '&:hover': {
-                              backgroundColor: theme.palette.primary.light,
-                            },
+                            fontSize: isLandscape ? "0.8rem" : "0.6rem",
                           }}
                         >
                           {text}
-                        </Button>
-                      </Box>
+                        </Typography>
+                      </Stack>
                     ))}
                   </Box>
                 </>
