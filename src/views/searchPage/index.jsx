@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import PropagateLoader from "react-spinners/PropagateLoader"
 import { Box, Typography, useMediaQuery, Stack, useTheme } from "@mui/material"
-import { setViewByLabel } from "state"
+import { setViewByLabel, setOpenLabelsDrawer } from "state"
 import Navbar from "views/navbar"
 import LabelsDrawer from "components/LabelsDrawer"
 import { BiHomeAlt2, BiPulse } from "react-icons/bi";
-import { PiRuler } from "react-icons/pi";
+import { PiRuler, PiCircleBold, PiDiamondBold, PiStarBold } from "react-icons/pi";
 import { MdLabelOutline, MdAccessTime } from "react-icons/md";
-import { TbTemperature } from "react-icons/tb";
+import { TbTemperature, TbPin } from "react-icons/tb";
 import { IoLanguage, IoBeerOutline, IoBodyOutline } from "react-icons/io5";
 import { LiaLaughSquint, LiaFeatherAltSolid } from "react-icons/lia";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
@@ -30,6 +30,7 @@ const SearchPage = () => {
   const dispatch = useDispatch()
   const viewByLabel = useSelector((state) => state.viewByLabel)
   const viewBySearchTerm = useSelector((state) => state.viewBySearchTerm)
+  const openLabelsDrawer = useSelector((state) => state.openLabelsDrawer)
 
   const searchRef = useRef(null)
 
@@ -75,6 +76,26 @@ const SearchPage = () => {
     }
   }, [searchRef])
 
+  const toggleLabelsDrawer = () => {
+    dispatch(setOpenLabelsDrawer({ openLabelsDrawer: !openLabelsDrawer }))
+  }
+
+  const navigateHome = () => {
+    navigate(`/`)
+    toggleLabelsDrawer()
+  }
+  const showAllVocabs = () => {
+    navigate(`/all/${_id}`)
+    toggleLabelsDrawer()
+  }
+  const showIntermediateVocabs = () => {
+    navigate(`/int/${_id}`)
+    toggleLabelsDrawer()
+  }
+  const showAdvancedVocabs = () => {
+    navigate(`/adv/${_id}`)
+    toggleLabelsDrawer()
+  }
 
   const renderIcon = (text) => {
     switch (text) {
@@ -172,6 +193,114 @@ const SearchPage = () => {
                       borderRadius: "1rem",
                     }}
                   >
+                    <Stack
+                      key={"pinned"}
+                      onClick={navigateHome}
+                      direction={"column"}
+                      alignItems={"center"}
+                      sx={{
+                        cursor: "pointer",
+                        borderRadius: "2rem",
+                        padding: "1rem",
+                        border: `solid 1px ${palette.neutral.light}`,
+                        m: 1,
+                        '&:hover': {
+                          backgroundColor: theme.palette.primary.light,
+                          border: `solid 1px ${palette.primary.light}`,
+
+                        },
+                      }}
+                    >
+                      <TbPin
+                        size={isLandscape ? 48 : 32}
+                        style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
+                        color={theme.palette.neutral.medium}
+                      />
+                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem" }}>
+                        Pinned
+                      </Typography>
+                    </Stack>
+                    <Stack
+                      key={"pinned"}
+                      onClick={showAllVocabs}
+                      direction={"column"}
+                      alignItems={"center"}
+                      sx={{
+                        cursor: "pointer",
+                        borderRadius: "2rem",
+                        padding: "1rem",
+                        border: `solid 1px ${palette.neutral.light}`,
+                        m: 1,
+                        '&:hover': {
+                          backgroundColor: theme.palette.primary.light,
+                          border: `solid 1px ${palette.primary.light}`,
+
+                        },
+                      }}
+                    >
+                      <TbPin
+                        size={isLandscape ? 48 : 32}
+                        style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
+                        color={theme.palette.neutral.medium}
+                      />
+                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem" }}>
+                        All
+                      </Typography>
+                    </Stack>
+                    <Stack
+                      key={"pinned"}
+                      onClick={showIntermediateVocabs}
+                      direction={"column"}
+                      alignItems={"center"}
+                      sx={{
+                        cursor: "pointer",
+                        borderRadius: "2rem",
+                        padding: "1rem",
+                        border: `solid 1px ${palette.neutral.light}`,
+                        m: 1,
+                        '&:hover': {
+                          backgroundColor: theme.palette.primary.light,
+                          border: `solid 1px ${palette.primary.light}`,
+
+                        },
+                      }}
+                    >
+                      <TbPin
+                        size={isLandscape ? 48 : 32}
+                        style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
+                        color={theme.palette.neutral.medium}
+                      />
+                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem" }}>
+                        Intermediate Lv. 2
+                      </Typography>
+                    </Stack>
+                    <Stack
+                      key={"pinned"}
+                      onClick={showAdvancedVocabs}
+                      direction={"column"}
+                      alignItems={"center"}
+                      sx={{
+                        cursor: "pointer",
+                        borderRadius: "2rem",
+                        padding: "1rem",
+                        border: `solid 1px ${palette.neutral.light}`,
+                        m: 1,
+                        '&:hover': {
+                          backgroundColor: theme.palette.primary.light,
+                          border: `solid 1px ${palette.primary.light}`,
+
+                        },
+                      }}
+                    >
+                      <TbPin
+                        size={isLandscape ? 48 : 32}
+                        style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
+                        color={theme.palette.neutral.medium}
+                      />
+                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem" }}>
+                        Advanced Lv. 3
+                      </Typography>
+                    </Stack>
                     {labelsData?.[0].label.sort().map((text, index) => (
                       <Stack
                         key={text}
@@ -194,7 +323,7 @@ const SearchPage = () => {
                         {renderIcon(text)}
                         <Typography
                           sx={{
-                            fontSize: isLandscape ? "0.8rem" : "0.6rem",
+                            fontSize: isLandscape ? "0.8rem" : "0.65rem",
                           }}
                         >
                           {text}
