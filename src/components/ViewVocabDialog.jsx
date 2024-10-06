@@ -1839,7 +1839,7 @@ const ViewVocabDialog = (
                         </Stack>
 
                         {(!editingSimilar && similar?.length === 0) && (
-                          <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditSimilar}>
+                          <Button sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditSimilar}>
                             <Typography fontSize={"1.5rem"}>+</Typography>
                           </Button>
                         )}
@@ -2632,7 +2632,7 @@ const ViewVocabDialog = (
                     </Stack>
 
                     {(!editingExpression && expression?.length === 0) && (
-                      <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditExpression}>
+                      <Button sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditExpression}>
                         <Typography fontSize={"1.5rem"}>+</Typography>
                       </Button>
                     )}
@@ -3389,7 +3389,7 @@ const ViewVocabDialog = (
                     </Stack>
 
                     {(!editingSentences && sentence?.length === 0) && (
-                      <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditSentences}>
+                      <Button sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditSentences}>
                         <Typography fontSize={"1.5rem"}>+</Typography>
                       </Button>
                     )}
@@ -3605,7 +3605,7 @@ const ViewVocabDialog = (
                                   sx={{
                                     borderRadius: "0.5rem",
                                     padding: "0.5rem 0.75rem",
-                                    backgroundColor: mode === "light" ? "rgba(180, 180, 180, 0.2)" : "rgba(0, 11, 13, 0.45)", // Semi-transparent background
+                                    backgroundColor: mode === "light" ? "rgba(197, 197, 217, 0.2)" : "rgba(0, 11, 13, 0.45)", // Semi-transparent background
                                     backdropFilter: "blur(10px)", // Apply the glass effect
                                     WebkitBackdropFilter: "blur(10px)",
                                   }}
