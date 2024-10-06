@@ -1578,7 +1578,7 @@ const ViewVocabDialog = (
                   <Button
                     onClick={handleViewUsage}
                     sx={
-                      viewUsage ?
+                      !viewVocab ?
                         {
                           color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
                           margin: 0,
@@ -2405,7 +2405,7 @@ const ViewVocabDialog = (
                   <Button
                     onClick={handleViewUsage}
                     sx={
-                      viewUsage ?
+                      !viewVocab ?
                         {
                           color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
                           margin: 0,
@@ -2511,7 +2511,7 @@ const ViewVocabDialog = (
                     <Button
                       onClick={handleViewUsage}
                       sx={
-                        viewUsage ?
+                        !viewVocab ?
                           {
                             color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
                             margin: 0,
@@ -3697,7 +3697,7 @@ const ViewVocabDialog = (
                   <Button
                     onClick={handleViewUsage}
                     sx={
-                      viewUsage ?
+                      !viewVocab ?
                         {
                           color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
                           margin: 0,
