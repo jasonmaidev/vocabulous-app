@@ -159,6 +159,7 @@ const LoginPage = () => {
           display={"flex"}
           flexDirection={"column"}
           justifyContent={"center"}
+          alignItems={"center"}
         >
           <Stack direction={"row"} spacing={1} pb={isLandscape ? 4 : 2}>
             <IoLanguage size={isLandscape ? "8rem" : "4rem"} style={{

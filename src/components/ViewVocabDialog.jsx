@@ -99,21 +99,14 @@ const SimilarText = ({ item, setSimilarSearchText, searchSimilar, handleViewClos
           },
         }}
       >
-        <MenuItem
-          onMouseDown={handleMenuClose}
-          onClick={() => searchSimilar(item)}
-        >
-          <ListItemIcon
-          >
+        <MenuItem onMouseDown={handleMenuClose} onClick={() => searchSimilar(item)}>
+          <ListItemIcon>
             <IoSearch size={24} color={theme.palette.neutral.darker} />
           </ListItemIcon>
           <ListItemText sx={{ color: theme.palette.neutral.dark }}>Search</ListItemText>
         </MenuItem>
-        <MenuItem
-          onClick={openDef}
-        >
-          <ListItemIcon
-          >
+        <MenuItem onClick={openDef}>
+          <ListItemIcon>
             <FiBookOpen size={24} color={theme.palette.neutral.darker} />
           </ListItemIcon>
           <ListItemText sx={{ color: theme.palette.neutral.dark }}>Define</ListItemText>
