@@ -32,7 +32,7 @@ const fetchSimilarVocab = async (similarSearchText, _id, token) => {
   return response.json();
 };
 
-const SimilarText = ({ item, setSimilarSearchText, searchSimilar }) => {
+const SimilarText = ({ item, setSimilarSearchText, searchSimilar, handleViewClose }) => {
   const isQHDScreens = useMediaQuery("(min-width:2500px) and (max-height:1600px)") // 2K Laptops
   const isWideScreens = useMediaQuery("(min-width:3400px) and (max-height:1500px)") // Wide and Ultrawide Desktops
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
@@ -1498,6 +1498,8 @@ const ViewVocabDialog = (
       dispatch(setViewBySearchTerm({ viewBySearchTerm: item }))
       navigate(`/search/${_id}`)
     }
+
+    handleViewClose()
   };
 
   const handleViewVocab = () => {
@@ -2222,7 +2224,12 @@ const ViewVocabDialog = (
                                         padding: "0.25rem 0.75rem",
                                       }}
                                     >
-                                      <SimilarText item={item} setSimilarSearchText={setSimilarSearchText} searchSimilar={searchSimilar} />
+                                      <SimilarText
+                                        item={item}
+                                        setSimilarSearchText={setSimilarSearchText}
+                                        searchSimilar={searchSimilar}
+                                        handleViewClose={handleViewClose}
+                                      />
                                       <Typography
                                         fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1rem" : "0.8rem"}
                                         lineHeight={1}
