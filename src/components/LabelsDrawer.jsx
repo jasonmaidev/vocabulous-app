@@ -69,7 +69,6 @@ export default function LabelsDrawer() {
     queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
     navigate(`/label/${_id}`)
     if (isPortrait) {
-      // toggleLabelsDrawer()
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
   }
@@ -183,7 +182,7 @@ export default function LabelsDrawer() {
                 <TbPin size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText
-                primary={"Pinned"}
+                primary={"Pinned"} secondary={"Homepage"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
               />
             </ListItemButton>
@@ -205,7 +204,7 @@ export default function LabelsDrawer() {
               <ListItemIcon>
                 <PiCircleBold size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
-              <ListItemText primary={"All Lv. 1 - 3"}
+              <ListItemText primary={"All"} secondary={"Level 1 - 3"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
               />
             </ListItemButton>
@@ -227,7 +226,7 @@ export default function LabelsDrawer() {
               <ListItemIcon>
                 <PiDiamondBold size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
-              <ListItemText primary={"Intermediate Lv. 2"}
+              <ListItemText primary={"Intermediate"} secondary={"Level 2"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
               />
             </ListItemButton>
@@ -249,7 +248,7 @@ export default function LabelsDrawer() {
               <ListItemIcon>
                 <PiStarBold size={24} color={theme.palette.neutral.medium} />
               </ListItemIcon>
-              <ListItemText primary={"Advanced Lv. 3"}
+              <ListItemText primary={"Advanced"} secondary={"Level 3"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
               />
             </ListItemButton>

@@ -60,7 +60,7 @@ const IntPage = () => {
 
       <Box
         width="100%"
-        padding={isLandscape ? "1rem 4%" : "2rem 4%"}
+        padding={isLandscape ? "1rem 4%" : "0.5rem 4%"}
         display={isNonMobileScreens ? "flex" : "block"}
         gap="0.5rem"
         justifyContent="center"
@@ -70,7 +70,6 @@ const IntPage = () => {
 
         <Box
           flexBasis={isNonMobileScreens ? "64%" : undefined}
-          mt={isNonMobileScreens ? undefined : "2rem"}
           display={"flex"}
           flexDirection={"column"}
           justifyContent={"center"}

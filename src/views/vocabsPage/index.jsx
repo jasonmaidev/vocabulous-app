@@ -24,7 +24,6 @@ const VocabsPage = () => {
   const viewBySearchTerm = useSelector((state) => state.viewBySearchTerm)
 
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
   const token = useSelector((state) => state.token)
   const { _id } = useSelector((state) => state.user)
@@ -59,7 +58,7 @@ const VocabsPage = () => {
 
       <Box
         width="100%"
-        padding={isLandscape ? "1rem 4%" : "2rem 4%"}
+        padding={isLandscape ? "1rem 4%" : "0.5rem 4%"}
         display={isNonMobileScreens ? "flex" : "block"}
         gap="0.5rem"
         justifyContent="center"
@@ -69,7 +68,6 @@ const VocabsPage = () => {
 
         <Box
           flexBasis={isNonMobileScreens ? "64%" : undefined}
-          mt={isNonMobileScreens ? undefined : "2rem"}
           display={"flex"}
           flexDirection={"column"}
           justifyContent={"center"}
