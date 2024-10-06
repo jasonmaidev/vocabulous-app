@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import PropagateLoader from "react-spinners/PropagateLoader"
 import { Box, Typography, useMediaQuery, Stack, useTheme } from "@mui/material"
-import { setViewByLabel, setOpenLabelsDrawer } from "state"
+import { setViewByLabel } from "state"
 import Navbar from "views/navbar"
 import LabelsDrawer from "components/LabelsDrawer"
 import { BiHomeAlt2, BiPulse } from "react-icons/bi";
@@ -30,10 +30,8 @@ const SearchPage = () => {
   const dispatch = useDispatch()
   const viewByLabel = useSelector((state) => state.viewByLabel)
   const viewBySearchTerm = useSelector((state) => state.viewBySearchTerm)
-  const openLabelsDrawer = useSelector((state) => state.openLabelsDrawer)
 
   const searchRef = useRef(null)
-
 
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
   const isPortrait = window.matchMedia("(orientation: portrait)").matches;
@@ -76,25 +74,17 @@ const SearchPage = () => {
     }
   }, [searchRef])
 
-  const toggleLabelsDrawer = () => {
-    dispatch(setOpenLabelsDrawer({ openLabelsDrawer: !openLabelsDrawer }))
-  }
-
   const navigateHome = () => {
     navigate(`/`)
-    toggleLabelsDrawer()
   }
   const showAllVocabs = () => {
     navigate(`/all/${_id}`)
-    toggleLabelsDrawer()
   }
   const showIntermediateVocabs = () => {
     navigate(`/int/${_id}`)
-    toggleLabelsDrawer()
   }
   const showAdvancedVocabs = () => {
     navigate(`/adv/${_id}`)
-    toggleLabelsDrawer()
   }
 
   const renderIcon = (text) => {
