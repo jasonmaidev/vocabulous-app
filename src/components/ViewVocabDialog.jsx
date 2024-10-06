@@ -1884,11 +1884,7 @@ const ViewVocabDialog = (
                                 </Stack>
                               )
                                 :
-                                <IconButton
-                                  onClick={clearSimilarOne}
-                                // onClick={subtractSimilarEntry} 
-                                // disabled={newSimilarOne.length > 0}
-                                >
+                                <IconButton onClick={clearSimilarOne}>
                                   <IoMdClose size={16} />
                                 </IconButton>
                               }
@@ -1906,28 +1902,32 @@ const ViewVocabDialog = (
                                     )
                                     :
                                     (
-                                      <Stack
-                                        onMouseOver={() => setShowRegenSimOne(true)}
-                                        onMouseLeave={() => setShowRegenSimOne(false)}
-                                      >
-                                        {(showRegenSimOne && newSimilarOne?.length > 1) ?
-                                          <Tooltip title="Regenerate" placement="right">
-                                            <IconButton onClick={genSimOne}>
-                                              <IoRefresh size={16} />
-                                            </IconButton>
-                                          </Tooltip>
-                                          :
-                                          <Tooltip title="Generate" placement="right">
-                                            <IconButton onClick={genSimOne}>
-                                              {newSimilarOne?.length < 1 ?
-                                                <PiSparkle size={16} />
-                                                :
-                                                <PiSparkleFill size={16} />
-                                              }
-                                            </IconButton>
-                                          </Tooltip>
+                                      <>
+                                        {!updatedSimilar &&
+                                          <Stack
+                                            onMouseOver={() => setShowRegenSimOne(true)}
+                                            onMouseLeave={() => setShowRegenSimOne(false)}
+                                          >
+                                            {(showRegenSimOne && newSimilarOne?.length > 1) ?
+                                              <Tooltip title="Regenerate" placement="right">
+                                                <IconButton onClick={genSimOne}>
+                                                  <IoRefresh size={16} />
+                                                </IconButton>
+                                              </Tooltip>
+                                              :
+                                              <Tooltip title="Generate" placement="right">
+                                                <IconButton onClick={genSimOne}>
+                                                  {newSimilarOne?.length < 1 ?
+                                                    <PiSparkle size={16} />
+                                                    :
+                                                    <PiSparkleFill size={16} />
+                                                  }
+                                                </IconButton>
+                                              </Tooltip>
+                                            }
+                                          </Stack>
                                         }
-                                      </Stack>
+                                      </>
                                     )
                                   }
                                 </>
@@ -1970,11 +1970,7 @@ const ViewVocabDialog = (
                                   </Stack>
                                 )
                                   :
-                                  <IconButton
-                                    onClick={clearSimilarTwo}
-                                  //  onClick={subtractSimilarEntry}
-                                  //  disabled={newSimilarTwo.length > 0}
-                                  >
+                                  <IconButton onClick={clearSimilarTwo}>
                                     <IoMdClose size={16} />
                                   </IconButton>
                                 }
@@ -1992,28 +1988,32 @@ const ViewVocabDialog = (
                                       )
                                       :
                                       (
-                                        <Stack
-                                          onMouseOver={() => setShowRegenSimTwo(true)}
-                                          onMouseLeave={() => setShowRegenSimTwo(false)}
-                                        >
-                                          {(showRegenSimTwo && newSimilarTwo?.length > 1) ?
-                                            <Tooltip title="Regenerate" placement="right">
-                                              <IconButton onClick={genSimTwo}>
-                                                <IoRefresh size={16} />
-                                              </IconButton>
-                                            </Tooltip>
-                                            :
-                                            <Tooltip title="Generate" placement="right">
-                                              <IconButton onClick={genSimTwo}>
-                                                {newSimilarTwo?.length < 1 ?
-                                                  <PiSparkle size={16} />
-                                                  :
-                                                  <PiSparkleFill size={16} />
-                                                }
-                                              </IconButton>
-                                            </Tooltip>
+                                        <>
+                                          {!updatedSimilar &&
+                                            <Stack
+                                              onMouseOver={() => setShowRegenSimTwo(true)}
+                                              onMouseLeave={() => setShowRegenSimTwo(false)}
+                                            >
+                                              {(showRegenSimTwo && newSimilarTwo?.length > 1) ?
+                                                <Tooltip title="Regenerate" placement="right">
+                                                  <IconButton onClick={genSimTwo}>
+                                                    <IoRefresh size={16} />
+                                                  </IconButton>
+                                                </Tooltip>
+                                                :
+                                                <Tooltip title="Generate" placement="right">
+                                                  <IconButton onClick={genSimTwo}>
+                                                    {newSimilarTwo?.length < 1 ?
+                                                      <PiSparkle size={16} />
+                                                      :
+                                                      <PiSparkleFill size={16} />
+                                                    }
+                                                  </IconButton>
+                                                </Tooltip>
+                                              }
+                                            </Stack>
                                           }
-                                        </Stack>
+                                        </>
                                       )
                                     }
                                   </>
@@ -2057,11 +2057,7 @@ const ViewVocabDialog = (
                                   </Stack>
                                 )
                                   :
-                                  <IconButton
-                                    onClick={clearSimilarThree}
-                                  // onClick={subtractSimilarEntry} 
-                                  // disabled={newSimilarThree.length > 0}
-                                  >
+                                  <IconButton onClick={clearSimilarThree} >
                                     <IoMdClose size={16} />
                                   </IconButton>
                                 }
@@ -2079,28 +2075,32 @@ const ViewVocabDialog = (
                                       )
                                       :
                                       (
-                                        <Stack
-                                          onMouseOver={() => setShowRegenSimThree(true)}
-                                          onMouseLeave={() => setShowRegenSimThree(false)}
-                                        >
-                                          {(showRegenSimThree && newSimilarThree?.length > 1) ?
-                                            <Tooltip title="Regenerate" placement="right">
-                                              <IconButton onClick={genSimThree}>
-                                                <IoRefresh size={16} />
-                                              </IconButton>
-                                            </Tooltip>
-                                            :
-                                            <Tooltip title="Generate" placement="right">
-                                              <IconButton onClick={genSimThree}>
-                                                {newSimilarThree?.length < 1 ?
-                                                  <PiSparkle size={16} />
-                                                  :
-                                                  <PiSparkleFill size={16} />
-                                                }
-                                              </IconButton>
-                                            </Tooltip>
+                                        <>
+                                          {!updatedSimilar &&
+                                            <Stack
+                                              onMouseOver={() => setShowRegenSimThree(true)}
+                                              onMouseLeave={() => setShowRegenSimThree(false)}
+                                            >
+                                              {(showRegenSimThree && newSimilarThree?.length > 1) ?
+                                                <Tooltip title="Regenerate" placement="right">
+                                                  <IconButton onClick={genSimThree}>
+                                                    <IoRefresh size={16} />
+                                                  </IconButton>
+                                                </Tooltip>
+                                                :
+                                                <Tooltip title="Generate" placement="right">
+                                                  <IconButton onClick={genSimThree}>
+                                                    {newSimilarThree?.length < 1 ?
+                                                      <PiSparkle size={16} />
+                                                      :
+                                                      <PiSparkleFill size={16} />
+                                                    }
+                                                  </IconButton>
+                                                </Tooltip>
+                                              }
+                                            </Stack>
                                           }
-                                        </Stack>
+                                        </>
                                       )
                                     }
                                   </>
@@ -2144,11 +2144,7 @@ const ViewVocabDialog = (
                                   </Stack>
                                 )
                                   :
-                                  <IconButton
-                                    onClick={clearSimilarFour}
-                                  // onClick={subtractSimilarEntry} 
-                                  // disabled={newSimilarFour.length > 0}
-                                  >
+                                  <IconButton onClick={clearSimilarFour} >
                                     <IoMdClose size={16} />
                                   </IconButton>
                                 }
@@ -2166,28 +2162,32 @@ const ViewVocabDialog = (
                                       )
                                       :
                                       (
-                                        <Stack
-                                          onMouseOver={() => setShowRegenSimFour(true)}
-                                          onMouseLeave={() => setShowRegenSimFour(false)}
-                                        >
-                                          {(showRegenSimFour && newSimilarFour?.length > 1) ?
-                                            <Tooltip title="Regenerate" placement="right">
-                                              <IconButton onClick={genSimFour}>
-                                                <IoRefresh size={16} />
-                                              </IconButton>
-                                            </Tooltip>
-                                            :
-                                            <Tooltip title="Generate" placement="right">
-                                              <IconButton onClick={genSimFour}>
-                                                {newSimilarFour?.length < 1 ?
-                                                  <PiSparkle size={16} />
-                                                  :
-                                                  <PiSparkleFill size={16} />
-                                                }
-                                              </IconButton>
-                                            </Tooltip>
+                                        <>
+                                          {!updatedSimilar &&
+                                            <Stack
+                                              onMouseOver={() => setShowRegenSimFour(true)}
+                                              onMouseLeave={() => setShowRegenSimFour(false)}
+                                            >
+                                              {(showRegenSimFour && newSimilarFour?.length > 1) ?
+                                                <Tooltip title="Regenerate" placement="right">
+                                                  <IconButton onClick={genSimFour}>
+                                                    <IoRefresh size={16} />
+                                                  </IconButton>
+                                                </Tooltip>
+                                                :
+                                                <Tooltip title="Generate" placement="right">
+                                                  <IconButton onClick={genSimFour}>
+                                                    {newSimilarFour?.length < 1 ?
+                                                      <PiSparkle size={16} />
+                                                      :
+                                                      <PiSparkleFill size={16} />
+                                                    }
+                                                  </IconButton>
+                                                </Tooltip>
+                                              }
+                                            </Stack>
                                           }
-                                        </Stack>
+                                        </>
                                       )
                                     }
                                   </>
