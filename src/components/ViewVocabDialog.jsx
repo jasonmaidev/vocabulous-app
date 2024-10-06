@@ -754,6 +754,7 @@ const ViewVocabDialog = (
       }
 
       setGeneratingSim(false)
+      setUpdatedSimilar(false)
     },
   });
 
@@ -1336,11 +1337,14 @@ const ViewVocabDialog = (
     setEditingSentences(true);
   }
 
+  const [updatedSimilar, setUpdatedSimilar] = useState(false)
+
   const handleUpdateSimilar = (updatedData) => {
     updateNewSimilar()
     updateSimilarMutation.mutate(updatedData)
     setEditingSimilar(false)
     setGeneratingSim(false)
+    setUpdatedSimilar(true)
   }
 
   const updateSimilarMutation = useMutation({
@@ -1383,6 +1387,7 @@ const ViewVocabDialog = (
     updateNewExpression()
     updateExpressionMutation.mutate(updatedData)
     setEditingExpression(false)
+    setGeneratingExp(false)
     setUpdatedExpression(true)
   }
 
