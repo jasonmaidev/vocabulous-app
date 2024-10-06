@@ -5,6 +5,8 @@ import GridLoader from "react-spinners/GridLoader"
 import { styled } from "@mui/system"
 import { Box, Typography, Stack, useTheme, useMediaQuery, Button, Dialog, Grow, IconButton } from "@mui/material"
 import { DarkMode, LightMode } from "@mui/icons-material"
+import { PiSparkleFill } from "react-icons/pi";
+import { IoLanguage } from "react-icons/io5";
 import { setMode } from "state"
 import DesktopFooter from "views/widgets/DesktopFooter"
 const Form = lazy(() => import("./Form"))
@@ -57,7 +59,7 @@ const LoginPage = () => {
         alignItems={"center"}
         sx={{ boxShadow: "6px 6px 12px rgba(0,0,0, 0.05)" }}
       >
-        <Stack direction={"row"} gap={2} alignItems={"center"}>
+        <Stack direction={"row"} gap={1} alignItems={"center"}>
           {/* ----- Logo ----- */}
           <img
             style={{ objectFit: "cover", width: "8%" }}
@@ -139,7 +141,7 @@ const LoginPage = () => {
 
       <Box
         width="100%"
-        padding={isNonMobileScreens ? "12rem 16%" : "1rem 12%"}
+        padding={isNonMobileScreens ? "8rem 16%" : "1rem 12%"}
         display={isNonMobileScreens ? "flex" : "block"}
         gap="0.5rem"
         justifyContent="center"
@@ -158,18 +160,42 @@ const LoginPage = () => {
           flexDirection={"column"}
           justifyContent={"center"}
         >
-          <Typography
-            variant={isSmallMobileScreens ? "h3" : isHDScreens ? "h2" : isNonMobileScreens ? "h1" : "h3"}
-            textAlign={"center"}
-          >
-            The most powerful & simple vocabulary acquisition
-          </Typography>
+          <Stack direction={"row"} spacing={1} pb={isLandscape ? 4 : 2}>
+            <IoLanguage size={isLandscape ? "8rem" : "4rem"} style={{
+              padding: "0.5rem", borderRadius: "1rem",
+              border: `4px solid ${theme.palette.neutral.darker}`,
+            }} />
+            <PiSparkleFill
+              size={isLandscape ? "4rem" : "2rem"}
+            />
+          </Stack>
+          {isLandscape ?
+            <Typography
+              variant={isSmallMobileScreens ? "h3" : isHDScreens ? "h2" : isNonMobileScreens ? "h1" : "h3"}
+              textAlign={"center"}
+            >
+              The most powerful Ai-driven
+            </Typography>
+            :
+            <Typography
+              variant={isSmallMobileScreens ? "h3" : isHDScreens ? "h2" : isNonMobileScreens ? "h1" : "h3"}
+              textAlign={"center"}
+            >
+              The most powerful Ai
+            </Typography>
+          }
           <Typography
             variant={isSmallMobileScreens ? "h3" : isHDScreens ? "h2" : isNonMobileScreens ? "h1" : "h2"}
             fontWeight={800}
             textAlign={"center"}
           >
-            for Mandarin learners.
+            vocabulary learning.
+          </Typography>
+          <Typography
+            pt={0.5}
+            textAlign={"center"}
+          >
+            Currently supports Mandarin.
           </Typography>
           <Button
             onClick={handleFormOpen}
