@@ -819,154 +819,430 @@ const ViewVocabDialog = (
     }
   })
 
-  /* Expressions Input States */
-  const [editingExpressions, setEditingExpressions] = useState(false)
-  const [newExpressions, setNewExpressions] = useState([])
-  const [newExpressionsOne, setNewExpressionsOne] = useState("")
-  const [newExpressionsTwo, setNewExpressionsTwo] = useState("")
-  const [newExpressionsThree, setNewExpressionsThree] = useState("")
-  const [newExpressionsFour, setNewExpressionsFour] = useState("")
-  const [newExpressionsFive, setNewExpressionsFive] = useState("")
-  const [newExpressionsSix, setNewExpressionsSix] = useState("")
-  const [newExpressionsSeven, setNewExpressionsSeven] = useState("")
-  const [newExpressionsEight, setNewExpressionsEight] = useState("")
-  const [newExpressionsEntry, setNewExpressionsEntry] = useState(expression?.length) // Increments a new InputBase onClick for new entry
-  const addExpressionsEntry = () => {
-    setEditingExpressions(true);
-    if (newExpressionsEntry === 8) {
+  /* Expression Input States */
+  const [editingExpression, setEditingExpression] = useState(false)
+  const [newExpression, setNewExpression] = useState([])
+  const [newExpressionOne, setNewExpressionOne] = useState("")
+  const [newExpressionTwo, setNewExpressionTwo] = useState("")
+  const [newExpressionThree, setNewExpressionThree] = useState("")
+  const [newExpressionFour, setNewExpressionFour] = useState("")
+  const [newExpressionFive, setNewExpressionFive] = useState("")
+  const [newExpressionSix, setNewExpressionSix] = useState("")
+  const [newExpressionSeven, setNewExpressionSeven] = useState("")
+  const [newExpressionEight, setNewExpressionEight] = useState("")
+  const [newExpressionEntry, setNewExpressionEntry] = useState(expression?.length) // Increments a new InputBase onClick for new entry
+  const addExpressionEntry = () => {
+    setEditingExpression(true);
+    if (newExpressionEntry === 8) {
       return
     }
-    setNewExpressionsEntry(newExpressionsEntry + 1);
+    setNewExpressionEntry(newExpressionEntry + 1);
   }
-  const subtractExpressionsEntry = () => {
-    if (newExpressionsEntry === 1) {
+  const subtractExpressionEntry = () => {
+    if (newExpressionEntry === 1) {
       return
     }
-    setNewExpressionsEntry(newExpressionsEntry - 1);
+    setNewExpressionEntry(newExpressionEntry - 1);
   }
-  const [removeExpressionsOne, setRemoveExpressionsOne] = useState(false)
-  const [removeExpressionsTwo, setRemoveExpressionsTwo] = useState(false)
-  const [removeExpressionsThree, setRemoveExpressionsThree] = useState(false)
-  const [removeExpressionsFour, setRemoveExpressionsFour] = useState(false)
-  const [removeExpressionsFive, setRemoveExpressionsFive] = useState(false)
-  const [removeExpressionsSix, setRemoveExpressionsSix] = useState(false)
-  const [removeExpressionsSeven, setRemoveExpressionsSeven] = useState(false)
-  const [removeExpressionsEight, setRemoveExpressionsEight] = useState(false)
+  const [removeExpressionOne, setRemoveExpressionOne] = useState(false)
+  const [removeExpressionTwo, setRemoveExpressionTwo] = useState(false)
+  const [removeExpressionThree, setRemoveExpressionThree] = useState(false)
+  const [removeExpressionFour, setRemoveExpressionFour] = useState(false)
+  const [removeExpressionFive, setRemoveExpressionFive] = useState(false)
+  const [removeExpressionSix, setRemoveExpressionSix] = useState(false)
+  const [removeExpressionSeven, setRemoveExpressionSeven] = useState(false)
+  const [removeExpressionEight, setRemoveExpressionEight] = useState(false)
   const removeExpOne = () => {
-    setRemoveExpressionsOne(true);
-    subtractExpressionsEntry();
+    setRemoveExpressionOne(true);
+    subtractExpressionEntry();
   }
   const removeExpTwo = () => {
-    setRemoveExpressionsTwo(true);
-    subtractExpressionsEntry();
+    setRemoveExpressionTwo(true);
+    subtractExpressionEntry();
   }
   const removeExpThree = () => {
-    setRemoveExpressionsThree(true);
-    subtractExpressionsEntry();
+    setRemoveExpressionThree(true);
+    subtractExpressionEntry();
   }
   const removeExpFour = () => {
-    setRemoveExpressionsFour(true);
-    subtractExpressionsEntry();
+    setRemoveExpressionFour(true);
+    subtractExpressionEntry();
   }
   const removeExpFive = () => {
-    setRemoveExpressionsFive(true);
-    subtractExpressionsEntry();
+    setRemoveExpressionFive(true);
+    subtractExpressionEntry();
   }
   const removeExpSix = () => {
-    setRemoveExpressionsSix(true);
-    subtractExpressionsEntry();
+    setRemoveExpressionSix(true);
+    subtractExpressionEntry();
   }
   const removeExpSeven = () => {
-    setRemoveExpressionsSeven(true);
-    subtractExpressionsEntry();
+    setRemoveExpressionSeven(true);
+    subtractExpressionEntry();
   }
   const removeExpEight = () => {
-    setRemoveExpressionsEight(true);
-    subtractExpressionsEntry();
+    setRemoveExpressionEight(true);
+    subtractExpressionEntry();
   }
 
-  const updateNewExpressions = () => {
-    setNewExpressions((prevState) => {
-      const newExpressionsArray = [];
-      if (removeExpressionsOne || newExpressionsOne.length > 0) {
-        newExpressionsArray.push(newExpressionsOne);
+  const updateNewExpression = () => {
+    setNewExpression((prevState) => {
+      const newExpressionArray = [];
+      if (removeExpressionOne || newExpressionOne.length > 0) {
+        newExpressionArray.push(newExpressionOne);
       } else {
         if (expression[0]?.length > 0) {
-          newExpressionsArray.push(expression[0])
+          newExpressionArray.push(expression[0])
         }
       }
-      if (removeExpressionsTwo || newExpressionsTwo.length > 0) {
-        if (newExpressionsTwo.length > 0) {
-          newExpressionsArray.push(newExpressionsTwo);
+      if (removeExpressionTwo || newExpressionTwo.length > 0) {
+        if (newExpressionTwo.length > 0) {
+          newExpressionArray.push(newExpressionTwo);
         }
       } else {
         if (expression[1]?.length > 0) {
-          newExpressionsArray.push(expression[1])
+          newExpressionArray.push(expression[1])
         }
       }
-      if (removeExpressionsThree || newExpressionsThree.length > 0) {
-        if (newExpressionsThree.length > 0) {
-          newExpressionsArray.push(newExpressionsThree);
+      if (removeExpressionThree || newExpressionThree.length > 0) {
+        if (newExpressionThree.length > 0) {
+          newExpressionArray.push(newExpressionThree);
         }
       } else {
         if (expression[2]?.length > 0) {
-          newExpressionsArray.push(expression[2])
+          newExpressionArray.push(expression[2])
         }
       }
-      if (removeExpressionsFour || newExpressionsFour.length > 0) {
-        if (newExpressionsFour.length > 0) {
-          newExpressionsArray.push(newExpressionsFour);
+      if (removeExpressionFour || newExpressionFour.length > 0) {
+        if (newExpressionFour.length > 0) {
+          newExpressionArray.push(newExpressionFour);
         }
       } else {
         if (expression[3]?.length > 0) {
-          newExpressionsArray.push(expression[3])
+          newExpressionArray.push(expression[3])
         }
       }
-      if (removeExpressionsFive || newExpressionsFive.length > 0) {
-        if (newExpressionsFive.length > 0) {
-          newExpressionsArray.push(newExpressionsFive);
+      if (removeExpressionFive || newExpressionFive.length > 0) {
+        if (newExpressionFive.length > 0) {
+          newExpressionArray.push(newExpressionFive);
         }
       } else {
         if (expression[4]?.length > 0) {
-          newExpressionsArray.push(expression[4])
+          newExpressionArray.push(expression[4])
         }
       }
-      if (removeExpressionsSix || newExpressionsSix.length > 0) {
-        if (newExpressionsSix.length > 0) {
-          newExpressionsArray.push(newExpressionsSix);
+      if (removeExpressionSix || newExpressionSix.length > 0) {
+        if (newExpressionSix.length > 0) {
+          newExpressionArray.push(newExpressionSix);
         }
       } else {
         if (expression[5]?.length > 0) {
-          newExpressionsArray.push(expression[5])
+          newExpressionArray.push(expression[5])
         }
       }
-      if (removeExpressionsSeven || newExpressionsSeven.length > 0) {
-        if (newExpressionsSeven.length > 0) {
-          newExpressionsArray.push(newExpressionsSeven);
+      if (removeExpressionSeven || newExpressionSeven.length > 0) {
+        if (newExpressionSeven.length > 0) {
+          newExpressionArray.push(newExpressionSeven);
         }
       } else {
         if (expression[6]?.length > 0) {
-          newExpressionsArray.push(expression[6])
+          newExpressionArray.push(expression[6])
         }
       }
-      if (removeExpressionsEight || newExpressionsEight.length > 0) {
-        if (newExpressionsEight.length > 0) {
-          newExpressionsArray.push(newExpressionsEight);
+      if (removeExpressionEight || newExpressionEight.length > 0) {
+        if (newExpressionEight.length > 0) {
+          newExpressionArray.push(newExpressionEight);
         }
       } else {
         if (expression[7]?.length > 0) {
-          newExpressionsArray.push(expression[7])
+          newExpressionArray.push(expression[7])
         }
       }
-      return newExpressionsArray;
+
+      return newExpressionArray;
     });
   };
 
-  const openEditExpressions = () => {
-    if (newExpressionsEntry === 0) {
-      setNewExpressionsEntry(expression?.length + 1);
+  const openEditExpression = () => {
+    if (newExpressionEntry === 0) {
+      setNewExpressionEntry(expression?.length + 1);
     }
-    setEditingExpressions(true);
+    setEditingExpression(true);
+  }
+
+  const [generatingExp, setGeneratingExp] = useState(false)
+  const [showRegenExpOne, setShowRegenExpOne] = useState(false)
+  const [showRegenExpTwo, setShowRegenExpTwo] = useState(false)
+  const [showRegenExpThree, setShowRegenExpThree] = useState(false)
+  const [showRegenExpFour, setShowRegenExpFour] = useState(false)
+  const [showRegenExpFive, setShowRegenExpFive] = useState(false)
+  const [showRegenExpSix, setShowRegenExpSix] = useState(false)
+  const [showRegenExpSeven, setShowRegenExpSeven] = useState(false)
+  const [showRegenExpEight, setShowRegenExpEight] = useState(false)
+  const [generatedAiExp, setGeneratedAiExp] = useState(false)
+
+  const genExpOne = () => {
+    if (genExpData) {
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setNewExpressionOne(genExpData.expression[randomIndex])
+    }
+  }
+  const clearExpressionOne = () => {
+    setNewExpressionOne("")
+    subtractExpressionEntry();
+  }
+  const genExpTwo = () => {
+    if (genExpData) {
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setNewExpressionTwo(genExpData.expression[randomIndex])
+    }
+  }
+  const clearExpressionTwo = () => {
+    setNewExpressionTwo("")
+    subtractExpressionEntry();
+  }
+  const genExpThree = () => {
+    if (genExpData) {
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setNewExpressionThree(genExpData.expression[randomIndex])
+    }
+  }
+  const clearExpressionThree = () => {
+    setNewExpressionThree("")
+    subtractExpressionEntry();
+  }
+  const genExpFour = () => {
+    if (genExpData) {
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setNewExpressionFour(genExpData.expression[randomIndex])
+    }
+  }
+  const clearExpressionFour = () => {
+    setNewExpressionFour("")
+    subtractExpressionEntry();
+  }
+  const genExpFive = () => {
+    if (genExpData) {
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setNewExpressionFive(genExpData.expression[randomIndex])
+    }
+  }
+  const clearExpressionFive = () => {
+    setNewExpressionFive("")
+    subtractExpressionEntry();
+  }
+  const genExpSix = () => {
+    if (genExpData) {
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setNewExpressionSix(genExpData.expression[randomIndex])
+    }
+  }
+  const clearExpressionSix = () => {
+    setNewExpressionSix("")
+    subtractExpressionEntry();
+  }
+  const genExpSeven = () => {
+    if (genExpData) {
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setNewExpressionSeven(genExpData.expression[randomIndex])
+    }
+  }
+  const clearExpressionSeven = () => {
+    setNewExpressionSeven("")
+    subtractExpressionEntry();
+  }
+  const genExpEight = () => {
+    if (genExpData) {
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setNewExpressionEight(genExpData.expression[randomIndex])
+    }
+  }
+  const clearExpressionEight = () => {
+    setNewExpressionEight("")
+    subtractExpressionEntry();
+  }
+  /* Generate Ai Expression Data */
+  const getGenExp = () => {
+    return fetch(`${apiUrl}/openai/expressions`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json", // Ensure Content-Type is set to JSON
+      },
+      body: JSON.stringify({ expVocab: text, expLabel: label }), // Send the correct data in the body
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json(); // Parse the response as JSON
+      });
+  };
+
+  const { data: genExpData } = useQuery(["aiExpData", text], getGenExp,
+    {
+      enabled: generatingExp, // Ensure that vocabText is not empty
+      keepPreviousData: true,
+      staleTime: 5000,
+    }
+  );
+
+  const generateAiExpression = useMutation({
+    mutationFn: async () => {
+      return await fetch(`${apiUrl}/openai/expressions`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          expVocab: text,
+          expLabel: label
+        }),
+      }).then((res) => res.json()); // Ensure the response is parsed as JSON
+    },
+    onError: (error, _styleName, context) => {
+      console.log("Error fetching:" + context?.id + error);
+    },
+    onSettled: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["aiExpData"] });
+
+      setGeneratedAiExp(true);
+
+      if (data?.expression) {
+        if (newExpressionEntry === 8) {
+          if (removeExpressionEight || !expression[7]?.length) {
+            setNewExpressionEight(data.expression[7]);
+          }
+          if (removeExpressionSeven || !expression[6]?.length) {
+            setNewExpressionSeven(data.expression[6]);
+          }
+          if (removeExpressionSix || !expression[5]?.length) {
+            setNewExpressionSix(data.expression[5]);
+          }
+          if (removeExpressionFive || !expression[4]?.length) {
+            setNewExpressionFive(data.expression[4]);
+          }
+          if (removeExpressionFour || !expression[3]?.length) {
+            setNewExpressionFour(data.expression[3]);
+          }
+          if (removeExpressionThree || !expression[2]?.length) {
+            setNewExpressionThree(data.expression[2]);
+          }
+          if (removeExpressionTwo || !expression[1]?.length) {
+            setNewExpressionTwo(data.expression[1]);
+          }
+          if (removeExpressionOne || !expression[0]?.length) {
+            setNewExpressionOne(data.expression[0]);
+          }
+        }
+        if (newExpressionEntry === 7) {
+          if (removeExpressionSeven || !expression[6]?.length) {
+            setNewExpressionSeven(data.expression[6]);
+          }
+          if (removeExpressionSix || !expression[5]?.length) {
+            setNewExpressionSix(data.expression[5]);
+          }
+          if (removeExpressionFive || !expression[4]?.length) {
+            setNewExpressionFive(data.expression[4]);
+          }
+          if (removeExpressionFour || !expression[3]?.length) {
+            setNewExpressionFour(data.expression[3]);
+          }
+          if (removeExpressionThree || !expression[2]?.length) {
+            setNewExpressionThree(data.expression[2]);
+          }
+          if (removeExpressionTwo || !expression[1]?.length) {
+            setNewExpressionTwo(data.expression[1]);
+          }
+          if (removeExpressionOne || !expression[0]?.length) {
+            setNewExpressionOne(data.expression[0]);
+          }
+        }
+        if (newExpressionEntry === 6) {
+          if (removeExpressionSix || !expression[5]?.length) {
+            setNewExpressionSix(data.expression[5]);
+          }
+          if (removeExpressionFive || !expression[4]?.length) {
+            setNewExpressionFive(data.expression[4]);
+          }
+          if (removeExpressionFour || !expression[3]?.length) {
+            setNewExpressionFour(data.expression[3]);
+          }
+          if (removeExpressionThree || !expression[2]?.length) {
+            setNewExpressionThree(data.expression[2]);
+          }
+          if (removeExpressionTwo || !expression[1]?.length) {
+            setNewExpressionTwo(data.expression[1]);
+          }
+          if (removeExpressionOne || !expression[0]?.length) {
+            setNewExpressionOne(data.expression[0]);
+          }
+        }
+        if (newExpressionEntry === 5) {
+          if (removeExpressionFive || !expression[4]?.length) {
+            setNewExpressionFive(data.expression[4]);
+          }
+          if (removeExpressionFour || !expression[3]?.length) {
+            setNewExpressionFour(data.expression[3]);
+          }
+          if (removeExpressionThree || !expression[2]?.length) {
+            setNewExpressionThree(data.expression[2]);
+          }
+          if (removeExpressionTwo || !expression[1]?.length) {
+            setNewExpressionTwo(data.expression[1]);
+          }
+          if (removeExpressionOne || !expression[0]?.length) {
+            setNewExpressionOne(data.expression[0]);
+          }
+        }
+        if (newExpressionEntry === 4) {
+          if (removeExpressionFour || !expression[3]?.length) {
+            setNewExpressionFour(data.expression[3]);
+          }
+          if (removeExpressionThree || !expression[2]?.length) {
+            setNewExpressionThree(data.expression[2]);
+          }
+          if (removeExpressionTwo || !expression[1]?.length) {
+            setNewExpressionTwo(data.expression[1]);
+          }
+          if (removeExpressionOne || !expression[0]?.length) {
+            setNewExpressionOne(data.expression[0]);
+          }
+        }
+        if (newExpressionEntry === 3) {
+          if (removeExpressionThree || !expression[2]?.length) {
+            setNewExpressionThree(data.expression[2]);
+          }
+          if (removeExpressionTwo || !expression[1]?.length) {
+            setNewExpressionTwo(data.expression[1]);
+          }
+          if (removeExpressionOne || !expression[0]?.length) {
+            setNewExpressionOne(data.expression[0]);
+          }
+        }
+        if (newExpressionEntry === 2) {
+          if (removeExpressionTwo || !expression[1]?.length) {
+            setNewExpressionTwo(data.expression[1]);
+          }
+          if (removeExpressionOne || !expression[0]?.length) {
+            setNewExpressionOne(data.expression[0]);
+          }
+        }
+        if (newExpressionEntry === 1) {
+          if (removeExpressionOne || !expression[0]?.length) {
+            setNewExpressionOne(data.expression[0]);
+          }
+        }
+      }
+
+      setGeneratingExp(false)
+    },
+  });
+
+  const handleGenAiExp = () => {
+    setGeneratingExp(true)
+    generateAiExpression.mutate()
   }
 
   /* Sentences Input States */
@@ -1100,16 +1376,16 @@ const ViewVocabDialog = (
     }
   })
 
-  const handleUpdateExpressions = (updatedData) => {
-    updateNewExpressions()
-    updateExpressionsMutation.mutate(updatedData)
-    setEditingExpressions(false)
+  const handleUpdateExpression = (updatedData) => {
+    updateNewExpression()
+    updateExpressionMutation.mutate(updatedData)
+    setEditingExpression(false)
   }
 
-  const updateExpressionsMutation = useMutation({
+  const updateExpressionMutation = useMutation({
     mutationFn: async () => {
       const updatedData = {
-        expression: newExpressions ? newExpressions : expression,
+        expression: newExpression ? newExpression : expression,
       }
       return await fetch(`${apiUrl}/vocabs/${id}/update`, {
         method: "PATCH",
@@ -1127,24 +1403,24 @@ const ViewVocabDialog = (
       queryClient.invalidateQueries({ queryKey: ["advVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["searchVocabsData"] })
       queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
-      setEditingExpressions(false)
-      setNewExpressions([])
-      setNewExpressionsOne("")
-      setNewExpressionsTwo("")
-      setNewExpressionsThree("")
-      setNewExpressionsFour("")
-      setNewExpressionsFive("")
-      setNewExpressionsSix("")
-      setNewExpressionsSeven("")
-      setNewExpressionsEight("")
-      setRemoveExpressionsOne(false)
-      setRemoveExpressionsTwo(false)
-      setRemoveExpressionsThree(false)
-      setRemoveExpressionsFour(false)
-      setRemoveExpressionsFive(false)
-      setRemoveExpressionsSix(false)
-      setRemoveExpressionsSeven(false)
-      setRemoveExpressionsEight(false)
+      setEditingExpression(false)
+      setNewExpression([])
+      setNewExpressionOne("")
+      setNewExpressionTwo("")
+      setNewExpressionThree("")
+      setNewExpressionFour("")
+      setNewExpressionFive("")
+      setNewExpressionSix("")
+      setNewExpressionSeven("")
+      setNewExpressionEight("")
+      setRemoveExpressionOne(false)
+      setRemoveExpressionTwo(false)
+      setRemoveExpressionThree(false)
+      setRemoveExpressionFour(false)
+      setRemoveExpressionFive(false)
+      setRemoveExpressionSix(false)
+      setRemoveExpressionSeven(false)
+      setRemoveExpressionEight(false)
     }
   })
 
@@ -2283,28 +2559,77 @@ const ViewVocabDialog = (
                   <Stack spacing={0.5}>
                     <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                       <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
-                        Expressions
+                        Expression
                       </Typography>
-                      <IconButton onClick={openEditExpressions}>
-                        <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
-                      </IconButton>
+                      {editingExpression ?
+                        <Button
+                          startIcon={<PiSparkleFill size={16} color={theme.palette.neutral.darker} />}
+                          onClick={handleGenAiExp}
+                          className={(mode === "light") ? "gradient-button" : "gradient-button-dark"}
+                          size="medium"
+                          sx={
+                            (mode === "light") ?
+                              {
+                                color: theme.palette.neutral.dark,
+                                margin: "0.5rem 1rem",
+                                padding: "0.5rem 1rem",
+                                borderRadius: "6rem",
+                                fontSize: "0.75rem",
+                                fontWeight: 700,
+                                textTransform: "none",
+                                border: `1px solid ${theme.palette.neutral.light}`,
+                                ":hover": {
+                                  backgroundColor: theme.palette.background.alt
+                                }
+                              }
+                              :
+                              {
+                                color: theme.palette.primary.main,
+                                margin: "0.5rem 1rem",
+                                padding: "0.5rem 1rem",
+                                borderRadius: "6rem",
+                                fontSize: "0.75rem",
+                                fontWeight: 700,
+                                textTransform: "none",
+                                border: `1px solid ${theme.palette.neutral.light}`,
+                                ":hover": {
+                                  backgroundColor: theme.palette.background.alt
+                                }
+                              }
+                          }
+                        >
+                          Ai Gen
+                        </Button>
+                        :
+                        <IconButton onClick={openEditExpression}>
+                          <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
+                        </IconButton>
+                      }
+
+                      {(expression?.length < 4 && newExpressionEntry < 4 && editingExpression) &&
+                        <Tooltip title="Add Entry" placement="right">
+                          <IconButton onClick={addExpressionEntry}>
+                            <IoMdAdd size={16} />
+                          </IconButton>
+                        </Tooltip>
+                      }
                     </Stack>
 
-                    {(!editingExpressions && expression?.length === 0) && (
-                      <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditExpressions}>
+                    {(!editingExpression && expression?.length === 0) && (
+                      <Button sx={{ border: `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditExpression}>
                         <Typography fontSize={"1.5rem"}>+</Typography>
                       </Button>
                     )}
 
                     {/* 1st Expression */}
-                    {editingExpressions ?
+                    {editingExpression ?
                       <>
                         <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                           <InputBase
                             id={uuidv4()}
                             placeholder={""}
-                            onChange={(e) => setNewExpressionsOne(e.target.value)}
-                            value={newExpressionsEntry < 1 || newExpressionsOne?.length > 0 || removeExpressionsOne ? newExpressionsOne : expression[0]}
+                            onChange={(e) => setNewExpressionOne(e.target.value)}
+                            value={(generatedAiExp && !expression[0]?.length) ? newExpressionOne : !removeExpressionOne ? expression[0] : newExpressionOne}
                             required={true}
                             sx={{
                               width: isLandscape ? "75%" : "70%",
@@ -2317,15 +2642,15 @@ const ViewVocabDialog = (
                           />
                           {expression?.length > 0 ? (
                             <Stack>
-                              {removeExpressionsOne ?
+                              {removeExpressionOne ?
                                 <Tooltip title="Undo" placement="right">
-                                  <IconButton onClick={() => setRemoveExpressionsOne(false)}>
+                                  <IconButton onClick={() => setRemoveExpressionOne(false)}>
                                     <CgUndo color={theme.palette.neutral.dark} />
                                   </IconButton>
                                 </Tooltip>
                                 :
                                 <Tooltip title="Delete" placement="left">
-                                  <IconButton onClick={removeExpOne}>
+                                  <IconButton onClick={!expression[0]?.length ? clearExpressionOne : removeExpOne}>
                                     <TbTrashX color={theme.palette.neutral.dark} />
                                   </IconButton>
                                 </Tooltip>
@@ -2333,25 +2658,60 @@ const ViewVocabDialog = (
                             </Stack>
                           )
                             :
-                            <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsOne.length > 0}>
+                            <IconButton onClick={clearExpressionOne}>
                               <IoMdClose size={16} />
                             </IconButton>
                           }
-                          {(expression?.length < 8 && newExpressionsEntry < 8) &&
-                            <IconButton onClick={addExpressionsEntry}>
-                              <IoMdAdd size={16} />
-                            </IconButton>
-                          }
+                          {generatedAiExp && (
+                            <>
+                              {(newExpressionOne?.length < 1 && generatingExp) ?
+                                (
+                                  <HashLoader
+                                    color={theme.palette.primary.main}
+                                    loading={true}
+                                    size={16}
+                                    aria-label="Loading Spinner"
+                                    data-testid="loader"
+                                  />
+                                )
+                                :
+                                (
+                                  <Stack
+                                    onMouseOver={() => setShowRegenExpOne(true)}
+                                    onMouseLeave={() => setShowRegenExpOne(false)}
+                                  >
+                                    {(showRegenExpOne && newExpressionOne?.length > 1) ?
+                                      <Tooltip title="Regenerate" placement="right">
+                                        <IconButton onClick={genExpOne}>
+                                          <IoRefresh size={16} />
+                                        </IconButton>
+                                      </Tooltip>
+                                      :
+                                      <Tooltip title="Generate" placement="right">
+                                        <IconButton onClick={genExpOne}>
+                                          {newExpressionOne?.length < 1 ?
+                                            <PiSparkle size={16} />
+                                            :
+                                            <PiSparkleFill size={16} />
+                                          }
+                                        </IconButton>
+                                      </Tooltip>
+                                    }
+                                  </Stack>
+                                )
+                              }
+                            </>
+                          )}
                         </Stack>
 
                         {/* 2nd Expression */}
-                        {(expression?.length > 1 || newExpressionsEntry > 1) && (
+                        {(expression?.length > 1 || newExpressionEntry > 1) && (
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
                               placeholder={""}
-                              onChange={(e) => setNewExpressionsTwo(e.target.value)}
-                              value={!removeExpressionsTwo ? expression[1] : newExpressionsTwo}
+                              onChange={(e) => setNewExpressionTwo(e.target.value)}
+                              value={(generatedAiExp && !expression[1]?.length) ? newExpressionTwo : !removeExpressionTwo ? expression[1] : newExpressionTwo}
                               required={true}
                               sx={{
                                 width: isLandscape ? "75%" : "70%",
@@ -2364,9 +2724,9 @@ const ViewVocabDialog = (
                             />
                             {expression?.length > 1 ? (
                               <Stack>
-                                {removeExpressionsTwo ?
+                                {removeExpressionTwo ?
                                   <Tooltip title="Undo" placement="right">
-                                    <IconButton onClick={() => setRemoveExpressionsTwo(false)}>
+                                    <IconButton onClick={() => setRemoveExpressionTwo(false)}>
                                       <CgUndo color={theme.palette.neutral.dark} />
                                     </IconButton>
                                   </Tooltip>
@@ -2380,21 +2740,61 @@ const ViewVocabDialog = (
                               </Stack>
                             )
                               :
-                              <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsTwo.length > 0}>
+                              <IconButton onClick={clearExpressionTwo}>
                                 <IoMdClose size={16} />
                               </IconButton>
                             }
+                            {generatedAiExp && (
+                              <>
+                                {(newExpressionTwo?.length < 1 && generatingExp) ?
+                                  (
+                                    <HashLoader
+                                      color={theme.palette.primary.main}
+                                      loading={true}
+                                      size={16}
+                                      aria-label="Loading Spinner"
+                                      data-testid="loader"
+                                    />
+                                  )
+                                  :
+                                  (
+                                    <Stack
+                                      onMouseOver={() => setShowRegenExpTwo(true)}
+                                      onMouseLeave={() => setShowRegenExpTwo(false)}
+                                    >
+                                      {(showRegenExpTwo && newExpressionTwo?.length > 1) ?
+                                        <Tooltip title="Regenerate" placement="right">
+                                          <IconButton onClick={genExpTwo}>
+                                            <IoRefresh size={16} />
+                                          </IconButton>
+                                        </Tooltip>
+                                        :
+                                        <Tooltip title="Generate" placement="right">
+                                          <IconButton onClick={genExpTwo}>
+                                            {newExpressionTwo?.length < 1 ?
+                                              <PiSparkle size={16} />
+                                              :
+                                              <PiSparkleFill size={16} />
+                                            }
+                                          </IconButton>
+                                        </Tooltip>
+                                      }
+                                    </Stack>
+                                  )
+                                }
+                              </>
+                            )}
                           </Stack>
                         )}
 
                         {/* 3rd Expression */}
-                        {(expression?.length > 2 || newExpressionsEntry > 2) && (
+                        {(expression?.length > 2 || newExpressionEntry > 2) && (
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
                               placeholder={""}
-                              onChange={(e) => setNewExpressionsThree(e.target.value)}
-                              value={!removeExpressionsThree ? expression[2] : newExpressionsThree}
+                              onChange={(e) => setNewExpressionThree(e.target.value)}
+                              value={(generatedAiExp && !expression[2]?.length) ? newExpressionThree : !removeExpressionThree ? expression[2] : newExpressionThree}
                               required={true}
                               sx={{
                                 width: isLandscape ? "75%" : "70%",
@@ -2407,9 +2807,9 @@ const ViewVocabDialog = (
                             />
                             {expression?.length > 2 ? (
                               <Stack>
-                                {removeExpressionsThree ?
+                                {removeExpressionThree ?
                                   <Tooltip title="Undo" placement="right">
-                                    <IconButton onClick={() => setRemoveExpressionsThree(false)}>
+                                    <IconButton onClick={() => setRemoveExpressionThree(false)}>
                                       <CgUndo color={theme.palette.neutral.dark} />
                                     </IconButton>
                                   </Tooltip>
@@ -2423,21 +2823,61 @@ const ViewVocabDialog = (
                               </Stack>
                             )
                               :
-                              <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsThree.length > 0}>
+                              <IconButton onClick={clearExpressionThree}>
                                 <IoMdClose size={16} />
                               </IconButton>
                             }
+                            {generatedAiExp && (
+                              <>
+                                {(newExpressionThree?.length < 1 && generatingExp) ?
+                                  (
+                                    <HashLoader
+                                      color={theme.palette.primary.main}
+                                      loading={true}
+                                      size={16}
+                                      aria-label="Loading Spinner"
+                                      data-testid="loader"
+                                    />
+                                  )
+                                  :
+                                  (
+                                    <Stack
+                                      onMouseOver={() => setShowRegenExpThree(true)}
+                                      onMouseLeave={() => setShowRegenExpThree(false)}
+                                    >
+                                      {(showRegenExpThree && newExpressionThree?.length > 1) ?
+                                        <Tooltip title="Regenerate" placement="right">
+                                          <IconButton onClick={genExpThree}>
+                                            <IoRefresh size={16} />
+                                          </IconButton>
+                                        </Tooltip>
+                                        :
+                                        <Tooltip title="Generate" placement="right">
+                                          <IconButton onClick={genExpThree}>
+                                            {newExpressionThree?.length < 1 ?
+                                              <PiSparkle size={16} />
+                                              :
+                                              <PiSparkleFill size={16} />
+                                            }
+                                          </IconButton>
+                                        </Tooltip>
+                                      }
+                                    </Stack>
+                                  )
+                                }
+                              </>
+                            )}
                           </Stack>
                         )}
 
                         {/* 4th Expression */}
-                        {(expression?.length > 3 || newExpressionsEntry > 3) && (
+                        {(expression?.length > 3 || newExpressionEntry > 3) && (
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
                               placeholder={""}
-                              onChange={(e) => setNewExpressionsFour(e.target.value)}
-                              value={!removeExpressionsFour ? expression[3] : newExpressionsFour}
+                              onChange={(e) => setNewExpressionFour(e.target.value)}
+                              value={(generatedAiExp && !expression[3]?.length) ? newExpressionFour : !removeExpressionFour ? expression[3] : newExpressionFour}
                               required={true}
                               sx={{
                                 width: isLandscape ? "75%" : "70%",
@@ -2450,9 +2890,9 @@ const ViewVocabDialog = (
                             />
                             {expression?.length > 3 ? (
                               <Stack>
-                                {removeExpressionsFour ?
+                                {removeExpressionFour ?
                                   <Tooltip title="Undo" placement="right">
-                                    <IconButton onClick={() => setRemoveExpressionsFour(false)}>
+                                    <IconButton onClick={() => setRemoveExpressionFour(false)}>
                                       <CgUndo color={theme.palette.neutral.dark} />
                                     </IconButton>
                                   </Tooltip>
@@ -2466,21 +2906,61 @@ const ViewVocabDialog = (
                               </Stack>
                             )
                               :
-                              <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsFour.length > 0}>
+                              <IconButton onClick={clearExpressionFour}>
                                 <IoMdClose size={16} />
                               </IconButton>
                             }
+                            {generatedAiExp && (
+                              <>
+                                {(newExpressionFour?.length < 1 && generatingExp) ?
+                                  (
+                                    <HashLoader
+                                      color={theme.palette.primary.main}
+                                      loading={true}
+                                      size={16}
+                                      aria-label="Loading Spinner"
+                                      data-testid="loader"
+                                    />
+                                  )
+                                  :
+                                  (
+                                    <Stack
+                                      onMouseOver={() => setShowRegenExpFour(true)}
+                                      onMouseLeave={() => setShowRegenExpFour(false)}
+                                    >
+                                      {(showRegenExpFour && newExpressionFour?.length > 1) ?
+                                        <Tooltip title="Regenerate" placement="right">
+                                          <IconButton onClick={genExpFour}>
+                                            <IoRefresh size={16} />
+                                          </IconButton>
+                                        </Tooltip>
+                                        :
+                                        <Tooltip title="Generate" placement="right">
+                                          <IconButton onClick={genExpFour}>
+                                            {newExpressionFour?.length < 1 ?
+                                              <PiSparkle size={16} />
+                                              :
+                                              <PiSparkleFill size={16} />
+                                            }
+                                          </IconButton>
+                                        </Tooltip>
+                                      }
+                                    </Stack>
+                                  )
+                                }
+                              </>
+                            )}
                           </Stack>
                         )}
 
                         {/* 5th Expression */}
-                        {(expression?.length > 4 || newExpressionsEntry > 4) && (
+                        {(expression?.length > 4 || newExpressionEntry > 4) && (
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
                               placeholder={""}
-                              onChange={(e) => setNewExpressionsFive(e.target.value)}
-                              value={!removeExpressionsFive ? expression[4] : newExpressionsFive}
+                              onChange={(e) => setNewExpressionFive(e.target.value)}
+                              value={(generatedAiExp && !expression[4]?.length) ? newExpressionFive : !removeExpressionFive ? expression[4] : newExpressionFive}
                               required={true}
                               sx={{
                                 width: isLandscape ? "75%" : "70%",
@@ -2493,9 +2973,9 @@ const ViewVocabDialog = (
                             />
                             {expression?.length > 4 ? (
                               <Stack>
-                                {removeExpressionsFive ?
+                                {removeExpressionFive ?
                                   <Tooltip title="Undo" placement="right">
-                                    <IconButton onClick={() => setRemoveExpressionsFive(false)}>
+                                    <IconButton onClick={() => setRemoveExpressionFive(false)}>
                                       <CgUndo color={theme.palette.neutral.dark} />
                                     </IconButton>
                                   </Tooltip>
@@ -2509,21 +2989,61 @@ const ViewVocabDialog = (
                               </Stack>
                             )
                               :
-                              <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsFive.length > 0}>
+                              <IconButton onClick={clearExpressionFive}>
                                 <IoMdClose size={16} />
                               </IconButton>
                             }
+                            {generatedAiExp && (
+                              <>
+                                {(newExpressionFive?.length < 1 && generatingExp) ?
+                                  (
+                                    <HashLoader
+                                      color={theme.palette.primary.main}
+                                      loading={true}
+                                      size={16}
+                                      aria-label="Loading Spinner"
+                                      data-testid="loader"
+                                    />
+                                  )
+                                  :
+                                  (
+                                    <Stack
+                                      onMouseOver={() => setShowRegenExpFive(true)}
+                                      onMouseLeave={() => setShowRegenExpFive(false)}
+                                    >
+                                      {(showRegenExpFive && newExpressionFive?.length > 1) ?
+                                        <Tooltip title="Regenerate" placement="right">
+                                          <IconButton onClick={genExpFive}>
+                                            <IoRefresh size={16} />
+                                          </IconButton>
+                                        </Tooltip>
+                                        :
+                                        <Tooltip title="Generate" placement="right">
+                                          <IconButton onClick={genExpFive}>
+                                            {newExpressionFive?.length < 1 ?
+                                              <PiSparkle size={16} />
+                                              :
+                                              <PiSparkleFill size={16} />
+                                            }
+                                          </IconButton>
+                                        </Tooltip>
+                                      }
+                                    </Stack>
+                                  )
+                                }
+                              </>
+                            )}
                           </Stack>
                         )}
 
                         {/* 6th Expression */}
-                        {(expression?.length > 5 || newExpressionsEntry > 5) && (
+                        {(expression?.length > 5 || newExpressionEntry > 5) && (
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
                               placeholder={""}
-                              onChange={(e) => setNewExpressionsSix(e.target.value)}
-                              value={!removeExpressionsSix ? expression[5] : newExpressionsSix}
+                              onChange={(e) => setNewExpressionSix(e.target.value)}
+                              value={(generatedAiExp && !expression[5]?.length) ? newExpressionSix : !removeExpressionSix ? expression[5] : newExpressionSix}
                               required={true}
                               sx={{
                                 width: isLandscape ? "75%" : "70%",
@@ -2536,9 +3056,9 @@ const ViewVocabDialog = (
                             />
                             {expression?.length > 5 ? (
                               <Stack>
-                                {removeExpressionsSix ?
+                                {removeExpressionSix ?
                                   <Tooltip title="Undo" placement="right">
-                                    <IconButton onClick={() => setRemoveExpressionsSix(false)}>
+                                    <IconButton onClick={() => setRemoveExpressionSix(false)}>
                                       <CgUndo color={theme.palette.neutral.dark} />
                                     </IconButton>
                                   </Tooltip>
@@ -2552,21 +3072,61 @@ const ViewVocabDialog = (
                               </Stack>
                             )
                               :
-                              <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsSix.length > 0}>
+                              <IconButton onClick={clearExpressionSix}>
                                 <IoMdClose size={16} />
                               </IconButton>
                             }
+                            {generatedAiExp && (
+                              <>
+                                {(newExpressionSix?.length < 1 && generatingExp) ?
+                                  (
+                                    <HashLoader
+                                      color={theme.palette.primary.main}
+                                      loading={true}
+                                      size={16}
+                                      aria-label="Loading Spinner"
+                                      data-testid="loader"
+                                    />
+                                  )
+                                  :
+                                  (
+                                    <Stack
+                                      onMouseOver={() => setShowRegenExpSix(true)}
+                                      onMouseLeave={() => setShowRegenExpSix(false)}
+                                    >
+                                      {(showRegenExpSix && newExpressionSix?.length > 1) ?
+                                        <Tooltip title="Regenerate" placement="right">
+                                          <IconButton onClick={genExpSix}>
+                                            <IoRefresh size={16} />
+                                          </IconButton>
+                                        </Tooltip>
+                                        :
+                                        <Tooltip title="Generate" placement="right">
+                                          <IconButton onClick={genExpSix}>
+                                            {newExpressionSix?.length < 1 ?
+                                              <PiSparkle size={16} />
+                                              :
+                                              <PiSparkleFill size={16} />
+                                            }
+                                          </IconButton>
+                                        </Tooltip>
+                                      }
+                                    </Stack>
+                                  )
+                                }
+                              </>
+                            )}
                           </Stack>
                         )}
 
                         {/* 7th Expression */}
-                        {(expression?.length > 6 || newExpressionsEntry > 6) && (
+                        {(expression?.length > 6 || newExpressionEntry > 6) && (
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
                               placeholder={""}
-                              onChange={(e) => setNewExpressionsSeven(e.target.value)}
-                              value={!removeExpressionsSeven ? expression[6] : newExpressionsSeven}
+                              onChange={(e) => setNewExpressionSeven(e.target.value)}
+                              value={(generatedAiExp && !expression[6]?.length) ? newExpressionSeven : !removeExpressionSeven ? expression[6] : newExpressionSeven}
                               required={true}
                               sx={{
                                 width: isLandscape ? "75%" : "70%",
@@ -2579,9 +3139,9 @@ const ViewVocabDialog = (
                             />
                             {expression?.length > 6 ? (
                               <Stack>
-                                {removeExpressionsSeven ?
+                                {removeExpressionSeven ?
                                   <Tooltip title="Undo" placement="right">
-                                    <IconButton onClick={() => setRemoveExpressionsSeven(false)}>
+                                    <IconButton onClick={() => setRemoveExpressionSeven(false)}>
                                       <CgUndo color={theme.palette.neutral.dark} />
                                     </IconButton>
                                   </Tooltip>
@@ -2595,21 +3155,61 @@ const ViewVocabDialog = (
                               </Stack>
                             )
                               :
-                              <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsSeven.length > 0}>
+                              <IconButton onClick={clearExpressionSeven}>
                                 <IoMdClose size={16} />
                               </IconButton>
                             }
+                            {generatedAiExp && (
+                              <>
+                                {(newExpressionSeven?.length < 1 && generatingExp) ?
+                                  (
+                                    <HashLoader
+                                      color={theme.palette.primary.main}
+                                      loading={true}
+                                      size={16}
+                                      aria-label="Loading Spinner"
+                                      data-testid="loader"
+                                    />
+                                  )
+                                  :
+                                  (
+                                    <Stack
+                                      onMouseOver={() => setShowRegenExpSeven(true)}
+                                      onMouseLeave={() => setShowRegenExpSeven(false)}
+                                    >
+                                      {(showRegenExpSeven && newExpressionSeven?.length > 1) ?
+                                        <Tooltip title="Regenerate" placement="right">
+                                          <IconButton onClick={genExpSeven}>
+                                            <IoRefresh size={16} />
+                                          </IconButton>
+                                        </Tooltip>
+                                        :
+                                        <Tooltip title="Generate" placement="right">
+                                          <IconButton onClick={genExpSeven}>
+                                            {newExpressionSeven?.length < 1 ?
+                                              <PiSparkle size={16} />
+                                              :
+                                              <PiSparkleFill size={16} />
+                                            }
+                                          </IconButton>
+                                        </Tooltip>
+                                      }
+                                    </Stack>
+                                  )
+                                }
+                              </>
+                            )}
                           </Stack>
                         )}
 
                         {/* 8th Expression */}
-                        {(expression?.length > 7 || newExpressionsEntry > 7) && (
+                        {(expression?.length > 7 || newExpressionEntry > 7) && (
                           <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                             <InputBase
                               id={uuidv4()}
                               placeholder={""}
-                              onChange={(e) => setNewExpressionsEight(e.target.value)}
-                              value={!removeExpressionsEight ? expression[7] : newExpressionsEight}
+                              onChange={(e) => setNewExpressionEight(e.target.value)}
+                              value={(generatedAiExp && !expression[7]?.length) ? newExpressionEight : !removeExpressionEight ? expression[7] : newExpressionEight}
                               required={true}
                               sx={{
                                 width: isLandscape ? "75%" : "70%",
@@ -2622,9 +3222,9 @@ const ViewVocabDialog = (
                             />
                             {expression?.length > 7 ? (
                               <Stack>
-                                {removeExpressionsEight ?
+                                {removeExpressionEight ?
                                   <Tooltip title="Undo" placement="right">
-                                    <IconButton onClick={() => setRemoveExpressionsEight(false)}>
+                                    <IconButton onClick={() => setRemoveExpressionEight(false)}>
                                       <CgUndo color={theme.palette.neutral.dark} />
                                     </IconButton>
                                   </Tooltip>
@@ -2638,15 +3238,54 @@ const ViewVocabDialog = (
                               </Stack>
                             )
                               :
-                              <IconButton onClick={subtractExpressionsEntry} disabled={newExpressionsEight.length > 0}>
+                              <IconButton onClick={clearExpressionEight}>
                                 <IoMdClose size={16} />
                               </IconButton>
                             }
+                            {generatedAiExp && (
+                              <>
+                                {(newExpressionEight?.length < 1 && generatingExp) ?
+                                  (
+                                    <HashLoader
+                                      color={theme.palette.primary.main}
+                                      loading={true}
+                                      size={16}
+                                      aria-label="Loading Spinner"
+                                      data-testid="loader"
+                                    />
+                                  )
+                                  :
+                                  (
+                                    <Stack
+                                      onMouseOver={() => setShowRegenExpEight(true)}
+                                      onMouseLeave={() => setShowRegenExpEight(false)}
+                                    >
+                                      {(showRegenExpEight && newExpressionEight?.length > 1) ?
+                                        <Tooltip title="Regenerate" placement="right">
+                                          <IconButton onClick={genExpEight}>
+                                            <IoRefresh size={16} />
+                                          </IconButton>
+                                        </Tooltip>
+                                        :
+                                        <Tooltip title="Generate" placement="right">
+                                          <IconButton onClick={genExpEight}>
+                                            {newExpressionEight?.length < 1 ?
+                                              <PiSparkle size={16} />
+                                              :
+                                              <PiSparkleFill size={16} />
+                                            }
+                                          </IconButton>
+                                        </Tooltip>
+                                      }
+                                    </Stack>
+                                  )
+                                }
+                              </>
+                            )}
                           </Stack>
                         )}
-
                         <Button
-                          onClick={handleUpdateExpressions}
+                          onClick={handleUpdateExpression}
                           sx={{ fontSize: isWideScreens ? "1.25rem" : isQHDScreens ? "1rem" : "0.8rem" }}
                         >
                           Done
@@ -2655,7 +3294,8 @@ const ViewVocabDialog = (
                       :
                       <>
                         {/* ----- Expression ----- */}
-                        <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                        <Stack
+                          direction={"row"} alignItems={"center"} spacing={2}>
                           <Stack>
                             <Stack
                               direction={"row"}
@@ -2668,9 +3308,8 @@ const ViewVocabDialog = (
                                   key={`${item}-${index}`}
                                   spacing={0}
                                   sx={{
-                                    cursor: "pointer",
                                     borderRadius: "0.75rem",
-                                    padding: "0.25rem 0.5rem",
+                                    padding: "0.25rem 0.75rem",
                                   }}
                                 >
                                   <ExpressionText item={item} />
