@@ -100,7 +100,7 @@ const SimilarText = ({ item, setSimilarSearchText, searchSimilar, handleViewClos
         }}
       >
         <MenuItem
-          onMouseDown={() => searchSimilar(item)}
+          onMouseDown={handleMenuClose}
           onClick={() => searchSimilar(item)}
         >
           <ListItemIcon
