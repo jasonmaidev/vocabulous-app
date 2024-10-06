@@ -375,7 +375,7 @@ export default function AddVocabDialog({ text }) {
 
   /* Generate Ai Expressions Data */
   const getGenExp = () => {
-    return fetch(`${apiUrl}/openai/expressions`, {
+    return fetch(`${apiUrl}/openai/expression`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -401,7 +401,7 @@ export default function AddVocabDialog({ text }) {
 
   const generateAiExpressions = useMutation({
     mutationFn: async () => {
-      return await fetch(`${apiUrl}/openai/expressions`, {
+      return await fetch(`${apiUrl}/openai/expression`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

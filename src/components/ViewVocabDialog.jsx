@@ -710,8 +710,6 @@ const ViewVocabDialog = (
     onSettled: (data) => {
       queryClient.invalidateQueries({ queryKey: ["aiSimData"] });
 
-      setGeneratedAiSim(true);
-
       if (data?.similar) {
         if (newSimilarEntry === 4) {
           if (removeSimilarFour || !similar[3]?.length) {
@@ -760,6 +758,7 @@ const ViewVocabDialog = (
 
   const handleGenAiSim = () => {
     setGeneratingSim(true)
+    setGeneratedAiSim(true);
     generateAiSimilars.mutate()
   }
 
@@ -1884,7 +1883,7 @@ const ViewVocabDialog = (
                               )
                                 :
                                 <IconButton onClick={clearSimilarOne}>
-                                  <IoMdClose size={16} />
+                                  <IoMdClose />
                                 </IconButton>
                               }
                               {generatedAiSim && (
@@ -1970,7 +1969,7 @@ const ViewVocabDialog = (
                                 )
                                   :
                                   <IconButton onClick={clearSimilarTwo}>
-                                    <IoMdClose size={16} />
+                                    <IoMdClose />
                                   </IconButton>
                                 }
                                 {generatedAiSim && (
@@ -2057,7 +2056,7 @@ const ViewVocabDialog = (
                                 )
                                   :
                                   <IconButton onClick={clearSimilarThree} >
-                                    <IoMdClose size={16} />
+                                    <IoMdClose />
                                   </IconButton>
                                 }
                                 {generatedAiSim && (
@@ -2144,7 +2143,7 @@ const ViewVocabDialog = (
                                 )
                                   :
                                   <IconButton onClick={clearSimilarFour} >
-                                    <IoMdClose size={16} />
+                                    <IoMdClose />
                                   </IconButton>
                                 }
                                 {generatedAiSim && (
@@ -2670,12 +2669,12 @@ const ViewVocabDialog = (
                           )
                             :
                             <IconButton onClick={clearExpressionOne}>
-                              <IoMdClose size={16} />
+                              <IoMdClose />
                             </IconButton>
                           }
                           {generatedAiExp && (
                             <>
-                              {(newExpressionOne?.length < 1 && generatingExp) ?
+                              {((newExpressionOne?.length < 1 && expression[0]?.length < 1) && generatingExp) ?
                                 (
                                   <HashLoader
                                     color={theme.palette.primary.main}
@@ -2756,12 +2755,12 @@ const ViewVocabDialog = (
                             )
                               :
                               <IconButton onClick={clearExpressionTwo}>
-                                <IoMdClose size={16} />
+                                <IoMdClose />
                               </IconButton>
                             }
                             {generatedAiExp && (
                               <>
-                                {(newExpressionTwo?.length < 1 && generatingExp) ?
+                                {((newExpressionTwo?.length < 1 && expression[1]?.length < 1) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -2843,12 +2842,12 @@ const ViewVocabDialog = (
                             )
                               :
                               <IconButton onClick={clearExpressionThree}>
-                                <IoMdClose size={16} />
+                                <IoMdClose />
                               </IconButton>
                             }
                             {generatedAiExp && (
                               <>
-                                {(newExpressionThree?.length < 1 && generatingExp) ?
+                                {((newExpressionThree?.length < 1 && expression[2]?.length < 1) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -2930,12 +2929,12 @@ const ViewVocabDialog = (
                             )
                               :
                               <IconButton onClick={clearExpressionFour}>
-                                <IoMdClose size={16} />
+                                <IoMdClose />
                               </IconButton>
                             }
                             {generatedAiExp && (
                               <>
-                                {(newExpressionFour?.length < 1 && generatingExp) ?
+                                {((newExpressionFour?.length < 1 && expression[3]?.length < 1) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -3017,12 +3016,12 @@ const ViewVocabDialog = (
                             )
                               :
                               <IconButton onClick={clearExpressionFive}>
-                                <IoMdClose size={16} />
+                                <IoMdClose />
                               </IconButton>
                             }
                             {generatedAiExp && (
                               <>
-                                {(newExpressionFive?.length < 1 && generatingExp) ?
+                                {((newExpressionFive?.length < 1 && expression[4]?.length < 1) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -3104,12 +3103,12 @@ const ViewVocabDialog = (
                             )
                               :
                               <IconButton onClick={clearExpressionSix}>
-                                <IoMdClose size={16} />
+                                <IoMdClose />
                               </IconButton>
                             }
                             {generatedAiExp && (
                               <>
-                                {(newExpressionSix?.length < 1 && generatingExp) ?
+                                {((newExpressionSix?.length < 1 && expression[5]?.length < 1) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -3191,12 +3190,12 @@ const ViewVocabDialog = (
                             )
                               :
                               <IconButton onClick={clearExpressionSeven}>
-                                <IoMdClose size={16} />
+                                <IoMdClose />
                               </IconButton>
                             }
                             {generatedAiExp && (
                               <>
-                                {(newExpressionSeven?.length < 1 && generatingExp) ?
+                                {((newExpressionSeven?.length < 1 && expression[6]?.length < 1) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -3278,12 +3277,12 @@ const ViewVocabDialog = (
                             )
                               :
                               <IconButton onClick={clearExpressionEight}>
-                                <IoMdClose size={16} />
+                                <IoMdClose />
                               </IconButton>
                             }
                             {generatedAiExp && (
                               <>
-                                {(newExpressionEight?.length < 1 && generatingExp) ?
+                                {((newExpressionEight?.length < 1 && expression[7]?.length < 1) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -3427,7 +3426,7 @@ const ViewVocabDialog = (
                           )
                             :
                             <IconButton onClick={subtractSentencesEntry} disabled={newSentencesOne.length > 0}>
-                              <IoMdClose size={16} />
+                              <IoMdClose />
                             </IconButton>
                           }
                           {(sentence?.length < 8 && newSentencesEntry < 8) &&
@@ -3476,7 +3475,7 @@ const ViewVocabDialog = (
                             )
                               :
                               <IconButton onClick={subtractSentencesEntry} disabled={newSentencesTwo.length > 0}>
-                                <IoMdClose size={16} />
+                                <IoMdClose />
                               </IconButton>
                             }
                           </Stack>
@@ -3521,7 +3520,7 @@ const ViewVocabDialog = (
                             )
                               :
                               <IconButton onClick={subtractSentencesEntry} disabled={newSentencesThree.length > 0}>
-                                <IoMdClose size={16} />
+                                <IoMdClose />
                               </IconButton>
                             }
                           </Stack>
@@ -3566,7 +3565,7 @@ const ViewVocabDialog = (
                             )
                               :
                               <IconButton onClick={subtractSentencesEntry} disabled={newSentencesFour.length > 0}>
-                                <IoMdClose size={16} />
+                                <IoMdClose />
                               </IconButton>
                             }
                           </Stack>
