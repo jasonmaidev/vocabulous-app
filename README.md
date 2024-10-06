@@ -1,12 +1,14 @@
-## Welcome to Vocabulous
+## Welcome to Voca.Ai aka Vocabulous
 
-Simple, powerful vocabulary retention for `Mandarin` learners!
+Simple, powerful, Ai-driven vocabulary acquisition and retention for `Mandarin` learners!
+
+Comes with all of the features that you need, and none that you do not. Powered by `GPT-3.5 Turbo`.
 
 Built for intermediates and advanced learners alike.
 
 Live app at [https://vocabulous.netlify.app](https://vocabulous.netlify.app).
 
-For information on the latest app updates and feature releases, see: [Vocabulous Roadmap](https://vocabulous.netlify.app/roadmap).
+For information on the latest app updates and feature releases, see: [Voca Ai Roadmap](https://vocabulous.netlify.app/roadmap).
 
 ### Closed Beta MVP Access
 
