@@ -1888,7 +1888,7 @@ const ViewVocabDialog = (
                               }
                               {generatedAiSim && (
                                 <>
-                                  {(newSimilarOne?.length < 1 && generatingSim) ?
+                                  {((newSimilarOne?.length < 1 && similar[0]?.length < 1) && generatingSim) ?
                                     (
                                       <HashLoader
                                         color={theme.palette.primary.main}
@@ -2674,7 +2674,7 @@ const ViewVocabDialog = (
                           }
                           {generatedAiExp && (
                             <>
-                              {((newExpressionOne?.length < 1 && expression[0]?.length < 1) && generatingExp) ?
+                              {((newExpressionOne?.length < 1 && (expression[0]?.length < 1 || !expression[0]?.length)) && generatingExp) ?
                                 (
                                   <HashLoader
                                     color={theme.palette.primary.main}
@@ -2760,7 +2760,7 @@ const ViewVocabDialog = (
                             }
                             {generatedAiExp && (
                               <>
-                                {((newExpressionTwo?.length < 1 && expression[1]?.length < 1) && generatingExp) ?
+                                {((newExpressionTwo?.length < 1 && (expression[1]?.length < 1 || !expression[1]?.length)) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -2847,7 +2847,7 @@ const ViewVocabDialog = (
                             }
                             {generatedAiExp && (
                               <>
-                                {((newExpressionThree?.length < 1 && expression[2]?.length < 1) && generatingExp) ?
+                                {((newExpressionThree?.length < 1 && (expression[2]?.length < 1 || !expression[2]?.length)) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -2934,7 +2934,7 @@ const ViewVocabDialog = (
                             }
                             {generatedAiExp && (
                               <>
-                                {((newExpressionFour?.length < 1 && expression[3]?.length < 1) && generatingExp) ?
+                                {((newExpressionFour?.length < 1 && (expression[3]?.length < 1 || !expression[3]?.length)) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -3021,7 +3021,7 @@ const ViewVocabDialog = (
                             }
                             {generatedAiExp && (
                               <>
-                                {((newExpressionFive?.length < 1 && expression[4]?.length < 1) && generatingExp) ?
+                                {((newExpressionFive?.length < 1 && (expression[4]?.length < 1 || !expression[4]?.length)) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -3108,7 +3108,7 @@ const ViewVocabDialog = (
                             }
                             {generatedAiExp && (
                               <>
-                                {((newExpressionSix?.length < 1 && expression[5]?.length < 1) && generatingExp) ?
+                                {((newExpressionSix?.length < 1 && (expression[5]?.length < 1 || !expression[5]?.length)) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -3195,7 +3195,7 @@ const ViewVocabDialog = (
                             }
                             {generatedAiExp && (
                               <>
-                                {((newExpressionSeven?.length < 1 && expression[6]?.length < 1) && generatingExp) ?
+                                {((newExpressionSeven?.length < 1 && (expression[6]?.length < 1 || !expression[6]?.length)) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
@@ -3282,7 +3282,7 @@ const ViewVocabDialog = (
                             }
                             {generatedAiExp && (
                               <>
-                                {((newExpressionEight?.length < 1 && expression[7]?.length < 1) && generatingExp) ?
+                                {((newExpressionEight?.length < 1 && (expression[7]?.length < 1 || !expression[7]?.length)) && generatingExp) ?
                                   (
                                     <HashLoader
                                       color={theme.palette.primary.main}
