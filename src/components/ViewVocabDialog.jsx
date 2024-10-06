@@ -1888,7 +1888,7 @@ const ViewVocabDialog = (
                               }
                               {generatedAiSim && (
                                 <>
-                                  {((newSimilarOne?.length < 1 && similar[0]?.length < 1) && generatingSim) ?
+                                  {((newSimilarOne?.length < 1 && (similar[0]?.length < 1 || !similar[0]?.length)) && generatingSim) ?
                                     (
                                       <HashLoader
                                         color={theme.palette.primary.main}
@@ -1974,7 +1974,7 @@ const ViewVocabDialog = (
                                 }
                                 {generatedAiSim && (
                                   <>
-                                    {(newSimilarTwo?.length < 1 && generatingSim) ?
+                                    {((newSimilarTwo?.length < 1 && (similar[1]?.length < 1 || !similar[1]?.length)) && generatingSim) ?
                                       (
                                         <HashLoader
                                           color={theme.palette.primary.main}
@@ -2061,7 +2061,7 @@ const ViewVocabDialog = (
                                 }
                                 {generatedAiSim && (
                                   <>
-                                    {(newSimilarThree?.length < 1 && generatingSim) ?
+                                    {((newSimilarThree?.length < 1 && (similar[2]?.length < 1 || !similar[2]?.length)) && generatingSim) ?
                                       (
                                         <HashLoader
                                           color={theme.palette.primary.main}
@@ -2148,7 +2148,7 @@ const ViewVocabDialog = (
                                 }
                                 {generatedAiSim && (
                                   <>
-                                    {(newSimilarFour?.length < 1 && generatingSim) ?
+                                    {((newSimilarFour?.length < 1 && (similar[3]?.length < 1 || !similar[3]?.length)) && generatingSim) ?
                                       (
                                         <HashLoader
                                           color={theme.palette.primary.main}

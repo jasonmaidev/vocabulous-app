@@ -304,8 +304,8 @@ export default function AddVocabDialog({ text }) {
 
   const genExpTwo = () => {
     if (genExpData) {
-      const randomIndex = Math.floor(Math.random() * genExpData.expressions.length);
-      setVocabExpressionTwo(genExpData.expressions[randomIndex])
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setVocabExpressionTwo(genExpData.expression[randomIndex])
     }
   }
   const clearExpressionTwo = () => {
@@ -314,8 +314,8 @@ export default function AddVocabDialog({ text }) {
   }
   const genExpThree = () => {
     if (genExpData) {
-      const randomIndex = Math.floor(Math.random() * genExpData.expressions.length);
-      setVocabExpressionThree(genExpData.expressions[randomIndex])
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setVocabExpressionThree(genExpData.expression[randomIndex])
     }
   }
   const clearExpressionThree = () => {
@@ -324,8 +324,8 @@ export default function AddVocabDialog({ text }) {
   }
   const genExpFour = () => {
     if (genExpData) {
-      const randomIndex = Math.floor(Math.random() * genExpData.expressions.length);
-      setVocabExpressionFour(genExpData.expressions[randomIndex])
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setVocabExpressionFour(genExpData.expression[randomIndex])
     }
   }
   const clearExpressionFour = () => {
@@ -334,8 +334,8 @@ export default function AddVocabDialog({ text }) {
   }
   const genExpFive = () => {
     if (genExpData) {
-      const randomIndex = Math.floor(Math.random() * genExpData.expressions.length);
-      setVocabExpressionFive(genExpData.expressions[randomIndex])
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setVocabExpressionFive(genExpData.expression[randomIndex])
     }
   }
   const clearExpressionFive = () => {
@@ -344,8 +344,8 @@ export default function AddVocabDialog({ text }) {
   }
   const genExpSix = () => {
     if (genExpData) {
-      const randomIndex = Math.floor(Math.random() * genExpData.expressions.length);
-      setVocabExpressionSix(genExpData.expressions[randomIndex])
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setVocabExpressionSix(genExpData.expression[randomIndex])
     }
   }
   const clearExpressionSix = () => {
@@ -354,8 +354,8 @@ export default function AddVocabDialog({ text }) {
   }
   const genExpSeven = () => {
     if (genExpData) {
-      const randomIndex = Math.floor(Math.random() * genExpData.expressions.length);
-      setVocabExpressionSeven(genExpData.expressions[randomIndex])
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setVocabExpressionSeven(genExpData.expression[randomIndex])
     }
   }
   const clearExpressionSeven = () => {
@@ -364,8 +364,8 @@ export default function AddVocabDialog({ text }) {
   }
   const genExpEight = () => {
     if (genExpData) {
-      const randomIndex = Math.floor(Math.random() * genExpData.expressions.length);
-      setVocabExpressionEight(genExpData.expressions[randomIndex])
+      const randomIndex = Math.floor(Math.random() * genExpData.expression.length);
+      setVocabExpressionEight(genExpData.expression[randomIndex])
     }
   }
   const clearExpressionEight = () => {
@@ -421,56 +421,56 @@ export default function AddVocabDialog({ text }) {
 
       setGeneratedAiExp(true);
 
-      if (data?.expressions) {
-        setVocabExpressionOne(data.expressions[0]);
+      if (data?.expression) {
+        setVocabExpressionOne(data.expression[0]);
         if (vocabExpressionShowCount === 8) {
-          setVocabExpressionEight(data.expressions[7]);
-          setVocabExpressionSeven(data.expressions[6]);
-          setVocabExpressionSix(data.expressions[5]);
-          setVocabExpressionFive(data.expressions[4]);
-          setVocabExpressionFour(data.expressions[3]);
-          setVocabExpressionThree(data.expressions[2]);
-          setVocabExpressionTwo(data.expressions[1]);
-          setVocabExpressionOne(data.expressions[0]);
+          setVocabExpressionEight(data.expression[7]);
+          setVocabExpressionSeven(data.expression[6]);
+          setVocabExpressionSix(data.expression[5]);
+          setVocabExpressionFive(data.expression[4]);
+          setVocabExpressionFour(data.expression[3]);
+          setVocabExpressionThree(data.expression[2]);
+          setVocabExpressionTwo(data.expression[1]);
+          setVocabExpressionOne(data.expression[0]);
         }
         if (vocabExpressionShowCount === 7) {
-          setVocabExpressionSeven(data.expressions[6]);
-          setVocabExpressionSix(data.expressions[5]);
-          setVocabExpressionFive(data.expressions[4]);
-          setVocabExpressionFour(data.expressions[3]);
-          setVocabExpressionThree(data.expressions[2]);
-          setVocabExpressionTwo(data.expressions[1]);
-          setVocabExpressionOne(data.expressions[0]);
+          setVocabExpressionSeven(data.expression[6]);
+          setVocabExpressionSix(data.expression[5]);
+          setVocabExpressionFive(data.expression[4]);
+          setVocabExpressionFour(data.expression[3]);
+          setVocabExpressionThree(data.expression[2]);
+          setVocabExpressionTwo(data.expression[1]);
+          setVocabExpressionOne(data.expression[0]);
         }
         if (vocabExpressionShowCount === 6) {
-          setVocabExpressionSix(data.expressions[5]);
-          setVocabExpressionFive(data.expressions[4]);
-          setVocabExpressionFour(data.expressions[3]);
-          setVocabExpressionThree(data.expressions[2]);
-          setVocabExpressionTwo(data.expressions[1]);
-          setVocabExpressionOne(data.expressions[0]);
+          setVocabExpressionSix(data.expression[5]);
+          setVocabExpressionFive(data.expression[4]);
+          setVocabExpressionFour(data.expression[3]);
+          setVocabExpressionThree(data.expression[2]);
+          setVocabExpressionTwo(data.expression[1]);
+          setVocabExpressionOne(data.expression[0]);
         }
         if (vocabExpressionShowCount === 5) {
-          setVocabExpressionFive(data.expressions[4]);
-          setVocabExpressionFour(data.expressions[3]);
-          setVocabExpressionThree(data.expressions[2]);
-          setVocabExpressionTwo(data.expressions[1]);
-          setVocabExpressionOne(data.expressions[0]);
+          setVocabExpressionFive(data.expression[4]);
+          setVocabExpressionFour(data.expression[3]);
+          setVocabExpressionThree(data.expression[2]);
+          setVocabExpressionTwo(data.expression[1]);
+          setVocabExpressionOne(data.expression[0]);
         }
         if (vocabExpressionShowCount === 4) {
-          setVocabExpressionFour(data.expressions[3]);
-          setVocabExpressionThree(data.expressions[2]);
-          setVocabExpressionTwo(data.expressions[1]);
-          setVocabExpressionOne(data.expressions[0]);
+          setVocabExpressionFour(data.expression[3]);
+          setVocabExpressionThree(data.expression[2]);
+          setVocabExpressionTwo(data.expression[1]);
+          setVocabExpressionOne(data.expression[0]);
         }
         if (vocabExpressionShowCount === 3) {
-          setVocabExpressionThree(data.expressions[2]);
-          setVocabExpressionTwo(data.expressions[1]);
-          setVocabExpressionOne(data.expressions[0]);
+          setVocabExpressionThree(data.expression[2]);
+          setVocabExpressionTwo(data.expression[1]);
+          setVocabExpressionOne(data.expression[0]);
         }
         if (vocabExpressionShowCount === 2) {
-          setVocabExpressionTwo(data.expressions[1]);
-          setVocabExpressionOne(data.expressions[0]);
+          setVocabExpressionTwo(data.expression[1]);
+          setVocabExpressionOne(data.expression[0]);
         }
       }
 
