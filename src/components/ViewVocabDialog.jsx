@@ -1108,8 +1108,6 @@ const ViewVocabDialog = (
     onSettled: (data) => {
       queryClient.invalidateQueries({ queryKey: ["aiExpData"] });
 
-      setGeneratedAiExp(true);
-
       if (data?.expression) {
         if (newExpressionEntry === 8) {
           if (removeExpressionEight || !expression[7]?.length) {
@@ -1244,6 +1242,7 @@ const ViewVocabDialog = (
 
   const handleGenAiExp = () => {
     setGeneratingExp(true)
+    setGeneratedAiExp(true);
     generateAiExpression.mutate()
   }
 
