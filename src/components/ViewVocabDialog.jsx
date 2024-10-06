@@ -1063,7 +1063,7 @@ const ViewVocabDialog = (
   }
   /* Generate Ai Expression Data */
   const getGenExp = () => {
-    return fetch(`${apiUrl}/openai/expressions`, {
+    return fetch(`${apiUrl}/openai/expression`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -1089,7 +1089,7 @@ const ViewVocabDialog = (
 
   const generateAiExpression = useMutation({
     mutationFn: async () => {
-      return await fetch(`${apiUrl}/openai/expressions`, {
+      return await fetch(`${apiUrl}/openai/expression`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -2606,7 +2606,7 @@ const ViewVocabDialog = (
                         </IconButton>
                       }
 
-                      {(expression?.length < 4 && newExpressionEntry < 4 && editingExpression) &&
+                      {(expression?.length < 8 && newExpressionEntry < 8 && editingExpression) &&
                         <Tooltip title="Add Entry" placement="right">
                           <IconButton onClick={addExpressionEntry}>
                             <IoMdAdd size={16} />
