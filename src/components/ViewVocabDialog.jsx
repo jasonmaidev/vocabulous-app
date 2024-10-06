@@ -1700,7 +1700,7 @@ const ViewVocabDialog = (
                         :
                         <Typography
                           fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem"}
-                          color={theme.palette.neutral.dark}
+                          color={mode === "light" ? theme.palette.neutral.mid : theme.palette.neutral.dark}
                           fontStyle={"italic"}
                           onClick={() => setEditingPinyin(true)}
                         >
@@ -1718,7 +1718,10 @@ const ViewVocabDialog = (
                   </Stack>
 
                   <Stack direction={"row"} spacing={1}>
-                    <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
+                    <Typography
+                      fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"}
+                      color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid}
+                      fontWeight={400}>
                       Definition
                     </Typography>
                     <FiBookOpen size={16} style={{ color: theme.palette.neutral.mid }} />
@@ -1756,7 +1759,7 @@ const ViewVocabDialog = (
                           border: "none",
                           borderRadius: "0.5rem",
                           padding: "0.5rem 0.75rem",
-                          backgroundColor: mode === "light" ? "rgba(180, 180, 180, 0.2)" : "rgba(0, 11, 13, 0.45)", // Semi-transparent background
+                          backgroundColor: mode === "light" ? "rgba(197, 197, 217, 0.2)" : "rgba(0, 11, 13, 0.45)", // Semi-transparent background
                           backdropFilter: "blur(10px)", // Apply the glass effect
                           WebkitBackdropFilter: "blur(10px)",
                         }}
@@ -2566,7 +2569,9 @@ const ViewVocabDialog = (
                 <Stack direction={"column"} justifyItems={"space-between"}>
                   <Stack spacing={0.5}>
                     <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
-                      <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
+                      <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"}
+                        color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid}
+                        fontWeight={400}>
                         Expression
                       </Typography>
                       {(editingExpression && newExpressionEntry > expression?.length) ?
@@ -3373,7 +3378,9 @@ const ViewVocabDialog = (
                     }
 
                     <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
-                      <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"} color={theme.palette.neutral.mid} fontWeight={400}>
+                      <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"}
+                        color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid}
+                        fontWeight={400}>
                         Sentences
                       </Typography>
                       <IconButton onClick={openEditSentences}>
