@@ -239,7 +239,7 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
             gap={1}
             sx={{
               cursor: "pointer",
-              borderRadius: "0.5rem",
+              borderRadius: "0.75rem",
               padding: "0.125rem 1rem",
               backgroundImage: highlightRow ? `linear-gradient(
                 to right, 
@@ -305,7 +305,7 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
               gap={1}
               sx={{
                 cursor: "pointer",
-                borderRadius: "0.5rem",
+                borderRadius: "0.75rem",
                 padding: "0.25rem",
                 backgroundImage: highlightRow ? `linear-gradient(
                   to right, 

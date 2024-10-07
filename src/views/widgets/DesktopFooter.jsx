@@ -34,13 +34,13 @@ const DesktopFooter = ({ isLogin }) => {
           <Box display={"flex"} flexDirection={"row"} gap={4} alignItems={"center"}>
             {isNonMobileScreens && (
               <>
-                <Typography fontSize={"0.75rem"} fontWeight={500} color={palette.neutral.medium}>© 2024 Vocabulous</Typography>
+                <Typography fontSize={"0.75rem"} fontWeight={500} color={palette.neutral.medium}>© 2024 Vocabulous | Voca Ai</Typography>
                 {isLogin ? null : (
                   <Button
                     onClick={getRoadmap}
                     startIcon={<TfiMapAlt />}
                     sx={{
-                      color: palette.neutral.main,
+                      color: isLogin ? palette.neutral.dark : palette.neutral.darker,
                       borderRadius: "6rem",
                       textTransform: "none",
                       fontWeight: 700,
@@ -59,9 +59,9 @@ const DesktopFooter = ({ isLogin }) => {
           <Typography
             fontSize={"0.75rem"}
             fontWeight={600}
-            color={isLogin ? palette.neutral.dark : palette.neutral.main}
+            color={isLogin ? palette.neutral.dark : palette.neutral.darker}
           >
-            Developer with 💛 by
+            Developed with 💛 by
             <Link href="https://jasonmai.dev/" target="_blank" underline="none" pl={1}>
               JasonMai.dev
             </Link>

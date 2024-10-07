@@ -163,19 +163,22 @@ const Navbar = ({
             onKeyUp={(e) => handleSearch(e.target.value)}
             startAdornment={
               <InputAdornment position="start">
-                <IoSearchSharp size={24} />
+                <IoSearchSharp size={searchRef?.current?.focus ? 20 : 24}
+                  color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid} />
               </InputAdornment>
             }
             required={true}
             sx={isNonMobileScreens ? {
               borderRadius: "1rem",
               padding: "0.5rem 1rem",
-              border: `1px solid ${neutralLight}`,
+              border: searchRef?.current?.focus ? `3px solid ${theme.palette.primary.main}` : `1px solid ${neutralLight}`,
               width: "100%",
               marginLeft: '1rem',
             } : {
               width: "100%",
-              borderRadius: "1rem",
+              padding: "0 0.5rem",
+              border: searchRef?.current?.focus ? `3px solid ${theme.palette.primary.main}` : undefined,
+              borderRadius: "2rem",
               margin: "0",
             }}
           />
