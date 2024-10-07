@@ -95,6 +95,7 @@ const SimilarText = ({ item, setSimilarSearchText, searchSimilar, handleViewClos
             backdropFilter: "blur(4px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(4px)", // Safari support for blur effect
             borderRadius: "1rem",
+            boxShadow: mode === "light" ? "0px 4px 12px rgba(197, 197, 217, 0.4)" : "0px 4px 12px rgba(0, 11, 13, 0.4)",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
@@ -3806,7 +3807,7 @@ const ViewVocabDialog = (
         }}
         sx={{
           "& .MuiPaper-root": {
-            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
             backgroundImage: `linear-gradient(
               to bottom right, 
               rgba(255, 255, 255, 0.15), 
@@ -3815,30 +3816,30 @@ const ViewVocabDialog = (
             backdropFilter: "blur(10px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(10px)", // Safari support for blur effect
             borderRadius: "1rem",
-            boxShadow: "0px 4px 12px rgba(0, 11, 13, 0.4)", // Shadow for depth
+            boxShadow: mode === "light" ? "0px 4px 12px rgba(197, 197, 217, 0.4)" : "0px 4px 12px rgba(0, 11, 13, 0.4)",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
       >
         <MenuItem onClick={handleUpdatePinned}>
           <ListItemIcon><TbPin fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>{pinned ? "Unpin" : "Pin"}</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>{pinned ? "Unpin" : "Pin"}</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleSetBeg}>
           <ListItemIcon><PiCircleBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Lv. 1</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>Set Lv. 1</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleSetInt}>
           <ListItemIcon><PiDiamondBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Lv. 2</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>Set Lv. 2</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleSetAdv}>
           <ListItemIcon><PiStarBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Lv. 3</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>Set Lv. 3</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleDeleteVocab}>
           <ListItemIcon><TbTrashX fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Delete</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>Delete</ListItemText>
         </MenuItem>
       </Menu>
     </Box>

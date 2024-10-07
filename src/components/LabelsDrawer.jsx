@@ -120,47 +120,47 @@ export default function LabelsDrawer() {
   const renderIcon = (text) => {
     switch (text) {
       case 'body':
-        return <IoBodyOutline size={24} color={theme.palette.neutral.medium} />;
+        return <IoBodyOutline size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'business':
-        return <FiBriefcase size={24} color={theme.palette.neutral.medium} />;
+        return <FiBriefcase size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'colloquial':
-        return <RiChat3Line size={24} color={theme.palette.neutral.medium} />;
+        return <RiChat3Line size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'degree':
-        return <TbTemperature size={24} color={theme.palette.neutral.medium} />;
+        return <TbTemperature size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'frequency':
-        return <MdAccessTime size={24} color={theme.palette.neutral.medium} />;
+        return <MdAccessTime size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'grammar':
-        return <IoLanguage size={24} color={theme.palette.neutral.medium} />;
+        return <IoLanguage size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'house':
-        return <BiHomeAlt2 size={24} color={theme.palette.neutral.medium} />;
+        return <BiHomeAlt2 size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'humor':
-        return <LiaLaughSquint size={24} color={theme.palette.neutral.medium} />;
+        return <LiaLaughSquint size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'idiom':
-        return <LiaFeatherAltSolid size={24} color={theme.palette.neutral.medium} />;
+        return <LiaFeatherAltSolid size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'measure':
-        return <PiRuler size={24} color={theme.palette.neutral.medium} />;
+        return <PiRuler size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'mood':
-        return <FaRegHeart size={24} color={theme.palette.neutral.medium} />;
+        return <FaRegHeart size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'negative':
-        return <FiThumbsDown size={24} color={theme.palette.neutral.medium} />;
+        return <FiThumbsDown size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'personality':
-        return <FaRegUser size={24} color={theme.palette.neutral.medium} />;
+        return <FaRegUser size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'places':
-        return <FiMapPin size={24} color={theme.palette.neutral.medium} />;
+        return <FiMapPin size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'positive':
-        return <FiThumbsUp size={24} color={theme.palette.neutral.medium} />;
+        return <FiThumbsUp size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'romance':
-        return <RiHeartsLine size={24} color={theme.palette.neutral.medium} />;
+        return <RiHeartsLine size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'slang':
-        return <FiHash size={24} color={theme.palette.neutral.medium} />;
+        return <FiHash size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'social':
-        return <IoBeerOutline size={24} color={theme.palette.neutral.medium} />;
+        return <IoBeerOutline size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'status':
-        return <BiPulse size={24} color={theme.palette.neutral.medium} />;
+        return <BiPulse size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'wisdom':
-        return <HiOutlineBookOpen size={24} color={theme.palette.neutral.medium} />;
+        return <HiOutlineBookOpen size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       default:
-        return <MdLabelOutline size={24} color={theme.palette.neutral.medium} />;
+        return <MdLabelOutline size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
     }
   };
 
@@ -179,11 +179,11 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <TbPin size={24} color={theme.palette.neutral.medium} />
+                <TbPin size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText
                 primary={"Pinned"} secondary={"Homepage"}
-                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -202,10 +202,10 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <PiCircleBold size={24} color={theme.palette.neutral.medium} />
+                <PiCircleBold size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"All"} secondary={"Level 1 - 3"}
-                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -224,10 +224,10 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <PiDiamondBold size={24} color={theme.palette.neutral.medium} />
+                <PiDiamondBold size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"Intermediate"} secondary={"Level 2"}
-                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -246,10 +246,10 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <PiStarBold size={24} color={theme.palette.neutral.medium} />
+                <PiStarBold size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"Advanced"} secondary={"Level 3"}
-                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -279,7 +279,7 @@ export default function LabelsDrawer() {
                 </ListItemIcon>
                 <ListItemText
                   primary={capFirstLetter(text)}
-                  primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                  primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}}}
                 />
               </ListItemButton>
             </ListItem>
@@ -305,7 +305,7 @@ export default function LabelsDrawer() {
               </ListItemIcon>
               <ListItemText
                 primary={"Edit Labels"}
-                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -330,11 +330,11 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <TbPin size={24} color={theme.palette.neutral.medium} />
+                <TbPin size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText
                 primary={"Pinned"}
-                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -353,10 +353,10 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <PiCircleBold size={24} color={theme.palette.neutral.medium} />
+                <PiCircleBold size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"All"}
-                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -375,10 +375,10 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <PiDiamondBold size={24} color={theme.palette.neutral.medium} />
+                <PiDiamondBold size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"Intermediate Lv. 2"}
-                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -397,10 +397,10 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <PiStarBold size={24} color={theme.palette.neutral.medium} />
+                <PiStarBold size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText primary={"Advanced Lv. 3"}
-                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -430,7 +430,7 @@ export default function LabelsDrawer() {
                 </ListItemIcon>
                 <ListItemText
                   primary={capFirstLetter(text)}
-                  primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                  primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}}}
                 />
               </ListItemButton>
             </ListItem>
@@ -452,11 +452,11 @@ export default function LabelsDrawer() {
               }}
             >
               <ListItemIcon>
-                <FiEdit3 size={24} color={theme.palette.neutral.medium} />
+                <FiEdit3 size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText
                 primary={"Edit Labels"}
-                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined }}
+                primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>

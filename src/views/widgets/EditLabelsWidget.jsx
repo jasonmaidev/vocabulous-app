@@ -101,13 +101,13 @@ const EditLabelsRow = ({ handleDeleteLabel, id, text, labels }) => {
       sx={{ width: '100%' }}
     >
       {isHovered ? (
-        <Tooltip title="Delete Label" placement="top">
+        <Tooltip title="Delete" placement="left">
           <IconButton size="small" onClick={() => handleDeleteLabel(text)}>
             <AiFillDelete size={24} color={theme.palette.neutral.dark} />
           </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title="Delete Label" placement="top">
+        <Tooltip title="Delete" placement="left">
           <IconButton size="small" onClick={() => handleDeleteLabel(text)}>
             <MdLabel size={24} color={theme.palette.neutral.dark} />
           </IconButton>
@@ -257,7 +257,7 @@ const EditLabelsWidget = ({ data, id, handleEditLabelsClose }) => {
             />
           </Stack>
           {creatingLabel ? (
-            <Tooltip title="Create Label" placement="top">
+            <Tooltip title="Create" placement="left">
               <Box>
                 <IoMdCheckmark
                   size={24}

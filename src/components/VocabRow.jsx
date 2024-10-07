@@ -417,6 +417,14 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'center',
+          horizontal: 'right',
+        }}
         sx={{
           "& .MuiPaper-root": {
             backgroundColor: mode === "light" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
@@ -428,7 +436,7 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
             backdropFilter: "blur(6px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(6px)", // Safari support for blur effect
             borderRadius: "1rem",
-            boxShadow: "0px 4px 12px rgba(0, 11, 13, 0.4)", // Shadow for depth
+            boxShadow: mode === "light" ? "0px 4px 12px rgba(197, 197, 217, 0.4)" : "0px 4px 12px rgba(0, 11, 13, 0.4)",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
