@@ -19,6 +19,7 @@ const ViewVocabsWidget = () => {
   const { _id } = useSelector((state) => state.user)
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
   const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+  const mode = useSelector((state) => state.mode)
 
   const theme = useTheme()
 
@@ -96,10 +97,10 @@ const ViewVocabsWidget = () => {
           {pinnedVocabs?.length > 0 && (
             <PinnedVocabBox sx={{ border: labelData?.length < 1 && "none" }}>
               <Stack direction={"row"} spacing={0.5} justifyContent={"space-between"}>
-                <Typography sx={{ color: theme.palette.neutral.mid }}>
+                <Typography sx={{ color: mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid }}>
                   Studying
                 </Typography>
-                <Typography sx={{ color: theme.palette.primary.main }}>
+                <Typography sx={{ color: mode === "light" ? theme.palette.neutral.darker : theme.palette.primary.main }}>
                   <TbPinFilled size={20} />
                 </Typography>
               </Stack>

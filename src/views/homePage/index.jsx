@@ -20,6 +20,7 @@ const HomePage = () => {
   const dispatch = useDispatch()
   const viewByLabel = useSelector((state) => state.viewByLabel)
   const viewBySearchTerm = useSelector((state) => state.viewBySearchTerm)
+  const mode = useSelector((state) => state.mode)
 
   const theme = useTheme()
 
@@ -83,10 +84,10 @@ const HomePage = () => {
           {(data?.length > 0) ? (
             <PinnedVocabBox sx={{ border: data?.length < 1 && "none" }}>
               <Stack direction={"row"} spacing={0.5} justifyContent={"space-between"}>
-                <Typography sx={{ color: theme.palette.neutral.mid }}>
+                <Typography sx={{ color: mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid }}>
                   Studying
                 </Typography>
-                <Typography sx={{ color: theme.palette.primary.main }}>
+                <Typography sx={{ color: mode === "light" ? theme.palette.neutral.darker : theme.palette.primary.main }}>
                   <TbPinFilled size={20} />
                 </Typography>
               </Stack>

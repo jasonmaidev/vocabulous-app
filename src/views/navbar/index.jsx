@@ -250,7 +250,7 @@ const Navbar = ({
             backdropFilter: "blur(6px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(6px)", // Safari support for blur effect
             borderRadius: "1rem",
-            boxShadow: "0px 4px 12px rgba(0, 11, 13, 0.4)", // Shadow for depth
+            boxShadow: mode === "light" ? "0px 4px 12px rgba(155, 155, 171, 0.4)" : "0px 4px 12px rgba(0, 11, 13, 0.4)",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
