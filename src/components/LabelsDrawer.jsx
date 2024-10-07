@@ -184,6 +184,7 @@ export default function LabelsDrawer() {
               <ListItemText
                 primary={"Pinned"} secondary={"Homepage"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -206,6 +207,7 @@ export default function LabelsDrawer() {
               </ListItemIcon>
               <ListItemText primary={"All"} secondary={"Level 1 - 3"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -228,6 +230,7 @@ export default function LabelsDrawer() {
               </ListItemIcon>
               <ListItemText primary={"Intermediate"} secondary={"Level 2"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -250,6 +253,7 @@ export default function LabelsDrawer() {
               </ListItemIcon>
               <ListItemText primary={"Advanced"} secondary={"Level 3"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -280,6 +284,7 @@ export default function LabelsDrawer() {
                 <ListItemText
                   primary={capFirstLetter(text)}
                   primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                  secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
                 />
               </ListItemButton>
             </ListItem>
@@ -306,6 +311,7 @@ export default function LabelsDrawer() {
               <ListItemText
                 primary={"Edit Labels"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -333,8 +339,9 @@ export default function LabelsDrawer() {
                 <TbPin size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
               <ListItemText
-                primary={"Pinned"}
+                primary={"Pinned"} secondary={"Homepage"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -355,8 +362,9 @@ export default function LabelsDrawer() {
               <ListItemIcon>
                 <PiCircleBold size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
-              <ListItemText primary={"All"}
+              <ListItemText primary={"All"} secondary={"Level 1 - 3"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -377,8 +385,9 @@ export default function LabelsDrawer() {
               <ListItemIcon>
                 <PiDiamondBold size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
-              <ListItemText primary={"Intermediate Lv. 2"}
+              <ListItemText primary={"Intermediate"} secondary={"Level 2"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -399,8 +408,9 @@ export default function LabelsDrawer() {
               <ListItemIcon>
                 <PiStarBold size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />
               </ListItemIcon>
-              <ListItemText primary={"Advanced Lv. 3"}
+              <ListItemText primary={"Advanced"} secondary={"Level 3"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>
@@ -431,6 +441,7 @@ export default function LabelsDrawer() {
                 <ListItemText
                   primary={capFirstLetter(text)}
                   primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                  secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
                 />
               </ListItemButton>
             </ListItem>
@@ -457,6 +468,7 @@ export default function LabelsDrawer() {
               <ListItemText
                 primary={"Edit Labels"}
                 primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
+                secondaryTypographyProps={{ fontWeight: mode === "light" ? 500 : 400 }}
               />
             </ListItemButton>
           </ListItem>

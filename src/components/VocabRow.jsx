@@ -242,14 +242,14 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
               padding: "0.125rem 1rem",
               backgroundImage: highlightRow ? `linear-gradient(
                 to right, 
-                rgba(155, 155, 171, 0.06), 
-                rgba(155, 155, 171, 0.02)
+                rgba(155, 155, 171, 0.1), 
+                rgba(155, 155, 171, 0.04)
               )` : "none",
               "&:hover": {
                 backgroundImage: `linear-gradient(
                   to right, 
-                  rgba(155, 155, 171, 0.06), 
-                  rgba(155, 155, 171, 0.02)
+                  rgba(155, 155, 171, 0.1), 
+                  rgba(155, 155, 171, 0.04)
                 )`,
               }
             }}
@@ -308,14 +308,14 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
                 padding: "0.25rem",
                 backgroundImage: highlightRow ? `linear-gradient(
                   to right, 
-                  rgba(155, 155, 171, 0.06), 
-                  rgba(155, 155, 171, 0.02)
+                  rgba(155, 155, 171, 0.1), 
+                  rgba(155, 155, 171, 0.04)
                 )` : "none",
                 "&:hover": {
                   backgroundImage: `linear-gradient(
                     to right, 
-                    rgba(155, 155, 171, 0.06), 
-                    rgba(155, 155, 171, 0.02)
+                    rgba(155, 155, 171, 0.1), 
+                    rgba(155, 155, 171, 0.04)
                   )`,
                 }
               }}
@@ -377,9 +377,8 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
             backgroundImage: `linear-gradient(
               to top left, 
               rgba(255, 255, 255, 0.15), 
-              rgba(255, 255, 255, 0.06)
-            )`, // Gradient overlay
-            backdropFilter: "blur(6px)", // Apply the glass effect
+              rgba(255, 255, 255, 0.1)
+            )`, // Gradient overlay4            backdropFilter: "blur(6px)", // Apply the glass effect
             WebkitBackdropFilter: "blur(6px)", // For Safari support
             border: "1px solid rgba(255, 255, 255, 0.2)"
           },
@@ -443,8 +442,8 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
             backgroundImage: `linear-gradient(
               to bottom right, 
               rgba(255, 255, 255, 0.15), 
-              rgba(255, 255, 255, 0.06)
-            )`, // Gradient overlay for the glassmorphism effect
+              rgba(255, 255, 255, 0.1)
+            )`, // Gradient overlay f4r the glassmorphism effect
             backdropFilter: "blur(6px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(6px)", // Safari support for blur effect
             borderRadius: "1rem",
