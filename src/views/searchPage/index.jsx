@@ -91,47 +91,47 @@ const SearchPage = () => {
   const renderIcon = (text) => {
     switch (text) {
       case 'body':
-        return <IoBodyOutline size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <IoBodyOutline size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'business':
-        return <FiBriefcase size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <FiBriefcase size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'colloquial':
-        return <RiChat3Line size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <RiChat3Line size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'degree':
-        return <TbTemperature size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <TbTemperature size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'frequency':
-        return <MdAccessTime size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <MdAccessTime size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'grammar':
-        return <IoLanguage size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <IoLanguage size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'house':
-        return <BiHomeAlt2 size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <BiHomeAlt2 size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'humor':
-        return <LiaLaughSquint size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <LiaLaughSquint size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'idiom':
-        return <LiaFeatherAltSolid size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <LiaFeatherAltSolid size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'measure':
-        return <PiRuler size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <PiRuler size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'mood':
-        return <FaRegHeart size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <FaRegHeart size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'negative':
-        return <FiThumbsDown size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <FiThumbsDown size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'personality':
-        return <FaRegUser size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <FaRegUser size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'places':
-        return <FiMapPin size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <FiMapPin size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'positive':
-        return <FiThumbsUp size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <FiThumbsUp size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'romance':
-        return <RiHeartsLine size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <RiHeartsLine size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'slang':
-        return <FiHash size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <FiHash size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'social':
-        return <IoBeerOutline size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <IoBeerOutline size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'status':
-        return <BiPulse size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <BiPulse size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'wisdom':
-        return <HiOutlineBookOpen size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <HiOutlineBookOpen size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       default:
-        return <MdLabelOutline size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={theme.palette.neutral.medium} />;
+        return <MdLabelOutline size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
     }
   };
 
@@ -204,7 +204,7 @@ const SearchPage = () => {
                       <TbPin
                         size={isLandscape ? 36 : 32}
                         style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
-                        color={theme.palette.neutral.medium}
+                        color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium}
                       />
                       <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem", fontWeight: mode === "light" ? 500 : 400 }}>
                         Pinned
@@ -230,7 +230,7 @@ const SearchPage = () => {
                       <PiCircleBold
                         size={isLandscape ? 36 : 32}
                         style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
-                        color={theme.palette.neutral.medium}
+                        color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium}
                       />
                       <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem", fontWeight: mode === "light" ? 500 : 400 }}>
                         All
@@ -256,7 +256,7 @@ const SearchPage = () => {
                       <PiDiamondBold
                         size={isLandscape ? 36 : 32}
                         style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
-                        color={theme.palette.neutral.medium}
+                        color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium}
                       />
                       <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem", fontWeight: mode === "light" ? 500 : 400 }}>
                         Lv. 2
@@ -282,7 +282,7 @@ const SearchPage = () => {
                       <PiStarBold
                         size={isLandscape ? 36 : 32}
                         style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
-                        color={theme.palette.neutral.medium}
+                        color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium}
                       />
                       <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem", fontWeight: mode === "light" ? 500 : 400 }}>
                         Lv. 3
@@ -301,9 +301,8 @@ const SearchPage = () => {
                           border: `solid 1px ${palette.neutral.light}`,
                           m: 1,
                           '&:hover': {
-                            backgroundColor: theme.palette.primary.light,
+                            backgroundColor: mode === "light" ? "rgba(155, 155, 171, 0.1)" : theme.palette.primary.light,
                             border: mode === "light" ? `solid 1px rgba(155, 155, 171, 0.1)` : `solid 1px ${palette.primary.light}`,
-
                           },
                         }}
                       >
@@ -311,6 +310,7 @@ const SearchPage = () => {
                         <Typography
                           sx={{
                             fontSize: isLandscape ? "0.8rem" : "0.65rem",
+                            fontWeight: mode === "light" ? 500 : 400
                           }}
                         >
                           {text}
