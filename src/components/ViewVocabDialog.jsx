@@ -1733,7 +1733,7 @@ const ViewVocabDialog = (
                       fontWeight={mode === "light" ? 500 : 400}>
                       Definition
                     </Typography>
-                    <FiBookOpen size={16} style={{ color: theme.palette.neutral.mid }} />
+                    <FiBookOpen size={16} style={{ color: mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid }} />
                   </Stack>
                   {/* ----- Definition ----- */}
                   {editingDef ?
@@ -2246,6 +2246,7 @@ const ViewVocabDialog = (
                                         lineHeight={1}
                                         fontStyle={"italic"}
                                         color={theme.palette.primary.dark}
+                                        fontWeight={mode === "light" ? 500 : 400}
                                       >
                                         {item ? pinyin(item) : ""}
                                       </Typography>
@@ -3397,6 +3398,7 @@ const ViewVocabDialog = (
                                     lineHeight={1}
                                     fontStyle={"italic"}
                                     color={theme.palette.primary.dark}
+                                    fontWeight={mode === "light" ? 500 : 400}
                                   >
                                     {item ? pinyin(item) : ""}
                                   </Typography>
@@ -3654,6 +3656,7 @@ const ViewVocabDialog = (
                                     lineHeight={1}
                                     fontStyle={"italic"}
                                     color={theme.palette.primary.dark}
+                                    fontWeight={mode === "light" ? 500 : 400}
                                   >
                                     {item ? pinyin(item) : ""}
                                   </Typography>

@@ -241,9 +241,17 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
               cursor: "pointer",
               borderRadius: "0.5rem",
               padding: "0.125rem 1rem",
-              backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
+              backgroundImage: highlightRow ? `linear-gradient(
+                to right, 
+                rgba(197, 197, 217, 0.05), 
+                rgba(197, 197, 217, 0.02)
+              )` : "none",
               "&:hover": {
-                backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
+                backgroundImage: `linear-gradient(
+                  to right, 
+                  rgba(197, 197, 217, 0.05), 
+                  rgba(197, 197, 217, 0.02)
+                )`,
               }
             }}
           >
@@ -293,9 +301,17 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
                 cursor: "pointer",
                 borderRadius: "0.5rem",
                 padding: "0.25rem",
-                backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
+                backgroundImage: highlightRow ? `linear-gradient(
+                  to right, 
+                  rgba(197, 197, 217, 0.05), 
+                  rgba(197, 197, 217, 0.02)
+                )` : "none",
                 "&:hover": {
-                  backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
+                  backgroundImage: `linear-gradient(
+                    to right, 
+                    rgba(197, 197, 217, 0.05), 
+                    rgba(197, 197, 217, 0.02)
+                  )`,
                 }
               }}
             >
@@ -408,7 +424,7 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
         }}
         transformOrigin={{
           vertical: 'center',
-          horizontal: 'right',
+          horizontal: 'left',
         }}
         sx={{
           "& .MuiPaper-root": {
@@ -428,23 +444,23 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
       >
         <MenuItem onClick={handleUpdatePinned}>
           <ListItemIcon><TbPin fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>{pinned ? "Unpin" : "Pin"}</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>{pinned ? "Unpin" : "Pin"}</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleSetBeg}>
           <ListItemIcon><PiCircleBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Lv. 1</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>Set Lv. 1</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleSetInt}>
           <ListItemIcon><PiDiamondBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Lv. 2</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>Set Lv. 2</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleSetAdv}>
           <ListItemIcon><PiStarBold fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Set Lv. 3</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>Set Lv. 3</ListItemText>
         </MenuItem>
         <MenuItem onClick={handleDeleteVocab}>
           <ListItemIcon><TbTrashX fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker }}>Delete</ListItemText>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>Delete</ListItemText>
         </MenuItem>
       </Menu>
     </>

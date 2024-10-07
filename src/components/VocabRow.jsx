@@ -240,9 +240,17 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
               cursor: "pointer",
               borderRadius: "0.5rem",
               padding: "0.125rem 1rem",
-              backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
+              backgroundImage: highlightRow ? `linear-gradient(
+                to right, 
+                rgba(197, 197, 217, 0.05), 
+                rgba(197, 197, 217, 0.02)
+              )` : "none",
               "&:hover": {
-                backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
+                backgroundImage: `linear-gradient(
+                  to right, 
+                  rgba(197, 197, 217, 0.05), 
+                  rgba(197, 197, 217, 0.02)
+                )`,
               }
             }}
           >
@@ -292,9 +300,17 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
                 cursor: "pointer",
                 borderRadius: "0.5rem",
                 padding: "0.25rem",
-                backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
+                backgroundImage: highlightRow ? `linear-gradient(
+                  to right, 
+                  rgba(197, 197, 217, 0.05), 
+                  rgba(197, 197, 217, 0.02)
+                )` : "none",
                 "&:hover": {
-                  backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
+                  backgroundImage: `linear-gradient(
+                    to right, 
+                    rgba(197, 197, 217, 0.05), 
+                    rgba(197, 197, 217, 0.02)
+                  )`,
                 }
               }}
             >
@@ -407,7 +423,7 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
         }}
         transformOrigin={{
           vertical: 'center',
-          horizontal: 'right',
+          horizontal: 'left',
         }}
         sx={{
           "& .MuiPaper-root": {
