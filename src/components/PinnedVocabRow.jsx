@@ -64,7 +64,7 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
           // If there's a match at this index, add it with the highlighted color
           acc.push(
             <span key={`match-${index}`}
-              style={{ color: mode === "light" ? theme.palette.neutral.darker : theme.palette.primary.dark, fontWeight: mode === "light" ? 500 : 400 }}
+              style={{ color: mode === "light" ? theme.palette.neutral.mid : theme.palette.primary.dark, fontWeight: mode === "light" ? 500 : 400 }}
             >
               {matches[index]}
             </span>
@@ -265,7 +265,7 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
                           "#ff589e"}
                   fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}
                   lineHeight={1.1}
-                  fontWeight={mode === "light" ? 500 : 400}
+                  fontWeight={mode === "light" ? 600 : 400}
                 >
                   {text}
                 </Typography>
@@ -277,7 +277,7 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
                   {pinyin}
                 </Typography>
               </Stack>
-              <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem"}>
+              <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem"} fontWeight={mode === "light" ? 500 : 400}>
                 <HighlightCaps text={definition} />
               </Typography>
             </Stack>
@@ -333,13 +333,14 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
                         difficulty === "1" ? "#03f1c7" :
                           difficulty === "2" ? "#fbbf24" :
                             "#ff589e"}
-                    fontWeight={mode === "light" ? 500 : 400}
+                    fontWeight={mode === "light" ? 600 : 400}
                   >
                     {text}
                   </Typography>
                   <Typography
                     onClick={handleViewOpen}
                     sx={{ lineHeight: 1.1, fontSize: "0.8rem", fontStyle: "italic" }}
+                    fontWeight={mode === "light" ? 500 : 400}
                     color={theme.palette.neutral.medium}>
                     {pinyin}
                   </Typography>

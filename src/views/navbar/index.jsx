@@ -165,7 +165,7 @@ const Navbar = ({
             startAdornment={
               <InputAdornment position="start">
                 <IoSearchSharp size={searchRef?.current?.focus ? 20 : 24}
-                  color={mode === "light" ? theme.palette.neutral.mid : theme.palette.neutral.mid}
+                  color={mode === "light" ? theme.palette.neutral.dark : theme.palette.neutral.mid}
                 />
               </InputAdornment>
             }

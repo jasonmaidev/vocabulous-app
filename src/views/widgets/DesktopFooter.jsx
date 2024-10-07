@@ -40,7 +40,7 @@ const DesktopFooter = ({ isLogin }) => {
                     onClick={getRoadmap}
                     startIcon={<TfiMapAlt />}
                     sx={{
-                      color: isLogin ? palette.neutral.dark : palette.neutral.darker,
+                      color: isLogin ? palette.neutral.dark : palette.neutral.mid,
                       borderRadius: "6rem",
                       textTransform: "none",
                       fontWeight: 700,
@@ -59,7 +59,7 @@ const DesktopFooter = ({ isLogin }) => {
           <Typography
             fontSize={"0.75rem"}
             fontWeight={600}
-            color={isLogin ? palette.neutral.dark : palette.neutral.darker}
+            color={isLogin ? palette.neutral.dark : palette.neutral.mid}
           >
             Developed with 💛 by
             <Link href="https://jasonmai.dev/" target="_blank" underline="none" pl={1}>
