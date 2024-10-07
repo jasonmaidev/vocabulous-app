@@ -64,7 +64,7 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
           // If there's a match at this index, add it with the highlighted color
           acc.push(
             <span key={`match-${index}`}
-              style={{ color: mode === "light" ? theme.palette.neutral.darker : theme.palette.primary.dark, fontWeight: mode === "light" ? 600 : 400 }}
+              style={{ color: mode === "light" ? theme.palette.neutral.darker : theme.palette.primary.dark, fontWeight: mode === "light" ? 500 : 400 }}
             >
               {matches[index]}
             </span>
