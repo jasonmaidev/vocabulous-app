@@ -279,7 +279,7 @@ export default function LabelsDrawer() {
                 </ListItemIcon>
                 <ListItemText
                   primary={capFirstLetter(text)}
-                  primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}}}
+                  primaryTypographyProps={{ fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.1rem" : undefined, fontWeight: mode === "light" ? 500 : 400 }}
                 />
               </ListItemButton>
             </ListItem>
