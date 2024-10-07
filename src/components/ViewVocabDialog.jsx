@@ -1853,7 +1853,7 @@ const ViewVocabDialog = (
                           <Button
                             sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }}
                             onClick={openEditSimilar}>
-                            <Typography fontSize={"1.5rem"} color={mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`}>
+                            <Typography fontSize={"1.5rem"} color={mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)"}>
                               +
                             </Typography>
                           </Button>
@@ -2663,7 +2663,7 @@ const ViewVocabDialog = (
                       <Button
                         sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }}
                         onClick={openEditExpression}>
-                        <Typography fontSize={"1.5rem"} color={mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`}>
+                        <Typography fontSize={"1.5rem"} color={mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)"}>
                           +
                         </Typography>
                       </Button>
@@ -3425,7 +3425,7 @@ const ViewVocabDialog = (
                       <Button
                         sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }}
                         onClick={openEditSentences}>
-                        <Typography fontSize={"1.5rem"} color={mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`}>
+                        <Typography fontSize={"1.5rem"} color={mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)"}>
                           +
                         </Typography>
                       </Button>
