@@ -95,7 +95,7 @@ const SimilarText = ({ item, setSimilarSearchText, searchSimilar, handleViewClos
             backdropFilter: "blur(4px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(4px)", // Safari support for blur effect
             borderRadius: "1rem",
-            boxShadow: mode === "light" ? "0px 4px 12px rgba(197, 197, 217, 0.4)" : "0px 4px 12px rgba(0, 11, 13, 0.4)",
+            boxShadow: mode === "light" ? "0px 4px 12px rgba(197, 197, 217, 0.4)" : "none",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
