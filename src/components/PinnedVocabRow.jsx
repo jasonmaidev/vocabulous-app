@@ -241,17 +241,9 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
               cursor: "pointer",
               borderRadius: "0.5rem",
               padding: "0.125rem 1rem",
-              backgroundImage: highlightRow ? `linear-gradient(
-              to right, 
-              rgba(3, 241, 232, 0.075), 
-              rgba(18, 77, 115, 0.05)
-            )` : "none",
+              backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
               "&:hover": {
-                backgroundImage: `linear-gradient(
-                to right, 
-                rgba(3, 241, 232, 0.075), 
-                rgba(18, 77, 115, 0.05)
-              )`,
+                backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
               }
             }}
           >
@@ -301,17 +293,9 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
                 cursor: "pointer",
                 borderRadius: "0.5rem",
                 padding: "0.25rem",
-                backgroundImage: highlightRow ? `linear-gradient(
-                to right, 
-                rgba(3, 241, 232, 0.075), 
-                rgba(18, 77, 115, 0.05)
-              )` : "none",
+                backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
                 "&:hover": {
-                  backgroundImage: `linear-gradient(
-                  to right, 
-                  rgba(3, 241, 232, 0.075), 
-                  rgba(18, 77, 115, 0.05)
-                )`,
+                  backgroundImage: highlightRow ? `linear-gradient(to right, rgba(197, 197, 217, 0.05),  rgba(197, 197, 217, 0.03))` : "none",
                 }
               }}
             >
