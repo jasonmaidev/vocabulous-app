@@ -1683,7 +1683,7 @@ const ViewVocabDialog = (
                             {text}
                           </Typography>
                           <IconButton onClick={() => setEditingText(true)}>
-                            <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)", margin: "0.125rem" }} />
+                            <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(54, 71, 74, 0.8)", margin: "0.125rem" }} />
                           </IconButton>
                         </Stack>
                       }
@@ -1711,6 +1711,7 @@ const ViewVocabDialog = (
                           fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem"}
                           color={mode === "light" ? theme.palette.neutral.mid : theme.palette.neutral.dark}
                           fontStyle={"italic"}
+                          fontWeight={mode === "light" ? 500 : 400}
                           onClick={() => setEditingPinyin(true)}
                         >
                           {pinyinText}
@@ -1780,7 +1781,7 @@ const ViewVocabDialog = (
                           <HighlightCaps text={definition} />
                         </Typography>
                         <IconButton onClick={() => setEditingDef(true)}>
-                          <FiEdit2 size={16} style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
+                          <FiEdit2 size={16} style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(54, 71, 74, 0.8)" }} />
                         </IconButton>
                       </Stack>
                     </Stack>
@@ -1836,7 +1837,7 @@ const ViewVocabDialog = (
                             </Button>
                             :
                             <IconButton onClick={openEditSimilar}>
-                              <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
+                              <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(54, 71, 74, 0.8)" }} />
                             </IconButton>
                           }
 
@@ -1851,9 +1852,9 @@ const ViewVocabDialog = (
 
                         {(!editingSimilar && similar?.length === 0) && (
                           <Button
-                            sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }}
+                            sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(54, 71, 74, 0.8)`, borderRadius: "0.5rem" }}
                             onClick={openEditSimilar}>
-                            <Typography fontSize={"1.5rem"} color={mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)"}>
+                            <Typography fontSize={"1.5rem"} color={mode === "light" ? theme.palette.neutral.light : "rgba(54, 71, 74, 1)"}>
                               +
                             </Typography>
                           </Button>
@@ -2644,7 +2645,7 @@ const ViewVocabDialog = (
                         :
                         !editingExpression ?
                           <IconButton onClick={openEditExpression}>
-                            <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
+                            <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(54, 71, 74, 0.8)" }} />
                           </IconButton>
                           :
                           null
@@ -2661,9 +2662,9 @@ const ViewVocabDialog = (
 
                     {(!editingExpression && expression?.length === 0) && (
                       <Button
-                        sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }}
+                        sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(54, 71, 74, 0.8)`, borderRadius: "0.5rem" }}
                         onClick={openEditExpression}>
-                        <Typography fontSize={"1.5rem"} color={mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)"}>
+                        <Typography fontSize={"1.5rem"} color={mode === "light" ? theme.palette.neutral.light : "rgba(54, 71, 74, 1)"}>
                           +
                         </Typography>
                       </Button>
@@ -3417,15 +3418,15 @@ const ViewVocabDialog = (
                         Sentences
                       </Typography>
                       <IconButton onClick={openEditSentences}>
-                        <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)" }} />
+                        <FiEdit2 style={{ color: mode === "light" ? theme.palette.neutral.light : "rgba(54, 71, 74, 0.8)" }} />
                       </IconButton>
                     </Stack>
 
                     {(!editingSentences && sentence?.length === 0) && (
                       <Button
-                        sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }}
+                        sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(54, 71, 74, 0.8)`, borderRadius: "0.5rem" }}
                         onClick={openEditSentences}>
-                        <Typography fontSize={"1.5rem"} color={mode === "light" ? theme.palette.neutral.light : "rgba(41, 54, 56, 0.8)"}>
+                        <Typography fontSize={"1.5rem"} color={mode === "light" ? theme.palette.neutral.light : "rgba(54, 71, 74, 1)"}>
                           +
                         </Typography>
                       </Button>
