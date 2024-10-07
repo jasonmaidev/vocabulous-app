@@ -312,7 +312,7 @@ function HighlightCaps({ text }) {
         // If there's a match at this index, add it with the highlighted color
         acc.push(
           <span key={`match-${index}`}
-            style={{ color: mode === "light" ? theme.palette.neutral.darker : theme.palette.primary.dark, fontWeight: mode === "light" ? 500 : 400 }}
+            style={{ color: mode === "light" ? theme.palette.neutral.mid : theme.palette.primary.dark, fontWeight: mode === "light" ? 500 : 400 }}
           >
             {matches[index]}
           </span>
@@ -1778,6 +1778,7 @@ const ViewVocabDialog = (
                         <Typography
                           fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.9rem"}
                           lineHeight={1.2}
+                          fontWeight={mode === "light" ? 500 : 400}
                           color={theme.palette.neutral.darker}>
                           <HighlightCaps text={definition} />
                         </Typography>
