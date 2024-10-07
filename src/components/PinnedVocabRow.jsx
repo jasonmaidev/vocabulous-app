@@ -243,14 +243,14 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
               padding: "0.125rem 1rem",
               backgroundImage: highlightRow ? `linear-gradient(
                 to right, 
-                rgba(197, 197, 217, 0.05), 
-                rgba(197, 197, 217, 0.02)
+                rgba(155, 155, 171, 0.06), 
+                rgba(155, 155, 171, 0.02)
               )` : "none",
               "&:hover": {
                 backgroundImage: `linear-gradient(
                   to right, 
-                  rgba(197, 197, 217, 0.05), 
-                  rgba(197, 197, 217, 0.02)
+                  rgba(155, 155, 171, 0.06), 
+                  rgba(155, 155, 171, 0.02)
                 )`,
               }
             }}
@@ -283,7 +283,13 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
 
           </RowBox>
           <Tooltip title="Quick Edit" placement="right">
-            <IconButton zindex={10} onClick={handleMenuClick} sx={{ opacity: 0.3 }}>
+            <IconButton zindex={10} onClick={handleMenuClick}
+              sx={{
+                opacity: 0.3,
+                "&:hover": {
+                  backgroundColor: "transparent",  // Disable hover background
+                },
+              }}>
               <IoMdMore size={24} style={{ margin: "0 0.75rem" }} />
             </IconButton>
           </Tooltip>
@@ -303,14 +309,14 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
                 padding: "0.25rem",
                 backgroundImage: highlightRow ? `linear-gradient(
                   to right, 
-                  rgba(197, 197, 217, 0.05), 
-                  rgba(197, 197, 217, 0.02)
+                  rgba(155, 155, 171, 0.06), 
+                  rgba(155, 155, 171, 0.02)
                 )` : "none",
                 "&:hover": {
                   backgroundImage: `linear-gradient(
                     to right, 
-                    rgba(197, 197, 217, 0.05), 
-                    rgba(197, 197, 217, 0.02)
+                    rgba(155, 155, 171, 0.06), 
+                    rgba(155, 155, 171, 0.02)
                   )`,
                 }
               }}
@@ -343,10 +349,16 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
               </Stack>
 
             </RowBox>
-            <IconButton zindex={10} onClick={handleMenuClick} sx={{ opacity: 0.3 }}>
+            <IconButton
+              zindex={10} onClick={handleMenuClick}
+              sx={{
+                opacity: 0.3, "&:hover": {
+                  backgroundColor: "transparent",  // Disable hover background
+                },
+              }}>
               <IoMdMore />
             </IconButton>
-          </Stack>
+          </Stack >
         )}
 
       {/* ----- Popup View Vocab Dialog ----- */}
@@ -366,7 +378,7 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
             backgroundImage: `linear-gradient(
               to top left, 
               rgba(255, 255, 255, 0.15), 
-              rgba(255, 255, 255, 0.05)
+              rgba(255, 255, 255, 0.06)
             )`, // Gradient overlay
             backdropFilter: "blur(6px)", // Apply the glass effect
             WebkitBackdropFilter: "blur(6px)", // For Safari support
@@ -432,12 +444,12 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
             backgroundImage: `linear-gradient(
               to bottom right, 
               rgba(255, 255, 255, 0.15), 
-              rgba(255, 255, 255, 0.05)
+              rgba(255, 255, 255, 0.06)
             )`, // Gradient overlay for the glassmorphism effect
             backdropFilter: "blur(6px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(6px)", // Safari support for blur effect
             borderRadius: "1rem",
-            boxShadow: mode === "light" ? "0px 4px 12px rgba(197, 197, 217, 0.4)" : "0px 4px 12px rgba(0, 11, 13, 0.4)",
+            boxShadow: mode === "light" ? "0px 4px 12px rgba(155, 155, 171, 0.4)" : "0px 4px 12px rgba(0, 11, 13, 0.4)",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
