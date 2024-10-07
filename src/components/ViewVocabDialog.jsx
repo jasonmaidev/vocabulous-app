@@ -64,7 +64,7 @@ const SimilarText = ({ item, setSimilarSearchText, searchSimilar, handleViewClos
     <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
       <Typography fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.75rem"}
         onClick={handleSimMenuClick}
-        sx={{ cursor: "pointer" }}
+        sx={{ cursor: "pointer", fontWeight: mode === "light" ? 500 : 400 }}
       >
         {item}
       </Typography>
@@ -182,7 +182,7 @@ const ExpressionText = ({ item }) => {
     <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
       <Typography fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}
         onClick={handleExpMenuClick}
-        sx={{ cursor: "pointer" }}
+        sx={{ cursor: "pointer", fontWeight: mode === "light" ? 500 : 400 }}
       >
         {item}
       </Typography>
@@ -1679,6 +1679,7 @@ const ViewVocabDialog = (
                                 difficulty === "1" ? "#03f1c7" :
                                   difficulty === "2" ? "#fbbf24" :
                                     "#ff589e"}
+                            fontWeight={mode === "light" ? 500 : 400}
                           >
                             {text}
                           </Typography>
@@ -3649,7 +3650,9 @@ const ViewVocabDialog = (
                                   }}
                                 >
                                   <Typography lineHeight={1.1}
-                                    fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : isPortrait ? "1.5rem" : "1.5rem"}>
+                                    fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : isPortrait ? "1.5rem" : "1.5rem"}
+                                    fontWeight={mode === "light" ? 500 : 400}
+                                  >
                                     {item}
                                   </Typography>
                                   <Typography

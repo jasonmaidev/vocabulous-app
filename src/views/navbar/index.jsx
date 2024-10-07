@@ -101,6 +101,7 @@ const Navbar = ({
             <IoMenu
               onClick={toggleLabelsDrawer}
               size={24}
+              color={theme.palette.neutral.darker}
             />
             {viewByLabel?.length > 0 ?
               <Typography fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
@@ -164,7 +165,8 @@ const Navbar = ({
             startAdornment={
               <InputAdornment position="start">
                 <IoSearchSharp size={searchRef?.current?.focus ? 20 : 24}
-                  color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid} />
+                  color={mode === "light" ? theme.palette.neutral.mid : theme.palette.neutral.mid}
+                />
               </InputAdornment>
             }
             required={true}

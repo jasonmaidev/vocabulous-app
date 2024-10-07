@@ -265,6 +265,7 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
                           "#ff589e"}
                   fontSize={isWideScreens ? "2.5rem" : isQHDScreens ? "2rem" : "1.5rem"}
                   lineHeight={1.1}
+                  fontWeight={mode === "light" ? 500 : 400}
                 >
                   {text}
                 </Typography>
@@ -332,6 +333,7 @@ const PinnedVocabRow = ({ id, text, pinyin, label, difficulty, definition, simil
                         difficulty === "1" ? "#03f1c7" :
                           difficulty === "2" ? "#fbbf24" :
                             "#ff589e"}
+                    fontWeight={mode === "light" ? 500 : 400}
                   >
                     {text}
                   </Typography>
