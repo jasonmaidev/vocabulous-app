@@ -310,7 +310,7 @@ function HighlightCaps({ text }) {
       if (matches[index]) {
         // If there's a match at this index, add it with the highlighted color
         acc.push(
-          <span key={`match-${index}`} style={{ color: mode === "light" ? theme.palette.tertiary.dark : theme.palette.primary.main }}>
+          <span key={`match-${index}`} style={{ color: mode === "light" ? theme.palette.secondary.mid : theme.palette.primary.main }}>
             {matches[index]}
           </span>
         );
@@ -1544,17 +1544,19 @@ const ViewVocabDialog = (
                     sx={
                       viewVocab ?
                         {
-                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                          fontWeight: mode === "light" ? 500 : 400,
                           margin: 0,
                           padding: isWideScreens ? "0.5rem 1.25rem" : isQHDScreens ? "0.5rem 1rem" : "0.25rem 0.5rem",
                           borderRadius: "3.5rem",
                           fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.75rem",
                           textTransform: "none",
-                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                           ":hover": {
-                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                            fontWeight: mode === "light" ? 500 : 400,
                             cursor: "default",
-                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                           }
                         }
                         :
@@ -1580,17 +1582,19 @@ const ViewVocabDialog = (
                     sx={
                       !viewVocab ?
                         {
-                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                          fontWeight: mode === "light" ? 500 : 400,
                           margin: 0,
                           padding: isWideScreens ? "0.5rem 1.25rem" : isQHDScreens ? "0.5rem 1rem" : "0.25rem 0.5rem",
                           borderRadius: "3.5rem",
                           fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.75rem",
                           textTransform: "none",
-                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                           ":hover": {
-                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                            fontWeight: mode === "light" ? 500 : 400,
                             cursor: "default",
-                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
 
                           }
                         }
@@ -1723,7 +1727,7 @@ const ViewVocabDialog = (
                     <Typography
                       fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"}
                       color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid}
-                      fontWeight={400}>
+                      fontWeight={mode === "light" ? 500 : 400}>
                       Definition
                     </Typography>
                     <FiBookOpen size={16} style={{ color: theme.palette.neutral.mid }} />
@@ -1785,7 +1789,7 @@ const ViewVocabDialog = (
                         <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                           <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"}
                             color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid}
-                            fontWeight={400}>
+                            fontWeight={mode === "light" ? 500 : 400}>
                             Similar
                           </Typography>
                           {editingSimilar ?
@@ -1843,8 +1847,12 @@ const ViewVocabDialog = (
                         </Stack>
 
                         {(!editingSimilar && similar?.length === 0) && (
-                          <Button sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditSimilar}>
-                            <Typography fontSize={"1.5rem"}>+</Typography>
+                          <Button
+                            sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }}
+                            onClick={openEditSimilar}>
+                            <Typography fontSize={"1.5rem"} color={mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`}>
+                              +
+                            </Typography>
                           </Button>
                         )}
 
@@ -2378,17 +2386,19 @@ const ViewVocabDialog = (
                     sx={
                       viewVocab ?
                         {
-                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                          fontWeight: mode === "light" ? 500 : 400,
                           margin: 0,
                           padding: "0.25rem 0.5rem",
                           borderRadius: "3.5rem",
                           fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.75rem",
                           textTransform: "none",
-                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                           ":hover": {
-                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                            fontWeight: mode === "light" ? 500 : 400,
                             cursor: "default",
-                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                           }
                         }
                         :
@@ -2414,17 +2424,19 @@ const ViewVocabDialog = (
                     sx={
                       !viewVocab ?
                         {
-                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                          fontWeight: mode === "light" ? 500 : 400,
                           margin: 0,
                           padding: isWideScreens ? "0.5rem 1.25rem" : isQHDScreens ? "0.5rem 1rem" : "0.25rem 0.5rem",
                           borderRadius: "3.5rem",
                           fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.75rem",
                           textTransform: "none",
-                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                           ":hover": {
-                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                            fontWeight: mode === "light" ? 500 : 400,
                             cursor: "default",
-                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                           }
                         }
                         :
@@ -2485,17 +2497,19 @@ const ViewVocabDialog = (
                       sx={
                         viewVocab ?
                           {
-                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                            fontWeight: mode === "light" ? 500 : 400,
                             margin: 0,
                             padding: isWideScreens ? "0.5rem 1.25rem" : isQHDScreens ? "0.5rem 1rem" : "0.25rem 0.5rem",
                             borderRadius: "3.5rem",
                             fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.75rem",
                             textTransform: "none",
-                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                             ":hover": {
-                              color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                              color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                              fontWeight: mode === "light" ? 500 : 400,
                               cursor: "default",
-                              backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                              backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
 
                             }
                           }
@@ -2522,17 +2536,19 @@ const ViewVocabDialog = (
                       sx={
                         !viewVocab ?
                           {
-                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                            fontWeight: mode === "light" ? 500 : 400,
                             margin: 0,
                             padding: isWideScreens ? "0.5rem 1rem" : isQHDScreens ? "0.5rem 0.75rem" : "0.25rem 0.5rem",
                             borderRadius: "3.5rem",
                             fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.75rem",
                             textTransform: "none",
-                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                             ":hover": {
-                              color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                              color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                              fontWeight: mode === "light" ? 500 : 400,
                               cursor: "default",
-                              backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                              backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
 
                             }
                           }
@@ -2579,7 +2595,7 @@ const ViewVocabDialog = (
                     <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                       <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"}
                         color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid}
-                        fontWeight={400}>
+                        fontWeight={mode === "light" ? 500 : 400}>
                         Expression
                       </Typography>
                       {(editingExpression && newExpressionEntry > expression?.length) ?
@@ -2640,8 +2656,12 @@ const ViewVocabDialog = (
                     </Stack>
 
                     {(!editingExpression && expression?.length === 0) && (
-                      <Button sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditExpression}>
-                        <Typography fontSize={"1.5rem"}>+</Typography>
+                      <Button
+                        sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }}
+                        onClick={openEditExpression}>
+                        <Typography fontSize={"1.5rem"} color={mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`}>
+                          +
+                        </Typography>
                       </Button>
                     )}
 
@@ -3388,7 +3408,7 @@ const ViewVocabDialog = (
                     <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
                       <Typography fontSize={isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.8rem"}
                         color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.mid}
-                        fontWeight={400}>
+                        fontWeight={mode === "light" ? 500 : 400}>
                         Sentences
                       </Typography>
                       <IconButton onClick={openEditSentences}>
@@ -3397,8 +3417,12 @@ const ViewVocabDialog = (
                     </Stack>
 
                     {(!editingSentences && sentence?.length === 0) && (
-                      <Button sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }} onClick={openEditSentences}>
-                        <Typography fontSize={"1.5rem"}>+</Typography>
+                      <Button
+                        sx={{ border: mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`, borderRadius: "0.5rem" }}
+                        onClick={openEditSentences}>
+                        <Typography fontSize={"1.5rem"} color={mode === "light" ? `solid 1px ${theme.palette.neutral.light}` : `solid 1px rgba(41, 54, 56, 0.8)`}>
+                          +
+                        </Typography>
                       </Button>
                     )}
 
@@ -3678,17 +3702,19 @@ const ViewVocabDialog = (
                     sx={
                       viewVocab ?
                         {
-                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                          fontWeight: mode === "light" ? 500 : 400,
                           margin: 0,
                           padding: "0.25rem 0.5rem",
                           borderRadius: "3.5rem",
                           fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.75rem",
                           textTransform: "none",
-                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                           ":hover": {
-                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                            fontWeight: mode === "light" ? 500 : 400,
                             cursor: "default",
-                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                           }
                         }
                         :
@@ -3714,17 +3740,19 @@ const ViewVocabDialog = (
                     sx={
                       !viewVocab ?
                         {
-                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                          color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                          fontWeight: mode === "light" ? 500 : 400,
                           margin: 0,
                           padding: isWideScreens ? "0.5rem 1.25rem" : isQHDScreens ? "0.5rem 1rem" : "0.25rem 0.5rem",
                           borderRadius: "3.5rem",
                           fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "0.75rem",
                           textTransform: "none",
-                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                          backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                           ":hover": {
-                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.lighter,
+                            color: mode === "dark" ? theme.palette.neutral.darker : theme.palette.neutral.darker,
+                            fontWeight: mode === "light" ? 500 : 400,
                             cursor: "default",
-                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : theme.palette.neutral.dark,
+                            backgroundColor: mode === "dark" ? "rgba(255,255,255, 0.1)" : "rgba(197,197,217, 0.2)",
                           }
                         }
                         :

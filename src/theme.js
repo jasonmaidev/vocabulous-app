@@ -103,6 +103,7 @@ export const themeSettings = (mode) => {
           secondary: {
             dark: colorTokens.secondary[700],
             main: colorTokens.secondary[400],
+            mid: colorTokens.secondary[300],
             light: colorTokens.secondary[100],
           },
           tertiary: {
