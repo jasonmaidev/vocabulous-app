@@ -310,7 +310,9 @@ function HighlightCaps({ text }) {
       if (matches[index]) {
         // If there's a match at this index, add it with the highlighted color
         acc.push(
-          <span key={`match-${index}`} style={{ color: mode === "light" ? theme.palette.secondary.mid : theme.palette.primary.main }}>
+          <span key={`match-${index}`}
+            style={{ color: mode === "light" ? theme.palette.neutral.darker : theme.palette.primary.dark, fontWeight: mode === "light" ? 600 : 400 }}
+          >
             {matches[index]}
           </span>
         );
