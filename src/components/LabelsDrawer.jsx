@@ -174,7 +174,7 @@ export default function LabelsDrawer() {
                 borderTopRightRadius: '6rem',
                 borderBottomRightRadius: '6rem',
                 '&:hover': {
-                  backgroundColor: theme.palette.primary.light,
+                  backgroundColor: mode === "light" ? "rgba(197, 197, 217, 0.4)" : theme.palette.primary.light,
                 },
               }}
             >
@@ -198,7 +198,7 @@ export default function LabelsDrawer() {
                 borderTopRightRadius: '6rem',
                 borderBottomRightRadius: '6rem',
                 '&:hover': {
-                  backgroundColor: theme.palette.primary.light,
+                  backgroundColor: mode === "light" ? "rgba(197, 197, 217, 0.4)" : theme.palette.primary.light,
                 },
               }}
             >
@@ -221,7 +221,7 @@ export default function LabelsDrawer() {
                 borderTopRightRadius: '6rem',
                 borderBottomRightRadius: '6rem',
                 '&:hover': {
-                  backgroundColor: theme.palette.primary.light,
+                  backgroundColor: mode === "light" ? "rgba(197, 197, 217, 0.4)" : theme.palette.primary.light,
                 },
               }}
             >
@@ -244,7 +244,7 @@ export default function LabelsDrawer() {
                 borderTopRightRadius: '6rem',
                 borderBottomRightRadius: '6rem',
                 '&:hover': {
-                  backgroundColor: theme.palette.primary.light,
+                  backgroundColor: mode === "light" ? "rgba(197, 197, 217, 0.4)" : theme.palette.primary.light,
                 },
               }}
             >
@@ -331,7 +331,7 @@ export default function LabelsDrawer() {
                 borderTopRightRadius: '6rem',
                 borderBottomRightRadius: '6rem',
                 '&:hover': {
-                  backgroundColor: theme.palette.primary.light,
+                  backgroundColor: mode === "light" ? "rgba(197, 197, 217, 0.4)" : theme.palette.primary.light,
                 },
               }}
             >
@@ -355,7 +355,7 @@ export default function LabelsDrawer() {
                 borderTopRightRadius: '6rem',
                 borderBottomRightRadius: '6rem',
                 '&:hover': {
-                  backgroundColor: theme.palette.primary.light,
+                  backgroundColor: mode === "light" ? "rgba(197, 197, 217, 0.4)" : theme.palette.primary.light,
                 },
               }}
             >
@@ -378,7 +378,7 @@ export default function LabelsDrawer() {
                 borderTopRightRadius: '6rem',
                 borderBottomRightRadius: '6rem',
                 '&:hover': {
-                  backgroundColor: theme.palette.primary.light,
+                  backgroundColor: mode === "light" ? "rgba(197, 197, 217, 0.4)" : theme.palette.primary.light,
                 },
               }}
             >
@@ -401,7 +401,7 @@ export default function LabelsDrawer() {
                 borderTopRightRadius: '6rem',
                 borderBottomRightRadius: '6rem',
                 '&:hover': {
-                  backgroundColor: theme.palette.primary.light,
+                  backgroundColor: mode === "light" ? "rgba(197, 197, 217, 0.4)" : theme.palette.primary.light,
                 },
               }}
             >
@@ -501,7 +501,7 @@ export default function LabelsDrawer() {
         >
           <BsArrowRightSquareFill
             size={36}
-            color={theme.palette.primary.main}
+            color={mode === "light" ? theme.palette.primary.darker : theme.palette.primary.main}
           />
         </Box>
       )}

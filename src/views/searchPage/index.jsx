@@ -30,6 +30,7 @@ const SearchPage = () => {
   const dispatch = useDispatch()
   const viewByLabel = useSelector((state) => state.viewByLabel)
   const viewBySearchTerm = useSelector((state) => state.viewBySearchTerm)
+  const mode = useSelector((state) => state.mode)
 
   const searchRef = useRef(null)
 
@@ -195,9 +196,8 @@ const SearchPage = () => {
                         border: `solid 1px ${palette.neutral.light}`,
                         m: 1,
                         '&:hover': {
-                          backgroundColor: theme.palette.primary.light,
-                          border: `solid 1px ${palette.primary.light}`,
-
+                          backgroundColor: mode === "light" ? "rgba(155, 155, 171, 0.1)" : theme.palette.primary.light,
+                          border: mode === "light" ? `solid 1px rgba(155, 155, 171, 0.1)` : `solid 1px ${palette.primary.light}`,
                         },
                       }}
                     >
@@ -206,7 +206,7 @@ const SearchPage = () => {
                         style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
                         color={theme.palette.neutral.medium}
                       />
-                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem" }}>
+                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem", fontWeight: mode === "light" ? 500 : 400 }}>
                         Pinned
                       </Typography>
                     </Stack>
@@ -222,9 +222,8 @@ const SearchPage = () => {
                         border: `solid 1px ${palette.neutral.light}`,
                         m: 1,
                         '&:hover': {
-                          backgroundColor: theme.palette.primary.light,
-                          border: `solid 1px ${palette.primary.light}`,
-
+                          backgroundColor: mode === "light" ? "rgba(155, 155, 171, 0.1)" : theme.palette.primary.light,
+                          border: mode === "light" ? `solid 1px rgba(155, 155, 171, 0.1)` : `solid 1px ${palette.primary.light}`,
                         },
                       }}
                     >
@@ -233,7 +232,7 @@ const SearchPage = () => {
                         style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
                         color={theme.palette.neutral.medium}
                       />
-                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem" }}>
+                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem", fontWeight: mode === "light" ? 500 : 400 }}>
                         All
                       </Typography>
                     </Stack>
@@ -249,9 +248,8 @@ const SearchPage = () => {
                         border: `solid 1px ${palette.neutral.light}`,
                         m: 1,
                         '&:hover': {
-                          backgroundColor: theme.palette.primary.light,
-                          border: `solid 1px ${palette.primary.light}`,
-
+                          backgroundColor: mode === "light" ? "rgba(155, 155, 171, 0.1)" : theme.palette.primary.light,
+                          border: mode === "light" ? `solid 1px rgba(155, 155, 171, 0.1)` : `solid 1px ${palette.primary.light}`,
                         },
                       }}
                     >
@@ -260,7 +258,7 @@ const SearchPage = () => {
                         style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
                         color={theme.palette.neutral.medium}
                       />
-                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem" }}>
+                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem", fontWeight: mode === "light" ? 500 : 400 }}>
                         Lv. 2
                       </Typography>
                     </Stack>
@@ -276,9 +274,8 @@ const SearchPage = () => {
                         border: `solid 1px ${palette.neutral.light}`,
                         m: 1,
                         '&:hover': {
-                          backgroundColor: theme.palette.primary.light,
-                          border: `solid 1px ${palette.primary.light}`,
-
+                          backgroundColor: mode === "light" ? "rgba(155, 155, 171, 0.1)" : theme.palette.primary.light,
+                          border: mode === "light" ? `solid 1px rgba(155, 155, 171, 0.1)` : `solid 1px ${palette.primary.light}`,
                         },
                       }}
                     >
@@ -287,7 +284,7 @@ const SearchPage = () => {
                         style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }}
                         color={theme.palette.neutral.medium}
                       />
-                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem" }}>
+                      <Typography sx={{ fontSize: isLandscape ? "0.8rem" : "0.65rem", fontWeight: mode === "light" ? 500 : 400 }}>
                         Lv. 3
                       </Typography>
                     </Stack>
@@ -305,7 +302,7 @@ const SearchPage = () => {
                           m: 1,
                           '&:hover': {
                             backgroundColor: theme.palette.primary.light,
-                            border: `solid 1px ${palette.primary.light}`,
+                            border: mode === "light" ? `solid 1px rgba(155, 155, 171, 0.1)` : `solid 1px ${palette.primary.light}`,
 
                           },
                         }}
