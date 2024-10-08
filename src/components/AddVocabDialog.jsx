@@ -1,6 +1,6 @@
 import "../styles/gradient-button.min.css"
 import { v4 as uuidv4 } from "uuid"
-import { useState, forwardRef } from "react"
+import { useState, forwardRef, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { IoClose } from "react-icons/io5"
 import { FaCircle, FaRegCircle } from "react-icons/fa";
@@ -599,6 +599,25 @@ export default function AddVocabDialog({ text }) {
     updateVocabSentence()
     createVocabMutation.mutate()
   }
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      // Check if both Shift and Enter are pressed
+      if (event.shiftKey && event.key === 'Enter') {
+        event.preventDefault(); // Optional: Prevent default Enter behavior (e.g., submitting a form)
+        handleCreateVocab(); // Call your function
+      }
+    };
+
+    // Add the keydown event listener when the component mounts
+    document.addEventListener('keydown', handleKeyPress);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [vocabText, createVocabMutation]); // Add necessary dependencies like vocabText and createVocabMutation
+
 
   return (
     <>
