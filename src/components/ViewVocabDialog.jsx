@@ -1526,6 +1526,24 @@ const ViewVocabDialog = (
     setMenuAnchor(null)
   }
 
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      // Check if the pressed key is the backtick key
+      if (event.key === '`') {
+        event.preventDefault(); // Optional: Prevent default behavior if necessary
+        handleViewClose(); // Call your function
+      }
+    };
+
+    // Add the keydown event listener when the component mounts
+    document.addEventListener('keydown', handleKeyPress);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
+
   return (
     <Box
       margin={!isNonMobileScreens ? "0.5rem" : "1rem"}
