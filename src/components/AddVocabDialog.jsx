@@ -200,7 +200,8 @@ export default function AddVocabDialog({ text }) {
         },
         body: JSON.stringify({
           simVocab: vocabText,
-          simLabel: checkedLabels
+          simLabel: checkedLabels,
+          vocabDef: vocabDefinition,
         }),
       }).then((res) => res.json()); // Ensure the response is parsed as JSON
     },
@@ -410,6 +411,7 @@ export default function AddVocabDialog({ text }) {
         body: JSON.stringify({
           expVocab: vocabText,
           expLabel: checkedLabels,
+          vocabDef: vocabDefinition,
         }),
       }).then((res) => res.json()); // Ensure the response is parsed as JSON
     },

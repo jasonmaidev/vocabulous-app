@@ -697,7 +697,8 @@ const ViewVocabDialog = (
         },
         body: JSON.stringify({
           simVocab: text,
-          simLabel: label
+          simLabel: label,
+          vocabDef: definition,
         }),
       }).then((res) => res.json()); // Ensure the response is parsed as JSON
     },
@@ -1094,7 +1095,8 @@ const ViewVocabDialog = (
         },
         body: JSON.stringify({
           expVocab: text,
-          expLabel: label
+          expLabel: label,
+          vocabDef: definition,
         }),
       }).then((res) => res.json()); // Ensure the response is parsed as JSON
     },
