@@ -798,6 +798,28 @@ export default function AddVocabDialog({ text }) {
               />
             </Stack>
 
+            {/* ----- Definition Field ----- */}
+            <Stack direction={"row"} alignItems={"center"} spacing={2}>
+              <Typography>Definition</Typography>
+              <InputBase
+                id={uuidv4()}
+                placeholder=""
+                onChange={(e) => setVocabDefinition(e.target.value)}
+                value={vocabDefinition}
+                multiline={true}
+                minRows={2}
+                required={true}
+                sx={{
+                  fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
+                  width: "100%",
+                  color: theme.palette.neutral.dark,
+                  border: `solid 1px ${theme.palette.neutral.light}`,
+                  borderRadius: "0.5rem",
+                  padding: "0.25rem 0.5rem",
+                  margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
+                }}
+              />
+            </Stack>
 
             {/* ----- Difficulty Field ----- */}
             <Stack direction={"row"} alignItems={"center"} spacing={2}>
@@ -1015,30 +1037,6 @@ export default function AddVocabDialog({ text }) {
                   Show
                 </Button>
               }
-
-            </Stack>
-
-            {/* ----- Definition Field ----- */}
-            <Stack direction={"row"} alignItems={"center"} spacing={2}>
-              <Typography>Definition</Typography>
-              <InputBase
-                id={uuidv4()}
-                placeholder=""
-                onChange={(e) => setVocabDefinition(e.target.value)}
-                value={vocabDefinition}
-                multiline={true}
-                minRows={2}
-                required={true}
-                sx={{
-                  fontSize: isWideScreens ? "1.5rem" : isQHDScreens ? "1.25rem" : "1rem",
-                  width: "100%",
-                  color: theme.palette.neutral.dark,
-                  border: `solid 1px ${theme.palette.neutral.light}`,
-                  borderRadius: "0.5rem",
-                  padding: "0.25rem 0.5rem",
-                  margin: !isNonMobileScreens ? "0 0.5rem" : isFullHDScreens ? "1rem 2rem" : "1rem 4rem"
-                }}
-              />
             </Stack>
 
             {/* ----- Similar Text Input Field ----- */}
