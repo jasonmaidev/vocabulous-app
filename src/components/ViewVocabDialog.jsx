@@ -1528,9 +1528,9 @@ const ViewVocabDialog = (
 
   useEffect(() => {
     const handleKeyPress = (event) => {
-      // Check if the pressed key is the backtick key
-      if (event.key === '`') {
-        event.preventDefault(); // Optional: Prevent default behavior if necessary
+      // Check if the backtick (`` ` ``) or Escape key is pressed
+      if (event.key === '`' || event.key === 'Escape') {
+        event.preventDefault(); // Optional: Prevent default behavior if needed
         handleViewClose(); // Call your function
       }
     };
