@@ -393,7 +393,7 @@ const ViewVocabDialog = (
   const setBegMutation = useMutation({
     mutationFn: async () => {
       const updatedData = {
-        difficulty: "2"
+        difficulty: "1"
       }
       return await fetch(`${apiUrl}/vocabs/${id}/update`, {
         method: "PATCH",
