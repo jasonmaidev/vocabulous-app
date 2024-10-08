@@ -21,7 +21,7 @@ import { BiHomeAlt2, BiPulse } from "react-icons/bi";
 import { PiCircleBold, PiDiamondBold, PiStarBold, PiRuler, PiBathtub } from "react-icons/pi";
 import { MdLabelOutline, MdAccessTime } from "react-icons/md";
 import { TbTemperature, TbPin, TbToolsKitchen2 } from "react-icons/tb";
-import { IoLanguage, IoBeerOutline, IoBodyOutline, IoBedOutline } from "react-icons/io5";
+import { IoLanguage, IoBeerOutline, IoBodyOutline, IoBedOutline, IoFastFoodOutline } from "react-icons/io5";
 import { LiaLaughSquint, LiaFeatherAltSolid } from "react-icons/lia";
 import { FaRegHeart } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa6";
@@ -132,6 +132,8 @@ export default function LabelsDrawer() {
         return <RiChat3Line size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'degree':
         return <TbTemperature size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
+      case 'food':
+        return <IoFastFoodOutline size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'frequency':
         return <MdAccessTime size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'grammar':
