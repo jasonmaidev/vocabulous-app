@@ -18,10 +18,10 @@ import {
 import PerfectScrollbar from "react-perfect-scrollbar"
 import Drawer from '@mui/material/Drawer';
 import { BiHomeAlt2, BiPulse } from "react-icons/bi";
-import { PiCircleBold, PiDiamondBold, PiStarBold, PiRuler } from "react-icons/pi";
+import { PiCircleBold, PiDiamondBold, PiStarBold, PiRuler, PiBathtub } from "react-icons/pi";
 import { MdLabelOutline, MdAccessTime } from "react-icons/md";
-import { TbTemperature, TbPin } from "react-icons/tb";
-import { IoLanguage, IoBeerOutline, IoBodyOutline } from "react-icons/io5";
+import { TbTemperature, TbPin, TbToolsKitchen2 } from "react-icons/tb";
+import { IoLanguage, IoBeerOutline, IoBodyOutline, IoBedOutline } from "react-icons/io5";
 import { LiaLaughSquint, LiaFeatherAltSolid } from "react-icons/lia";
 import { FaRegHeart } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa6";
@@ -122,6 +122,10 @@ export default function LabelsDrawer() {
     switch (text) {
       case 'body':
         return <IoBodyOutline size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
+      case 'bathroom':
+        return <PiBathtub size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
+      case 'bedroom':
+        return <IoBedOutline size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'business':
         return <FiBriefcase size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'colloquial':
@@ -138,6 +142,8 @@ export default function LabelsDrawer() {
         return <LiaLaughSquint size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'idiom':
         return <LiaFeatherAltSolid size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
+      case 'kitchen':
+        return <TbToolsKitchen2 size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'measure':
         return <PiRuler size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'mood':
