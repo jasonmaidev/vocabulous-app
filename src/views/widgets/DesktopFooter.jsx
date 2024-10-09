@@ -125,11 +125,11 @@ const DesktopFooter = ({ isLogin }) => {
         }}
         anchorOrigin={{
           vertical: 'center',
-          horizontal: 'right',
+          horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: 'center',
-          horizontal: 'left',
+          vertical: 'bottom',
+          horizontal: 'center',
         }}
         sx={{
           "& .MuiPaper-root": {
@@ -147,13 +147,13 @@ const DesktopFooter = ({ isLogin }) => {
           },
         }}
       >
-        <MenuItem>
+        <MenuItem onClick={handleMenuClose}>
           <ListItemIcon><MdOutlineCreate fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
           <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>
             Shift + Enter = Create Vocab
           </ListItemText>
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleMenuClose}>
           <ListItemIcon><MdClose fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
           <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>
             Esc or ` = Close Vocab View
