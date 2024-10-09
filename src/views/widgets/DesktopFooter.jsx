@@ -1,7 +1,9 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { TfiMapAlt } from "react-icons/tfi"
-import { Link, Paper, Box, useTheme, Typography, Button, useMediaQuery } from "@mui/material"
-import { useDispatch } from "react-redux"
+import { MdKeyboardCommandKey, MdOutlineCreate, MdClose } from "react-icons/md";
+import { Menu, MenuItem, ListItemIcon, ListItemText, Link, Paper, Box, useTheme, Typography, Button, useMediaQuery } from "@mui/material"
+import { useDispatch, useSelector } from "react-redux"
 import { setViewByLabel } from "state"
 import FlexBetweenBox from "components/FlexBetweenBox"
 
@@ -10,10 +12,21 @@ const DesktopFooter = ({ isLogin }) => {
   const navigate = useNavigate()
   const { palette } = useTheme()
   const dispatch = useDispatch()
+  const mode = useSelector((state) => state.mode)
+  const theme = useTheme()
 
   const getRoadmap = () => {
     dispatch(setViewByLabel({ viewByLabel: "" }))
     navigate(`/roadmap`)
+  }
+
+  const [menuAnchor, setMenuAnchor] = useState(null)
+  const openMenu = Boolean(menuAnchor)
+  const handleMenuClick = (event) => {
+    setMenuAnchor(event.currentTarget)
+  }
+  const handleMenuClose = () => {
+    setMenuAnchor(null)
   }
 
   return (
@@ -35,7 +48,40 @@ const DesktopFooter = ({ isLogin }) => {
             {isNonMobileScreens && (
               <>
                 <Typography fontSize={"0.75rem"} fontWeight={500} color={palette.neutral.medium}>© 2024 Vocabulous | Voca Ai</Typography>
-                {isLogin ? null : (
+                <Button
+                  onClick={getRoadmap}
+                  startIcon={<TfiMapAlt />}
+                  sx={{
+                    color: isLogin ? palette.neutral.dark : palette.neutral.mid,
+                    borderRadius: "6rem",
+                    textTransform: "none",
+                    fontWeight: 700,
+                    "&:hover": {
+                      color: palette.primary.main,
+                      backgroundColor: palette.background.default,
+                    }
+                  }}
+                >
+                  Roadmap
+                </Button>
+                <Button
+                  onClick={handleMenuClick}
+                  startIcon={<MdKeyboardCommandKey />}
+                  sx={{
+                    color: isLogin ? palette.neutral.dark : palette.neutral.mid,
+                    borderRadius: "6rem",
+                    textTransform: "none",
+                    fontWeight: 700,
+                    "&:hover": {
+                      color: palette.primary.main,
+                      backgroundColor: palette.background.default,
+                    }
+                  }}
+                >
+                  App Commands
+                </Button>
+
+                {/* {isLogin ? null : (
                   <Button
                     onClick={getRoadmap}
                     startIcon={<TfiMapAlt />}
@@ -52,7 +98,7 @@ const DesktopFooter = ({ isLogin }) => {
                   >
                     Roadmap
                   </Button>
-                )}
+                )} */}
               </>
             )}
           </Box>
@@ -68,6 +114,52 @@ const DesktopFooter = ({ isLogin }) => {
           </Typography>
         </FlexBetweenBox>
       </Paper>
+
+      <Menu
+        id="basic-menu"
+        anchorEl={menuAnchor}
+        open={openMenu}
+        onClose={handleMenuClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'center',
+          horizontal: 'left',
+        }}
+        sx={{
+          "& .MuiPaper-root": {
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
+            backgroundImage: `linear-gradient(
+              to bottom right, 
+              rgba(255, 255, 255, 0.15), 
+              rgba(255, 255, 255, 0.1)
+            )`, // Gradient overlay f4r the glassmorphism effect
+            backdropFilter: "blur(6px)", // Apply the blur effect
+            WebkitBackdropFilter: "blur(6px)", // Safari support for blur effect
+            borderRadius: "1rem",
+            boxShadow: mode === "light" ? "0px 4px 12px rgba(155, 155, 171, 0.4)" : "0px 4px 12px rgba(0, 11, 13, 0.4)",
+            border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
+          },
+        }}
+      >
+        <MenuItem>
+          <ListItemIcon><MdOutlineCreate fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>
+            Shift + Enter = Create Vocab
+          </ListItemText>
+        </MenuItem>
+        <MenuItem>
+          <ListItemIcon><MdClose fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>
+            Esc or ` = Close Vocab View
+          </ListItemText>
+        </MenuItem>
+      </Menu>
 
     </Box>
   )
