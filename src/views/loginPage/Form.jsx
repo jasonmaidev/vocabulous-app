@@ -272,7 +272,7 @@ const Form = () => {
             >
               {isLogin
                 ? "Don't have an account? Sign Up here."
-                : "Registration is currently closed during MVP testing. Login here."}
+                : "If you've received an invite. Login here."}
             </Typography>
           </Box>
         </form>

@@ -281,7 +281,7 @@ const LoginPage = () => {
         disableScrollLock
         sx={{
           "& .MuiDialog-paper": {
-            width: isLandscape ? "20%" : "100%",
+            width: "100%",
             borderRadius: "1rem",
             display: "flex",
             boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
