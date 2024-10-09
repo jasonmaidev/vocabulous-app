@@ -162,6 +162,11 @@ const Navbar = ({
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyUp={(e) => handleSearch(e.target.value)}
+            onPaste={(e) => {
+              // Get the pasted value from the clipboard
+              const pastedValue = e.clipboardData.getData('text');
+              handleSearch(pastedValue); // Call handleSearch with the pasted value
+            }}
             startAdornment={
               <InputAdornment position="start">
                 <IoSearchSharp size={searchRef?.current?.focus ? 20 : 24}
