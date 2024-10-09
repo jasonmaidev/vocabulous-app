@@ -48,57 +48,42 @@ const DesktopFooter = ({ isLogin }) => {
             {isNonMobileScreens && (
               <>
                 <Typography fontSize={"0.75rem"} fontWeight={500} color={palette.neutral.medium}>© 2024 Vocabulous | Voca Ai</Typography>
-                <Button
-                  onClick={getRoadmap}
-                  startIcon={<TfiMapAlt />}
-                  sx={{
-                    color: isLogin ? palette.neutral.dark : palette.neutral.mid,
-                    borderRadius: "6rem",
-                    textTransform: "none",
-                    fontWeight: 700,
-                    "&:hover": {
-                      color: palette.primary.main,
-                      backgroundColor: palette.background.default,
-                    }
-                  }}
-                >
-                  Roadmap
-                </Button>
-                <Button
-                  onClick={handleMenuClick}
-                  startIcon={<MdKeyboardCommandKey />}
-                  sx={{
-                    color: isLogin ? palette.neutral.dark : palette.neutral.mid,
-                    borderRadius: "6rem",
-                    textTransform: "none",
-                    fontWeight: 700,
-                    "&:hover": {
-                      color: palette.primary.main,
-                      backgroundColor: palette.background.default,
-                    }
-                  }}
-                >
-                  App Commands
-                </Button>
-
-                {/* {isLogin ? null : (
-                  <Button
-                    onClick={getRoadmap}
-                    startIcon={<TfiMapAlt />}
-                    sx={{
-                      color: isLogin ? palette.neutral.dark : palette.neutral.mid,
-                      borderRadius: "6rem",
-                      textTransform: "none",
-                      fontWeight: 700,
-                      "&:hover": {
-                        color: palette.primary.main,
-                        backgroundColor: palette.background.default,
-                      }
-                    }}
-                  >
-                    Roadmap
-                  </Button>
-                )} */}
+                {isLogin ? null : (
+                  <>
+                    <Button
+                      onClick={getRoadmap}
+                      startIcon={<TfiMapAlt />}
+                      sx={{
+                        color: isLogin ? palette.neutral.dark : palette.neutral.mid,
+                        borderRadius: "6rem",
+                        textTransform: "none",
+                        fontWeight: 700,
+                        "&:hover": {
+                          color: palette.primary.main,
+                          backgroundColor: palette.background.default,
+                        }
+                      }}
+                    >
+                      Roadmap
+                    </Button>
+                    <Button
+                      onClick={handleMenuClick}
+                      startIcon={<MdKeyboardCommandKey />}
+                      sx={{
+                        color: isLogin ? palette.neutral.dark : palette.neutral.mid,
+                        borderRadius: "6rem",
+                        textTransform: "none",
+                        fontWeight: 700,
+                        "&:hover": {
+                          color: palette.primary.main,
+                          backgroundColor: palette.background.default,
+                        }
+                      }}
+                    >
+                      App Commands
+                    </Button>
+                  </>
+                )}
               </>
             )}
           </Box>
@@ -124,7 +109,7 @@ const DesktopFooter = ({ isLogin }) => {
           "aria-labelledby": "basic-button",
         }}
         anchorOrigin={{
-          vertical: 'center',
+          vertical: 'top',
           horizontal: 'center',
         }}
         transformOrigin={{
