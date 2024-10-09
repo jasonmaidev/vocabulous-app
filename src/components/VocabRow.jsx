@@ -242,14 +242,14 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
               padding: "0.125rem 1rem",
               backgroundImage: highlightRow ? `linear-gradient(
                 to right, 
-                rgba(155, 155, 171, 0.1), 
-                rgba(155, 155, 171, 0.04)
+                rgba(155, 155, 171, 0.04), 
+                rgba(155, 155, 171, 0.1)
               )` : "none",
               "&:hover": {
                 backgroundImage: `linear-gradient(
                   to right, 
-                  rgba(155, 155, 171, 0.1), 
-                  rgba(155, 155, 171, 0.04)
+                  rgba(155, 155, 171, 0.04), 
+                  rgba(155, 155, 171, 0.1)
                 )`,
               }
             }}
@@ -309,14 +309,14 @@ const VocabRow = ({ id, text, pinyin, difficulty, definition, similar, label, ex
                 padding: "0.25rem",
                 backgroundImage: highlightRow ? `linear-gradient(
                   to right, 
-                  rgba(155, 155, 171, 0.1), 
-                  rgba(155, 155, 171, 0.04)
+                  rgba(155, 155, 171, 0.04), 
+                  rgba(155, 155, 171, 0.1)
                 )` : "none",
                 "&:hover": {
                   backgroundImage: `linear-gradient(
                     to right, 
-                    rgba(155, 155, 171, 0.1), 
-                    rgba(155, 155, 171, 0.04)
+                    rgba(155, 155, 171, 0.04), 
+                    rgba(155, 155, 171, 0.1)
                   )`,
                 }
               }}
