@@ -207,7 +207,7 @@ const LoginPage = () => {
                 {
                   color: palette.neutral.dark,
                   margin: "2rem 36%",
-                  padding: "1.5rem 6%",
+                  padding: "1.5rem 12%",
                   borderRadius: "6rem",
                   fontSize: "1rem",
                   fontWeight: 700,
@@ -222,7 +222,7 @@ const LoginPage = () => {
                   {
                     color: palette.neutral.dark,
                     margin: "2rem 16%",
-                    padding: "1.5rem 6%",
+                    padding: "1.5rem 12%",
                     borderRadius: "6rem",
                     fontSize: "1rem",
                     fontWeight: 700,
