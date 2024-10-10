@@ -1,9 +1,16 @@
+import { useRef } from "react"
 import { TbPinFilled } from "react-icons/tb"
 import { useMediaQuery, Stack, useTheme, Typography } from "@mui/material"
 import { useSelector } from "react-redux"
 import { useQuery } from "@tanstack/react-query"
 import PinnedVocabBox from "components/PinnedVocabBox"
 import VocabBox from "components/VocabBox"
+import {
+  List,
+  AutoSizer,
+  CellMeasurer,
+  CellMeasurerCache,
+} from "react-virtualized";
 import PinnedVocabRow from "components/PinnedVocabRow"
 import VocabRow from "components/VocabRow"
 import AddVocabDialog from "components/AddVocabDialog";
@@ -20,8 +27,14 @@ const ViewVocabsWidget = () => {
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
   const isPortrait = window.matchMedia("(orientation: portrait)").matches;
   const mode = useSelector((state) => state.mode)
-
   const theme = useTheme()
+
+  const cache = useRef(
+    new CellMeasurerCache({
+      fixedWidth: true,
+      defaultHeight: 100,
+    })
+  );
 
   const getLabeledVocabs = () => {
     return fetch(`${apiUrl}/vocabs/${_id}/label?searchLabel=${viewByLabel}`, {
@@ -75,21 +88,47 @@ const ViewVocabsWidget = () => {
             </Typography>
           </Stack>
           <VocabBox sx={{ border: searchData?.length < 1 && "none" }}>
-            {searchData?.map((vocab) => (
-              <VocabRow
-                key={vocab._id}
-                id={vocab._id}
-                text={vocab.text}
-                pinyin={vocab.pinyin}
-                difficulty={vocab.difficulty}
-                definition={vocab.definition}
-                similar={vocab.similar}
-                label={vocab.label}
-                expression={vocab.expression}
-                sentence={vocab.sentence}
-                pinned={vocab.pinned}
-              />
-            ))}
+            <div style={{ width: "100%", height: "80vh" }}>
+              <AutoSizer>
+                {({ width, height }) => (
+                  <List
+                    width={width}
+                    height={height}
+                    rowHeight={cache.current.rowHeight}
+                    deferredMeasurementCache={cache.current}
+                    rowCount={searchData?.length}
+                    rowRenderer={({ key, index, style, parent }) => {
+                      const vocab = searchData[index]
+                      return (
+                        <CellMeasurer
+                          key={key}
+                          cache={cache.current}
+                          parent={parent}
+                          columnIndex={0}
+                          rowIndex={index}
+                        >
+                          <div style={style}>
+                            <VocabRow
+                              key={vocab._id}
+                              id={vocab._id}
+                              text={vocab.text}
+                              pinyin={vocab.pinyin}
+                              difficulty={vocab.difficulty}
+                              definition={vocab.definition}
+                              similar={vocab.similar}
+                              label={vocab.label}
+                              expression={vocab.expression}
+                              sentence={vocab.sentence}
+                              pinned={vocab.pinned}
+                            />
+                          </div>
+                        </CellMeasurer>
+                      );
+                    }}
+                  />
+                )}
+              </AutoSizer>
+            </div>
           </VocabBox>
         </>
         :
@@ -104,39 +143,91 @@ const ViewVocabsWidget = () => {
                   <TbPinFilled size={20} />
                 </Typography>
               </Stack>
-              {pinnedVocabs?.map((vocab) => (
-                <PinnedVocabRow
-                  key={vocab._id}
-                  id={vocab._id}
-                  text={vocab.text}
-                  pinyin={vocab.pinyin}
-                  difficulty={vocab.difficulty}
-                  definition={vocab.definition}
-                  similar={vocab.similar}
-                  label={vocab.label}
-                  expression={vocab.expression}
-                  sentence={vocab.sentence}
-                  pinned={vocab.pinned}
-                />
-              ))}
+              <div style={{ width: "100%", height: "80vh" }}>
+                <AutoSizer>
+                  {({ width, height }) => (
+                    <List
+                      width={width}
+                      height={height}
+                      rowHeight={cache.current.rowHeight}
+                      deferredMeasurementCache={cache.current}
+                      rowCount={pinnedVocabs?.length}
+                      rowRenderer={({ key, index, style, parent }) => {
+                        const vocab = pinnedVocabs[index]
+                        return (
+                          <CellMeasurer
+                            key={key}
+                            cache={cache.current}
+                            parent={parent}
+                            columnIndex={0}
+                            rowIndex={index}
+                          >
+                            <div style={style}>
+                              <VocabRow
+                                key={vocab._id}
+                                id={vocab._id}
+                                text={vocab.text}
+                                pinyin={vocab.pinyin}
+                                difficulty={vocab.difficulty}
+                                definition={vocab.definition}
+                                similar={vocab.similar}
+                                label={vocab.label}
+                                expression={vocab.expression}
+                                sentence={vocab.sentence}
+                                pinned={vocab.pinned}
+                              />
+                            </div>
+                          </CellMeasurer>
+                        );
+                      }}
+                    />
+                  )}
+                </AutoSizer>
+              </div>
             </PinnedVocabBox>
           )}
           <VocabBox sx={{ border: labelData?.length < 1 && "none" }}>
-            {labelData?.map((vocab) => (
-              <VocabRow
-                key={vocab._id}
-                id={vocab._id}
-                text={vocab.text}
-                pinyin={vocab.pinyin}
-                difficulty={vocab.difficulty}
-                definition={vocab.definition}
-                similar={vocab.similar}
-                label={vocab.label}
-                expression={vocab.expression}
-                sentence={vocab.sentence}
-                pinned={vocab.pinned}
-              />
-            ))}
+            <div style={{ width: "100%", height: "80vh" }}>
+              <AutoSizer>
+                {({ width, height }) => (
+                  <List
+                    width={width}
+                    height={height}
+                    rowHeight={cache.current.rowHeight}
+                    deferredMeasurementCache={cache.current}
+                    rowCount={labelData?.length}
+                    rowRenderer={({ key, index, style, parent }) => {
+                      const vocab = labelData[index]
+                      return (
+                        <CellMeasurer
+                          key={key}
+                          cache={cache.current}
+                          parent={parent}
+                          columnIndex={0}
+                          rowIndex={index}
+                        >
+                          <div style={style}>
+                            <VocabRow
+                              key={vocab._id}
+                              id={vocab._id}
+                              text={vocab.text}
+                              pinyin={vocab.pinyin}
+                              difficulty={vocab.difficulty}
+                              definition={vocab.definition}
+                              similar={vocab.similar}
+                              label={vocab.label}
+                              expression={vocab.expression}
+                              sentence={vocab.sentence}
+                              pinned={vocab.pinned}
+                            />
+                          </div>
+                        </CellMeasurer>
+                      );
+                    }}
+                  />
+                )}
+              </AutoSizer>
+            </div>
 
             {(isPortrait && labelData?.length === 0) && (
               <Stack p={1}>
