@@ -80,7 +80,7 @@ const DesktopFooter = ({ isLogin }) => {
                         }
                       }}
                     >
-                      Commands
+                      Shortcuts
                     </Button>
                   </>
                 )}
@@ -118,16 +118,9 @@ const DesktopFooter = ({ isLogin }) => {
         }}
         sx={{
           "& .MuiPaper-root": {
-            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 11, 13, 0.3)", // Semi-transparent background
-            backgroundImage: `linear-gradient(
-              to bottom right, 
-              rgba(255, 255, 255, 0.15), 
-              rgba(255, 255, 255, 0.1)
-            )`, // Gradient overlay f4r the glassmorphism effect
-            backdropFilter: "blur(6px)", // Apply the blur effect
-            WebkitBackdropFilter: "blur(6px)", // Safari support for blur effect
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(18, 18, 18, 1)", // Semi-transparent background
+            boxShadow: mode === "light" ? "0px 4px 12px rgba(197, 197, 217, 0.4)" : "0px 4px 12px rgba(0, 11, 13, 0.4)",
             borderRadius: "1rem",
-            border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
       >
