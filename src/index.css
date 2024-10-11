@@ -2,8 +2,8 @@
 
 /* For WebKit-based browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 10px; /* Set the width of the scrollbar */
-  height: 10px; /* Set the height of the scrollbar (for horizontal scroll) */
+  width: 6px; /* Set the width of the scrollbar */
+  height: 6px; /* Set the height of the scrollbar (for horizontal scroll) */
 }
 
 ::-webkit-scrollbar-track {
@@ -11,13 +11,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(125, 125, 125, 0.2); /* Scrollbar thumb (the part you drag) */
+  background-color: rgba(155, 155, 171, 0.1); /* Scrollbar thumb (the part you drag) */
   border-radius: 10px; /* Rounded corners for the scrollbar thumb */
   border: 2px solid transparent; /* Optional: to add some spacing inside the thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(125, 125, 125, 0.4); /* Darker color on hover */
+  background-color: rgba(155, 155, 171, 0.2); /* Darker color on hover */
 }
 
 html,
