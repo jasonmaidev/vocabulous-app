@@ -47,7 +47,7 @@ const DesktopFooter = ({ isLogin }) => {
           <Box display={"flex"} flexDirection={"row"} gap={4} alignItems={"center"}>
             {isNonMobileScreens && (
               <>
-                <Typography fontSize={"0.75rem"} fontWeight={500} color={palette.neutral.medium}>© 2024 Vocabulous | Voca Ai</Typography>
+                <Typography fontSize={"0.75rem"} fontWeight={500} color={palette.neutral.medium}>© 2024 Voca Ai</Typography>
                 {isLogin ? null : (
                   <>
                     <Button
@@ -80,7 +80,7 @@ const DesktopFooter = ({ isLogin }) => {
                         }
                       }}
                     >
-                      App Commands
+                      Commands
                     </Button>
                   </>
                 )}
@@ -127,7 +127,6 @@ const DesktopFooter = ({ isLogin }) => {
             backdropFilter: "blur(6px)", // Apply the blur effect
             WebkitBackdropFilter: "blur(6px)", // Safari support for blur effect
             borderRadius: "1rem",
-            boxShadow: mode === "light" ? "0px 4px 12px rgba(155, 155, 171, 0.4)" : "0px 4px 12px rgba(0, 11, 13, 0.4)",
             border: "1px solid rgba(255, 255, 255, 0.2)", // Optional border for frosted effect
           },
         }}
