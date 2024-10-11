@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { TfiMapAlt } from "react-icons/tfi"
-import { MdKeyboardCommandKey, MdOutlineCreate, MdClose } from "react-icons/md";
+import { MdKeyboardCommandKey, MdAdd, MdClose } from "react-icons/md";
 import { Menu, MenuItem, ListItemIcon, ListItemText, Link, Paper, Box, useTheme, Typography, Button, useMediaQuery } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
 import { setViewByLabel } from "state"
@@ -80,7 +80,7 @@ const DesktopFooter = ({ isLogin }) => {
                         }
                       }}
                     >
-                      Shortcuts
+                      App Commands
                     </Button>
                   </>
                 )}
@@ -125,7 +125,7 @@ const DesktopFooter = ({ isLogin }) => {
         }}
       >
         <MenuItem onClick={handleMenuClose}>
-          <ListItemIcon><MdOutlineCreate fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
+          <ListItemIcon><MdAdd fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
           <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>
             Shift + Enter = Create Vocab
           </ListItemText>
