@@ -90,6 +90,7 @@ const HomePage = () => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
+          zIndex={10}
         >
 
           {(data?.length > 0) ? (
