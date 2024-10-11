@@ -4,7 +4,7 @@ Simple, powerful, Ai-driven vocabulary acquisition and retention for `Mandarin` 
 
 Comes with all of the features that you need, and none that you do not. Powered by `GPT-3.5 Turbo`.
 
-Built for intermediates and advanced learners alike.
+Built for intermediates and advanced learners.
 
 Live app at [https://vocabulous.netlify.app](https://vocabulous.netlify.app).
 
@@ -16,4 +16,4 @@ User registration is currently unavailable to the public but the web-app is full
 
 This is currently built as a personal tool for learning since I could not find a better solution out there. Full product demo is available upon request.
 
-Please shoot me an email over at jasonmxdev@gmail.com with any questions or feedback. Thanks!
+Please shoot me an email over at jasonmxdev@gmail.com with any questions, app access, or feedback. Thanks!
