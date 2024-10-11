@@ -134,13 +134,13 @@ const DesktopFooter = ({ isLogin }) => {
       >
         <MenuItem onClick={handleMenuClose}>
           <ListItemIcon><MdAdd fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400, fontSize: "0.9rem" }}>
             Shift + Enter = Create Vocab
           </ListItemText>
         </MenuItem>
         <MenuItem onClick={handleMenuClose}>
           <ListItemIcon><MdClose fontSize="large" color={theme.palette.neutral.darker} /></ListItemIcon>
-          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400 }}>
+          <ListItemText sx={{ color: theme.palette.neutral.darker, fontWeight: mode === "light" ? 500 : 400, fontSize: "0.9rem" }}>
             Esc or ` = Close Vocab View
           </ListItemText>
         </MenuItem>
