@@ -202,12 +202,6 @@ const ViewVocabsWidget = () => {
                 )}
               </AutoSizer>
             </div>
-
-            {(isPortrait && labelData?.length === 0) && (
-              <Stack p={1}>
-                <AddVocabDialog text={"Add"} />
-              </Stack>
-            )}
           </VocabBox>
         </>
       }
