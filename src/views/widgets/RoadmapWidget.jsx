@@ -19,7 +19,7 @@ const RoadmapWidget = () => {
             alignItems={"flex-start"}
             flexWrap={"no-wrap"}
             className={isHDScreens ? "laptop-apparels-content" : isNonMobileScreens ? "apparels-content" : undefined}
-            height={isNonMobileScreens ? "72vh" : undefined}
+            height={isNonMobileScreens ? "68vh" : undefined}
           >
             {/* Version 1 */}
             <Box gap={2} display={"flex"} flexDirection={"row"} justifyContent={"flex-start"} alignItems={"center"}>
@@ -109,6 +109,7 @@ const RoadmapWidget = () => {
                   <Typography pb={1} color={palette.primary.main}><FiCheckCircle /> OpenAi auto usage-example generation.</Typography>
                   <Typography pb={1} color={palette.primary.main}><FiCheckCircle /> OpenAi auto definition generation.</Typography>
                   <Typography pb={1} color={palette.primary.main}><FiCheckCircle /> Context-aware vocabulary generation.</Typography>
+                  <Typography pb={1} color={palette.primary.main}><FiCheckCircle /> Virtualization.</Typography>
                   <Typography pb={1}><FiCircle /> Highlighted text to search.</Typography>
                   <Typography pb={1}><FiCircle /> Text to voice.</Typography>
                   <Typography pb={1}><FiCircle /> Daily word set challenge.</Typography>
