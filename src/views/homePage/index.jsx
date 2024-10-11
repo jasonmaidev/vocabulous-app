@@ -102,7 +102,7 @@ const HomePage = () => {
                   <TbPinFilled size={20} />
                 </Typography>
               </Stack>
-              <div style={{ width: "100%", height: "80vh" }}>
+              <div style={{ width: "100%", height: "72vh" }}>
                 <AutoSizer>
                   {({ width, height }) => (
                     <List

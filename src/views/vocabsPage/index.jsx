@@ -50,7 +50,7 @@ const VocabsPage = () => {
   }
 
   const { data } = useQuery(["pinnedVocabsData"], getPinnedVocabs, {
-    keepPreviousData: true,
+    // keepPreviousData: true,
     staleTime: 500
   })
 
