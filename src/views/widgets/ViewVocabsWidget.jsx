@@ -11,7 +11,6 @@ import {
   CellMeasurer,
   CellMeasurerCache,
 } from "react-virtualized";
-import PinnedVocabRow from "components/PinnedVocabRow"
 import VocabRow from "components/VocabRow"
 import AddVocabDialog from "components/AddVocabDialog";
 import apiUrl from "config/api"
