@@ -44,7 +44,7 @@ const DesktopFooter = ({ isLogin }) => {
       // elevation={0}
       >
         <FlexBetweenBox>
-          <Box display={"flex"} flexDirection={"row"} gap={4} alignItems={"center"}>
+          <Box display={"flex"} flexDirection={"row"} gap={2} alignItems={"center"}>
             {isNonMobileScreens && (
               <>
                 <Typography fontSize={"0.75rem"} fontWeight={500} color={palette.neutral.medium}>© 2024 Voca Ai</Typography>
@@ -80,7 +80,7 @@ const DesktopFooter = ({ isLogin }) => {
                         }
                       }}
                     >
-                      App Commands
+                      Shortcuts
                     </Button>
                   </>
                 )}
