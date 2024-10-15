@@ -161,7 +161,7 @@ export default function LabelsDrawer() {
         return <LiaFeatherAltSolid size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'kitchen':
         return <TbToolsKitchen2 size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
-      case 'measure':
+      case 'estimation':
         return <PiRuler size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'mood':
         return <FaRegHeart size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;

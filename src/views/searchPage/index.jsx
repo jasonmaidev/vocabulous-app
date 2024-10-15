@@ -117,7 +117,7 @@ const SearchPage = () => {
         return <LiaFeatherAltSolid size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'kitchen':
         return <TbToolsKitchen2 size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
-      case 'measure':
+      case 'estimation':
         return <PiRuler size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'mood':
         return <FaRegHeart size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
