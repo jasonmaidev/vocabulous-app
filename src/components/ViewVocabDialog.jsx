@@ -698,7 +698,6 @@ const ViewVocabDialog = (
         body: JSON.stringify({
           simVocab: text,
           simLabel: label,
-          vocabDef: definition,
         }),
       }).then((res) => res.json()); // Ensure the response is parsed as JSON
     },
