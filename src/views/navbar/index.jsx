@@ -84,6 +84,8 @@ const Navbar = ({
     setMenuAnchor(null)
   }
 
+  const [highlightSearch, setHighlightSearch] = useState(false)
+
   return (
     <FlexBetweenBox
       backgroundColor={alt}
@@ -155,6 +157,8 @@ const Navbar = ({
         }
         <Stack>
           <InputBase
+            onMouseOver={() => setHighlightSearch(true)}
+            onMouseLeave={() => setHighlightSearch(false)}
             onClick={goToSearch}
             id={uuidv4()}
             placeholder="Search"
@@ -181,12 +185,14 @@ const Navbar = ({
               border: searchRef?.current?.focus ? `3px solid ${theme.palette.primary.main}` : `1px solid ${neutralLight}`,
               width: "100%",
               marginLeft: '1rem',
+              backgroundColor: highlightSearch ? "rgba(197, 197, 217, 0.1)" : undefined,
             } : {
               width: "100%",
               padding: "0 0.5rem",
               border: searchRef?.current?.focus ? `3px solid ${theme.palette.primary.main}` : undefined,
               borderRadius: "2rem",
               margin: "0",
+              backgroundColor: highlightSearch ? "rgba(197, 197, 217, 0.1)" : undefined,
             }}
           />
         </Stack>

@@ -2345,7 +2345,7 @@ const ViewVocabDialog = (
               {label?.length > 0 ?
                 <Stack direction={"row"} alignItems={"center"}
                   justifyContent={"flex-end"}
-                  pb={isPortrait ? 1 : 0}
+                  pb={isPortrait || editingLabels ? 1 : 0}
                   spacing={1}
                   pt={4}
                 >
