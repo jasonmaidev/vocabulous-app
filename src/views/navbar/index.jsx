@@ -78,7 +78,9 @@ const Navbar = ({
 
   const handleSearch = _.debounce((searchText) => {
     dispatch(setViewBySearchTerm({ viewBySearchTerm: searchText }))
-    console.log(searchText)
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
   }, 300);  // 300ms delay
 
   /* Options Drowndown Menu */
