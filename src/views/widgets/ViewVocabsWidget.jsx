@@ -13,7 +13,6 @@ import {
 } from "react-virtualized";
 import PinnedVocabRow from "components/PinnedVocabRow"
 import VocabRow from "components/VocabRow"
-import AddVocabDialog from "components/AddVocabDialog";
 import apiUrl from "config/api"
 
 const ViewVocabsWidget = () => {
@@ -88,47 +87,21 @@ const ViewVocabsWidget = () => {
             </Typography>
           </Stack>
           <VocabBox sx={{ border: searchData?.length < 1 && "none" }}>
-            <div style={{ width: "100%", height: "80vh" }}>
-              <AutoSizer>
-                {({ width, height }) => (
-                  <List
-                    width={width}
-                    height={height}
-                    rowHeight={cache.current.rowHeight}
-                    deferredMeasurementCache={cache.current}
-                    rowCount={searchData?.length || 0}
-                    rowRenderer={({ key, index, style, parent }) => {
-                      const vocab = searchData[index]
-                      return (
-                        <CellMeasurer
-                          key={key}
-                          cache={cache.current}
-                          parent={parent}
-                          columnIndex={0}
-                          rowIndex={index}
-                        >
-                          <div style={style}>
-                            <VocabRow
-                              key={vocab._id}
-                              id={vocab._id}
-                              text={vocab.text}
-                              pinyin={vocab.pinyin}
-                              difficulty={vocab.difficulty}
-                              definition={vocab.definition}
-                              similar={vocab.similar}
-                              label={vocab.label}
-                              expression={vocab.expression}
-                              sentence={vocab.sentence}
-                              pinned={vocab.pinned}
-                            />
-                          </div>
-                        </CellMeasurer>
-                      );
-                    }}
-                  />
-                )}
-              </AutoSizer>
-            </div>
+            {searchData?.map((vocab) => (
+              <VocabRow
+                key={vocab._id}
+                id={vocab._id}
+                text={vocab.text}
+                pinyin={vocab.pinyin}
+                difficulty={vocab.difficulty}
+                definition={vocab.definition}
+                similar={vocab.similar}
+                label={vocab.label}
+                expression={vocab.expression}
+                sentence={vocab.sentence}
+                pinned={vocab.pinned}
+              />
+            ))}
           </VocabBox>
         </>
         :
