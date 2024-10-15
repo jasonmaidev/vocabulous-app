@@ -78,7 +78,7 @@ const Navbar = ({
 
   const handleSearch = _.debounce((searchText) => {
     dispatch(setViewBySearchTerm({ viewBySearchTerm: searchText }))
-  }, 300);  // 300ms delay
+  }, 400);  // 400ms delay
 
   /* Options Drowndown Menu */
   const [menuAnchor, setMenuAnchor] = useState(null)
