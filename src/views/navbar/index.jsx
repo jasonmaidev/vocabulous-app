@@ -81,7 +81,7 @@ const Navbar = ({
     setTimeout(() => {
       window.location.reload();
     }, 50);
-  }, 300);  // 300ms delay
+  }, 250);  // 300ms delay
 
   /* Options Drowndown Menu */
   const [menuAnchor, setMenuAnchor] = useState(null)
