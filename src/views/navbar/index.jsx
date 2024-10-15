@@ -56,6 +56,13 @@ const Navbar = ({
 
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false)
 
+  const navigateHome = () => {
+    navigate(`/`)
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
+  }
+
   const goToSearch = () => {
     navigate(`/search/${_id}`)
   }
@@ -271,7 +278,7 @@ const Navbar = ({
           },
         }}
       >
-        <MenuItem onClick={() => navigate(`/`)}>
+        <MenuItem onClick={navigateHome}>
           <ListItemIcon><FaUserAlt fontSize="small" color={theme.palette.neutral.dark} /></ListItemIcon>
           <ListItemText sx={{ color: theme.palette.neutral.dark }}>Profile</ListItemText>
         </MenuItem>
@@ -323,7 +330,7 @@ const Navbar = ({
             </IconButton>
 
             <Button
-              onClick={() => navigate(`/`)}
+              onClick={navigateHome}
               startIcon={<FaUserAlt />}
               sx={{
                 color: theme.palette.neutral.dark,

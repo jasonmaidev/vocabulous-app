@@ -80,19 +80,31 @@ export default function LabelsDrawer() {
   const navigateHome = () => {
     navigate(`/`)
     toggleLabelsDrawer()
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
   }
 
   const showAllVocabs = () => {
     navigate(`/all/${_id}`)
     toggleLabelsDrawer()
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
   }
   const showIntermediateVocabs = () => {
     navigate(`/int/${_id}`)
     toggleLabelsDrawer()
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
   }
   const showAdvancedVocabs = () => {
     navigate(`/adv/${_id}`)
     toggleLabelsDrawer()
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
   }
 
   const getVocabLabels = () => {
