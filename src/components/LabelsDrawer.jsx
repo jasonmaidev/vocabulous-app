@@ -72,6 +72,9 @@ export default function LabelsDrawer() {
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
   }
 
   const navigateHome = () => {
