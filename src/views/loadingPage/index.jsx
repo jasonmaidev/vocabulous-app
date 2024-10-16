@@ -47,7 +47,7 @@ const LoadingPage = () => {
             color={theme.palette.neutral.light}
             loading={true}
             size={24}
-            margin={4}
+            margin={2}
             speedMultiplier={1.2}
             aria-label="Loading Spinner"
             data-testid="loader"

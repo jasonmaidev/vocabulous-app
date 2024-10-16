@@ -125,7 +125,7 @@ export default function LabelsDrawer() {
 
   const { data } = useQuery(["vocabLabelsData"], getVocabLabels, {
     // keepPreviousData: true,
-    staleTime: 300
+    staleTime: 500
   })
 
   const [open, setOpen] = useState(false);

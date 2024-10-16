@@ -45,8 +45,8 @@ const Navbar = ({
   const background = theme.palette.background.default
   const alt = theme.palette.background.alt
 
-
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
   const viewByLabel = useSelector((state) => state.viewByLabel)
 
@@ -57,10 +57,13 @@ const Navbar = ({
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false)
 
   const navigateHome = () => {
-    navigate(`/`)
+    navigate(`/loading/${_id}`)
     setTimeout(() => {
-      window.location.reload();
-    }, 50);
+      navigate(`/`)
+    }, 200);
+    if (isPortrait) {
+      dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
+    }
   }
 
   const goToSearch = () => {
@@ -117,7 +120,7 @@ const Navbar = ({
               </Typography>
               :
               (
-                <Stack onClick={() => navigate("/")} alignItems={"center"} direction="row" spacing={1} p={1} >
+                <Stack onClick={navigateHome} alignItems={"center"} direction="row" spacing={1} p={1} >
                   {/* ----- App Slogan ----- */}
                   <img
                     style={{ objectFit: "cover", width: isLandscape ? "2rem" : "20%" }}
@@ -149,7 +152,7 @@ const Navbar = ({
               :
               (
                 <>
-                  <Typography onClick={() => navigate("/")} fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
+                  <Typography onClick={navigateHome} fontSize={"1.25rem"} fontWeight={700} color={theme.palette.neutral.darker}>
                     金字卡
                   </Typography>
                   <Typography fontSize={"1.25rem"} fontWeight={700} color={theme.palette.primary.main}>
