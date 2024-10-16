@@ -14,6 +14,7 @@ import RoadmapPage from "views/roadmapPage";
 import AllPage from "views/allPage";
 import IntPage from "views/intPage";
 import AdvPage from "views/advPage";
+import LoadingPage from "views/loadingPage";
 const LoginPage = lazy(() => import("views/loginPage"))
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
                 <Route path="/adv/:userId" element={isAuth ? <AdvPage /> : <LoginPage />} />
                 <Route path="/label/:userId" element={isAuth ? <VocabsPage /> : <LoginPage />} />
                 <Route path="/search/:userId" element={isAuth ? <SearchPage /> : <LoginPage />} />
+                <Route path="/loading/:userId" element={isAuth ? <LoadingPage /> : <LoginPage />} />
                 <Route path="/roadmap" element={isAuth ? <RoadmapPage /> : <LoginPage />} />
               </Routes>
             </Suspense>

@@ -67,6 +67,7 @@ export default function LabelsDrawer() {
 
   const viewLabledVocabs = (text) => {
     toggleLabelsDrawer()
+    navigate(`/loading/${_id}`)
     dispatch(setViewByLabel({ viewByLabel: text }))
     queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
     navigate(`/label/${_id}`)
@@ -79,6 +80,7 @@ export default function LabelsDrawer() {
   }
 
   const navigateHome = () => {
+    navigate(`/loading/${_id}`)
     navigate(`/`)
     toggleLabelsDrawer()
     // setTimeout(() => {
@@ -87,6 +89,7 @@ export default function LabelsDrawer() {
   }
 
   const showAllVocabs = () => {
+    navigate(`/loading/${_id}`)
     navigate(`/all/${_id}`)
     toggleLabelsDrawer()
     // setTimeout(() => {
@@ -94,6 +97,7 @@ export default function LabelsDrawer() {
     // }, 50);
   }
   const showIntermediateVocabs = () => {
+    navigate(`/loading/${_id}`)
     navigate(`/int/${_id}`)
     toggleLabelsDrawer()
     // setTimeout(() => {
@@ -101,6 +105,7 @@ export default function LabelsDrawer() {
     // }, 50);
   }
   const showAdvancedVocabs = () => {
+    navigate(`/loading/${_id}`)
     navigate(`/adv/${_id}`)
     toggleLabelsDrawer()
     // setTimeout(() => {
