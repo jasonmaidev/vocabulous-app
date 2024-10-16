@@ -71,7 +71,7 @@ export default function LabelsDrawer() {
     queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
     setTimeout(() => {
       navigate(`/label/${_id}`)
-    }, 100);
+    }, 200);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -81,7 +81,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/`)
-    }, 100);
+    }, 200);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -91,7 +91,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/all/${_id}`)
-    }, 100);
+    }, 200);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -100,7 +100,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/int/${_id}`)
-    }, 100);
+    }, 200);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -109,7 +109,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/adv/${_id}`)
-    }, 100);
+    }, 200);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
