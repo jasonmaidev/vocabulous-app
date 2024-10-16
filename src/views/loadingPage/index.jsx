@@ -1,6 +1,6 @@
 import { useRef, lazy, Suspense } from "react"
 import PropagateLoader from "react-spinners/PropagateLoader"
-import HashLoader from "react-spinners/HashLoader"
+import BarLoader from "react-spinners/BarLoader"
 import { Box, useMediaQuery, useTheme } from "@mui/material"
 import Navbar from "views/navbar"
 import LabelsDrawer from "components/LabelsDrawer"
@@ -43,7 +43,7 @@ const LoadingPage = () => {
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <HashLoader
+          <BarLoader
             color={theme.palette.neutral.light}
             loading={true}
             size={120}
