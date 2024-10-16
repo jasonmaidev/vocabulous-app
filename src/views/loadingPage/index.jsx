@@ -46,7 +46,8 @@ const LoadingPage = () => {
           <BarLoader
             color={theme.palette.neutral.light}
             loading={true}
-            size={120}
+            width={240}
+            height={8}
             aria-label="Loading Spinner"
             data-testid="loader"
           />
