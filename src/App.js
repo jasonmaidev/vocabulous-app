@@ -8,13 +8,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import GridLoader from "react-spinners/GridLoader"
 import HomePage from "views/homePage";
+import SearchPage from "views/searchPage";
+import VocabsPage from "views/vocabsPage";
 const LoginPage = lazy(() => import("views/loginPage"))
 const RoadmapPage = lazy(() => import("views/roadmapPage"))
 const AllPage = lazy(() => import("views/allPage"))
 const IntPage = lazy(() => import("views/intPage"))
 const AdvPage = lazy(() => import("views/advPage"))
-const VocabsPage = lazy(() => import("views/vocabsPage"))
-const SearchPage = lazy(() => import("views/searchPage"))
 
 function App() {
   const mode = useSelector((state) => state.mode)
