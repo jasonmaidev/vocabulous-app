@@ -18,9 +18,9 @@ import {
 import PerfectScrollbar from "react-perfect-scrollbar"
 import Drawer from '@mui/material/Drawer';
 import { BiHomeAlt2, BiPulse } from "react-icons/bi";
-import { PiCircleBold, PiDiamondBold, PiStarBold, PiRuler, PiBathtub } from "react-icons/pi";
+import { PiCircleBold, PiDiamondBold, PiStarBold, PiBathtub } from "react-icons/pi";
 import { MdLabelOutline, MdAccessTime } from "react-icons/md";
-import { TbTemperature, TbPin, TbToolsKitchen2 } from "react-icons/tb";
+import { TbTemperature, TbPin, TbToolsKitchen2, TbRulerMeasure } from "react-icons/tb";
 import { IoLanguage, IoBeerOutline, IoBodyOutline, IoBedOutline, IoFastFoodOutline } from "react-icons/io5";
 import { LiaLaughSquint, LiaFeatherAltSolid } from "react-icons/lia";
 import { FaRegHeart } from "react-icons/fa";
@@ -141,12 +141,12 @@ export default function LabelsDrawer() {
         return <PiBathtub size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'bedroom':
         return <IoBedOutline size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
-      case 'business':
-        return <FiBriefcase size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'colloquial':
         return <RiChat3Line size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'degree':
         return <TbTemperature size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
+      case 'estimation':
+        return <TbRulerMeasure size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'food':
         return <IoFastFoodOutline size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'frequency':
@@ -161,8 +161,6 @@ export default function LabelsDrawer() {
         return <LiaFeatherAltSolid size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'kitchen':
         return <TbToolsKitchen2 size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
-      case 'estimation':
-        return <PiRuler size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'mood':
         return <FaRegHeart size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'negative':
@@ -173,6 +171,8 @@ export default function LabelsDrawer() {
         return <FiMapPin size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'positive':
         return <FiThumbsUp size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
+      case 'professional':
+        return <FiBriefcase size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'romance':
         return <RiHeartsLine size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'slang':

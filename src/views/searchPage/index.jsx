@@ -8,9 +8,9 @@ import { setViewByLabel } from "state"
 import Navbar from "views/navbar"
 import LabelsDrawer from "components/LabelsDrawer"
 import { BiHomeAlt2, BiPulse } from "react-icons/bi";
-import { PiRuler, PiCircleBold, PiDiamondBold, PiStarBold, PiBathtub } from "react-icons/pi";
+import { PiCircleBold, PiDiamondBold, PiStarBold, PiBathtub } from "react-icons/pi";
 import { MdLabelOutline, MdAccessTime } from "react-icons/md";
-import { TbTemperature, TbPin, TbToolsKitchen2 } from "react-icons/tb";
+import { TbTemperature, TbPin, TbToolsKitchen2, TbRulerMeasure } from "react-icons/tb";
 import { IoLanguage, IoBeerOutline, IoBodyOutline, IoBedOutline, IoFastFoodOutline } from "react-icons/io5";
 import { LiaLaughSquint, LiaFeatherAltSolid } from "react-icons/lia";
 import { FaRegHeart } from "react-icons/fa";
@@ -97,12 +97,12 @@ const SearchPage = () => {
         return <PiBathtub size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'bedroom':
         return <IoBedOutline size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
-      case 'business':
-        return <FiBriefcase size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'colloquial':
         return <RiChat3Line size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'degree':
         return <TbTemperature size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
+      case 'estimation':
+        return <TbRulerMeasure size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'food':
         return <IoFastFoodOutline size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'frequency':
@@ -117,8 +117,6 @@ const SearchPage = () => {
         return <LiaFeatherAltSolid size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'kitchen':
         return <TbToolsKitchen2 size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
-      case 'estimation':
-        return <PiRuler size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'mood':
         return <FaRegHeart size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'negative':
@@ -129,6 +127,8 @@ const SearchPage = () => {
         return <FiMapPin size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'positive':
         return <FiThumbsUp size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
+      case 'professional':
+        return <FiBriefcase size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'romance':
         return <RiHeartsLine size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'slang':
