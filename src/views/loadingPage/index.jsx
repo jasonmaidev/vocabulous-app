@@ -44,9 +44,9 @@ const LoadingPage = () => {
           alignItems={"center"}
         >
           <HashLoader
-            color={theme.palette.neutral.main}
+            color={theme.palette.neutral.light}
             loading={true}
-            size={64}
+            size={120}
             aria-label="Loading Spinner"
             data-testid="loader"
           />
