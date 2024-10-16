@@ -25,7 +25,7 @@ import {
   useTheme,
   useMediaQuery,
 } from "@mui/material"
-import pinyin from "chinese-to-pinyin"
+import { pinyin } from "pinyin-pro"
 import apiUrl from "config/api"
 
 const Transition = forwardRef(function Transition(props, ref) {
