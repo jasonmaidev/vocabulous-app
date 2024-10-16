@@ -10,11 +10,11 @@ import GridLoader from "react-spinners/GridLoader"
 import HomePage from "views/homePage";
 import SearchPage from "views/searchPage";
 import VocabsPage from "views/vocabsPage";
+import RoadmapPage from "views/roadmapPage";
+import AllPage from "views/allPage";
+import IntPage from "views/intPage";
+import AdvPage from "views/advPage";
 const LoginPage = lazy(() => import("views/loginPage"))
-const RoadmapPage = lazy(() => import("views/roadmapPage"))
-const AllPage = lazy(() => import("views/allPage"))
-const IntPage = lazy(() => import("views/intPage"))
-const AdvPage = lazy(() => import("views/advPage"))
 
 function App() {
   const mode = useSelector((state) => state.mode)

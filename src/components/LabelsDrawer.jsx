@@ -66,6 +66,7 @@ export default function LabelsDrawer() {
   }
 
   const viewLabledVocabs = (text) => {
+    toggleLabelsDrawer()
     dispatch(setViewByLabel({ viewByLabel: text }))
     queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
     navigate(`/label/${_id}`)
