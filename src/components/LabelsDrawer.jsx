@@ -66,11 +66,12 @@ export default function LabelsDrawer() {
   }
 
   const viewLabledVocabs = (text) => {
-    toggleLabelsDrawer()
     navigate(`/loading/${_id}`)
     dispatch(setViewByLabel({ viewByLabel: text }))
     queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
-    navigate(`/label/${_id}`)
+    setTimeout(() => {
+      navigate(`/label/${_id}`)
+    }, 50);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -81,8 +82,12 @@ export default function LabelsDrawer() {
 
   const navigateHome = () => {
     navigate(`/loading/${_id}`)
-    navigate(`/`)
-    toggleLabelsDrawer()
+    setTimeout(() => {
+      navigate(`/`)
+    }, 50);
+    if (isPortrait) {
+      dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
+    }
     // setTimeout(() => {
     //   window.location.reload();
     // }, 50);
@@ -90,24 +95,36 @@ export default function LabelsDrawer() {
 
   const showAllVocabs = () => {
     navigate(`/loading/${_id}`)
-    navigate(`/all/${_id}`)
-    toggleLabelsDrawer()
+    setTimeout(() => {
+      navigate(`/all/${_id}`)
+    }, 50);
+    if (isPortrait) {
+      dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
+    }
     // setTimeout(() => {
     //   window.location.reload();
     // }, 50);
   }
   const showIntermediateVocabs = () => {
     navigate(`/loading/${_id}`)
-    navigate(`/int/${_id}`)
-    toggleLabelsDrawer()
+    setTimeout(() => {
+      navigate(`/int/${_id}`)
+    }, 50);
+    if (isPortrait) {
+      dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
+    }
     // setTimeout(() => {
     //   window.location.reload();
     // }, 50);
   }
   const showAdvancedVocabs = () => {
     navigate(`/loading/${_id}`)
-    navigate(`/adv/${_id}`)
-    toggleLabelsDrawer()
+    setTimeout(() => {
+      navigate(`/adv/${_id}`)
+    }, 50);
+    if (isPortrait) {
+      dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
+    }
     // setTimeout(() => {
     //   window.location.reload();
     // }, 50);
