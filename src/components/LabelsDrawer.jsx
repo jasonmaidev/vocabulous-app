@@ -71,63 +71,48 @@ export default function LabelsDrawer() {
     queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
     setTimeout(() => {
       navigate(`/label/${_id}`)
-    }, 50);
+    }, 100);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 50);
   }
 
   const navigateHome = () => {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/`)
-    }, 50);
+    }, 100);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 50);
   }
 
   const showAllVocabs = () => {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/all/${_id}`)
-    }, 50);
+    }, 100);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 50);
   }
   const showIntermediateVocabs = () => {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/int/${_id}`)
-    }, 50);
+    }, 100);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 50);
   }
   const showAdvancedVocabs = () => {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/adv/${_id}`)
-    }, 50);
+    }, 100);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 50);
   }
 
   const getVocabLabels = () => {
