@@ -1,6 +1,6 @@
 import { useRef, lazy, Suspense } from "react"
 import PropagateLoader from "react-spinners/PropagateLoader"
-import BarLoader from "react-spinners/BarLoader"
+import PulseLoader from "react-spinners/PulseLoader"
 import { Box, useMediaQuery, useTheme } from "@mui/material"
 import Navbar from "views/navbar"
 import LabelsDrawer from "components/LabelsDrawer"
@@ -43,11 +43,11 @@ const LoadingPage = () => {
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <BarLoader
+          <PulseLoader
             color={theme.palette.neutral.light}
             loading={true}
-            width={240}
-            height={8}
+            size={24}
+            speedMultiplier={1.2}
             aria-label="Loading Spinner"
             data-testid="loader"
           />
