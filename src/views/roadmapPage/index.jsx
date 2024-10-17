@@ -1,7 +1,7 @@
 import { lazy, Suspense, CSSProperties } from "react"
 import { useSelector } from "react-redux"
 import GridLoader from "react-spinners/GridLoader"
-import PropagateLoader from "react-spinners/PropagateLoader"
+import SyncLoader from "react-spinners/SyncLoader"
 import { Box, Button, Stack, useMediaQuery, useTheme, Typography } from "@mui/material"
 import Navbar from "views/navbar"
 import RoadmapWidget from "views/widgets/RoadmapWidget"
@@ -123,7 +123,7 @@ const RoadmapPage = () => {
 
       {!isNonMobileScreens &&
         <Suspense fallback={
-          <PropagateLoader
+          <SyncLoader
             color={palette.neutral.light}
             loading={true}
             cssOverride={mobilefooteroverride}
@@ -139,7 +139,7 @@ const RoadmapPage = () => {
       {/* ----- Desktop Footer Nav ----- */}
       {isNonMobileScreens &&
         <Suspense fallback={
-          <PropagateLoader
+          <SyncLoader
             color={palette.neutral.light}
             loading={true}
             size={20}

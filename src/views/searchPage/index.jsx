@@ -2,7 +2,7 @@ import { useEffect, useRef, lazy, Suspense } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
-import PropagateLoader from "react-spinners/PropagateLoader"
+import SyncLoader from "react-spinners/SyncLoader"
 import { Box, Typography, useMediaQuery, Stack, useTheme } from "@mui/material"
 import { setViewByLabel } from "state"
 import Navbar from "views/navbar"
@@ -36,7 +36,6 @@ const SearchPage = () => {
   const searchRef = useRef(null)
 
   const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
   const theme = useTheme()
 
@@ -55,13 +54,16 @@ const SearchPage = () => {
 
   const { data: labelsData } = useQuery(["vocabLabelsData"], getVocabLabels, {
     keepPreviousData: true,
-    staleTime: 5000
+    staleTime: 1000
   })
 
   const viewLabledVocabs = (text) => {
+    navigate(`/loading/${_id}`)
     dispatch(setViewByLabel({ viewByLabel: text }))
     queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
-    navigate(`/label/${_id}`)
+    setTimeout(() => {
+      navigate(`/label/${_id}`)
+    }, 300)
   }
 
   useEffect(() => {
@@ -77,16 +79,28 @@ const SearchPage = () => {
   }, [searchRef])
 
   const navigateHome = () => {
-    navigate(`/`)
+    navigate(`/loading/${_id}`)
+    setTimeout(() => {
+      navigate(`/`)
+    }, 300)
   }
   const showAllVocabs = () => {
-    navigate(`/all/${_id}`)
+    navigate(`/loading/${_id}`)
+    setTimeout(() => {
+      navigate(`/all/${_id}`)
+    }, 300)
   }
   const showIntermediateVocabs = () => {
-    navigate(`/int/${_id}`)
+    navigate(`/loading/${_id}`)
+    setTimeout(() => {
+      navigate(`/int/${_id}`)
+    }, 300)
   }
   const showAdvancedVocabs = () => {
-    navigate(`/adv/${_id}`)
+    navigate(`/loading/${_id}`)
+    setTimeout(() => {
+      navigate(`/adv/${_id}`)
+    }, 300)
   }
 
   const renderIcon = (text) => {
@@ -334,7 +348,7 @@ const SearchPage = () => {
         </Box>
         {isNonMobileScreens &&
           <Suspense fallback={
-            <PropagateLoader
+            <SyncLoader
               color={palette.neutral.light}
               loading={true}
               size={20}
@@ -347,7 +361,7 @@ const SearchPage = () => {
         }
         {!isNonMobileScreens &&
           <Suspense fallback={
-            <PropagateLoader
+            <SyncLoader
               color={palette.neutral.light}
               loading={true}
               size={20}

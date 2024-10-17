@@ -1,6 +1,6 @@
 import { useRef, lazy, Suspense } from "react"
-import PropagateLoader from "react-spinners/PropagateLoader"
 import SyncLoader from "react-spinners/SyncLoader"
+import PulseLoader from "react-spinners/PulseLoader"
 import { Box, useMediaQuery, useTheme } from "@mui/material"
 import Navbar from "views/navbar"
 import LabelsDrawer from "components/LabelsDrawer"
@@ -43,7 +43,7 @@ const LoadingPage = () => {
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <SyncLoader
+          <PulseLoader
             color={theme.palette.neutral.light}
             loading={true}
             size={24}
@@ -55,7 +55,7 @@ const LoadingPage = () => {
         </Box>
         {isNonMobileScreens &&
           <Suspense fallback={
-            <PropagateLoader
+            <SyncLoader
               color={palette.neutral.light}
               loading={true}
               size={20}
@@ -68,7 +68,7 @@ const LoadingPage = () => {
         }
         {!isNonMobileScreens &&
           <Suspense fallback={
-            <PropagateLoader
+            <SyncLoader
               color={palette.neutral.light}
               loading={true}
               size={20}

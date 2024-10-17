@@ -14,7 +14,7 @@ import { Box, Grow, Stack, Dialog, Typography, Checkbox, InputBase, Menu, MenuIt
 import { pinyin } from "pinyin-pro"
 import { setViewBySearchTerm } from "state"
 import HashLoader from "react-spinners/HashLoader"
-import PropagateLoader from "react-spinners/PropagateLoader"
+import SyncLoader from "react-spinners/SyncLoader"
 import apiUrl from "config/api"
 const AiDefDialog = lazy(() => import("./AiDefDialog"))
 
@@ -271,7 +271,7 @@ const ExpressionText = ({ item }) => {
         }}
       >
         <Suspense fallback={
-          <PropagateLoader
+          <SyncLoader
             color={theme.palette.neutral.light}
             loading={true}
             size={20}

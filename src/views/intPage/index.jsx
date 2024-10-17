@@ -2,7 +2,7 @@ import "../../styles/gradient-button.min.css"
 import { useEffect, lazy, Suspense, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useQuery } from "@tanstack/react-query"
-import PropagateLoader from "react-spinners/PropagateLoader"
+import SyncLoader from "react-spinners/SyncLoader"
 import { Box, useMediaQuery, useTheme } from "@mui/material"
 import { setViewByLabel, setViewBySearchTerm } from "state"
 import Navbar from "views/navbar"
@@ -145,7 +145,7 @@ const IntPage = () => {
         </Box>
         {isNonMobileScreens &&
           <Suspense fallback={
-            <PropagateLoader
+            <SyncLoader
               color={palette.neutral.light}
               loading={true}
               size={20}
@@ -158,7 +158,7 @@ const IntPage = () => {
         }
         {!isNonMobileScreens &&
           <Suspense fallback={
-            <PropagateLoader
+            <SyncLoader
               color={palette.neutral.light}
               loading={true}
               size={20}
