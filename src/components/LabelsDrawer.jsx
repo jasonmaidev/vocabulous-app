@@ -18,7 +18,7 @@ import {
 import PerfectScrollbar from "react-perfect-scrollbar"
 import Drawer from '@mui/material/Drawer';
 import { BiHomeAlt2, BiPulse } from "react-icons/bi";
-import { PiCircleBold, PiDiamondBold, PiStarBold, PiBathtub } from "react-icons/pi";
+import { PiCircleBold, PiDiamondBold, PiStarBold, PiBathtub, PiHandFist } from "react-icons/pi";
 import { MdLabelOutline, MdAccessTime } from "react-icons/md";
 import { TbTemperature, TbPin, TbToolsKitchen2, TbRulerMeasure } from "react-icons/tb";
 import { IoLanguage, IoBeerOutline, IoBodyOutline, IoBedOutline, IoFastFoodOutline } from "react-icons/io5";
@@ -143,6 +143,8 @@ export default function LabelsDrawer() {
 
   const renderIcon = (text) => {
     switch (text) {
+      case 'action':
+        return <PiHandFist size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'body':
         return <IoBodyOutline size={24} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'bathroom':
