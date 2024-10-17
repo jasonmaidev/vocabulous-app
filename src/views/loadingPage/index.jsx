@@ -1,6 +1,6 @@
 import { useRef, lazy, Suspense } from "react"
 import PropagateLoader from "react-spinners/PropagateLoader"
-import PuffLoader from "react-spinners/PuffLoader"
+import HashLoader from "react-spinners/HashLoader"
 import { Box, useMediaQuery, useTheme } from "@mui/material"
 import Navbar from "views/navbar"
 import LabelsDrawer from "components/LabelsDrawer"
@@ -43,12 +43,12 @@ const LoadingPage = () => {
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <PuffLoader
+          <HashLoader
             color={theme.palette.neutral.light}
             loading={true}
-            size={72}
+            size={240}
             // margin={2}
-            speedMultiplier={1.2}
+            speedMultiplier={1.4}
             aria-label="Loading Spinner"
             data-testid="loader"
           />

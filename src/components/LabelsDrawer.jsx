@@ -71,7 +71,7 @@ export default function LabelsDrawer() {
     queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
     setTimeout(() => {
       navigate(`/label/${_id}`)
-    }, 200);
+    }, 250);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -81,7 +81,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/`)
-    }, 200);
+    }, 250);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -91,7 +91,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/all/${_id}`)
-    }, 200);
+    }, 250);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -100,7 +100,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/int/${_id}`)
-    }, 200);
+    }, 250);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -109,7 +109,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/adv/${_id}`)
-    }, 200);
+    }, 250);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -528,7 +528,7 @@ export default function LabelsDrawer() {
     }}>
       {isLandscape && (
         <Box
-          onMouseOver={isLandscape ? () => setTimeout(() => { toggleLabelsDrawer() }, 200) : null}
+          onMouseOver={isLandscape ? () => setTimeout(() => { toggleLabelsDrawer() }, 250) : null}
           p={0}
         >
           <BsArrowRightSquareFill
