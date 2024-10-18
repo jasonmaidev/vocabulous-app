@@ -1047,7 +1047,7 @@ export default function AddVocabDialog({ text }) {
               </Stack>
               <InputBase
                 id={uuidv4()}
-                placeholder="相似意思"
+                placeholder="相近意思"
                 onChange={(e) => setVocabSimilarOne(e.target.value)}
                 value={vocabSimilarOne}
                 required={true}
@@ -1108,7 +1108,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="相似意思"
+                  placeholder="相近意思"
                   onChange={(e) => setVocabSimilarTwo(e.target.value)}
                   value={vocabSimilarTwo}
                   required={true}
@@ -1174,7 +1174,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="相似意思"
+                  placeholder="相近意思"
                   onChange={(e) => setVocabSimilarThree(e.target.value)}
                   value={vocabSimilarThree}
                   required={true}
@@ -1240,7 +1240,7 @@ export default function AddVocabDialog({ text }) {
                 <Typography sx={{ opacity: 0 }}>Similar</Typography>
                 <InputBase
                   id={uuidv4()}
-                  placeholder="相似意思"
+                  placeholder="相近意思"
                   onChange={(e) => setVocabSimilarFour(e.target.value)}
                   value={vocabSimilarFour}
                   required={true}
