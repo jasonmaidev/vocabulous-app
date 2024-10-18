@@ -10,7 +10,7 @@ import LabelsDrawer from "components/LabelsDrawer"
 import { BiHomeAlt2, BiPulse } from "react-icons/bi";
 import { PiCircleBold, PiDiamondBold, PiStarBold, PiBathtub, PiHandFist } from "react-icons/pi";
 import { MdLabelOutline, MdAccessTime } from "react-icons/md";
-import { TbTemperature, TbPin, TbToolsKitchen2, TbRulerMeasure } from "react-icons/tb";
+import { TbTemperature, TbPin, TbToolsKitchen2, TbRulerMeasure, TbStars } from "react-icons/tb";
 import { IoLanguage, IoBeerOutline, IoBodyOutline, IoBedOutline, IoFastFoodOutline } from "react-icons/io5";
 import { LiaLaughSquint, LiaFeatherAltSolid } from "react-icons/lia";
 import { FaRegHeart } from "react-icons/fa";
@@ -145,6 +145,8 @@ const SearchPage = () => {
         return <FiThumbsUp size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'professional':
         return <FiBriefcase size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
+      case 'rating':
+        return <TbStars size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'romance':
         return <RiHeartsLine size={isLandscape ? 36 : 32} style={{ margin: isLandscape ? "0.5rem 2rem" : "0.25rem 1.25rem" }} color={mode === "light" ? theme.palette.neutral.darker : theme.palette.neutral.medium} />;
       case 'slang':
