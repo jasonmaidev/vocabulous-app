@@ -71,7 +71,7 @@ export default function LabelsDrawer() {
     queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
     setTimeout(() => {
       navigate(`/label/${_id}`)
-    }, 300);
+    }, 200);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -81,7 +81,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/`)
-    }, 300);
+    }, 200);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -91,7 +91,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/all/${_id}`)
-    }, 300);
+    }, 200);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -100,7 +100,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/int/${_id}`)
-    }, 300);
+    }, 200);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -109,7 +109,7 @@ export default function LabelsDrawer() {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/adv/${_id}`)
-    }, 300);
+    }, 200);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }
@@ -530,7 +530,7 @@ export default function LabelsDrawer() {
     }}>
       {isLandscape && (
         <Box
-          onMouseOver={isLandscape ? () => setTimeout(() => { toggleLabelsDrawer() }, 300) : null}
+          onMouseOver={isLandscape ? () => setTimeout(() => { toggleLabelsDrawer() }, 200) : null}
           p={0}
         >
           <BsArrowRightSquareFill
@@ -544,7 +544,7 @@ export default function LabelsDrawer() {
         anchor="left"
         transitionDuration={{ start: 50, enter: 150, exit: 300 }}
         open={openLabelsDrawer}
-        onMouseLeave={() => setTimeout(() => { toggleLabelsDrawer() }, 300)}
+        onMouseLeave={() => setTimeout(() => { toggleLabelsDrawer() }, 200)}
         onClose={toggleDrawer(false)}
         ModalProps={{
           keepMounted: true, // Improves performance when the drawer is open

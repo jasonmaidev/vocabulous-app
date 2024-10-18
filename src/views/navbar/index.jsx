@@ -60,7 +60,7 @@ const Navbar = ({
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/`)
-    }, 300);
+    }, 200);
     if (isPortrait) {
       dispatch(setOpenLabelsDrawer({ openLabelsDrawer: false }))
     }

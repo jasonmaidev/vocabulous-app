@@ -63,7 +63,7 @@ const SearchPage = () => {
     queryClient.invalidateQueries({ queryKey: ["labeledVocabsData"] })
     setTimeout(() => {
       navigate(`/label/${_id}`)
-    }, 300)
+    }, 200)
   }
 
   useEffect(() => {
@@ -82,25 +82,25 @@ const SearchPage = () => {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/`)
-    }, 300)
+    }, 200)
   }
   const showAllVocabs = () => {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/all/${_id}`)
-    }, 300)
+    }, 200)
   }
   const showIntermediateVocabs = () => {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/int/${_id}`)
-    }, 300)
+    }, 200)
   }
   const showAdvancedVocabs = () => {
     navigate(`/loading/${_id}`)
     setTimeout(() => {
       navigate(`/adv/${_id}`)
-    }, 300)
+    }, 200)
   }
 
   const renderIcon = (text) => {
